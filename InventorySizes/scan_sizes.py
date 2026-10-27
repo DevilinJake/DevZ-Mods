@@ -12,11 +12,12 @@ Example:
     python scan_sizes.py "C:/Program Files (x86)/Steam/steamapps/common/DayZServer" ^
         "C:/.../DayZServer/@ExpansionBundle" "C:/.../DayZServer/@ExpansionLicensed"
 """
-import argparse, csv, glob, os, sys
+import argparse, csv, os, sys
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'tools'))
 from dayz_config import (ancestors, load_classes, load_stringtables, read_configs,
                          resolve)
+from mod_scan import find_pbos, source_label
 
 COLUMNS = ['Category', 'Class', 'Parent', 'Example', 'Items', 'Source', 'RequiredAddon',
            'CurrentWidth', 'CurrentHeight', 'CurrentSlots', 'NewWidth', 'NewHeight']
@@ -30,22 +31,6 @@ CATEGORIES = [('Back', 'Backpacks'), ('Body', 'Tops'), ('Vest', 'Vests'), ('Legs
 # Wearables in these slots get a row even with no grid, so admins can give them one
 NO_GRID_SLOTS = {'Vest', 'Hips', 'VestHolster', 'VestPouch', 'VestBackpack'}
 GENERIC_BASES = {'clothing', 'clothing_base', 'container_base', 'inventory_base', 'static', 'all'}
-
-
-def find_pbos(folders):
-    """Game PBOs first (addons + dta), then each mod's, in the order given = load order."""
-    pbos = []
-    for folder in folders:
-        for sub in ('dta', 'addons', 'Addons'):
-            found = sorted(glob.glob(os.path.join(folder, sub, '*.pbo')))
-            pbos += [p for p in found if p not in pbos]
-    return pbos
-
-
-def source_label(pbo):
-    parts = os.path.normpath(pbo).split(os.sep)
-    mod = next((p for p in reversed(parts) if p.startswith('@')), None)
-    return mod[1:] if mod else 'Vanilla'
 
 
 def defining_addons(pbos):

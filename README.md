@@ -7,7 +7,8 @@ builds on its own and is set up so server admins can change the numbers without 
 | Mod | What it does | Status |
 |---|---|---|
 | [InventorySizes](InventorySizes) | Your own cargo sizes for clothing, backpacks and pouches (defaults: a little under double vanilla, bigger for the largest backpacks) | Ready |
-| AmmoStacks | Bigger loose-ammo stacks per calibre | Planned |
+| [AmmoStacks](AmmoStacks) | Bigger loose-ammo stacks: one multiplier, per-ammo overrides, loot amounts kept the same | Ready |
+| [AutoStack](AutoStack) | Loose ammo merges into your existing stacks automatically (server-side only) | Ready |
 | WeaponDurability | How fast weapons and suppressors wear | Planned |
 | CombineNoSplit | Combine 4-use items like bandages and repair kits, but don't split them | Planned |
 | RepairToPristine | Repair kits can repair to Pristine | Planned |
