@@ -1,6 +1,7 @@
-# Nasdara Mods
+# DevZ Mods
 
-Small, open-source DayZ mods made for the Nasdara server. Each one is in its own folder,
+Small, open-source DayZ mods by DevilinJake (Dev). They work on any map; I use them on my
+Nasdara server. Each one is in its own folder,
 builds on its own and is set up so server admins can change the numbers without touching code.
 
 | Mod | What it does | Status |
@@ -17,7 +18,7 @@ Each mod's folder has a README with the details. In short:
 
 1. Change its settings file (for example `InventorySizes\sizes.csv`).
 2. Build it: `.\build.ps1 <ModName> -Key C:\path\to\YourServer.biprivatekey`
-3. Copy `build\@Nasdara_<ModName>` to your server and its key into `keys\`.
+3. Copy `build\@DevZ_<ModName>` to your server and its key into `keys\`.
 
 You need **Python 3** and, for signing, **DayZ Tools** (free on Steam).
 

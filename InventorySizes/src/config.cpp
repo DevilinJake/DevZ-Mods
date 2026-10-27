@@ -3,7 +3,7 @@
 
 class CfgPatches
 {
-	class Nasdara_InventorySizes
+	class DevZ_InventorySizes
 	{
 		units[] = {};
 		weapons[] = {};

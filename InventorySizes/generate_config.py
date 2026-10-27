@@ -9,7 +9,7 @@ Usage:
 import argparse, csv, os
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-PATCH = 'Nasdara_InventorySizes'
+PATCH = 'DevZ_InventorySizes'
 
 
 def read_rows(path):

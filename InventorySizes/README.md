@@ -1,4 +1,4 @@
-# Nasdara Inventory Sizes
+# DevZ Inventory Sizes
 
 Sets your own cargo sizes for clothing, backpacks, vest pouches and holsters, like Inventory++,
 but with the numbers you choose. It only overrides one value per item (`itemsCargoSize`), so it has no scripts,
@@ -9,7 +9,7 @@ and mod files themselves.
 
 ## Default sizes
 
-The sizes in `sizes.csv` are the ones used on the Nasdara server:
+The sizes in `sizes.csv` are the ones I use on my Nasdara server:
 
 - **Most items get a little less than double their vanilla space**, typically 50–90% more.
 - **The largest backpacks go further** (Field, Long Haul, Tactical and Mountain backpacks, up to
@@ -48,8 +48,8 @@ You need **Python 3** and, to sign the mod for your server, **DayZ Tools** (free
    .\build.ps1 InventorySizes -Key C:\path\to\YourServer.biprivatekey
    ```
    This writes `src\config.cpp` from the table, packs it and signs it. The finished mod is in
-   `build\@Nasdara_InventorySizes`.
-4. **Install it:** copy `@Nasdara_InventorySizes` into your server folder, its `keys\*.bikey`
+   `build\@DevZ_InventorySizes`.
+4. **Install it:** copy `@DevZ_InventorySizes` into your server folder, its `keys\*.bikey`
    into the server's `keys\` folder, and add it to `-mod=`. Or add
    `-Install C:\path\to\DayZServer` to step 3 to do this for you.
 

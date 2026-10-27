@@ -7,7 +7,7 @@ Builds one mod from this repo into build\@<ModName>, ready to copy onto a server
 
 Steps:
   1. If the mod has generate_config.py, runs it (e.g. sizes.csv -> src\config.cpp)
-  2. Packs src\ into build\@Nasdara_<ModName>\addons\Nasdara_<ModName>.pbo
+  2. Packs src\ into build\@DevZ_<ModName>\addons\DevZ_<ModName>.pbo
   3. Signs the PBO with your private key and copies the matching .bikey into keys\
   4. With -Install, copies the finished mod folder into your server folder and its key into keys\
 
@@ -25,7 +25,7 @@ $ErrorActionPreference = 'Stop'
 $modSrc  = Join-Path $PSScriptRoot $ModName
 if (-not (Test-Path (Join-Path $modSrc 'src'))) { throw "No mod folder with src\ called '$ModName'" }
 
-$name    = "Nasdara_$ModName"
+$name    = "DevZ_$ModName"
 $outDir  = Join-Path $PSScriptRoot "build\@$name"
 $addons  = Join-Path $outDir 'addons'
 $keysDir = Join-Path $outDir 'keys'
