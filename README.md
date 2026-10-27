@@ -1,0 +1,39 @@
+# Nasdara Mods
+
+Small, open-source DayZ mods made for the Nasdara server. Each one is in its own folder,
+builds on its own and is set up so server admins can change the numbers without touching code.
+
+| Mod | What it does | Status |
+|---|---|---|
+| [InventorySizes](InventorySizes) | Your own cargo sizes for clothing, backpacks and pouches (defaults: a little under double vanilla, bigger for the largest backpacks) | Ready |
+| AmmoStacks | Bigger loose-ammo stacks per calibre | Planned |
+| WeaponDurability | How fast weapons and suppressors wear | Planned |
+| CombineNoSplit | Combine 4-use items like bandages and repair kits, but don't split them | Planned |
+| RepairToPristine | Repair kits can repair to Pristine | Planned |
+
+## Using a mod
+
+Each mod's folder has a README with the details. In short:
+
+1. Change its settings file (for example `InventorySizes\sizes.csv`).
+2. Build it: `.\build.ps1 <ModName> -Key C:\path\to\YourServer.biprivatekey`
+3. Copy `build\@Nasdara_<ModName>` to your server and its key into `keys\`.
+
+You need **Python 3** and, for signing, **DayZ Tools** (free on Steam).
+
+## Repacking and changing these mods
+
+You're free to use, change and repack these mods, including on your own server or in your own
+mod pack. See [LICENSE](LICENSE). A credit is appreciated but not required.
+
+## Repo layout
+
+```
+<ModName>\
+    README.md        how to use it
+    src\             what goes into the PBO (config.cpp, scripts)
+    mod.cpp          name and description shown in the launcher
+    *.csv / *.py     settings table and the script that turns it into config.cpp
+tools\               shared Python helpers (PBO packing, config reading)
+build.ps1            builds any mod: .\build.ps1 <ModName>
+```

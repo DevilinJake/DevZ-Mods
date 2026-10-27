@@ -1,0 +1,112 @@
+Category,Class,Parent,Example,Items,Source,RequiredAddon,CurrentWidth,CurrentHeight,CurrentSlots,NewWidth,NewHeight
+Backpacks,AliceBag_ColorBase,Clothing,Field Backpack,5,Vanilla,DZ_Characters_Backpacks,8,8,64,10,16
+Backpacks,Attack2Bag_ColorBase,Clothing,Long Haul Backpack,4,Vanilla,DZ_Characters_Backpacks,8,8,64,10,16
+Backpacks,CoyoteBag_ColorBase,Clothing,Tactical Backpack,4,Vanilla,DZ_Characters_Backpacks,8,7,56,10,12
+Backpacks,MountainBag_ColorBase,Clothing,Mountain Backpack,4,Vanilla,DZ_Characters_Backpacks,7,8,56,10,12
+Backpacks,TortillaBag,Clothing,Combat Backpack,4,Vanilla,DZ_Characters_Backpacks,7,8,56,8,12
+Backpacks,DryBag_ColorBase,Clothing,Drybag Backpack,6,Vanilla,DZ_Characters_Backpacks,6,7,42,7,9
+Backpacks,HuntingBag,Clothing,Hunter Backpack,2,Vanilla,DZ_Characters_Backpacks,7,6,42,8,8
+Backpacks,LeatherSack_ColorBase,Clothing,Leather Backpack,4,Vanilla,DZ_Characters_Backpacks,6,7,42,7,9
+Backpacks,AssaultBag_ColorBase,Clothing,Assault Backpack,4,Vanilla,DZ_Characters_Backpacks,6,6,36,7,8
+Backpacks,FurImprovisedBag,Clothing,Fur Backpack,1,Vanilla,DZ_Characters_Backpacks,7,5,35,7,8
+Backpacks,ImprovisedBag,Clothing,Burlap Backpack,1,Vanilla,DZ_Characters_Backpacks,7,5,35,7,8
+Backpacks,CourierBag,Clothing,Burlap Courier Bag,1,Vanilla,DZ_Characters_Backpacks,5,6,30,5,9
+Backpacks,FurCourierBag,Clothing,Fur Courier Bag,1,Vanilla,DZ_Characters_Backpacks,5,6,30,5,9
+Backpacks,TaloonBag_ColorBase,Clothing,Hiking Backpack,4,Vanilla,DZ_Characters_Backpacks,6,5,30,6,8
+Backpacks,ArmyPouch_ColorBase,Clothing,Army Pouch,4,Vanilla,DZ_Characters_Backpacks,5,5,25,6,8
+Backpacks,CanvasBag_ColorBase,Clothing,Canvas Bag,2,Vanilla,DZ_Characters_Backpacks,5,5,25,6,8
+Backpacks,DuffelBagSmall_ColorBase,Clothing,Leather Duffel Bag,3,Vanilla,DZ_Characters_Backpacks,5,5,25,6,8
+Backpacks,ChildBag_ColorBase,Clothing,School Backpack,3,Vanilla,DZ_Characters_Backpacks,6,4,24,6,7
+Backpacks,SmershBag,Clothing,Utility Buttpack,1,Vanilla,DZ_Characters_Backpacks,6,4,24,6,7
+Backpacks,DrysackBag_ColorBase,Clothing,Drysack Bag,3,Vanilla,DZ_Characters_Backpacks,4,5,20,6,6
+Backpacks,SlingBag_ColorBase,Clothing,Sling Bag,3,Vanilla,DZ_Characters_Backpacks,4,5,20,6,6
+Tops,OMKJacket_ColorBase,Clothing,OMK Jacket,1,Vanilla,DZ_Characters_Tops,6,5,30,8,7
+Tops,BDUJacket,Clothing,BDU Jacket,1,Vanilla,DZ_Characters_Tops,6,4,24,8,5
+Tops,BomberJacket_ColorBase,Clothing,Bomber Jacket,7,Vanilla,DZ_Characters_Tops,6,4,24,8,5
+Tops,BushlatPoliceJacket_ColorBase,Clothing,Bushlat Jacket,1,Vanilla,DZ_Characters_Tops,6,4,24,8,5
+Tops,DownJacket_ColorBase,Clothing,Down Jacket,4,Vanilla,DZ_Characters_Tops,6,4,24,8,5
+Tops,FirefighterJacket_ColorBase,Clothing,Firefighter Jacket,2,Vanilla,DZ_Characters_Tops,6,4,24,8,5
+Tops,GorkaEJacket_ColorBase,Clothing,Patrol Jacket,5,Vanilla,DZ_Characters_Tops,6,4,24,8,5
+Tops,HikingJacket_ColorBase,Clothing,Hiking Jacket,4,Vanilla,DZ_Characters_Tops,6,4,24,8,5
+Tops,HuntingJacket_ColorBase,Clothing,Hunter Jacket,5,Vanilla,DZ_Characters_Tops,6,4,24,8,5
+Tops,JumpsuitJacket_ColorBase,Clothing,Jumpsuit Jacket,4,Vanilla,DZ_Characters_Tops,6,4,24,8,5
+Tops,LeatherJacket_ColorBase,Clothing,Leather Jacket,4,Vanilla,DZ_Characters_Tops,6,4,24,8,5
+Tops,M65Jacket_ColorBase,Clothing,Field Jacket,4,Vanilla,DZ_Characters_Tops,6,4,24,8,5
+Tops,QuiltedJacket_ColorBase,Clothing,Quilted Jacket,8,Vanilla,DZ_Characters_Tops,6,4,24,8,5
+Tops,TTsKOJacket_ColorBase,Clothing,Combat Jacket,1,Vanilla,DZ_Characters_Tops,6,4,24,8,5
+Tops,TacticalShirt_ColorBase,Clothing,Tactical Shirt,4,Vanilla,DZ_Characters_Tops,6,4,24,8,5
+Tops,USMCJacket_ColorBase,Clothing,CUU Jacket,2,Vanilla,DZ_Characters_Tops,6,4,24,8,5
+Tops,WinterMilitaryCoat_ColorBase,Clothing,Military Winter Coat,3,Vanilla,DZ_Characters_Tops,6,4,24,8,5
+Tops,DenimJacket,Clothing,Denim Jacket,1,Vanilla,DZ_Characters_Tops,5,4,20,6,5
+Tops,LabCoat,Clothing,Lab Coat,1,Vanilla,DZ_Characters_Tops,5,4,20,6,5
+Tops,ManSuit_ColorBase,Clothing,Mens Suit Jacket,8,Vanilla,DZ_Characters_Tops,5,4,20,6,5
+Tops,NurseDress_ColorBase,Clothing,Nurse Dress,2,Vanilla,DZ_Characters_Tops,5,4,20,6,5
+Tops,ParamedicJacket_ColorBase,Clothing,Paramedic Jacket,3,Vanilla,DZ_Characters_Tops,5,4,20,6,5
+Tops,PilotJacket_ColorBase,Clothing,Pilot Jacket,3,Vanilla,DZ_Characters_Tops,5,4,20,6,5
+Tops,PoliceJacket,Clothing,Police Jacket,1,Vanilla,DZ_Characters_Tops,5,4,20,6,5
+Tops,PoliceJacketOrel,Clothing,OREL Police Jacket,1,Vanilla,DZ_Characters_Tops,5,4,20,6,5
+Tops,RidersJacket_ColorBase,Clothing,Rider Jacket,4,Vanilla,DZ_Characters_Tops,5,4,20,6,5
+Tops,WomanSuit_ColorBase,Clothing,Womens Suit Jacket,8,Vanilla,DZ_Characters_Tops,5,4,20,6,5
+Tops,WoolCoat_ColorBase,Clothing,Navy Uniform Jacket,11,Vanilla,DZ_Characters_Tops,5,4,20,6,5
+Tops,MilitarySweater_ColorBase,Clothing,Military Sweater,3,Vanilla,DZ_Characters_Tops,4,4,16,5,5
+Tops,Hoodie_ColorBase,Clothing,Hoodie,6,Vanilla,DZ_Characters_Tops,5,3,15,6,4
+Tops,MedicalScrubsShirt_ColorBase,Clothing,Scrub T-Shirt,3,Vanilla,DZ_Characters_Tops,5,3,15,6,4
+Tops,PrisonUniformJacket,Clothing,Prisoner Jacket,1,Vanilla,DZ_Characters_Tops,5,3,15,6,4
+Tops,TrackSuitJacket_ColorBase,Clothing,Tracksuit Jacket,5,Vanilla,DZ_Characters_Tops,5,3,15,6,4
+Tops,Chainmail,Clothing,Chainmail,1,Vanilla,DZ_Characters_Tops,4,3,12,5,4
+Tops,NBCJacketBase,Clothing,NBC Jacket,3,Vanilla,DZ_Characters_Tops,4,3,12,5,4
+Tops,Raincoat_ColorBase,Clothing,Raincoat,7,Vanilla,DZ_Characters_Tops,4,3,12,5,4
+Tops,Shirt_ColorBase,Clothing,Shirt,7,Vanilla,DZ_Characters_Tops,4,3,12,5,4
+Tops,Blouse_ColorBase,Clothing,Blouse,4,Vanilla,DZ_Characters_Tops,3,3,9,4,4
+Tops,ChernarusSportShirt,Clothing,Sports Shirt,1,Vanilla,DZ_Characters_Tops,3,3,9,4,4
+Tops,GulagJacket_ColorBase,Clothing,Heavy Labor Jacket,1,Vanilla,DZ_Characters_Tops,3,3,9,4,4
+Tops,LeatherShirt_ColorBase,Clothing,Leather Shirt,1,Vanilla,DZ_Characters_Tops,3,3,9,4,4
+Tops,MiniDress_ColorBase,Clothing,Collar Dress,8,Vanilla,DZ_Characters_Tops,3,3,9,4,4
+Tops,Sweater_ColorBase,Clothing,Sweater,7,Vanilla,DZ_Characters_Tops,3,3,9,4,4
+Tops,TShirt_ColorBase,Clothing,Anniversary T-Shirt,11,Vanilla,DZ_Characters_Tops,3,3,9,4,4
+Tops,TelnyashkaShirt,Clothing,Telnyashka,1,Vanilla,DZ_Characters_Tops,3,3,9,4,4
+Tops,TorsoCover_Improvised,Clothing,Improvised Torso Wrapping,1,Vanilla,DZ_Characters_Tops,3,3,9,4,4
+Vests,LeatherStorageVest_ColorBase,Clothing,Leather Vest,4,Vanilla,DZ_Characters_Vests,5,5,25,6,7
+Vests,HighCapacityVest_ColorBase,Clothing,Tactical Vest,2,Vanilla,DZ_Characters_Vests,5,4,20,7,5
+Vests,UKAssVest_ColorBase,Clothing,Field Vest,5,Vanilla,DZ_Characters_Vests,5,4,20,7,5
+Vests,HuntingVest,Clothing,Hunter Vest,2,Vanilla,DZ_Characters_Vests,4,4,16,7,5
+Vests,PressVest_ColorBase,Clothing,Ballistic Vest,3,Vanilla,DZ_Characters_Vests,4,4,16,7,5
+Vests,SmershVest,Clothing,Assault Vest,1,Vanilla,DZ_Characters_Vests,4,4,16,7,5
+Vests,ChestHolster,Clothing,Chest Holster,1,Vanilla,DZ_Characters_Vests,,,0,,
+Vests,Chestplate,Clothing,Chestplate,1,Vanilla,DZ_Characters_Vests,,,0,,
+Vests,PlateCarrierVest,Clothing,Plate Carrier,7,Vanilla,DZ_Characters_Vests,,,0,,
+Vests,PoliceVest,Clothing,Stab Vest,1,Vanilla,DZ_Characters_Vests,,,0,,
+Vests,ReflexVest,Clothing,Reflective Vest,1,Vanilla,DZ_Characters_Vests,,,0,,
+Pants,BDUPants,Clothing,BDU Pants,1,Vanilla,DZ_Characters_Pants,5,4,20,6,5
+Pants,CargoPants_ColorBase,Clothing,Cargo Pants,5,Vanilla,DZ_Characters_Pants,5,4,20,6,5
+Pants,FirefightersPants_ColorBase,Clothing,Firefighter Pants,2,Vanilla,DZ_Characters_Pants,5,4,20,6,5
+Pants,GorkaPants_ColorBase,Clothing,Patrol Pants,5,Vanilla,DZ_Characters_Pants,5,4,20,6,5
+Pants,HunterPants_ColorBase,Clothing,Hunter Pants,5,Vanilla,DZ_Characters_Pants,5,4,20,6,5
+Pants,JumpsuitPants_ColorBase,Clothing,Jumpsuit Pants,4,Vanilla,DZ_Characters_Pants,5,4,20,6,5
+Pants,OMKPants_ColorBase,Clothing,OMK Pants,1,Vanilla,DZ_Characters_Pants,5,4,20,6,5
+Pants,USMCPants_ColorBase,Clothing,CUU Pants,2,Vanilla,DZ_Characters_Pants,5,4,20,6,5
+Pants,ParamedicPants_ColorBase,Clothing,Paramedic Pants,3,Vanilla,DZ_Characters_Pants,5,3,15,6,4
+Pants,PolicePantsOrel,Clothing,OREL Police Pants,1,Vanilla,DZ_Characters_Pants,5,3,15,6,4
+Pants,TTSKOPants,Clothing,Combat Pants,1,Vanilla,DZ_Characters_Pants,5,3,15,6,4
+Pants,Breeches_ColorBase,Clothing,Capri Pants,10,Vanilla,DZ_Characters_Pants,4,3,12,5,4
+Pants,CanvasPantsMidi_ColorBase,Clothing,Crop Hiking Pants,5,Vanilla,DZ_Characters_Pants,4,3,12,5,4
+Pants,CanvasPants_ColorBase,Clothing,Hiking Pants,5,Vanilla,DZ_Characters_Pants,4,3,12,5,4
+Pants,Jeans_ColorBase,Clothing,Jeans,6,Vanilla,DZ_Characters_Pants,4,3,12,5,4
+Pants,MedicalScrubsPants_ColorBase,Clothing,Scrub Pants,3,Vanilla,DZ_Characters_Pants,4,3,12,5,4
+Pants,NBCPantsBase,Clothing,NBC Pants,3,Vanilla,DZ_Characters_Pants,4,3,12,5,4
+Pants,PolicePants,Clothing,Navy Uniform Pants,2,Vanilla,DZ_Characters_Pants,4,3,12,5,4
+Pants,ShortJeans_ColorBase,Clothing,Denim Shorts,6,Vanilla,DZ_Characters_Pants,4,3,12,5,4
+Pants,TrackSuitPants_ColorBase,Clothing,Tracksuit Pants,5,Vanilla,DZ_Characters_Pants,4,3,12,5,4
+Pants,Chainmail_Leggings,Clothing,Chainmail Leggings,1,Vanilla,DZ_Characters_Pants,4,2,8,5,3
+Pants,PrisonUniformPants,Clothing,Prisoner Pants,1,Vanilla,DZ_Characters_Pants,4,2,8,5,3
+Pants,Skirt_ColorBase,Clothing,Denim Skirt,4,Vanilla,DZ_Characters_Pants,4,2,8,5,3
+Pants,SlacksPants_ColorBase,Clothing,Suit Pants,8,Vanilla,DZ_Characters_Pants,4,2,8,5,3
+Pants,LeatherPants_ColorBase,Clothing,Leather Pants,4,Vanilla,DZ_Characters_Pants,3,2,6,4,3
+Pants,LegsCover_Improvised,Clothing,Improvised Legs Wrapping,1,Vanilla,DZ_Characters_Pants,3,2,6,4,3
+Belts,HipPack_ColorBase,Clothing,Hip Pack,4,Vanilla,DZ_Characters_Belts,3,2,6,4,3
+Belts,CivilianBelt,Clothing,Belt,1,Vanilla,DZ_Characters_Belts,,,0,,
+Belts,LeatherBelt_ColorBase,Clothing,Leather Belt,4,Vanilla,DZ_Characters_Belts,,,0,,
+Belts,MilitaryBelt,Clothing,Tactical Belt,1,Vanilla,DZ_Characters_Belts,,,0,,
+Belts,RopeBelt,Clothing,Rope Belt,1,Vanilla,DZ_Characters_Belts,,,0,,
+Pouches,PlateCarrierPouches,Container_Base,Pouches,6,Vanilla,DZ_Gear_Containers,5,3,15,6,4
+Holsters,PlateCarrierHolster,Clothing,Holster,6,Vanilla,DZ_Characters_Vests,,,0,,

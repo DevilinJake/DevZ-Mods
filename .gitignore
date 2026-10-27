@@ -1,0 +1,9 @@
+# Built mods
+build/
+
+# Never commit a private signing key
+*.biprivatekey
+
+# Python
+__pycache__/
+*.pyc
