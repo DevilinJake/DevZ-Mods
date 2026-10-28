@@ -1,0 +1,302 @@
+﻿Remove,Class,Name,Item1,Item2,Results,Source
+Yes,iM7sDR_CraftCocaPaste,Make Coca Paste,iM7s_CocaLeaves,iM7s_Acetone,iM7s_Fishscale,iM7s_DrugRunning
+Yes,iM7sDR_CraftCocaPaste_Dried,Make Coca Paste,iM7s_DriedCoca,iM7s_Acetone,iM7s_Fishscale,iM7s_DrugRunning
+,AttachHolster,#STR_AttachHolster0,PlateCarrierBlank,CarrierHolsterSolo,PlateCarrierHolster,Vanilla
+,AttachHolsterPouch,#STR_AttachHolsterPouch0,PlateCarrierPouches,CarrierHolsterSolo,PlateCarrierComplete,Vanilla
+,AttachPouch,#STR_AttachPouch0,PlateCarrierBlank,CarrierPouches,PlateCarrierPouches,Vanilla
+,AttachPouchesHolster,#STR_AttachPouchesHolster0,PlateCarrierHolster,CarrierPouches,PlateCarrierComplete,Vanilla
+,BloodTest,Test my blood,BloodTestKit,BloodSyringe / BloodBagFull / BloodBagIV,,Vanilla
+,ChelateWater,Chelate water,ChelatingTablets,Pot / CanisterGasoline / DisinfectantAlcohol +9 more,,Vanilla
+,CleanRags,Clean,Rag,Pot / CanisterGasoline / Canteen +6 more,,Vanilla
+,CloseGunCase,Lock,GunCase_ColorBase,GunCaseKeys_Colorbase,,Vanilla
+,CloseScientificBriefcase,Lock briefcase,ScientificBriefcase,ScientificBriefcaseKeys,,Vanilla
+,CraftArmbandFlag,Craft armband,,Sickle / KukriKnife / FangeKnife +28 more,Armband_,Vanilla
+,CraftArmbandRag,Craft armband,,SewingKit,Armband_White,Vanilla
+,CraftArmbandRaincoat,Craft armband,,Sickle / KukriKnife / FangeKnife +27 more,Armband_,Vanilla
+,CraftArrow,Craft improvised arrow,ChickenFeather,Ammo_SharpStick,Ammo_ArrowPrimitive,Vanilla
+,CraftArrowBone,Craft bone arrow,Ammo_ArrowPrimitive,Bone,Ammo_ArrowBoned,Vanilla
+,CraftBait,Craft fishing bait,Worm,Hook,Bait,Vanilla
+,CraftBaseBallBatBarbed,Craft barbed baseball bat,BarbedWire,BaseballBat,CombatKnife / BarbedBaseballBat,Vanilla
+,CraftBaseBallBatNailed,Craft nailed bat,Nail,BaseballBat,CombatKnife / NailedBaseballBat,Vanilla
+,CraftBloodBagIV,Craft IV blood bag,StartKitIV,BloodBagFull,BloodBagIV,Vanilla
+,CraftBoneBait,Craft fishing bait,Worm,BoneHook,BoneBait,Vanilla
+,CraftBoneHook,Craft improvised hook,Bone,Sickle / KukriKnife / FangeKnife +30 more,BoneHook,Vanilla
+,CraftBoneKnife,Craft bone knife,,Stone / SmallStone,BoneKnife,Vanilla
+,CraftBow,Craft improvised bow,Rope / ImprovisedRope,LongWoodenStick,QuickieBow,Vanilla
+,CraftBurlapStrips,Craft burlap strips,BurlapSack,Sickle / KukriKnife / FangeKnife +30 more,BurlapStrip,Vanilla
+,CraftCamoNetShelter,Craft camo net shelter,CamoNet,LongWoodenStick,CamoNetShelter,Vanilla
+,CraftChristmasLightsHeadband,Craft festive headband,ChristmasHeadband_Trees / ChristmasHeadband_Antlers / ChristmasHeadband_Gingerbread,XmasLights,ChristmasHeadband,Vanilla
+,CraftCookingStand,Craft cooking stand,WoodenStick,LongWoodenStick / SharpWoodenStick,CookingStand,Vanilla
+,CraftCourierBag,Craft burlap courier bag,BurlapSack,Rope / ImprovisedRope,CourierBag,Vanilla
+,CraftFeathers,Craft feathers,Sickle / Hacksaw / HandSaw +32 more,Akinaka,ChickenFeather,Vanilla
+,CraftFenceKit,Craft fence kit,,WoodenStick / Ammo_SharpStick,FenceKit,Vanilla
+,CraftFireplace,Craft fireplace,WoodenStick / Rag / BandageDressing +8 more,,Fireplace,Vanilla
+,CraftFishingRod,Craft improvised fishing rod,Rope / ImprovisedRope,LongWoodenStick / SharpWoodenStick,ImprovisedFishingRod,Vanilla
+,CraftFishNetTrap,Craft fish trap,Netting,MetalWire,FishNetTrap,Vanilla
+,CraftFoxHeaddress,Craft headdress,FoxPelt,LeatherSewingKit,Headdress_Fox,Vanilla
+,CraftGasMask_Filter_Improvised,Craft improvised gas mask filter,WaterBottle,NioshFaceMask,GasMask_Filter_Improvised,Vanilla
+,CraftGhillieAttachment,Craft ghillie rifle wrap,Netting,BurlapStrip,GhillieAtt_Tan,Vanilla
+,CraftGhillieBushrag,Craft ghillie shrug,Netting,BurlapStrip,GhillieBushrag_Tan,Vanilla
+,CraftGhillieHood,Craft ghillie hood,Netting,BurlapStrip,GhillieHood_Tan,Vanilla
+,CraftGhillieSuit,Craft ghillie suit,Netting,BurlapStrip,GhillieSuit_Tan,Vanilla
+,CraftGhillieTop,Craft ghillie cloak,Netting,BurlapStrip,GhillieTop_Tan,Vanilla
+,CraftGorkaHelmetComplete,#STR_CraftGorkaHelmetComplete0,GorkaHelmet,GorkaHelmetVisor,GorkaHelmetComplete_,Vanilla
+,CraftGutsRope,Craft rope,Guts,Sickle / KukriKnife / FangeKnife +25 more,Rope,Vanilla
+,CraftHandDrillKit,Craft hand drill kit,,WoodenStick / Ammo_SharpStick,HandDrillKit,Vanilla
+,CraftImprovisedBag,Craft burlap backpack,WoodenStick,CourierBag,ImprovisedBag,Vanilla
+,CraftImprovisedExplosive,Craft improvised explosive,,ElectronicRepairKit,ImprovisedExplosive,Vanilla
+,CraftImprovisedLeatherBag,Craft fur backpack,WoodenStick,FurCourierBag,FurImprovisedBag,Vanilla
+,CraftLeatherBelt,Craft leather belt,LizardPelt,LeatherSewingKit,LeatherBelt_Lizard,Vanilla
+,CraftLeatherCourierBag,Craft fur courier bag,WildboarPelt,Rope / ImprovisedRope,FurCourierBag,Vanilla
+,CraftLeatherHippack,Craft leather hip pack,LizardPelt,LeatherSewingKit,LeatherHippack_Lizard,Vanilla
+,CraftLeatherSack,Craft leather sack,TannedLeather,LeatherSewingKit,LeatherSack_Brown,Vanilla
+,CraftLeatherSheath,Craft leather sheath,LizardPelt,LeatherSewingKit,LizardKnifeSheath,Vanilla
+,CraftLongTorch,Craft torch,Rag,LongWoodenStick / SharpWoodenStick,LongTorch,Vanilla
+,CraftMetalWire,Craft metal wire,BarbedWire,Pliers,MetalWire,Vanilla
+,CraftMortarMix,Mix Mortar,MortarMix,Pot / CanisterGasoline / Canteen +7 more,MortarMix_Opened,Vanilla
+,CraftRabbitSnare,Craft snare trap,WoodenStick,MetalWire,RabbitSnareTrap,Vanilla
+,CraftRag,Craft rags,Sickle / Hacksaw / HandSaw +33 more,,Rag,Vanilla
+,CraftRagRope,Craft rope,Rag,Rag,Rope,Vanilla
+,CraftSalineBagIV,Craft IV saline bag,StartKitIV,SalineBag,SalineBagIV,Vanilla
+,CraftShelterKit,Craft shelter kit,,WoodenStick / Ammo_SharpStick,ShelterKit,Vanilla
+,CraftSmallFishTrap,Craft plastic bottle fish trap,WaterBottle,Sickle / KukriKnife / FangeKnife +30 more,SmallFishTrap,Vanilla
+,CraftSpearBone,Craft improvised spear,BoneKnife,LongWoodenStick / SharpWoodenStick,SpearBone,Vanilla
+,CraftSpearStone,Craft improvised spear,StoneKnife,LongWoodenStick / SharpWoodenStick,SpearStone,Vanilla
+,CraftSplint,Craft splint,BandageDressing / Rag / DuctTape +1 more,WoodenStick,Splint,Vanilla
+,CraftStoneKnife,Craft stone knife,SmallStone,SmallStone / Stone,StoneKnife,Vanilla
+,CraftSuppressor,Craft plastic bottle suppressor,WaterBottle,DuctTape,ImprovisedSuppressor,Vanilla
+,CraftTannedLeather,Tan leather,Pelt_Base,GardenLime,,Vanilla
+,CraftTerritoryFlagKit,Craft flag pole kit,,WoodenStick / Ammo_SharpStick,TerritoryFlagKit,Vanilla
+,CraftTripWire,Craft tripwire,WoodenStick,MetalWire,TripwireTrap,Vanilla
+,CraftTruck01DoubleWheel,Combine wheels,Truck_01_Wheel,Truck_01_Wheel,Truck_01_WheelDouble,Vanilla
+,CraftWatchtowerKit,Craft watchtower kit,,WoodenStick / Ammo_SharpStick,WatchtowerKit,Vanilla
+,CraftWoodenCrate,#craft ,WoodenPlank,Nail,WoodenCrate,Vanilla
+,CraftWoodenHook,Craft improvised hook,WoodenStick,Sickle / KukriKnife / FangeKnife +30 more,WoodenHook,Vanilla
+,CraftWoodenPlank,Craft wooden plank,WoodenLog,Hacksaw / HandSaw,WoodenPlank,Vanilla
+,CutOutPepperSeeds,Cut out seeds,GreenBellPepper,Sickle / KukriKnife / FangeKnife +25 more,PepperSeeds,Vanilla
+,CutOutPumpkinSeeds,Prepare,Pumpkin,Sickle / KukriKnife / FangeKnife +36 more,PumpkinSeeds / SlicedPumpkin,Vanilla
+,CutOutTomatoSeeds,Cut out seeds,Tomato,Sickle / KukriKnife / FangeKnife +25 more,TomatoSeeds,Vanilla
+,CutOutZucchiniSeeds,Cut out seeds,Zucchini,Sickle / KukriKnife / FangeKnife +29 more,ZucchiniSeeds,Vanilla
+,DeCraftArmband,Break down,Armband_ColorBase,Sickle / KukriKnife / FangeKnife +29 more,Rag,Vanilla
+,DeCraftBow,Break down,QuickieBow,Sickle / KukriKnife / FangeKnife +29 more,LongWoodenStick,Vanilla
+,DeCraftCamoNetShelter,Break down,CamoNetShelter,Sickle / KukriKnife / FangeKnife +29 more,LongWoodenStick / CamoNet,Vanilla
+,DeCraftCarrierComplete,Break down,PlateCarrierComplete,Sickle / KukriKnife / FangeKnife +28 more,PlateCarrierBlank / CarrierHolsterSolo / CarrierPouches,Vanilla
+,DeCraftCarrierHolster,Break down,PlateCarrierHolster,Sickle / KukriKnife / FangeKnife +28 more,PlateCarrierBlank / CarrierHolsterSolo,Vanilla
+,DeCraftCarrierPouches,Break down,PlateCarrierPouches,Sickle / KukriKnife / FangeKnife +28 more,PlateCarrierBlank / CarrierPouches,Vanilla
+,DeCraftCookingStand,Break down,CookingStand,Sickle / KukriKnife / FangeKnife +29 more,WoodenStick,Vanilla
+,DeCraftCourierBag,Break down,CourierBag,Sickle / KukriKnife / FangeKnife +29 more,BurlapSack / Rope,Vanilla
+,DeCraftDetonator,Break down,RemoteDetonator,Screwdriver,Battery9V,Vanilla
+,DeCraftFishingRod,Break down,ImprovisedFishingRod,Sickle / KukriKnife / FangeKnife +28 more,LongWoodenStick / Rope,Vanilla
+,DeCraftFishNetTrap,Break down,FishNetTrap,Sickle / KukriKnife / FangeKnife +29 more,MetalWire / Netting,Vanilla
+,DeCraftGhillieAttachment,Break down,GhillieAtt_ColorBase,Sickle / KukriKnife / FangeKnife +29 more,Netting / BurlapStrip,Vanilla
+,DeCraftGhillieBushrag,Break down,GhillieBushrag_ColorBase,Sickle / KukriKnife / FangeKnife +29 more,Netting / BurlapStrip,Vanilla
+,DeCraftGhillieHood,Break down,GhillieHood_ColorBase,Sickle / KukriKnife / FangeKnife +29 more,Netting / BurlapStrip,Vanilla
+,DeCraftGhillieSuit,Break down,GhillieSuit_ColorBase,Sickle / KukriKnife / FangeKnife +28 more,Netting / BurlapStrip,Vanilla
+,DeCraftGhillieTop,Break down,GhillieTop_ColorBase,Sickle / KukriKnife / FangeKnife +29 more,Netting / BurlapStrip,Vanilla
+,DeCraftHandDrillKit,Break down,HandDrillKit,Sickle / KukriKnife / FangeKnife +29 more,WoodenStick,Vanilla
+,DeCraftImprovisedBag,Break down,ImprovisedBag,Sickle / KukriKnife / FangeKnife +29 more,WoodenStick / BurlapSack,Vanilla
+,DeCraftImprovisedLeatherBag,Break down,FurImprovisedBag,Sickle / KukriKnife / FangeKnife +29 more,WoodenStick / WildboarPelt,Vanilla
+,DeCraftLeatherCourierBag,Break down,FurCourierBag,Sickle / KukriKnife / FangeKnife +29 more,WildboarPelt / Rope,Vanilla
+,DeCraftLeatherSack,Break leather sack,LeatherSack_ColorBase,Sickle / KukriKnife / FangeKnife +29 more,TannedLeather,Vanilla
+,DeCraftSnareTrap,Break down,RabbitSnareTrap,Sickle / KukriKnife / FangeKnife +29 more,MetalWire,Vanilla
+,DeCraftSpear,Break down,Spear,Sickle / KukriKnife / FangeKnife +29 more,LongWoodenStick,Vanilla
+,DeCraftSplint,Break down,Splint,Sickle / KukriKnife / FangeKnife +29 more,WoodenStick,Vanilla
+,DeCraftTripWire,Break down,TripwireTrap,Sickle / KukriKnife / FangeKnife +29 more,MetalWire,Vanilla
+,DeCraftTruck01DoubleWheel,Split wheels,Truck_01_WheelDouble,Crowbar / LugWrench,Truck_01_Wheel,Vanilla
+,DeCraftWoodenCrate,Break down,WoodenCrate,Crowbar / WoodAxe / Hatchet +1 more,WoodenPlank / Nail,Vanilla
+,DisinfectItem,Disinfect,DisinfectantSpray / DisinfectantAlcohol / IodineTincture,Inventory_Base,,Vanilla
+,DrainLiquid,#STR_DrainLiquid0,Pot / CanisterGasoline / Canteen +7 more,Pot / CanisterGasoline / Canteen +6 more,,Vanilla
+,ExtinguishTorch,Extinguish,Torch / Broom,Pot / CanisterGasoline / DisinfectantAlcohol +8 more,,Vanilla
+,FillGasMask_Filter,Fill filter,CharcoalTablets,GasMask_Filter / GasMask_Filter_Improvised,GasMask_Filter_Improvised,Vanilla
+,FillSyringe,Fill,InjectionVial,Syringe,ClearSyringe,Vanilla
+,FuelChainsaw,Refuel,Chainsaw,Pot / CanisterGasoline / DisinfectantAlcohol +8 more,,Vanilla
+,LoadMagazine,Load magazine,Ammunition_Base,Magazine_Base,,Vanilla
+,OpenCan,Open can,,Sickle / KukriKnife / FangeKnife +47 more,,Vanilla
+,OpenGunCase,Unlock,GunCase_ColorBase,GunCaseKeys_Colorbase,,Vanilla
+,OpenScientificBriefcase,Unlock briefcase,ScientificBriefcase,ScientificBriefcaseKeys,,Vanilla
+,PaintAK101,Paint,Spraycan_ColorBase,AK101,AK101_,Vanilla
+,PaintAK10130Mag,Paint,Spraycan_ColorBase,Mag_AK101_30Rnd,Mag_AK101_30Rnd_,Vanilla
+,PaintAK74,Paint,Spraycan_ColorBase,AK74,AK74_,Vanilla
+,PaintAK7430Mag,Paint,Spraycan_ColorBase,Mag_AK74_30Rnd,Mag_AK74_30Rnd_,Vanilla
+,PaintAK74HndgrdBlack,Paint,Spraycan_Black,AK74_Hndgrd,AK74_Hndgrd_Black,Vanilla
+,PaintAK74HndgrdCamo,Paint,Spraycan_Green,AK74_Hndgrd,AK74_Hndgrd_Camo,Vanilla
+,PaintAK74WoodBttstckBlack,Paint,Spraycan_Black,AK74_WoodBttstck,AK74_WoodBttstck_Black,Vanilla
+,PaintAK74WoodBttstckCamo,Paint,Spraycan_Green,AK74_WoodBttstck,AK74_WoodBttstck_Camo,Vanilla
+,PaintAKFoldingBttstck,Paint,Spraycan_ColorBase,AK_FoldingBttstck,AK_FoldingBttstck_,Vanilla
+,PaintAKMDrumMag,Paint,Spraycan_ColorBase,Mag_AKM_Drum75Rnd,Mag_AKM_Drum75Rnd_,Vanilla
+,PaintAKMPalm30Mag,Paint,Spraycan_ColorBase,Mag_AKM_Palm30Rnd,Mag_AKM_Palm30Rnd_,Vanilla
+,PaintAKPlasticBttstck,Paint,Spraycan_ColorBase,AK_PlasticBttstck,AK_PlasticBttstck_,Vanilla
+,PaintAKRailHndgrd,Paint,Spraycan_ColorBase,AK_RailHndgrd,AK_RailHndgrd_,Vanilla
+,PaintAKS74U,Paint,Spraycan_ColorBase,AKS74U,AKS74U_,Vanilla
+,PaintAKS74UBttstck,Paint,Spraycan_ColorBase,AKS74U_Bttstck,AKS74U_Bttstck_,Vanilla
+,PaintAKWoodBttstckBlack,Paint,Spraycan_Black,AK_WoodBttstck,AK_WoodBttstck_Black,Vanilla
+,PaintAKWoodBttstckCamo,Paint,Spraycan_Green,AK_WoodBttstck,AK_WoodBttstck_Camo,Vanilla
+,PaintB95,Paint,Spraycan_ColorBase,B95,B95_,Vanilla
+,PaintBallisticHelmet,Paint,Spraycan_ColorBase,BallisticHelmet_ColorBase,BallisticHelmet_,Vanilla
+,PaintCMAG10,Paint,Spraycan_ColorBase,Mag_CMAG_10Rnd,Mag_CMAG_10Rnd_,Vanilla
+,PaintCMAG20,Paint,Spraycan_ColorBase,Mag_CMAG_20Rnd,Mag_CMAG_20Rnd_,Vanilla
+,PaintCMAG30,Paint,Spraycan_ColorBase,Mag_CMAG_30Rnd,Mag_CMAG_30Rnd_,Vanilla
+,PaintCMAG40,Paint,Spraycan_ColorBase,Mag_CMAG_40Rnd,Mag_CMAG_40Rnd_,Vanilla
+,PaintCz527,Paint,Spraycan_ColorBase,CZ527,CZ527_,Vanilla
+,PaintCz527CamoBlack,Paint,Spraycan_Black,CZ527_Green,CZ527_Camo,Vanilla
+,PaintCz527CamoGreen,Paint,Spraycan_Green,CZ527_Black,CZ527_Camo,Vanilla
+,PaintDarkMotohelmet,Paint,Spraycan_ColorBase,DarkMotoHelmet_ColorBase,DarkMotoHelmet_,Vanilla
+,PaintFirefighterAxe,Paint,Spraycan_ColorBase,FirefighterAxe,FirefighterAxe_,Vanilla
+,PaintGhillieAttBlack,Paint,Spraycan_Black,GhillieAtt_Woodland,GhillieAtt_Mossy,Vanilla
+,PaintGhillieAttGreen,Paint,Spraycan_Green,GhillieAtt_Tan,GhillieAtt_Woodland,Vanilla
+,PaintGhillieAttGreenMossy,Paint,Spraycan_Green,GhillieAtt_Mossy,GhillieAtt_Woodland,Vanilla
+,PaintGhillieBushragBlack,Paint,Spraycan_Black,GhillieBushrag_Woodland,GhillieBushrag_Mossy,Vanilla
+,PaintGhillieBushragGreen,Paint,Spraycan_Green,GhillieBushrag_Tan,GhillieBushrag_Woodland,Vanilla
+,PaintGhillieBushragGreenMossy,Paint,Spraycan_Green,GhillieBushrag_Mossy,GhillieBushrag_Woodland,Vanilla
+,PaintGhillieHoodBlack,Paint,Spraycan_Black,GhillieHood_Woodland,GhillieHood_Mossy,Vanilla
+,PaintGhillieHoodGreen,Paint,Spraycan_Green,GhillieHood_Tan,GhillieHood_Woodland,Vanilla
+,PaintGhillieHoodGreenMossy,Paint,Spraycan_Green,GhillieHood_Mossy,GhillieHood_Woodland,Vanilla
+,PaintGhillieSuitBlack,Paint,Spraycan_Black,GhillieSuit_Woodland,GhillieSuit_Mossy,Vanilla
+,PaintGhillieSuitGreen,Paint,Spraycan_Green,GhillieSuit_Tan,GhillieSuit_Woodland,Vanilla
+,PaintGhillieSuitGreenMossy,Paint,Spraycan_Green,GhillieSuit_Mossy,GhillieSuit_Woodland,Vanilla
+,PaintGhillieTopBlack,Paint,Spraycan_Black,GhillieTop_Woodland,GhillieTop_Mossy,Vanilla
+,PaintGhillieTopGreen,Paint,Spraycan_Green,GhillieTop_Tan,GhillieTop_Woodland,Vanilla
+,PaintGhillieTopGreenMossy,Paint,Spraycan_Green,GhillieTop_Mossy,GhillieTop_Woodland,Vanilla
+,PaintGorkaHelmet,Paint,Spraycan_ColorBase,GorkaHelmet,GorkaHelmet_,Vanilla
+,PaintGorkaHelmetComplete,Paint,Spraycan_ColorBase,GorkaHelmetComplete,GorkaHelmetComplete_,Vanilla
+,PaintM4A1,Paint,Spraycan_ColorBase,M4A1,M4A1_,Vanilla
+,PaintM4CQBBttstck,Paint,Spraycan_ColorBase,M4_CQBBttstck,M4_CQBBttstck_,Vanilla
+,PaintM4MPBttstck,Paint,Spraycan_ColorBase,M4_MPBttstck,M4_MPBttstck_,Vanilla
+,PaintM4MPHndgrd,Paint,Spraycan_ColorBase,M4_MPHndgrd,M4_MPHndgrd_,Vanilla
+,PaintM4OEBttstck,Paint,Spraycan_ColorBase,M4_OEBttstck,M4_OEBttstck_,Vanilla
+,PaintM4PlasticHndgrd,Paint,Spraycan_ColorBase,M4_PlasticHndgrd,M4_PlasticHndgrd_,Vanilla
+,PaintM4RISHndgrd,Paint,Spraycan_ColorBase,M4_RISHndgrd,M4_RISHndgrd_,Vanilla
+,PaintMosin,Paint,Spraycan_ColorBase,Mosin9130 / Mosin9130_Black / Mosin9130_Green +1 more,Mosin9130_,Vanilla
+,PaintMosinCamoBlack,Paint,Spraycan_Black,Mosin9130_Green,Mosin9130_Camo,Vanilla
+,PaintMosinCamoGreen,Paint,Spraycan_Green,Mosin9130_Black,Mosin9130_Camo,Vanilla
+,PaintMotohelmet,Paint,Spraycan_ColorBase,MotoHelmet_ColorBase,MotoHelmet_,Vanilla
+,PaintRuger1022,Paint,Spraycan_ColorBase,Ruger1022,Ruger1022_,Vanilla
+,PaintSawedoffMosin,Paint,Spraycan_ColorBase,SawedoffMosin9130,SawedoffMosin9130_,Vanilla
+,PaintSawedoffMosinCamoBlack,Paint,Spraycan_Black,SawedoffMosin9130_Green,SawedoffMosin9130_Camo,Vanilla
+,PaintSawedoffMosinCamoGreen,Paint,Spraycan_Green,SawedoffMosin9130_Black,SawedoffMosin9130_Camo,Vanilla
+,PaintSKS,Paint,Spraycan_ColorBase,SKS,SKS_,Vanilla
+,PaintZSh3PilotHelmet,Paint,Spraycan_ColorBase,ZSh3PilotHelmet,ZSh3PilotHelmet_,Vanilla
+,PatchItem,Patch,LeatherSewingKit / SewingKit / TireRepairKit,Inventory_Base,,Vanilla
+,PeelPotato,Peel potato,PotatoSeed,Sickle / KukriKnife / FangeKnife +24 more,Potato,Vanilla
+,PokeHolesBarrel,Craft fire barrel,Barrel_ColorBase,Sickle / KukriKnife / FangeKnife +27 more,BarrelHoles_,Vanilla
+,PourLiquid,#STR_PourLiquid0,Pot / CanisterGasoline / Canteen +7 more,Pot / CanisterGasoline / Canteen +6 more,,Vanilla
+,PrepareAnimal,Skin and quarter,,Sickle / KukriKnife / FangeKnife +25 more,,Vanilla
+,PurifyWater,Purify,PurificationTablets,Pot / CanisterGasoline / DisinfectantAlcohol +9 more,,Vanilla
+,RecipeTest,Test 3 ingredients,BloodTestKit,BloodSyringe,,Vanilla
+,RefuelTorch,Refuel torch,Rag,Torch / LongTorch,Torch,Vanilla
+,RepairElectric,Repair,ElectronicRepairKit,Inventory_Base,,Vanilla
+,RepairEpoxy,Repair,EpoxyPutty,Inventory_Base / DefaultWeapon,,Vanilla
+,RepairEyePatch,Repair,EyePatch_Improvised,Rag,,Vanilla
+,RepairPlanks,Repair,WoodenPlank,WoodenCrate / SeaChest,,Vanilla
+,RepairWithPliers,Repair,Pliers,Chainmail / Chainmail_Coif / Chainmail_Leggings +1 more,,Vanilla
+,RepairWithRags,Repair,HeadCover_Improvised / HandsCover_Improvised / LegsCover_Improvised +3 more,Rag,,Vanilla
+,RepairWithTape,Repair,DuctTape,Inventory_Base / DefaultWeapon / DefaultMagazine,,Vanilla
+,SawOFFB95,Saw off barrel,B95,Hacksaw,,Vanilla
+,SawoffFAMAS,Saw off handle,FAMAS,Hacksaw,,Vanilla
+,SawOffIzh18,Saw off barrel,Izh18,Hacksaw,,Vanilla
+,SawOffIzh18Shotgun,Saw off barrel,Izh18Shotgun,Hacksaw,,Vanilla
+,SawOffMagnum,Saw off barrel,Magnum / Magnum_Gold,Hacksaw,,Vanilla
+,SawoffMosin,Saw off barrel,Mosin9130,Hacksaw,,Vanilla
+,SawoffMosinPainted,Saw off barrel,Mosin9130_Black / Mosin9130_Green / Mosin9130_Camo,Hacksaw,,Vanilla
+,SawoffShotgunIzh43,Saw off barrel,Izh43Shotgun,Hacksaw,,Vanilla
+,SawWoodenLog,Craft firewood,Hacksaw / HandSaw / WoodAxe +2 more,WoodenLog,Firewood,Vanilla
+,SharpenBroom,Sharpen,Broom,Sickle / KukriKnife / FangeKnife +28 more,CombatKnife / WoodenStick / SharpWoodenStick,Vanilla
+,SharpenLongStick,Sharpen,LongWoodenStick,Sickle / KukriKnife / FangeKnife +28 more,CombatKnife / SharpWoodenStick,Vanilla
+,SharpenMelee,Sharpen,Whetstone,Inventory_Base,,Vanilla
+,SharpenStick,Sharpen,WoodenStick,Sickle / KukriKnife / FangeKnife +28 more,Ammo_SharpStick,Vanilla
+,SplitBroom,Split,Broom / Broom_Birch,Sickle / KukriKnife / FangeKnife +28 more,WoodenStick / LongWoodenStick,Vanilla
+,SplitFirewood,Split,Firewood,,WoodenStick,Vanilla
+,SplitLongWoodenStick,Split,LongWoodenStick / SharpWoodenStick,Sickle / KukriKnife / FangeKnife +27 more,WoodenStick,Vanilla
+,SplitStones,Split,Stone,Pickaxe / SledgeHammer / Hammer +1 more,SmallStone,Vanilla
+,UpgradeTorchWithLard,Upgrade with fat,Lard,Torch / LongTorch,Torch,Vanilla
+,UpgradeTorchWithLiquidFuel,Soak torch with fuel,Bottle_Base / Barrel_ColorBase,Torch / LongTorch,Torch,Vanilla
+,WriteLetter,Write,Pen_ColorBase,Paper,,Vanilla
+,CraftiM7s_DrugLab_Station,Craft Lab Station Kit,MetalPlate,Pipe,iM7s_LabStation_Kit,iM7s_DrugRunning
+,CraftiM7s_ProductionTable,Craft Production Table Kit,MetalPlate,Pipe,iM7s_ProductionTable_Kit,iM7s_DrugRunning
+,CraftiM7s_StoragePallet,Craft Storage Pallet,WoodenPlank,Nail,iM7s_StoragePallet_Bricks,iM7s_DrugRunning
+,CraftiM7sDR_Blunt_BabyBatter,Roll a Blunt,iM7s_SmallNug_BabyBatter,iM7s_Backwood,iM7s_Blunt_BabyBatter,iM7s_DrugRunning
+,CraftiM7sDR_Blunt_Barney,Roll a Blunt,iM7s_SmallNug_Barney,iM7s_Backwood,iM7s_Blunt_Barney,iM7s_DrugRunning
+,CraftiM7sDR_Blunt_BlueCookies,Roll a Blunt,iM7s_SmallNug_BlueCookies,iM7s_Backwood,iM7s_Blunt_BlueCookies,iM7s_DrugRunning
+,CraftiM7sDR_Blunt_Champagne,Roll a Blunt,iM7s_SmallNug_Champagne,iM7s_Backwood,iM7s_Blunt_Champagne,iM7s_DrugRunning
+,CraftiM7sDR_Blunt_CheetahPiss,Roll a Blunt,iM7s_SmallNug_CheetahPiss,iM7s_Backwood,iM7s_Blunt_CheetahPiss,iM7s_DrugRunning
+,CraftiM7sDR_Blunt_Gelato,Roll a Blunt,iM7s_SmallNug_Gelato,iM7s_Backwood,iM7s_Blunt_Gelato,iM7s_DrugRunning
+,CraftiM7sDR_Blunt_Paragon,Roll a Blunt,iM7s_SmallNug_Paragon,iM7s_Backwood,iM7s_Blunt_Paragon,iM7s_DrugRunning
+,CraftiM7sDR_SmallBud_BabyBatter,Break Down Bud,iM7s_Bud_BabyBatter,Sickle / Hacksaw / HandSaw +21 more,iM7s_SmallNug_BabyBatter,iM7s_DrugRunning
+,CraftiM7sDR_SmallBud_Barney,Break Down Bud,iM7s_Bud_BayAreaBarney,Sickle / Hacksaw / HandSaw +21 more,iM7s_SmallNug_Barney,iM7s_DrugRunning
+,CraftiM7sDR_SmallBud_BlueCookies,Break Down Bud,iM7s_Bud_BlueCookies,Sickle / Hacksaw / HandSaw +21 more,iM7s_SmallNug_BlueCookies,iM7s_DrugRunning
+,CraftiM7sDR_SmallBud_Champagne,Break Down Bud,iM7s_Bud_Champagne,Sickle / Hacksaw / HandSaw +21 more,iM7s_SmallNug_Champagne,iM7s_DrugRunning
+,CraftiM7sDR_SmallBud_CheetahPiss,Break Down Bud,iM7s_Bud_CheetahPiss,Sickle / Hacksaw / HandSaw +21 more,iM7s_SmallNug_CheetahPiss,iM7s_DrugRunning
+,CraftiM7sDR_SmallBud_Gelato,Break Down Bud,iM7s_Bud_Gelato,Sickle / Hacksaw / HandSaw +21 more,iM7s_SmallNug_Gelato,iM7s_DrugRunning
+,CraftiM7sDR_SmallBud_Paragon,Break Down Bud,iM7s_Bud_Paragon,Sickle / Hacksaw / HandSaw +21 more,iM7s_SmallNug_Paragon,iM7s_DrugRunning
+,CraftiM7sDR_SmallShard_Blue,Break Down Shards,iM7s_Shard_Blue,Sickle / KitchenKnife / SteakKnife +14 more,iM7s_SmallShard_Blue,iM7s_DrugRunning
+,CraftiM7sDR_SmallShard_PB,Break Down Shards,iM7s_Shard_PB,Sickle / KitchenKnife / SteakKnife +14 more,iM7s_SmallShard_PB,iM7s_DrugRunning
+,CraftiM7sDR_SmallShard_Pink,Break Down Shards,iM7s_Shard_Pink,Sickle / KitchenKnife / SteakKnife +14 more,iM7s_SmallShard_Pink,iM7s_DrugRunning
+,DeCraftiM7s_BudTrimmer,Dismantle Bud Trimmer,iM7s_BudTrimmer,Screwdriver,iM7s_BudTrimmer_Kit,iM7s_DrugRunning
+,DeCraftiM7s_DBS,Dismantle DBS Hydroponics,iM7s_Hydroponics_DBS,Screwdriver,iM7s_Hydroponics_DBS_Kit,iM7s_DrugRunning
+,DeCraftiM7s_DrugLab_Station,Dismantle Lab Station,iM7s_DrugLab_Station,Screwdriver,iM7s_LabStation_Kit,iM7s_DrugRunning
+,DeCraftiM7s_DryingRack,Dismantle Drying Rack,iM7s_DryingRack,Screwdriver,iM7s_DryingRack_Kit,iM7s_DrugRunning
+,DeCraftiM7s_DWC,Dismantle DWC Hydroponics,iM7s_Hydroponics_DWC,Screwdriver,iM7s_Hydroponics_DWC_Kit,iM7s_DrugRunning
+,DeCraftiM7s_GrowPot2,Dismantle Grow Pot,iM7s_GrowPot_2,Screwdriver,iM7s_GrowPot2_Kit,iM7s_DrugRunning
+,DeCraftiM7s_GrowTent,Dismantle Grow Tent,iM7s_GrowTent,Screwdriver,iM7s_GrowTent_Kit,iM7s_DrugRunning
+,DeCraftiM7s_Hydroplanter,Dismantle Hydroplanter,iM7s_Hydroplanter,Screwdriver,iM7s_HydroPlanter_Kit,iM7s_DrugRunning
+,DeCraftiM7s_IndustrialPress,Dismantle Industrial Pill Press,iM7s_Press_Industrial,Screwdriver,iM7s_PillPress_Industrial_Kit,iM7s_DrugRunning
+,DeCraftiM7s_LSDLab,Dismantle LSD Lab,iM7s_LSD_Lab,Screwdriver,iM7s_LSD_Lab_Kit,iM7s_DrugRunning
+,DeCraftiM7s_ProductionTable,Dismantle Production Table,iM7s_Production_Table,Screwdriver,iM7s_ProductionTable_Kit,iM7s_DrugRunning
+,DeCraftiM7s_StoragePallet_Scraps,Dismantle Storage Pallet,iM7s_StoragePallet_Bricks,Hammer / Wrench / Crowbar +7 more,WoodenPlank / Nail,iM7s_DrugRunning
+,DeCraftiM7s_StoragePallet_toKit,Dismantle Pallet to Kit,iM7s_StoragePallet_Bricks,Screwdriver,iM7s_StoragePallet_Kit,iM7s_DrugRunning
+,deCraftiM7sDR_BabyBatterZip,Empty Baby Batter Zip,iM7s_Zip_Bagged_BabyBatter,Sickle / Hacksaw / HandSaw +21 more,iM7s_Bud_BabyBatter,iM7s_DrugRunning
+,deCraftiM7sDR_BarneyZip,Empty Barney Zip,iM7s_Zip_Bagged_BayAreaBarney,Sickle / Hacksaw / HandSaw +21 more,iM7s_Bud_BayAreaBarney,iM7s_DrugRunning
+,deCraftiM7sDR_BlueBatch,Break into Shards,iM7s_Tray_Crystal_Blue,Hammer / Hacksaw / HandSaw +21 more,iM7s_Shard_Blue,iM7s_DrugRunning
+,deCraftiM7sDR_BlueBundle,Empty Bundle,iM7s_Bundle_Thizz_Blue,Sickle / Hacksaw / HandSaw +15 more,iM7s_Thizz_Mitsubishi / iM7s_Thizz_Lady / iM7s_Thizz_MacDre +1 more,iM7s_DrugRunning
+,deCraftiM7sDR_BlueCookiesZip,Empty Blue Cookies Zip,iM7s_Zip_Bagged_BlueCookies,Sickle / Hacksaw / HandSaw +21 more,iM7s_Bud_BlueCookies,iM7s_DrugRunning
+,deCraftiM7sDR_ChampagneZip,Empty Champagne Zip,iM7s_Zip_Bagged_Champagne,Sickle / Hacksaw / HandSaw +21 more,iM7s_Bud_Champagne,iM7s_DrugRunning
+,deCraftiM7sDR_CheetahPissZip,Empty Cheetah Piss Zip,iM7s_Zip_Bagged_CheetahPiss,Sickle / Hacksaw / HandSaw +21 more,iM7s_Bud_CheetahPiss,iM7s_DrugRunning
+,deCraftiM7sDR_GelatoZip,Empty Gelato Zip,iM7s_Zip_Bagged_Gelato,Sickle / Hacksaw / HandSaw +21 more,iM7s_Bud_Gelato,iM7s_DrugRunning
+,deCraftiM7sDR_GreenBundle,Empty Bundle,iM7s_Bundle_Thizz_Green,Sickle / Hacksaw / HandSaw +15 more,iM7s_Thizz_Butterfly / iM7s_Thizz_Rick / iM7s_Thizz_Playboy +1 more,iM7s_DrugRunning
+,deCraftiM7sDR_MethBundle_Blue,Empty Bundle,iM7s_Bundle_Crystal_Blue,Sickle / Hacksaw / HandSaw +15 more,iM7s_Shard_Blue,iM7s_DrugRunning
+,deCraftiM7sDR_MethBundle_PB,Empty Bundle,iM7s_Bundle_Crystal_PB,Sickle / Hacksaw / HandSaw +15 more,iM7s_Shard_PB,iM7s_DrugRunning
+,deCraftiM7sDR_MethBundle_Pink,Empty Bundle,iM7s_Bundle_Crystal_Pink,Sickle / Hacksaw / HandSaw +15 more,iM7s_Shard_Pink,iM7s_DrugRunning
+,deCraftiM7sDR_MethPoundBlue,Empty Meth Pound,iM7s_Meth_Bagged_Blue,Sickle / Hacksaw / HandSaw +21 more,iM7s_Shard_Blue,iM7s_DrugRunning
+,deCraftiM7sDR_MethPoundPB,Empty Meth Pound,iM7s_Meth_Bagged_PB,Sickle / Hacksaw / HandSaw +21 more,iM7s_Shard_PB,iM7s_DrugRunning
+,deCraftiM7sDR_MethPoundPink,Empty Meth Pound,iM7s_Meth_Bagged_Pink,Sickle / Hacksaw / HandSaw +21 more,iM7s_Shard_Pink,iM7s_DrugRunning
+,deCraftiM7sDR_ParagonZip,Empty Paragon Zip,iM7s_Zip_Bagged_Paragon,Sickle / Hacksaw / HandSaw +21 more,iM7s_Bud_Paragon,iM7s_DrugRunning
+,deCraftiM7sDR_PBBatch,Break into Shards,iM7s_Tray_Crystal_PB,Hammer / Hacksaw / HandSaw +21 more,iM7s_Shard_PB,iM7s_DrugRunning
+,deCraftiM7sDR_PinkBatch,Break into Shards,iM7s_Tray_Crystal_Pink,Hammer / Hacksaw / HandSaw +21 more,iM7s_Shard_Pink,iM7s_DrugRunning
+,deCraftiM7sDR_PurpleBundle,Empty Bundle,iM7s_Bundle_Thizz_Purple,Sickle / Hacksaw / HandSaw +15 more,iM7s_Thizz_Bitcoin / iM7s_Thizz_Morty / iM7s_Thizz_Rolex +1 more,iM7s_DrugRunning
+,deCraftiM7sDR_YellowBundle,Empty Bundle,iM7s_Bundle_Thizz_Yellow,Sickle / Hacksaw / HandSaw +15 more,iM7s_Thizz_Star / iM7s_Thizz_Jake / iM7s_Thizz_Bird +1 more,iM7s_DrugRunning
+,iM7s_deBud_BabyBatter_Dried,Trim Baby Batter Buds,iM7s_DriedBud_BabyBatter,Sickle / Hacksaw / HandSaw +13 more,iM7s_Bud_BabyBatter,iM7s_DrugRunning
+,iM7s_deBud_BabyBatter_Fresh,Trim Baby Batter Buds,iM7s_DryingBud_BabyBatter,Sickle / Hacksaw / HandSaw +13 more,iM7s_Bud_BabyBatter,iM7s_DrugRunning
+,iM7s_deBud_Barney_Dried,Trim Barney Buds,iM7s_DriedBud_BayAreaBarney,Sickle / Hacksaw / HandSaw +13 more,iM7s_Bud_BayAreaBarney,iM7s_DrugRunning
+,iM7s_deBud_Barney_Fresh,Trim Barney Buds,iM7s_DryingBud_BayAreaBarney,Sickle / Hacksaw / HandSaw +13 more,iM7s_Bud_BayAreaBarney,iM7s_DrugRunning
+,iM7s_deBud_BlueCookies_Dried,Trim Blue Cookies Buds,iM7s_DriedBud_BlueCookies,Sickle / Hacksaw / HandSaw +13 more,iM7s_Bud_BlueCookies,iM7s_DrugRunning
+,iM7s_deBud_BlueCookies_Fresh,Trim Blue Cookies Buds,iM7s_DryingBud_BlueCookies,Sickle / Hacksaw / HandSaw +13 more,iM7s_Bud_BlueCookies,iM7s_DrugRunning
+,iM7s_deBud_Champagne_Dried,Trim Champagne Buds,iM7s_DriedBud_Champagne,Sickle / Hacksaw / HandSaw +13 more,iM7s_Bud_Champagne,iM7s_DrugRunning
+,iM7s_deBud_Champagne_Fresh,Trim Champagne Buds,iM7s_DryingBud_Champagne,Sickle / Hacksaw / HandSaw +13 more,iM7s_Bud_Champagne,iM7s_DrugRunning
+,iM7s_deBud_CheetahPiss_Dried,Trim Cheetah Piss Buds,iM7s_DriedBud_CheetahPiss,Sickle / Hacksaw / HandSaw +13 more,iM7s_Bud_CheetahPiss,iM7s_DrugRunning
+,iM7s_deBud_CheetahPiss_Fresh,Trim Cheetah Piss Buds,iM7s_DryingBud_CheetahPiss,Sickle / Hacksaw / HandSaw +13 more,iM7s_Bud_CheetahPiss,iM7s_DrugRunning
+,iM7s_deBud_Gelato_Dried,Trim Gelato Buds,iM7s_DriedBud_Gelato,Sickle / Hacksaw / HandSaw +13 more,iM7s_Bud_Gelato,iM7s_DrugRunning
+,iM7s_deBud_Gelato_Fresh,Trim Gelato Buds,iM7s_DryingBud_Gelato,Sickle / Hacksaw / HandSaw +13 more,iM7s_Bud_Gelato,iM7s_DrugRunning
+,iM7s_deBud_Paragon_Dried,Trim Paragon Buds,iM7s_DriedBud_Paragon,Sickle / Hacksaw / HandSaw +13 more,iM7s_Bud_Paragon,iM7s_DrugRunning
+,iM7s_deBud_Paragon_Fresh,Trim Paragon Buds,iM7s_DryingBud_Paragon,Sickle / Hacksaw / HandSaw +13 more,iM7s_Bud_Paragon,iM7s_DrugRunning
+,iM7sDR_CraftBabyBatterZip,Bag Up Baby Batter Zip,iM7s_Bud_BabyBatter,iM7s_Bud_BabyBatter,iM7s_Zip_Bagged_BabyBatter,iM7s_DrugRunning
+,iM7sDR_CraftBarneyZip,Bag Up Barney Zip,iM7s_Bud_BayAreaBarney,iM7s_Bud_BayAreaBarney,iM7s_Zip_Bagged_BayAreaBarney,iM7s_DrugRunning
+,iM7sDR_CraftBlueAgent,Mix Color into Agent,iM7s_BindingAgent_Plain,iM7s_ColorPouch_Blue,iM7s_BindingAgent_Blue,iM7s_DrugRunning
+,iM7sDR_CraftBlueCookiesZip,Bag Up Blue Cookies Zip,iM7s_Bud_BlueCookies,iM7s_Bud_BlueCookies,iM7s_Zip_Bagged_BlueCookies,iM7s_DrugRunning
+,iM7sDR_CraftBluePills,Produce Ecstasy Pills,iM7s_MDMA_Pack,iM7s_BindingAgent_Blue,iM7s_Thizz_Mitsubishi / iM7s_Thizz_Lady / iM7s_Thizz_MacDre +1 more,iM7s_DrugRunning
+,iM7sDR_CraftChampagneZip,Bag Up Champagne Zip,iM7s_Bud_Champagne,iM7s_Bud_Champagne,iM7s_Zip_Bagged_Champagne,iM7s_DrugRunning
+,iM7sDR_CraftCheetahPissZip,Bag Up Cheetah Piss Zip,iM7s_Bud_CheetahPiss,iM7s_Bud_CheetahPiss,iM7s_Zip_Bagged_CheetahPiss,iM7s_DrugRunning
+,iM7sDR_CraftCokeBundle,Bag Up Bundle of Coke,iM7s_Fishscale,iM7s_Fishscale,iM7s_Bundle_Coke,iM7s_DrugRunning
+,iM7sDR_CraftGelatoZip,Bag Up Gelato Zip,iM7s_Bud_Gelato,iM7s_Bud_Gelato,iM7s_Zip_Bagged_Gelato,iM7s_DrugRunning
+,iM7sDR_CraftGreenAgent,Mix Color into Agent,iM7s_BindingAgent_Plain,iM7s_ColorPouch_Green,iM7s_BindingAgent_Green,iM7s_DrugRunning
+,iM7sDR_CraftGreenPills,Produce Ecstasy Pills,iM7s_MDMA_Pack,iM7s_BindingAgent_Green,iM7s_Thizz_Butterfly / iM7s_Thizz_Rick / iM7s_Thizz_Playboy +1 more,iM7s_DrugRunning
+,iM7sDR_CraftMethBundleBlue,Bag Up Meth Bundle,iM7s_Shard_Blue,iM7s_Shard_Blue,iM7s_Bundle_Crystal_Blue,iM7s_DrugRunning
+,iM7sDR_CraftMethBundlePB,Bag Up Meth Bundle,iM7s_Shard_PB,iM7s_Shard_PB,iM7s_Bundle_Crystal_PB,iM7s_DrugRunning
+,iM7sDR_CraftMethBundlePink,Bag Up Meth Bundle,iM7s_Shard_Pink,iM7s_Shard_Pink,iM7s_Bundle_Crystal_Pink,iM7s_DrugRunning
+,iM7sDR_CraftMethPoundBlue,Bag Up Meth Pound,iM7s_Shard_Blue,iM7s_Shard_Blue,iM7s_Meth_Bagged_Blue,iM7s_DrugRunning
+,iM7sDR_CraftMethPoundPB,Bag Up Meth Pound,iM7s_Shard_PB,iM7s_Shard_PB,iM7s_Meth_Bagged_PB,iM7s_DrugRunning
+,iM7sDR_CraftMethPoundPink,Bag Up Meth Pound,iM7s_Shard_Pink,iM7s_Shard_Pink,iM7s_Meth_Bagged_Pink,iM7s_DrugRunning
+,iM7sDR_CraftParagonZip,Bag Up Paragon Zip,iM7s_Bud_Paragon,iM7s_Bud_Paragon,iM7s_Zip_Bagged_Paragon,iM7s_DrugRunning
+,iM7sDR_CraftPurpleAgent,Mix Color into Agent,iM7s_BindingAgent_Plain,iM7s_ColorPouch_Purple,iM7s_BindingAgent_Purple,iM7s_DrugRunning
+,iM7sDR_CraftPurplePills,Produce Ecstasy Pills,iM7s_MDMA_Pack,iM7s_BindingAgent_Purple,iM7s_Thizz_Bitcoin / iM7s_Thizz_Morty / iM7s_Thizz_Rolex +1 more,iM7s_DrugRunning
+,iM7sDR_CraftYellowAgent,Mix Color into Agent,iM7s_BindingAgent_Plain,iM7s_ColorPouch_Yellow,iM7s_BindingAgent_Yellow,iM7s_DrugRunning
+,iM7sDR_CraftYellowPills,Produce Ecstasy Pills,iM7s_MDMA_Pack,iM7s_BindingAgent_Yellow,iM7s_Thizz_Star / iM7s_Thizz_Jake / iM7s_Thizz_Bird +1 more,iM7s_DrugRunning
