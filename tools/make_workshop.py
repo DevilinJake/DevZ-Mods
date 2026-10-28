@@ -142,8 +142,9 @@ PICTOGRAMS = {
     "RepairToPristine": "repair",       # condition dots red -> green, wrench, sewing kit
     "AutoStack": "autostack",           # two loose groups -> one stack
     "InfectedDamage": "infected",       # claw slashes over a health bar
-    "Essentials": "essentials",         # the bundle's five pictograms together
 }
+# A bundle's picture is one small tile per mod in it, each with that mod's pictogram and colour
+# (filled in from PACKS below).
 
 
 # Bundles: one Workshop item holding several client mods (built by build_pack.ps1)
@@ -163,8 +164,17 @@ PACKS = {
 }
 
 
+for folder, (_, _, _, mods) in PACKS.items():
+    PICTOGRAMS[folder] = [(PICTOGRAMS[m], MODS[m][1]) for m in mods]
+
+
 def preview(folder, title, accent, path):
-    footer = "server mod  ·  by DevilinJake" if folder in SERVER_ONLY else "by DevilinJake"
+    if folder in SERVER_ONLY:
+        footer = "server mod  ·  by DevilinJake"
+    elif folder in PACKS:
+        footer = f"{len(PACKS[folder][3])} mods in one  ·  by DevilinJake"
+    else:
+        footer = "by DevilinJake"
     order = list(MODS) + list(PACKS)
     seed = order.index(folder) * 10        # fixes the background texture per mod
     card(title.split("\n"), accent, PICTOGRAMS[folder], seed, path, footer=footer)

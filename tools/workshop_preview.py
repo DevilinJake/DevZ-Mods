@@ -8,6 +8,8 @@ ak_silhouette.png, an outline traced from a photo of a suppressed AKM.
     card(["Ammo", "Stacks"], (214, 157, 70), "ammo", seed=10, path="preview.png")
 
 Pictograms: inventory, ammo, weapon, combine, recipes, repair, autostack, infected.
+A bundle card takes a list of (pictogram, accent) pairs instead of a name and draws one small
+tile per mod, each in that mod's colour.
 """
 import math
 import random
@@ -322,19 +324,38 @@ class Pict:
         self.d.ellipse(self.p(cx - r, cy - r, cx + r, cy + r), fill=self.fg)
         self.d.text(self.p(cx, cy + 0.5), "1.5×", font=bahn(int(10 * self.k), "Bold"), fill=DARK, anchor="mm")
 
-    def essentials(self):
-        # the bundle: its five mods' pictograms, three on top and two below
-        rows = [(["inventory", "ammo", "weapon"], 26), (["combine", "repair"], 72)]
-        small = int(self.size * 0.31)
-        for names, cy in rows:
-            step = 100 / len(names)
-            for i, name in enumerate(names):
-                layer = Pict(small, self.fg, self.accent).draw(name)
-                cx = step * (i + 0.5)
-                self.img.alpha_composite(layer, (int(cx * self.k - small / 2), int(cy * self.k - small / 2)))
+    def tiles(self, items):
+        """A bundle: one small card-like tile per mod, each with that mod's own pictogram and
+        accent colour. items: list of (pictogram name, accent). Laid out 3 across, then the rest
+        on a second row, centred."""
+        per_row, gap = 3, 4.5
+        rows = [items[i:i + per_row] for i in range(0, len(items), per_row)]
+        tile = (100 - gap * (per_row - 1)) / per_row
+        pad = tile * 0.10
+        total_h = tile * len(rows) + gap * (len(rows) - 1)
+        top = (100 - total_h) / 2
+        for r, row in enumerate(rows):
+            left = (100 - (tile * len(row) + gap * (len(row) - 1))) / 2
+            for c, (name, accent) in enumerate(row):
+                x, y = left + c * (tile + gap), top + r * (tile + gap)
+                # tile: dark glass tinted with the mod's colour, a thin light edge
+                tint = tuple(int(v * 0.22) for v in accent) + (200,)
+                self.d.rounded_rectangle(self.p(x, y, x + tile, y + tile), radius=tile * 0.1 * self.k,
+                                         fill=tint, outline=self.fg + (95,), width=self.lw(0.7))
+                # the little accent rule at the bottom, like the big card's footer rule
+                self.d.rectangle(self.p(x + pad, y + tile - pad * 0.9, x + tile * 0.38, y + tile - pad * 0.9 + 1.4),
+                                 fill=accent)
+                inner = int((tile - 2 * pad) * self.k)
+                layer = Pict(inner, self.fg, accent).draw(name)
+                ox = int((x + pad) * self.k)
+                oy = int((y + pad * 0.55) * self.k)
+                self.img.alpha_composite(layer, (ox, oy))
 
     def draw(self, name):
-        getattr(self, name)()
+        if isinstance(name, (list, tuple)):
+            self.tiles(name)
+        else:
+            getattr(self, name)()
         return self.img
 
 
@@ -372,7 +393,10 @@ def card(title, accent, pict, seed, path, footer="by DevilinJake"):
     img = scratches(img, seed, n=30, alpha=16)
 
     three = len(title) > 2
+    bundle = isinstance(pict, (list, tuple))
     psize = 600 if pict == "weapon" else (470 if three else 520)   # the rifle is wide and short
+    if bundle:
+        psize = 720                                                 # a grid of tiles, wider than one pictogram
     p = pictogram(pict, psize, WHITE, accent)
     paste_with_shadow(img, p, centered(p, int(h * (0.29 if three else 0.31))), blur=18, offset=(0, 14), alpha=170)
 
