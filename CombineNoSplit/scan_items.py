@@ -29,7 +29,7 @@ DEFAULTS = {'bandagedressing', 'ducttape', 'electronicrepairkit', 'epoxyputty', 
 SKIP_BASES = {'magazine_base', 'ammunition_base', 'edible_base', 'bottle_base', 'clothing_base',
               'transport', 'carscript', 'fireplacebase', 'pot'}
 
-# Vanilla already lets these combine (in script), so they don't need the mod
+# Vanilla already lets these (and items built on them) combine in script, so they don't need the mod
 ALREADY_COMBINE = {'matchbox', 'plantmaterial', 'disinfectantalcohol', 'iodinetincture'}
 
 
@@ -59,7 +59,7 @@ def main():
 
     rows = []
     for cls in classes:
-        if prop(cls, 'scope', 0) != 2 or cls in ALREADY_COMBINE:
+        if prop(cls, 'scope', 0) != 2 or ALREADY_COMBINE & set(ancestors(classes, cls)):
             continue
         try:
             qmax = float(prop(cls, 'varQuantityMax', 0) or 0)
