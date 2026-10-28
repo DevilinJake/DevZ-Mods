@@ -11,7 +11,7 @@ builds on its own and is set up so server admins can change the numbers without 
 | [AutoStack](AutoStack) | Loose ammo merges into your existing stacks automatically (server-side only) | Ready |
 | [WeaponDurability](WeaponDurability) | How fast weapons and suppressors wear: one multiplier each (default 10x), per-weapon overrides | Ready |
 | [InfectedDamage](InfectedDamage) | How hard zombies hit: Health, Blood, Shock, bleed chance and clothing wear multipliers (default 1.5x damage), per-attack overrides (server-side only) | Ready |
-| CombineNoSplit | Combine 4-use items like bandages and repair kits, but don't split them | Planned |
+| [CombineNoSplit](CombineNoSplit) | Combine part-used bandages, repair kits and gas mask filters, but never split them; a scanner lists items from any mod to pick from | Ready |
 | RepairToPristine | Repair kits can repair to Pristine | Planned |
 
 ## Using a mod

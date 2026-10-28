@@ -1,0 +1,72 @@
+﻿Combine,Class,Example,MaxQuantity,ShownAs,SplitsNow,Source
+Yes,BandageDressing,Bandage,4,bar,,Vanilla
+Yes,DuctTape,Duct Tape,100,bar,,Vanilla
+Yes,ElectronicRepairKit,Electrical Repair Kit,100,bar,,Vanilla
+Yes,EpoxyPutty,Epoxy Putty,100,bar,,Vanilla
+Yes,GasMask_Filter,Gas Mask Filter,150,bar,,Vanilla
+Yes,GasMask_Filter_Improvised,Improvised Gas Mask Filter,100,bar,,Vanilla
+Yes,LeatherSewingKit,Leather Sewing Kit,100,bar,,Vanilla
+Yes,SewingKit,Sewing Kit,100,bar,,Vanilla
+Yes,TireRepairKit,Tire Repair Kit,100,bar,,Vanilla
+Yes,WeaponCleaningKit,Gun Cleaning Kit,100,bar,,Vanilla
+Yes,Whetstone,Sharpening Stone,100,bar,,Vanilla
+,AntiPestsSpray,Insecticide Spray,120,bar,,Vanilla
+,Bark_Birch,Light Bark,8,count,Yes,Vanilla
+,Bark_Oak,Dark Bark,8,count,Yes,Vanilla
+,Battery9V,9V Battery,50,bar,,Vanilla
+,Bone,Bones,10,count,Yes,Vanilla
+,BrakeFluid,Brake Fluid,1000,bar,,Vanilla
+,Broom,Broom,100,count,,Vanilla
+,Broom_Birch,Birch Broom,100,count,,Vanilla
+,BurlapStrip,Burlap Strips,10,count,Yes,Vanilla
+,CannabisSeeds,$UNT$Cannabis Seeds,20,count,Yes,Vanilla
+,CarBattery,Car Battery,50,bar,,Vanilla
+,Chemlight_Blue,Glow Stick,100,bar,,Vanilla
+,Chemlight_FarBubble,Glow Stick,100,bar,,Vanilla
+,Chemlight_Green,Glow Stick,100,bar,,Vanilla
+,Chemlight_NearBubble,Glow Stick,100,bar,,Vanilla
+,Chemlight_Red,Glow Stick,100,bar,,Vanilla
+,Chemlight_White,Glow Stick,100,bar,,Vanilla
+,Chemlight_Yellow,Glow Stick,100,bar,,Vanilla
+,ChickenFeather,Chicken Feathers,20,count,Yes,Vanilla
+,CigarettePack_Chernamorka,$UNT$Pack of Chernamorka Cigarettes,20,count,,Vanilla
+,CigarettePack_Merkur,$UNT$Pack of Merkur Cigarettes,20,count,,Vanilla
+,CigarettePack_Partyzanka,$UNT$Pack of Partyzanka Cigarettes,20,count,,Vanilla
+,EasterEgg,Eggsperimental Capsule,1,bar,,Vanilla
+,EngineOil,Motor Oil,1000,bar,,Vanilla
+,Fabric,Tarp,4,count,Yes,Vanilla
+,FireExtinguisher,$UNT$Fire Extinguisher,6000,bar,,Vanilla
+,Firewood,Firewood,6,count,Yes,Vanilla
+,GardenLime,Garden Lime,5000,bar,,Vanilla
+,LargeGasCanister,Large Gas Canister,20,bar,,Vanilla
+,LongTorch,Long Torch,100,bar,,Vanilla
+,LongWoodenStick,Long Stick,10,count,Yes,Vanilla
+,MediumGasCanister,Medium Gas Canister,20,bar,,Vanilla
+,MetalPlate,Sheet Metal,40,count,Yes,Vanilla
+,MetalWire,Metal Wire,50,count,Yes,Vanilla
+,Nail,Nails,999,count,Yes,Vanilla
+,Netting,Netting,4,count,Yes,Vanilla
+,PepperSeeds,Pepper Seeds,20,count,Yes,Vanilla
+,PetrolLighter,Lighter,20,bar,,Vanilla
+,PileOfWoodenPlanks,Lumber Pile,252,count,,Vanilla
+,PotatoSeed,Potato,1,count,,Vanilla
+,PumpkinSeeds,Pumpkin Seeds,20,count,Yes,Vanilla
+,Rag,Rag,6,count,Yes,Vanilla
+,Roadflare,Road Flare,20,bar,,Vanilla
+,Rope,Rope,50,count,Yes,Vanilla
+,SharpWoodenStick,Sharpened Stick,1,count,Yes,Vanilla
+,SmallGasCanister,Small Gas Canister,20,bar,,Vanilla
+,Spraycan_Black,$UNT$Spraypaint,100,bar,,Vanilla
+,Spraycan_Green,$UNT$Spraypaint,100,bar,,Vanilla
+,Stone,Large Stone,32,count,Yes,Vanilla
+,TannedLeather,Tanned Leather,8,count,Yes,Vanilla
+,TomatoSeeds,Tomato Seeds,20,count,Yes,Vanilla
+,Torch,Torch,100,bar,,Vanilla
+,Torch_Video,Long Torch,100,bar,,Vanilla
+,TruckBattery,Truck Battery,50,bar,,Vanilla
+,UndergroundBreadcrumbHandle,Underground Breadcrumb Handle,1,count,,Vanilla
+,UndergroundTriggerHandle,Underground Trigger Handle,1,count,,Vanilla
+,WoodenLog,Wooden Log,50,count,Yes,Vanilla
+,WoodenPlank,Plank,100,count,Yes,Vanilla
+,WoodenStick,Short Stick,50,count,Yes,Vanilla
+,ZucchiniSeeds,Zucchini Seeds,20,count,Yes,Vanilla

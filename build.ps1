@@ -45,6 +45,8 @@ if ($LASTEXITCODE -ne 0) { throw 'Packing failed' }
 Copy-Item (Join-Path $modSrc 'mod.cpp') $outDir
 
 if ($Key) {
+    # DSSignFile needs a full path
+    $Key = (Resolve-Path $Key).Path
     $signer = Join-Path $DayZTools 'Bin\DsUtils\DSSignFile.exe'
     & $signer $Key $pbo
     if ($LASTEXITCODE -ne 0) { throw 'Signing failed' }
