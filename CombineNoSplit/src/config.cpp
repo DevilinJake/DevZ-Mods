@@ -48,6 +48,7 @@ class CfgDevZ_CombineNoSplit
 		"SewingKit",  // Sewing Kit (Vanilla)
 		"TireRepairKit",  // Tire Repair Kit (Vanilla)
 		"WeaponCleaningKit",  // Gun Cleaning Kit (Vanilla)
-		"Whetstone"  // Sharpening Stone (Vanilla)
+		"Whetstone",  // Sharpening Stone (Vanilla)
+		"iM7s_Wockhardt"  // Promethazine w/ Codeine (iM7s_DrugRunning)
 	};
 };

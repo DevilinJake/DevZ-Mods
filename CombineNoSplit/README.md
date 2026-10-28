@@ -34,6 +34,9 @@ them. This mod sets the two switches separately: combine on, split off.
 | Tire Repair Kit | `TireRepairKit` | % |
 | Gun Cleaning Kit | `WeaponCleaningKit` | % |
 | Sharpening Stone | `Whetstone` | % |
+| Promethazine w/ Codeine ([iM7s_DrugRunning](https://steamcommunity.com/sharedfiles/filedetails/?id=3465841846)) | `iM7s_Wockhardt` | 200, shown as a bar |
+
+Listing an item from a mod you don't run is harmless: the mod just never finds it.
 
 When two items combine, the full one gets the average condition of the two, weighted by how much
 each had (the game's normal rule). Ruined items can't be combined.
