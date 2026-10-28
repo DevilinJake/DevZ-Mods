@@ -3,15 +3,15 @@
   python tools\\make_workshop.py
 
 preview.png goes in Publisher's preview image box, description.txt (Steam BBCode) in its
-description box. Edit the MODS table below, then re-run.
+description box. Edit the MODS table below, then re-run. The card itself is drawn by
+workshop_preview.py (needs Pillow and numpy).
 """
 from pathlib import Path
 
-from PIL import Image, ImageDraw, ImageFont
+from workshop_preview import card
 
 REPO = Path(__file__).resolve().parent.parent
 GITHUB = "https://github.com/DevilinJake/DevZ-Mods"
-FONTS = Path("C:/Windows/Fonts")
 
 # folder: (title on the image, accent colour, one-line summary, what it does, defaults)
 MODS = {
@@ -132,22 +132,23 @@ SCANS = {
 }
 
 
-def font(name, size):
-    return ImageFont.truetype(str(FONTS / name), size)
+# The picture on each preview card (drawn in workshop_preview.py)
+PICTOGRAMS = {
+    "InventorySizes": "inventory",      # small pack -> big pack
+    "AmmoStacks": "ammo",               # rows of cartridges, x2 badge
+    "WeaponDurability": "weapon",       # suppressed AK, shield with a tick
+    "CombineNoSplit": "combine",        # half + half -> full, splitting crossed out
+    "RemoveRecipes": "recipes",         # a right-click recipe row, crossed out
+    "RepairToPristine": "repair",       # condition dots red -> green, wrench, sewing kit
+    "AutoStack": "autostack",           # two loose groups -> one stack
+    "InfectedDamage": "infected",       # claw slashes over a health bar
+}
 
 
-def preview(title, accent, path):
-    size = 512
-    img = Image.new("RGB", (size, size), (24, 26, 30))
-    d = ImageDraw.Draw(img)
-    d.rectangle([0, 0, size, 14], fill=accent)
-    d.rectangle([0, size - 14, size, size], fill=accent)
-    d.text((40, 52), "DevZ", font=font("bahnschrift.ttf", 64), fill=accent)
-    big = 76 if title.count("\n") < 2 else 62  # three lines need a smaller size to clear the footer
-    d.multiline_text((40, 170 if big == 76 else 150), title, font=font("segoeuib.ttf", big), fill=(236, 236, 236), spacing=6)
-    kind = "DayZ server mod" if path.parent.parent.name in SERVER_ONLY else "DayZ mod"
-    d.text((40, 440), f"{kind}  ·  MIT  ·  by DevilinJake", font=font("segoeui.ttf", 24), fill=(150, 150, 150))
-    img.save(path, optimize=True)
+def preview(folder, title, accent, path):
+    footer = "server mod  ·  by DevilinJake" if folder in SERVER_ONLY else "by DevilinJake"
+    seed = list(MODS).index(folder) * 10   # fixes the background texture per mod
+    card(title.split("\n"), accent, PICTOGRAMS[folder], seed, path, footer=footer)
 
 
 def description(folder, summary, what, defaults):
@@ -207,6 +208,6 @@ def description(folder, summary, what, defaults):
 for folder, (title, accent, summary, what, defaults) in MODS.items():
     out = REPO / folder / "workshop"
     out.mkdir(exist_ok=True)
-    preview(title, accent, out / "preview.png")
+    preview(folder, title, accent, out / "preview.png")
     (out / "description.txt").write_text(description(folder, summary, what, defaults), encoding="utf-8")
     print(f"{folder}: {out}")
