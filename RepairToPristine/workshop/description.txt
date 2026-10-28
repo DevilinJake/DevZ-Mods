@@ -9,7 +9,7 @@ Repair kits repair items all the way to Pristine instead of stopping at Worn.
 [list]
 [*] Every vanilla kit: Gun Cleaning Kit, Sewing Kit, Leather Sewing Kit, Duct Tape, Sharpening Stone, Epoxy Putty, Electrical Repair Kit, Tire Repair Kit, Blowtorch. Kits built on these count too.
 [/list]
-This build changes [b]vanilla items only[/b], so it works on any server and needs no other mod.
+This Workshop build covers [b]vanilla items[/b], so it works on any server and needs no other mod. Running modded items? See below.
 
 [h2]Server setup[/h2]
 [list]
@@ -17,8 +17,13 @@ This build changes [b]vanilla items only[/b], so it works on any server and need
 [*] Copy [b]keys\DevZ.bikey[/b] from the mod folder into your server's [b]keys[/b] folder.
 [/list]
 
-[h2]Want different settings?[/h2]
-The settings are built into the mod, so changing them means building your own copy: download the repo, run the scanner on your server (it picks up items from your other mods too), change a table and build it. Step-by-step guide, no programming needed: [url=https://github.com/DevilinJake/DevZ-Mods/blob/main/CUSTOMISING.md]CUSTOMISING.md[/url]. Then upload your copy (Unlisted is fine) or put it in your server pack.
+[h2]Works with your other mods[/h2]
+The mod comes with a [b]scanner[/b] that reads your server and every mod you run, and lists the repair kits from any mod (for example a multitool that works as a sewing kit) in a simple table, next to the vanilla ones. Pick your own values for any of them (or keep the defaults), build it, and you have a copy made for your exact mod list.
+[list]
+[*] No programming: download the repo, run one command to scan, edit the table in Excel or Google Sheets, run one command to build.
+[*] Step-by-step guide: [url=https://github.com/DevilinJake/DevZ-Mods/blob/main/CUSTOMISING.md]CUSTOMISING.md[/url]
+[*] Then upload your copy to the Workshop (Unlisted is fine) or put it in your server pack, and use it instead of this one.
+[/list]
 
 [h2]Links[/h2]
 [list]

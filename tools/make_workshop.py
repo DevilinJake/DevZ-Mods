@@ -89,6 +89,17 @@ MODS = {
 }
 
 
+# What each mod's scanner finds in other mods, for the "Works with your other mods" section
+SCANS = {
+    "InventorySizes": "the backpacks, clothing, vests and pouches from any clothing or gear mod",
+    "AmmoStacks": "the ammo from any weapon mod",
+    "WeaponDurability": "the guns, suppressors and muzzle attachments from any weapon mod",
+    "CombineNoSplit": "every item with uses or a percentage from any mod (medical, repair kits, filters, bottles)",
+    "RemoveRecipes": "every right-click recipe from every mod you run",
+    "RepairToPristine": "the repair kits from any mod (for example a multitool that works as a sewing kit)",
+}
+
+
 def font(name, size):
     return ImageFont.truetype(str(FONTS / name), size)
 
@@ -115,7 +126,7 @@ def description(folder, summary, what, defaults):
 
 [h2]Default settings[/h2]
 {bullets(defaults)}
-This build changes [b]vanilla items only[/b], so it works on any server and needs no other mod.
+This Workshop build covers [b]vanilla items[/b], so it works on any server and needs no other mod. Running modded items? See below.
 
 [h2]Server setup[/h2]
 [list]
@@ -123,8 +134,13 @@ This build changes [b]vanilla items only[/b], so it works on any server and need
 [*] Copy [b]keys\\DevZ.bikey[/b] from the mod folder into your server's [b]keys[/b] folder.
 [/list]
 
-[h2]Want different settings?[/h2]
-The settings are built into the mod, so changing them means building your own copy: download the repo, run the scanner on your server (it picks up items from your other mods too), change a table and build it. Step-by-step guide, no programming needed: [url={GITHUB}/blob/main/CUSTOMISING.md]CUSTOMISING.md[/url]. Then upload your copy (Unlisted is fine) or put it in your server pack.
+[h2]Works with your other mods[/h2]
+The mod comes with a [b]scanner[/b] that reads your server and every mod you run, and lists {SCANS[folder]} in a simple table, next to the vanilla ones. Pick your own values for any of them (or keep the defaults), build it, and you have a copy made for your exact mod list.
+[list]
+[*] No programming: download the repo, run one command to scan, edit the table in Excel or Google Sheets, run one command to build.
+[*] Step-by-step guide: [url={GITHUB}/blob/main/CUSTOMISING.md]CUSTOMISING.md[/url]
+[*] Then upload your copy to the Workshop (Unlisted is fine) or put it in your server pack, and use it instead of this one.
+[/list]
 
 [h2]Links[/h2]
 [list]
