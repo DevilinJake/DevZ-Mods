@@ -39,9 +39,9 @@ Kits built on a listed kit count too. Listing a kit from a mod you don't run is 
 **Ruined items stay the game's way.** The mod only changes the Worn → Pristine step; it doesn't
 make Ruined items repairable.
 
-**ZenSkills:** its Crafting perk "chance of repairing damaged gear back to Pristine" does
-nothing for kits on this list, since they always reach Pristine. Take those kits off the list if
-you want Pristine to stay a perk reward.
+**ZenSkills:** its Crafting perk "chance of repairing damaged gear back to Pristine" still
+works: when a repair brings an item up to Worn, it can jump straight to Pristine, saving the last
+repair. Take kits off the list if you want Pristine to be only a perk reward.
 
 ## Changing the list
 
