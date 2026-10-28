@@ -142,12 +142,31 @@ PICTOGRAMS = {
     "RepairToPristine": "repair",       # condition dots red -> green, wrench, sewing kit
     "AutoStack": "autostack",           # two loose groups -> one stack
     "InfectedDamage": "infected",       # claw slashes over a health bar
+    "Essentials": "essentials",         # the bundle's five pictograms together
+}
+
+
+# Bundles: one Workshop item holding several client mods (built by build_pack.ps1)
+# folder: (title on the image, accent colour, one-line summary, {mod in it: one line on what it does})
+PACKS = {
+    "Essentials": (
+        "DevZ\nEssentials", (120, 200, 140),
+        "Five DevZ mods in one download: bigger inventories, bigger ammo stacks, longer-lasting guns, kits that combine, and repairs back to Pristine.",
+        {
+            "InventorySizes": "more room in clothing, backpacks, vests and pouches",
+            "AmmoStacks": "loose ammo stacks twice as big",
+            "WeaponDurability": "weapons and suppressors last 10x as long",
+            "CombineNoSplit": "combine part-used bandages, repair kits and filters, but never split them",
+            "RepairToPristine": "repair kits repair items all the way to Pristine instead of stopping at Worn",
+        },
+    ),
 }
 
 
 def preview(folder, title, accent, path):
     footer = "server mod  ·  by DevilinJake" if folder in SERVER_ONLY else "by DevilinJake"
-    seed = list(MODS).index(folder) * 10   # fixes the background texture per mod
+    order = list(MODS) + list(PACKS)
+    seed = order.index(folder) * 10        # fixes the background texture per mod
     card(title.split("\n"), accent, PICTOGRAMS[folder], seed, path, footer=footer)
 
 
@@ -206,9 +225,57 @@ def description(folder, summary, what, defaults):
 """
 
 
+def pack_description(folder, summary, mods):
+    bullets = lambda items: "[list]\n" + "".join(f"[*] {i}\n" for i in items) + "[/list]"
+    name = lambda m: MODS[m][0].replace("\n", " ")
+    included = [f"[b]{name(m)}[/b]: {line}." for m, line in mods.items()]
+    defaults = [f"[b]{name(m)}:[/b] {' '.join(MODS[m][4])}" for m in mods]
+    pages = [f"[url={GITHUB}/tree/main/{m}]{name(m)}[/url]" for m in mods]
+    return f"""{summary}
+
+[h2]What's inside[/h2]
+{bullets(included)}
+Each one is also on the Workshop on its own. [b]Use either this bundle or the single mods, never both[/b]: they're the same files, so loading both loads every change twice.
+
+[h2]Default settings[/h2]
+{bullets(defaults)}
+This Workshop build covers [b]vanilla items[/b], so it works on any server and needs no other mod.
+
+[h2]Server setup[/h2]
+[list]
+[*] Add it to [b]-mod=[/b] (players need it too; they download it automatically when they join).
+[*] Copy [b]keys\\DevZ.bikey[/b] from the mod folder into your server's [b]keys[/b] folder.
+[*] Ammo Stacks: run [b]fix_loot.py[/b] from the GitHub repo once on your types.xml so the ammo found in the world stays the same size.
+[/list]
+
+[h2]Your own settings and modded items[/h2]
+Every mod in the bundle comes with a [b]scanner[/b] that reads your server and every mod you run (clothing, weapons, kits...) and lists their items in a simple table, next to the vanilla ones. Change any values, build, and you have copies made for your exact mod list.
+[list]
+[*] The settings are built into the mods, so this download only holds the finished mods. The tables, scanners and build scripts are on [url={GITHUB}]GitHub[/url].
+[*] Step-by-step guide, no programming needed: [url={GITHUB}/blob/main/CUSTOMISING.md]CUSTOMISING.md[/url]
+[*] Want only some of them, or your own settings for one? Load the single mods (or your own copies) instead of this bundle.
+[/list]
+
+[h2]Links[/h2]
+[list]
+[*] Each mod's details: {", ".join(pages)}
+[*] More DevZ mods: [url={GITHUB}]DevZ-Mods[/url]
+[/list]
+
+[b]Licence: MIT.[/b] Use it, change it and repack it, including in your own server pack. A credit is appreciated but not required.
+"""
+
+
 for folder, (title, accent, summary, what, defaults) in MODS.items():
     out = REPO / folder / "workshop"
     out.mkdir(exist_ok=True)
     preview(folder, title, accent, out / "preview.png")
     (out / "description.txt").write_text(description(folder, summary, what, defaults), encoding="utf-8")
+    print(f"{folder}: {out}")
+
+for folder, (title, accent, summary, mods) in PACKS.items():
+    out = REPO / folder / "workshop"
+    out.mkdir(parents=True, exist_ok=True)
+    preview(folder, title, accent, out / "preview.png")
+    (out / "description.txt").write_text(pack_description(folder, summary, mods), encoding="utf-8")
     print(f"{folder}: {out}")

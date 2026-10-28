@@ -322,6 +322,17 @@ class Pict:
         self.d.ellipse(self.p(cx - r, cy - r, cx + r, cy + r), fill=self.fg)
         self.d.text(self.p(cx, cy + 0.5), "1.5×", font=bahn(int(10 * self.k), "Bold"), fill=DARK, anchor="mm")
 
+    def essentials(self):
+        # the bundle: its five mods' pictograms, three on top and two below
+        rows = [(["inventory", "ammo", "weapon"], 26), (["combine", "repair"], 72)]
+        small = int(self.size * 0.31)
+        for names, cy in rows:
+            step = 100 / len(names)
+            for i, name in enumerate(names):
+                layer = Pict(small, self.fg, self.accent).draw(name)
+                cx = step * (i + 0.5)
+                self.img.alpha_composite(layer, (int(cx * self.k - small / 2), int(cy * self.k - small / 2)))
+
     def draw(self, name):
         getattr(self, name)()
         return self.img

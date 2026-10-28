@@ -1,0 +1,6 @@
+# The mods in DevZ Essentials, one folder name per line (built by build_pack.ps1)
+InventorySizes
+AmmoStacks
+WeaponDurability
+CombineNoSplit
+RepairToPristine
