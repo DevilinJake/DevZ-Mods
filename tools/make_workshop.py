@@ -41,7 +41,7 @@ MODS = {
         ],
     ),
     "WeaponDurability": (
-        "Weapon\nDurability", (196, 92, 92),
+        "Weapon &\nSuppressor\nDurability", (196, 92, 92),
         "Weapons and suppressors wear out slower: one multiplier each, per-weapon overrides.",
         [
             "Every shot wears a gun by the ammo's damageBarrel divided by the gun's [b]barrelArmor[/b]. This mod only raises barrelArmor, so 10x armor = 10x as many shots.",
@@ -53,7 +53,7 @@ MODS = {
         ],
     ),
     "CombineNoSplit": (
-        "Combine\nNo Split", (106, 176, 110),
+        "Combine\nKits", (106, 176, 110),
         "Combine part-used bandages, repair kits and gas mask filters, but never split them.",
         [
             "Drag a 2-use bandage onto a 3-use one: you get a full bandage (4 uses) plus one with 1 use. A 60% sewing kit onto another 60% kit gives 100% + 20%.",
@@ -100,7 +100,8 @@ def preview(title, accent, path):
     d.rectangle([0, 0, size, 14], fill=accent)
     d.rectangle([0, size - 14, size, size], fill=accent)
     d.text((40, 52), "DevZ", font=font("bahnschrift.ttf", 64), fill=accent)
-    d.multiline_text((40, 170), title, font=font("segoeuib.ttf", 76), fill=(236, 236, 236), spacing=6)
+    big = 76 if title.count("\n") < 2 else 62  # three lines need a smaller size to clear the footer
+    d.multiline_text((40, 170 if big == 76 else 150), title, font=font("segoeuib.ttf", big), fill=(236, 236, 236), spacing=6)
     d.text((40, 440), "DayZ mod  ·  MIT  ·  by DevilinJake", font=font("segoeui.ttf", 24), fill=(150, 150, 150))
     img.save(path, optimize=True)
 

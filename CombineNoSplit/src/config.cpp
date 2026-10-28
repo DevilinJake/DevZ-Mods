@@ -17,7 +17,7 @@ class CfgMods
 	class DevZ_CombineNoSplit
 	{
 		dir = "DevZ_CombineNoSplit";
-		name = "DevZ Combine No Split";
+		name = "DevZ Combine Kits";
 		author = "DevilinJake";
 		type = "mod";
 		dependencies[] = {"World"};

@@ -42,7 +42,7 @@ def write_config(rows, out):
         f'\tclass {PATCH}',
         '\t{',
         f'\t\tdir = "{PATCH}";',
-        '\t\tname = "DevZ Combine No Split";',
+        '\t\tname = "DevZ Combine Kits";',
         '\t\tauthor = "DevilinJake";',
         '\t\ttype = "mod";',
         '\t\tdependencies[] = {"World"};',

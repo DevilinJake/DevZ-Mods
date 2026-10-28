@@ -1,4 +1,4 @@
-# DevZ Weapon Durability
+# DevZ Weapon & Suppressor Durability
 
 Makes weapons, suppressors and other muzzle attachments wear out slower (or faster). Set one
 multiplier for weapons and one for suppressors, and change any single weapon or attachment you

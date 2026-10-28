@@ -1,4 +1,4 @@
-# DevZ Combine No Split
+# DevZ Combine Kits
 
 Combine part-used bandages, repair kits and gas mask filters into one, the same way you combine
 rags or ammo. Drag a bandage with 2 uses onto one with 3 uses and you get a full bandage (4 uses)
