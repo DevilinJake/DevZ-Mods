@@ -96,9 +96,8 @@ python AmmoStacks\scan_ammo.py "C:\...\DayZServer" "C:\...\DayZServer\@SomeWeapo
 
 It rebuilds `ammo.csv` from what it finds and **keeps any `NewStack` you've already set**.
 
-**The table in this repo includes Expansion's ammo.** A mod built from it requires Expansion to
-be loaded. If your server doesn't run Expansion, re-run the scanner with just your own folders
-first, and the Expansion rows drop out.
+**The table in this repo lists vanilla ammo only**, so the mod runs on any server. Rows you
+add by scanning a mod make the build require that mod, so only scan mods your server runs.
 
 ## Before you change stacks on a live server
 

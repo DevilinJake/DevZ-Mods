@@ -17,11 +17,17 @@ builds on its own and is set up so server admins can change the numbers without 
 
 ## Using a mod
 
-Each mod's folder has a README with the details. In short:
+The client mods are on the Steam Workshop, built with vanilla items only so they work on any
+server. Subscribe, add them to `-mod=` and copy `keys\DevZ.bikey` into your server's `keys\`.
+The server-only mods (AutoStack, InfectedDamage) are here on GitHub only: build them yourself.
+
+Want different numbers, or items from your own mods? See **[CUSTOMISING.md](CUSTOMISING.md)**:
+download this repo, scan your server, change a table and build your own copy. In short:
 
 1. Change its settings file (for example `InventorySizes\sizes.csv`).
 2. Build it: `.\build.ps1 <ModName> -Key C:\path\to\YourServer.biprivatekey`
-3. Copy `build\@DevZ_<ModName>` to your server and its key into `keys\`.
+3. Copy `build\@DevZ_<ModName>` to your server and its key into `keys\`, and give players
+   the same copy (your own Workshop upload or server pack).
 
 You need **Python 3** and, for signing, **DayZ Tools** (free on Steam).
 

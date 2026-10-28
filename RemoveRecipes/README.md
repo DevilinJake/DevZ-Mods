@@ -17,13 +17,13 @@ barrel's Sulfuric Acid. Removing those two recipes means cocaine has to come fro
 
 ## Default recipes
 
+**None.** Out of the box it removes nothing: run the scanner on your server, tick the recipes
+you want gone and build it (below). For example, on my own server I remove these two:
+
 | Recipe | Class | Mod |
 |---|---|---|
 | Make Coca Paste (fresh leaves + Acetone) | `iM7sDR_CraftCocaPaste` | iM7s Drug Running |
 | Make Coca Paste (dried leaves + Acetone) | `iM7sDR_CraftCocaPaste_Dried` | iM7s Drug Running |
-
-If you don't run that mod, the server log just says those two weren't found and nothing else
-changes.
 
 ## Changing the list
 

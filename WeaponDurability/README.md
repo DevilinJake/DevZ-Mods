@@ -87,9 +87,8 @@ python WeaponDurability\scan_durability.py "C:\...\DayZServer" "C:\...\DayZServe
 
 It rebuilds `durability.csv` from what it finds and **keeps any `Multiplier` you've already set**.
 
-**The table in this repo includes Expansion's weapons.** A mod built from it requires Expansion to
-be loaded. If your server doesn't run Expansion, re-run the scanner with just your own folders
-first, and the Expansion rows drop out.
+**The table in this repo lists vanilla weapons only**, so the mod runs on any server. Rows you
+add by scanning a mod make the build require that mod, so only scan mods your server runs.
 
 ## Changing it on a live server
 

@@ -38,7 +38,5 @@ class CfgDevZ_RemoveRecipes
 {
 	recipes[] =
 	{
-		"iM7sDR_CraftCocaPaste",  // Make Coca Paste (iM7s_DrugRunning)
-		"iM7sDR_CraftCocaPaste_Dried"  // Make Coca Paste (iM7s_DrugRunning)
 	};
 };

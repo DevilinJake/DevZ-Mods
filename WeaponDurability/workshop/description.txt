@@ -1,0 +1,30 @@
+Weapons and suppressors wear out slower: one multiplier each, per-weapon overrides.
+
+[list]
+[*] Every shot wears a gun by the ammo's damageBarrel divided by the gun's [b]barrelArmor[/b]. This mod only raises barrelArmor, so 10x armor = 10x as many shots.
+[*] No scripts, no performance cost. Safe to add to a live server.
+[/list]
+
+[h2]Default settings[/h2]
+[list]
+[*] Weapons last 10x as long.
+[*] Suppressors and other muzzle attachments last 10x as long.
+[/list]
+This build changes [b]vanilla items only[/b], so it works on any server and needs no other mod.
+
+[h2]Server setup[/h2]
+[list]
+[*] Add it to [b]-mod=[/b] (players need it too; they download it automatically when they join).
+[*] Copy [b]keys\DevZ.bikey[/b] from the mod folder into your server's [b]keys[/b] folder.
+[/list]
+
+[h2]Want different settings?[/h2]
+The settings are built into the mod, so changing them means building your own copy: download the repo, run the scanner on your server (it picks up items from your other mods too), change a table and build it. Step-by-step guide, no programming needed: [url=https://github.com/DevilinJake/DevZ-Mods/blob/main/CUSTOMISING.md]CUSTOMISING.md[/url]. Then upload your copy (Unlisted is fine) or put it in your server pack.
+
+[h2]Links[/h2]
+[list]
+[*] Details and source: [url=https://github.com/DevilinJake/DevZ-Mods/tree/main/WeaponDurability]GitHub[/url]
+[*] More DevZ mods: [url=https://github.com/DevilinJake/DevZ-Mods]DevZ-Mods[/url]
+[/list]
+
+[b]Licence: MIT.[/b] Use it, change it and repack it, including in your own server pack. A credit is appreciated but not required.

@@ -46,7 +46,6 @@ class CfgDevZ_RepairToPristine
 		"SewingKit",  // Sewing Kit (Vanilla)
 		"TireRepairKit",  // Tire Repair Kit (Vanilla)
 		"WeaponCleaningKit",  // Gun Cleaning Kit (Vanilla)
-		"Whetstone",  // Sharpening Stone (Vanilla)
-		"ZenSwissKnife_Scissors"  // Swiss Army Knife (NasdaraZenPack)
+		"Whetstone"  // Sharpening Stone (Vanilla)
 	};
 };

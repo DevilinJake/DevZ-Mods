@@ -8,22 +8,19 @@ class CfgPatches
 		units[] = {};
 		weapons[] = {};
 		requiredVersion = 0.1;
-		requiredAddons[] = {"DZ_Data", "DZ_Weapons_Firearms_AK101", "DZ_Weapons_Firearms_AK74", "DZ_Weapons_Firearms_AKM", "DZ_Weapons_Firearms_aug", "DZ_Weapons_Firearms_B95", "DZ_Pistols_1911", "DZ_Weapons_Archery_Crossbow", "DZ_Weapons_Firearms_CZ527", "DZ_Weapons_Firearms_CZ550", "DZ_Weapons_Firearms_cz61", "DZ_Pistols_CZ75", "DZ_Pistols_DE", "DZ_Pistols_Derringer", "DZ_Weapons_Firearms_FAL", "DZ_Weapons_Firearms_Famas", "DZ_Pistols_Flaregun", "DZ_Pistols_FNX45", "DZ_Pistols_Glock", "DZ_Weapons_Firearms_IZH18", "DZ_Weapons_Shotguns_Izh18Shotgun", "DZ_Weapons_Shotguns_Izh43", "DZ_Weapons_Launchers_LAW", "DZ_Pistols_Encore", "DZ_Weapons_Firearms_M14", "DZ_Weapons_Firearms_M16A2", "DZ_Weapons_Firearms_M4", "DZ_Weapons_Launchers_M79", "DZ_Pistols_Magnum", "DZ_Pistols_pmm", "DZ_Pistols_mkii", "DZ_Weapons_Firearms_MosinNagant", "DZ_Weapons_Shotguns_MP133", "DZ_Weapons_Firearms_MP5", "DZ_Nonlethal", "DZ_Pistols_p1", "DZ_Weapons_Firearms_pm73rak", "DZ_Weapons_Firearms_PP19", "DZ_Weapons_Shotguns_RemingtonR12", "DZ_Weapons_Firearms_Repeater", "DZ_Weapons_Launchers_RPG7", "DZ_Weapons_Firearms_Ruger1022", "DZ_Weapons_Firearms_SaigaK", "DZ_Weapons_Firearms_SCARH", "DZ_Weapons_Firearms_Scout", "DZ_Weapons_Firearms_SKS", "DZ_Weapons_Firearms_SSG82", "DZ_Weapons_Firearms_SV98", "DZ_Weapons_Firearms_SVD", "DZ_Weapons_Firearms_UMP", "DZ_Weapons_Firearms_VSS", "DZ_Weapons_Firearms_Winchester70", "DayZExpansion_Weapons_Sniper_AWM", "DayZExpansion_Weapons_Shotguns_BenelliM4", "DayZExpansion_Weapons_Shotguns_DT11", "DayZExpansion_Weapons_Rifles_G36", "DayZExpansion_Kar98", "DayZExpansion_Weapons_SMG_Kedr", "DayZExpansion_Weapons_Rifles_M14", "DayZExpansion_Weapons_Rifles_M16", "DayZExpansion_Weapons_Rifles_M1A", "DayZExpansion_M9", "DayZExpansion_Weapons_SMG_MP5", "DayZExpansion_Weapons_SMG_MP7", "DayZExpansion_Weapons_SMG_MPX", "DayZExpansion_Weapons_Pistols_Taser", "DayZExpansion_Weapons_SMG_VityazSN", "DayZExpansion_Crossbow", "DayZExpansion_Objects_Firearms_LAW", "DayZExpansion_Objects_Firearms_RPG7", "DZ_Weapons_Muzzles"};
+		requiredAddons[] = {"DZ_Data", "DZ_Weapons_Firearms_AK101", "DZ_Weapons_Firearms_AK74", "DZ_Weapons_Firearms_AKM", "DZ_Weapons_Firearms_aug", "DZ_Weapons_Firearms_B95", "DZ_Pistols_1911", "DZ_Weapons_Archery_Crossbow", "DZ_Weapons_Firearms_CZ527", "DZ_Weapons_Firearms_CZ550", "DZ_Weapons_Firearms_cz61", "DZ_Pistols_CZ75", "DZ_Pistols_DE", "DZ_Pistols_Derringer", "DZ_Weapons_Firearms_FAL", "DZ_Weapons_Firearms_Famas", "DZ_Pistols_Flaregun", "DZ_Pistols_FNX45", "DZ_Pistols_Glock", "DZ_Weapons_Firearms_IZH18", "DZ_Weapons_Shotguns_Izh18Shotgun", "DZ_Weapons_Shotguns_Izh43", "DZ_Weapons_Launchers_LAW", "DZ_Pistols_Encore", "DZ_Weapons_Firearms_M14", "DZ_Weapons_Firearms_M16A2", "DZ_Weapons_Firearms_M4", "DZ_Weapons_Launchers_M79", "DZ_Pistols_Magnum", "DZ_Pistols_pmm", "DZ_Pistols_mkii", "DZ_Weapons_Firearms_MosinNagant", "DZ_Weapons_Shotguns_MP133", "DZ_Weapons_Firearms_MP5", "DZ_Nonlethal", "DZ_Pistols_p1", "DZ_Weapons_Firearms_pm73rak", "DZ_Weapons_Firearms_PP19", "DZ_Weapons_Shotguns_RemingtonR12", "DZ_Weapons_Firearms_Repeater", "DZ_Weapons_Launchers_RPG7", "DZ_Weapons_Firearms_Ruger1022", "DZ_Weapons_Firearms_SaigaK", "DZ_Weapons_Firearms_SCARH", "DZ_Weapons_Firearms_Scout", "DZ_Weapons_Firearms_SKS", "DZ_Weapons_Firearms_SSG82", "DZ_Weapons_Firearms_SV98", "DZ_Weapons_Firearms_SVD", "DZ_Weapons_Firearms_UMP", "DZ_Weapons_Firearms_VSS", "DZ_Weapons_Firearms_Winchester70", "DZ_Weapons_Muzzles"};
 	};
 };
 
 class CfgWeapons
 {
-	class BoltActionRifle_Base;
 	class BoltActionRifle_ExternalMagazine_Base;
 	class BoltActionRifle_InnerMagazine_Base;
-	class CZ61;
 	class DefaultWeapon;
 	class Launcher_Base;
 	class PistolCore;
 	class RifleCore;
 	class Shotgun_Base;
-	class SKS;
 
 	class Archery_Base: RifleCore { barrelArmor = 4000; };  // $UNT$PVC Bow, was 400 (x10)
 	class CZ527_Base: BoltActionRifle_ExternalMagazine_Base { barrelArmor = 11.11; };  // CR-527, was 1.111 (x10)
@@ -42,10 +39,6 @@ class CfgWeapons
 	class SSG82_Base: BoltActionRifle_ExternalMagazine_Base { barrelArmor = 8; };  // SSG 82, was 0.8 (x10)
 	class SV98_Base: BoltActionRifle_ExternalMagazine_Base { barrelArmor = 20; };  // VS-89, was 2 (x10)
 	class Winchester70_Base: BoltActionRifle_InnerMagazine_Base { barrelArmor = 31.25; };  // M70 Tundra, was 3.125 (x10)
-	class Expansion_AWM_Base: BoltActionRifle_Base { barrelArmor = 11.11; };  // AWM, was 1.111 (x10)
-	class Expansion_Kar98_Base: BoltActionRifle_InnerMagazine_Base { barrelArmor = 20; };  // Karabiner 98K, was 2 (x10)
-	class Expansion_MP7_Base: CZ61 { barrelArmor = 19; };  // MP7, was 1.9 (x10)
-	class ExpansionLAWBase: SKS { barrelArmor = 20000; };  // M72 LAW, was 2000 (x10)
 	class AK101_Base: Rifle_Base { barrelArmor = 18.06; };  // KA-101, was 1.806 (x10)
 	class AK74_Base: Rifle_Base { barrelArmor = 27.43; };  // KA-74, was 2.743 (x10)
 	class AKM_Base: Rifle_Base { barrelArmor = 44.44; };  // KA-M, was 4.444 (x10)
@@ -83,20 +76,6 @@ class CfgWeapons
 	class SVD_Base: Rifle_Base { barrelArmor = 16; };  // VSD, was 1.6 (x10)
 	class UMP45_Base: Rifle_Base { barrelArmor = 9; };  // USG-45, was 0.9 (x10)
 	class VSS_Base: Rifle_Base { barrelArmor = 24; };  // SVAL, was 2.4 (x10)
-	class Expansion_BenelliM4_Base: Rifle_Base { barrelArmor = 16.8; };  // Benelli M4, was 1.68 (x10)
-	class Expansion_DT11_Base: Rifle_Base { barrelArmor = 13.33; };  // DT11, was 1.333 (x10)
-	class Expansion_G36_Base: Rifle_Base { barrelArmor = 25; };  // G36C, was 2.5 (x10)
-	class Expansion_Kedr_Base: Rifle_Base { barrelArmor = 13.5; };  // PP-91 KEDR, was 1.35 (x10)
-	class Expansion_M16_Base: Rifle_Base { barrelArmor = 25; };  // M16A4, was 2.5 (x10)
-	class Expansion_M1A_Base: Rifle_Base { barrelArmor = 22; };  // M1A SOCOM, was 2.2 (x10)
-	class Expansion_M9_Base: Pistol_Base { barrelArmor = 17; };  // M9, was 1.7 (x10)
-	class Expansion_MP5_Base: Rifle_Base { barrelArmor = 12.5; };  // MP5A2, was 1.25 (x10)
-	class Expansion_MPX_Base: Rifle_Base { barrelArmor = 9; };  // MPX, was 0.9 (x10)
-	class Expansion_Vityaz_Base: Rifle_Base { barrelArmor = 13.5; };  // Vityaz-SN PP19-01, was 1.35 (x10)
-	class ExpansionCrossbow_Base: Rifle_Base { barrelArmor = 17; };  // Crossbow, was 1.7 (x10)
-	class ExpansionRPG7Base: Rifle_Base { barrelArmor = 20000; };  // RPG-7, was 2000 (x10)
-	class Expansion_M14_Base: M14_Base { barrelArmor = 22; };  // M14 Springfield, was 2.2 (x10)
-	class Expansion_Taser_Base: FNX45_Base { barrelArmor = 17; };  // Taser X2 Defender, was 1.7 (x10)
 };
 
 class CfgVehicles
