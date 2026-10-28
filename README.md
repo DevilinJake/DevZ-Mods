@@ -13,7 +13,7 @@ builds on its own and is set up so server admins can change the numbers without 
 | [InfectedDamage](InfectedDamage) | How hard zombies hit: Health, Blood, Shock, bleed chance and clothing wear multipliers (default 1.5x damage), per-attack overrides (server-side only) | Ready |
 | [CombineNoSplit](CombineNoSplit) | Combine part-used bandages, repair kits and gas mask filters, but never split them; a scanner lists items from any mod to pick from | Ready |
 | [RemoveRecipes](RemoveRecipes) | Switch off right-click crafting recipes from vanilla or any mod, without editing it; a scanner lists every recipe to pick from | Ready |
-| RepairToPristine | Repair kits can repair to Pristine | Planned |
+| [RepairToPristine](RepairToPristine) | Repair kits repair items all the way to Pristine instead of stopping at Worn; a scanner lists kits from any mod to pick from | Ready |
 
 ## Using a mod
 
