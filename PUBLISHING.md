@@ -50,3 +50,4 @@ write a short change note. Players get the update the next time they join.
 | RepairToPristine | |
 | AutoStack (server-side) | |
 | InfectedDamage (server-side) | |
+| Essentials (bundle) | |
