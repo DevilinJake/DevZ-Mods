@@ -1,0 +1,9 @@
+﻿Class,Parent,Attacks,Zombies,Source,RequiredAddon,DamageType,CurrentHealth,CurrentBlood,CurrentShock,CurrentBleedThreshold,CurrentClothing,Health,Blood,Shock,Bleed,Clothing
+MeleeInfected,MeleeZombie,AttackRun AttackShort AttackShortLow CrawlAttackMove CrawlAttackStill meleeAmmo,184,Vanilla,DZ_Weapons_Melee,Infected,6.5,100.0,12.0,0.16,0.55,,,,,
+MeleeInfectedLong,MeleeZombie,AttackLong,162,Vanilla,DZ_Weapons_Melee,Infected,8.5,100.0,12.0,0.16,0.55,,,,,
+MeleeSoldierInfected,MeleeZombie,AttackRun AttackShort AttackShortLow CrawlAttackMove CrawlAttackStill,21,Vanilla,DZ_Weapons_Melee,Infected,8.5,100.0,12.0,0.22,0.55,,,,,
+MeleeSoldierInfectedLong,MeleeZombie,AttackLong,20,Vanilla,DZ_Weapons_Melee,Infected,11.0,100.0,16.0,0.22,0.55,,,,,
+MeleePoliceInfected,MeleeZombie,AttackRun AttackShort AttackShortLow CrawlAttackMove CrawlAttackStill,2,Vanilla,DZ_Weapons_Melee,Infected,8.0,100.0,12.0,0.2,0.55,,,,,
+MeleePoliceInfectedLong,MeleeZombie,AttackLong,2,Vanilla,DZ_Weapons_Melee,Infected,8.0,100.0,15.0,0.2,0.55,,,,,
+MeleeMummyInfected,MeleeZombie,AttackRun AttackShort AttackShortLow CrawlAttackMove CrawlAttackStill meleeAmmo,1,Vanilla,DZ_Weapons_Melee,Infected,10.0,100.0,35.0,1.0,2.0,,,,,
+MeleeMummyInfectedLong,MeleeZombie,AttackLong,1,Vanilla,DZ_Weapons_Melee,Infected,10.0,100.0,35.0,1.0,2.0,,,,,

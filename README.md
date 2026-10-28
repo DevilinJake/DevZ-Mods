@@ -10,6 +10,7 @@ builds on its own and is set up so server admins can change the numbers without 
 | [AmmoStacks](AmmoStacks) | Bigger loose-ammo stacks: one multiplier, per-ammo overrides, loot amounts kept the same | Ready |
 | [AutoStack](AutoStack) | Loose ammo merges into your existing stacks automatically (server-side only) | Ready |
 | [WeaponDurability](WeaponDurability) | How fast weapons and suppressors wear: one multiplier each (default 10x), per-weapon overrides | Ready |
+| [InfectedDamage](InfectedDamage) | How hard zombies hit: Health, Blood, Shock, bleed chance and clothing wear multipliers (default 1.5x damage), per-attack overrides (server-side only) | Ready |
 | CombineNoSplit | Combine 4-use items like bandages and repair kits, but don't split them | Planned |
 | RepairToPristine | Repair kits can repair to Pristine | Planned |
 
