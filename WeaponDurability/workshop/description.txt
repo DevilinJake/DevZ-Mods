@@ -1,4 +1,4 @@
-Weapons and suppressors wear out slower: one multiplier each, per-weapon overrides.
+Weapons and suppressors wear out 10x slower out of the box, or build your own multipliers and per-weapon values (see below).
 
 [list]
 [*] Every shot wears a gun by the ammo's damageBarrel divided by the gun's [b]barrelArmor[/b]. This mod only raises barrelArmor, so 10x armor = 10x as many shots.
@@ -18,10 +18,11 @@ This Workshop build covers [b]vanilla items[/b], so it works on any server and n
 [*] Copy [b]keys\DevZ.bikey[/b] from the mod folder into your server's [b]keys[/b] folder.
 [/list]
 
-[h2]Works with your other mods[/h2]
+[h2]Your own settings and modded items[/h2]
 The mod comes with a [b]scanner[/b] that reads your server and every mod you run, and lists the guns, suppressors and muzzle attachments from any weapon mod in a simple table, next to the vanilla ones. Pick your own values for any of them (or keep the defaults), build it, and you have a copy made for your exact mod list.
 [list]
-[*] No programming: download the repo, run one command to scan, edit the table in Excel or Google Sheets, run one command to build.
+[*] The settings are built into the mod, so this Workshop download only holds the finished mod. The tables, scanner and build script are on [url=https://github.com/DevilinJake/DevZ-Mods]GitHub[/url].
+[*] No programming: download the repo, run one command to scan, edit the table in Excel or Google Sheets, run one command to build. You need Python and DayZ Tools (both free).
 [*] Step-by-step guide: [url=https://github.com/DevilinJake/DevZ-Mods/blob/main/CUSTOMISING.md]CUSTOMISING.md[/url]
 [*] Then upload your copy to the Workshop (Unlisted is fine) or put it in your server pack, and use it instead of this one.
 [/list]

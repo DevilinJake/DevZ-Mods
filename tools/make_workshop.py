@@ -17,7 +17,7 @@ GITHUB = "https://github.com/DevilinJake/DevZ-Mods"
 MODS = {
     "InventorySizes": (
         "Inventory\nSizes", (86, 156, 214),
-        "Bigger cargo for clothing, backpacks, vests and pouches, with sizes you choose.",
+        "Bigger cargo for clothing, backpacks, vests and pouches. Ready to use as it is, or build your own sizes (see below).",
         [
             "Overrides only one value per item ([b]itemsCargoSize[/b]): no scripts, no performance cost.",
             "Every grid is one row in a table, so all colour versions of an item change together.",
@@ -29,7 +29,7 @@ MODS = {
     ),
     "AmmoStacks": (
         "Ammo\nStacks", (214, 157, 70),
-        "Bigger loose-ammo stacks: one multiplier for everything, per-ammo overrides.",
+        "Bigger loose-ammo stacks: 2x out of the box, or build your own multiplier and per-ammo sizes (see below).",
         [
             "Overrides only one value per ammo type ([b]count[/b]): no scripts, no performance cost.",
             "Weight per round doesn't change: a stack of 50 weighs the same as two of 25.",
@@ -42,7 +42,7 @@ MODS = {
     ),
     "WeaponDurability": (
         "Weapon &\nSuppressor\nDurability", (196, 92, 92),
-        "Weapons and suppressors wear out slower: one multiplier each, per-weapon overrides.",
+        "Weapons and suppressors wear out 10x slower out of the box, or build your own multipliers and per-weapon values (see below).",
         [
             "Every shot wears a gun by the ammo's damageBarrel divided by the gun's [b]barrelArmor[/b]. This mod only raises barrelArmor, so 10x armor = 10x as many shots.",
             "No scripts, no performance cost. Safe to add to a live server.",
@@ -65,7 +65,7 @@ MODS = {
     ),
     "RemoveRecipes": (
         "Remove\nRecipes", (170, 110, 200),
-        "Switch off right-click crafting recipes from vanilla or any mod, without editing that mod.",
+        "Switch off right-click crafting recipes from vanilla or any mod, without editing that mod. You pick the recipes and build your own copy (see below).",
         [
             "Handy when a mod has a shortcut recipe that skips its own crafting stations or rare ingredients.",
             "A scanner lists every right-click recipe in the game and your mods; tick the ones to remove.",
@@ -101,7 +101,7 @@ MODS = {
     ),
     "InfectedDamage": (
         "Infected\nDamage", (150, 170, 80),
-        "Make zombies hit harder (or softer): Health, Blood, Shock, bleed chance and clothing wear. Server-side only.",
+        "Zombies hit 1.5x harder out of the box, or build your own multipliers for Health, Blood, Shock, bleed chance and clothing wear (see below). Server-side only.",
         [
             "One multiplier each, plus per-attack overrides (soldier, police, mummy zombies...).",
             "Config values only: no scripts, no performance cost.",
@@ -174,7 +174,8 @@ def description(folder, summary, what, defaults):
             else "load your copy with -servermod instead of this one (players still download nothing)"
         others = f"""The mod comes with a [b]scanner[/b] that reads your server and every mod you run, and lists {scans} in a simple table, next to the vanilla ones. Pick your own values for any of them (or keep the defaults), build it, and you have a copy made for your exact mod list.
 [list]
-[*] No programming: download the repo, run one command to scan, edit the table in Excel or Google Sheets, run one command to build.
+[*] The settings are built into the mod, so this Workshop download only holds the finished mod. The tables, scanner and build script are on [url={GITHUB}]GitHub[/url].
+[*] No programming: download the repo, run one command to scan, edit the table in Excel or Google Sheets, run one command to build. You need Python and DayZ Tools (both free).
 [*] Step-by-step guide: [url={GITHUB}/blob/main/CUSTOMISING.md]CUSTOMISING.md[/url]
 [*] Then {own_copy}.
 [/list]"""
@@ -192,7 +193,7 @@ def description(folder, summary, what, defaults):
 [h2]Server setup[/h2]
 {setup}
 
-[h2]Works with your other mods[/h2]
+[h2]{"Your own settings and modded items" if scans else "Works with your other mods"}[/h2]
 {others}
 
 [h2]Links[/h2]
