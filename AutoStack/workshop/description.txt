@@ -1,0 +1,30 @@
+Loose ammo merges into your existing stacks automatically. Server-side only.
+
+[list]
+[*] Pick up 12 rounds of 9x19 while carrying a stack of 40: you end up with one stack of 52, not two.
+[*] Works in your clothing and backpack, and in containers (crates, tents, car trunks, dropped backpacks). Ammo in your hands is left alone.
+[*] Each round keeps its own condition; ruined ammo is never merged.
+[/list]
+
+[h2]Default settings[/h2]
+[list]
+[*] Merging on in player inventories and in containers.
+[*] Settings file: [b]<profiles>\DevZ_AutoStack\Config.json[/b], created on first start. Change it with the server stopped; no rebuild needed. If inventories "jump" while dragging ammo, raise [b]DelayMs[/b].
+[/list]
+
+[h2]Server setup[/h2]
+[list]
+[*] Copy the mod folder into your server folder and add it to [b]-servermod=[/b] (not -mod=).
+[*] Players don't download anything, and it needs no key.
+[/list]
+
+[h2]Works with your other mods[/h2]
+Works with any ammo, vanilla or modded, and any stack size, including [b]DevZ Ammo Stacks[/b]. Nothing to set up.
+
+[h2]Links[/h2]
+[list]
+[*] Details and source: [url=https://github.com/DevilinJake/DevZ-Mods/tree/main/AutoStack]GitHub[/url]
+[*] More DevZ mods: [url=https://github.com/DevilinJake/DevZ-Mods]DevZ-Mods[/url]
+[/list]
+
+[b]Licence: MIT.[/b] Use it, change it and repack it, including in your own server pack. A credit is appreciated but not required.

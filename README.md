@@ -17,9 +17,10 @@ builds on its own and is set up so server admins can change the numbers without 
 
 ## Using a mod
 
-The client mods are on the Steam Workshop, built with vanilla items only so they work on any
-server. Subscribe, add them to `-mod=` and copy `keys\DevZ.bikey` into your server's `keys\`.
-The server-only mods (AutoStack, InfectedDamage) are here on GitHub only: build them yourself.
+Every mod is on the Steam Workshop, built with vanilla items only so it works on any server.
+Client mods: add them to `-mod=` and copy `keys\DevZ.bikey` into your server's `keys\`.
+Server-side mods (AutoStack, InfectedDamage): add them to `-servermod=`; players download
+nothing and no key is needed.
 
 Want different numbers, or items from your own mods? See **[CUSTOMISING.md](CUSTOMISING.md)**:
 download this repo, scan your server, change a table and build your own copy. In short:

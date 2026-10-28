@@ -1,20 +1,22 @@
 # Using DevZ mods on your server
 
-Every DevZ client mod is on the Steam Workshop, built from the settings in this repo. You can
-use it as it is, or change the settings and make your own copy. Both are fine (see
+Every DevZ mod is on the Steam Workshop, built from the settings in this repo. You can use it
+as it is, or change the settings and make your own copy. Both are fine (see
 [LICENSE](LICENSE)).
 
 ## Using a mod as it is
 
 1. **Subscribe** to it on the Workshop and copy it into your server folder (or link it the way
    you do your other Workshop mods).
-2. **Add it to `-mod=`** in your server's start line, like any client mod.
-3. **Copy its key:** `keys\DevZ.bikey` from the mod folder into your server's `keys\` folder.
-4. **AmmoStacks only:** run `fix_loot.py` once so the ammo found in loot stays the same size
+2. **Add it to your start line:**
+   - Client mods: add it to `-mod=` and copy its key, `keys\DevZ.bikey` from the mod folder,
+     into your server's `keys\` folder. Players download it automatically when they join.
+   - Server-side mods (**AutoStack**, **InfectedDamage**): add it to `-servermod=`. Players
+     download nothing and no key is needed. AutoStack's settings are in
+     `<profiles>\DevZ_AutoStack\Config.json`, so it never needs rebuilding.
+3. **AmmoStacks only:** run `fix_loot.py` once so the ammo found in loot stays the same size
    (see [AmmoStacks](AmmoStacks#why-loot-needs-fixing)). You need Python and this repo for that
    step: steps 1–2 below.
-
-Players download it automatically when they join, like any Workshop mod.
 
 The Workshop builds change **vanilla items only**, so they work on any server and don't need
 any other mod. RemoveRecipes removes nothing until you choose recipes (it's only useful
@@ -75,6 +77,7 @@ in. Each mod's scanner:
 | [CombineNoSplit](CombineNoSplit) | `scan_items.py` | `items.csv` |
 | [RemoveRecipes](RemoveRecipes) | `scan_recipes.py` | `recipes.csv` |
 | [RepairToPristine](RepairToPristine) | `scan_kits.py` | `kits.csv` |
+| [InfectedDamage](InfectedDamage) | `scan_attacks.py` | `attacks.csv` |
 
 **Only scan mods your server runs.** A build with rows from a mod requires that mod to be
 loaded first.
@@ -93,6 +96,10 @@ what every column means.
 
 This writes the config, packs and signs the mod and copies it into your server as
 `@DevZ_InventorySizes`, with `MyServer.bikey` in its `keys\` folder and your server's `keys\`.
+
+**InfectedDamage** is server-side, so it needs no key: `.\build.ps1 InfectedDamage -Install
+C:\DayZServer`, load it with `-servermod=` instead of the Workshop copy, and you're done
+(skip step 6, and step 2 if it's the only mod you build).
 
 ### 6. Give your copy to your players
 

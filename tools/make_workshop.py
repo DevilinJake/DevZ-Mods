@@ -1,4 +1,4 @@
-"""Writes each client mod's Workshop preview image and description into <Mod>\\workshop\\.
+"""Writes each mod's Workshop preview image and description into <Mod>\\workshop\\.
 
   python tools\\make_workshop.py
 
@@ -86,7 +86,37 @@ MODS = {
             "Every vanilla kit: Gun Cleaning Kit, Sewing Kit, Leather Sewing Kit, Duct Tape, Sharpening Stone, Epoxy Putty, Electrical Repair Kit, Tire Repair Kit, Blowtorch. Kits built on these count too.",
         ],
     ),
+    "AutoStack": (
+        "Auto\nStack", (214, 190, 80),
+        "Loose ammo merges into your existing stacks automatically. Server-side only.",
+        [
+            "Pick up 12 rounds of 9x19 while carrying a stack of 40: you end up with one stack of 52, not two.",
+            "Works in your clothing and backpack, and in containers (crates, tents, car trunks, dropped backpacks). Ammo in your hands is left alone.",
+            "Each round keeps its own condition; ruined ammo is never merged.",
+        ],
+        [
+            "Merging on in player inventories and in containers.",
+            "Settings file: [b]<profiles>\\DevZ_AutoStack\\Config.json[/b], created on first start. Change it with the server stopped; no rebuild needed. If inventories \"jump\" while dragging ammo, raise [b]DelayMs[/b].",
+        ],
+    ),
+    "InfectedDamage": (
+        "Infected\nDamage", (150, 170, 80),
+        "Make zombies hit harder (or softer): Health, Blood, Shock, bleed chance and clothing wear. Server-side only.",
+        [
+            "One multiplier each, plus per-attack overrides (soldier, police, mummy zombies...).",
+            "Config values only: no scripts, no performance cost.",
+        ],
+        [
+            "Health 1.5x: 11 swipes kill a player with no armour (vanilla 16).",
+            "Shock 1.5x: a group can knock you out with quick hits.",
+            "Bleed chance 1.5x: 16.5% per hit (vanilla 11%).",
+            "Blood and clothing wear unchanged.",
+        ],
+    ),
 }
+
+# Server-side mods: loaded with -servermod, players never download them
+SERVER_ONLY = {"AutoStack", "InfectedDamage"}
 
 
 # What each mod's scanner finds in other mods, for the "Works with your other mods" section
@@ -97,6 +127,8 @@ SCANS = {
     "CombineNoSplit": "every item with uses or a percentage from any mod (medical, repair kits, filters, bottles)",
     "RemoveRecipes": "every right-click recipe from every mod you run",
     "RepairToPristine": "the repair kits from any mod (for example a multitool that works as a sewing kit)",
+    "InfectedDamage": "the attacks of the zombies from any zombie mod",
+    "AutoStack": None,  # needs no scanning: works with any ammo as it is
 }
 
 
@@ -113,34 +145,54 @@ def preview(title, accent, path):
     d.text((40, 52), "DevZ", font=font("bahnschrift.ttf", 64), fill=accent)
     big = 76 if title.count("\n") < 2 else 62  # three lines need a smaller size to clear the footer
     d.multiline_text((40, 170 if big == 76 else 150), title, font=font("segoeuib.ttf", big), fill=(236, 236, 236), spacing=6)
-    d.text((40, 440), "DayZ mod  ·  MIT  ·  by DevilinJake", font=font("segoeui.ttf", 24), fill=(150, 150, 150))
+    kind = "DayZ server mod" if path.parent.parent.name in SERVER_ONLY else "DayZ mod"
+    d.text((40, 440), f"{kind}  ·  MIT  ·  by DevilinJake", font=font("segoeui.ttf", 24), fill=(150, 150, 150))
     img.save(path, optimize=True)
 
 
 def description(folder, summary, what, defaults):
     url = f"{GITHUB}/tree/main/{folder}"
     bullets = lambda items: "[list]\n" + "".join(f"[*] {i}\n" for i in items) + "[/list]"
+    server = folder in SERVER_ONLY
+    scans = SCANS[folder]
+
+    if server:
+        setup = """[list]
+[*] Copy the mod folder into your server folder and add it to [b]-servermod=[/b] (not -mod=).
+[*] Players don't download anything, and it needs no key.
+[/list]"""
+    else:
+        setup = """[list]
+[*] Add it to [b]-mod=[/b] (players need it too; they download it automatically when they join).
+[*] Copy [b]keys\\DevZ.bikey[/b] from the mod folder into your server's [b]keys[/b] folder.
+[/list]"""
+
+    if scans:
+        covers = "This Workshop build covers [b]vanilla items[/b], so it works on any server and needs no other mod. Running modded items? See below.\n"
+        own_copy = "upload your copy to the Workshop (Unlisted is fine) or put it in your server pack, and use it instead of this one" if not server \
+            else "load your copy with -servermod instead of this one (players still download nothing)"
+        others = f"""The mod comes with a [b]scanner[/b] that reads your server and every mod you run, and lists {scans} in a simple table, next to the vanilla ones. Pick your own values for any of them (or keep the defaults), build it, and you have a copy made for your exact mod list.
+[list]
+[*] No programming: download the repo, run one command to scan, edit the table in Excel or Google Sheets, run one command to build.
+[*] Step-by-step guide: [url={GITHUB}/blob/main/CUSTOMISING.md]CUSTOMISING.md[/url]
+[*] Then {own_copy}.
+[/list]"""
+    else:
+        covers = ""
+        others = "Works with any ammo, vanilla or modded, and any stack size, including [b]DevZ Ammo Stacks[/b]. Nothing to set up."
+
     return f"""{summary}
 
 {bullets(what)}
 
 [h2]Default settings[/h2]
 {bullets(defaults)}
-This Workshop build covers [b]vanilla items[/b], so it works on any server and needs no other mod. Running modded items? See below.
-
+{covers}
 [h2]Server setup[/h2]
-[list]
-[*] Add it to [b]-mod=[/b] (players need it too; they download it automatically when they join).
-[*] Copy [b]keys\\DevZ.bikey[/b] from the mod folder into your server's [b]keys[/b] folder.
-[/list]
+{setup}
 
 [h2]Works with your other mods[/h2]
-The mod comes with a [b]scanner[/b] that reads your server and every mod you run, and lists {SCANS[folder]} in a simple table, next to the vanilla ones. Pick your own values for any of them (or keep the defaults), build it, and you have a copy made for your exact mod list.
-[list]
-[*] No programming: download the repo, run one command to scan, edit the table in Excel or Google Sheets, run one command to build.
-[*] Step-by-step guide: [url={GITHUB}/blob/main/CUSTOMISING.md]CUSTOMISING.md[/url]
-[*] Then upload your copy to the Workshop (Unlisted is fine) or put it in your server pack, and use it instead of this one.
-[/list]
+{others}
 
 [h2]Links[/h2]
 [list]
