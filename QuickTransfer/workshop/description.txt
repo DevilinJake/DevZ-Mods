@@ -1,0 +1,30 @@
+With the inventory open, hold a key and sweep the mouse over items: each one moves between your inventory and the nearest open container.
+
+[list]
+[*] Items in your clothing and backpack go to the nearest container you have open in vicinity (crate, tent, car trunk, barrel...). Items in a container or on the ground come into your inventory.
+[*] Only moves what fits. Nothing you wear or hold is moved, and an item never bounces back while you keep the key down.
+[*] Every move is a normal inventory move, so the server checks it exactly like a drag and drop.
+[/list]
+
+[h2]Default settings[/h2]
+[list]
+[*] Key: [b]Left Alt[/b]. Change it in Options > Controls, under [b]DevZ Mods[/b].
+[*] No settings file: there's nothing for admins to set.
+[/list]
+
+[h2]Server setup[/h2]
+[list]
+[*] Add it to [b]-mod=[/b] (players need it too; they download it automatically when they join).
+[*] Copy [b]keys\DevZ.bikey[/b] from the mod folder into your server's [b]keys[/b] folder.
+[/list]
+
+[h2]Works with your other mods[/h2]
+Works with items and containers from any mod, and with bigger inventories such as [b]DevZ Inventory Sizes[/b]. Nothing to set up.
+
+[h2]Links[/h2]
+[list]
+[*] Details and source: [url=https://github.com/DevilinJake/DevZ-Mods/tree/main/QuickTransfer]GitHub[/url]
+[*] More DevZ mods: [url=https://github.com/DevilinJake/DevZ-Mods]DevZ-Mods[/url]
+[/list]
+
+[b]Licence: MIT.[/b] Use it, change it and repack it, including in your own server pack. A credit is appreciated but not required.

@@ -4,3 +4,4 @@ AmmoStacks
 WeaponDurability
 CombineNoSplit
 RepairToPristine
+QuickTransfer

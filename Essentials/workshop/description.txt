@@ -1,4 +1,4 @@
-Five DevZ mods in one download: bigger inventories, bigger ammo stacks, longer-lasting guns, kits that combine, and repairs back to Pristine.
+Six DevZ mods in one download: bigger inventories, bigger ammo stacks, longer-lasting guns, kits that combine, repairs back to Pristine, and quick looting with one key.
 
 [h2]What's inside[/h2]
 [list]
@@ -7,6 +7,7 @@ Five DevZ mods in one download: bigger inventories, bigger ammo stacks, longer-l
 [*] [b]Weapon & Suppressor Durability[/b]: weapons and suppressors last 10x as long.
 [*] [b]Combine Kits[/b]: combine part-used bandages, repair kits and filters, but never split them.
 [*] [b]Repair To Pristine[/b]: repair kits repair items all the way to Pristine instead of stopping at Worn.
+[*] [b]Quick Transfer[/b]: hold Left Alt and sweep the mouse over items to move them between you and the nearest open container.
 [/list]
 Each one is also on the Workshop on its own. [b]Use either this bundle or the single mods, never both[/b]: they're the same files, so loading both loads every change twice.
 
@@ -17,6 +18,7 @@ Each one is also on the Workshop on its own. [b]Use either this bundle or the si
 [*] [b]Weapon & Suppressor Durability:[/b] Weapons last 10x as long. Suppressors and other muzzle attachments last 10x as long.
 [*] [b]Combine Kits:[/b] Bandage, Duct Tape, Electrical Repair Kit, Epoxy Putty, Gas Mask Filter, Improvised Gas Mask Filter, Leather Sewing Kit, Sewing Kit, Tire Repair Kit, Gun Cleaning Kit, Sharpening Stone.
 [*] [b]Repair To Pristine:[/b] Every vanilla kit: Gun Cleaning Kit, Sewing Kit, Leather Sewing Kit, Duct Tape, Sharpening Stone, Epoxy Putty, Electrical Repair Kit, Tire Repair Kit, Blowtorch. Kits built on these count too.
+[*] [b]Quick Transfer:[/b] Key: [b]Left Alt[/b]. Change it in Options > Controls, under [b]DevZ Mods[/b]. No settings file: there's nothing for admins to set.
 [/list]
 This Workshop build covers [b]vanilla items[/b], so it works on any server and needs no other mod.
 
@@ -28,7 +30,7 @@ This Workshop build covers [b]vanilla items[/b], so it works on any server and n
 [/list]
 
 [h2]Your own settings and modded items[/h2]
-Every mod in the bundle comes with a [b]scanner[/b] that reads your server and every mod you run (clothing, weapons, kits...) and lists their items in a simple table, next to the vanilla ones. Change any values, build, and you have copies made for your exact mod list.
+The mods with item tables come with a [b]scanner[/b] that reads your server and every mod you run (clothing, weapons, kits...) and lists their items in a simple table, next to the vanilla ones. Change any values, build, and you have copies made for your exact mod list.
 [list]
 [*] The settings are built into the mods, so this download only holds the finished mods. The tables, scanners and build scripts are on [url=https://github.com/DevilinJake/DevZ-Mods]GitHub[/url].
 [*] Step-by-step guide, no programming needed: [url=https://github.com/DevilinJake/DevZ-Mods/blob/main/CUSTOMISING.md]CUSTOMISING.md[/url]
@@ -37,7 +39,7 @@ Every mod in the bundle comes with a [b]scanner[/b] that reads your server and e
 
 [h2]Links[/h2]
 [list]
-[*] Each mod's details: [url=https://github.com/DevilinJake/DevZ-Mods/tree/main/InventorySizes]Inventory Sizes[/url], [url=https://github.com/DevilinJake/DevZ-Mods/tree/main/AmmoStacks]Ammo Stacks[/url], [url=https://github.com/DevilinJake/DevZ-Mods/tree/main/WeaponDurability]Weapon & Suppressor Durability[/url], [url=https://github.com/DevilinJake/DevZ-Mods/tree/main/CombineNoSplit]Combine Kits[/url], [url=https://github.com/DevilinJake/DevZ-Mods/tree/main/RepairToPristine]Repair To Pristine[/url]
+[*] Each mod's details: [url=https://github.com/DevilinJake/DevZ-Mods/tree/main/InventorySizes]Inventory Sizes[/url], [url=https://github.com/DevilinJake/DevZ-Mods/tree/main/AmmoStacks]Ammo Stacks[/url], [url=https://github.com/DevilinJake/DevZ-Mods/tree/main/WeaponDurability]Weapon & Suppressor Durability[/url], [url=https://github.com/DevilinJake/DevZ-Mods/tree/main/CombineNoSplit]Combine Kits[/url], [url=https://github.com/DevilinJake/DevZ-Mods/tree/main/RepairToPristine]Repair To Pristine[/url], [url=https://github.com/DevilinJake/DevZ-Mods/tree/main/QuickTransfer]Quick Transfer[/url]
 [*] More DevZ mods: [url=https://github.com/DevilinJake/DevZ-Mods]DevZ-Mods[/url]
 [/list]
 

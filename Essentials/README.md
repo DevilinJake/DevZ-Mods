@@ -1,6 +1,6 @@
 # DevZ Essentials
 
-Five DevZ client mods in one download, for servers that want all of them and fewer entries in
+Six DevZ client mods in one download, for servers that want all of them and fewer entries in
 the launcher:
 
 | Mod | What it does |
@@ -10,6 +10,7 @@ the launcher:
 | [Weapon & Suppressor Durability](../WeaponDurability) | Weapons and suppressors last 10× as long |
 | [Combine Kits](../CombineNoSplit) | Combine part-used bandages, repair kits and filters, but never split them |
 | [Repair To Pristine](../RepairToPristine) | Repair kits repair items all the way to Pristine |
+| [Quick Transfer](../QuickTransfer) | Hold Left Alt and sweep the mouse over items to move them between you and the nearest open container |
 
 It's the same files as the single mods, with the same default settings: each mod's README
 explains them. **Load either the bundle or the single mods, never both.**

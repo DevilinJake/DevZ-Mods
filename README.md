@@ -14,7 +14,8 @@ builds on its own and is set up so server admins can change the numbers without 
 | [CombineNoSplit](CombineNoSplit) | Combine part-used bandages, repair kits and gas mask filters, but never split them; a scanner lists items from any mod to pick from | Ready |
 | [RemoveRecipes](RemoveRecipes) | Switch off right-click crafting recipes from vanilla or any mod, without editing it; a scanner lists every recipe to pick from | Ready |
 | [RepairToPristine](RepairToPristine) | Repair kits repair items all the way to Pristine instead of stopping at Worn; a scanner lists kits from any mod to pick from | Ready |
-| [Essentials](Essentials) | Bundle: Inventory Sizes, Ammo Stacks, Weapon & Suppressor Durability, Combine Kits and Repair To Pristine in one download (built with `build_pack.ps1`) | Ready |
+| [QuickTransfer](QuickTransfer) | Hold a key (Left Alt) with the inventory open and sweep the mouse over items: each one moves between you and the nearest open container | Ready |
+| [Essentials](Essentials) | Bundle: Inventory Sizes, Ammo Stacks, Weapon & Suppressor Durability, Combine Kits, Repair To Pristine and Quick Transfer in one download (built with `build_pack.ps1`) | Ready |
 
 ## Using a mod
 

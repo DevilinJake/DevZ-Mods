@@ -48,6 +48,7 @@ write a short change note. Players get the update the next time they join.
 | CombineNoSplit | |
 | RemoveRecipes | |
 | RepairToPristine | |
+| QuickTransfer | |
 | AutoStack (server-side) | |
 | InfectedDamage (server-side) | |
 | Essentials (bundle) | |

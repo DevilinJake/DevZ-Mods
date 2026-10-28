@@ -113,6 +113,19 @@ MODS = {
             "Blood and clothing wear unchanged.",
         ],
     ),
+    "QuickTransfer": (
+        "Quick\nTransfer", (110, 170, 230),
+        "With the inventory open, hold a key and sweep the mouse over items: each one moves between your inventory and the nearest open container.",
+        [
+            "Items in your clothing and backpack go to the nearest container you have open in vicinity (crate, tent, car trunk, barrel...). Items in a container or on the ground come into your inventory.",
+            "Only moves what fits. Nothing you wear or hold is moved, and an item never bounces back while you keep the key down.",
+            "Every move is a normal inventory move, so the server checks it exactly like a drag and drop.",
+        ],
+        [
+            "Key: [b]Left Alt[/b]. Change it in Options > Controls, under [b]DevZ Mods[/b].",
+            "No settings file: there's nothing for admins to set.",
+        ],
+    ),
 }
 
 # Server-side mods: loaded with -servermod, players never download them
@@ -129,6 +142,13 @@ SCANS = {
     "RepairToPristine": "the repair kits from any mod (for example a multitool that works as a sewing kit)",
     "InfectedDamage": "the attacks of the zombies from any zombie mod",
     "AutoStack": None,  # needs no scanning: works with any ammo as it is
+    "QuickTransfer": None,
+}
+
+# For mods without a scanner: the "Works with your other mods" text
+NO_SCAN = {
+    "AutoStack": "Works with any ammo, vanilla or modded, and any stack size, including [b]DevZ Ammo Stacks[/b]. Nothing to set up.",
+    "QuickTransfer": "Works with items and containers from any mod, and with bigger inventories such as [b]DevZ Inventory Sizes[/b]. Nothing to set up.",
 }
 
 
@@ -142,6 +162,7 @@ PICTOGRAMS = {
     "RepairToPristine": "repair",       # condition dots red -> green, wrench, sewing kit
     "AutoStack": "autostack",           # two loose groups -> one stack
     "InfectedDamage": "infected",       # claw slashes over a health bar
+    "QuickTransfer": "transfer",        # cursor sweeping items from a pack into a crate
 }
 # A bundle's picture is one small tile per mod in it, each with that mod's pictogram and colour
 # (filled in from PACKS below).
@@ -152,13 +173,14 @@ PICTOGRAMS = {
 PACKS = {
     "Essentials": (
         "DevZ\nEssentials", (120, 200, 140),
-        "Five DevZ mods in one download: bigger inventories, bigger ammo stacks, longer-lasting guns, kits that combine, and repairs back to Pristine.",
+        "Six DevZ mods in one download: bigger inventories, bigger ammo stacks, longer-lasting guns, kits that combine, repairs back to Pristine, and quick looting with one key.",
         {
             "InventorySizes": "more room in clothing, backpacks, vests and pouches",
             "AmmoStacks": "loose ammo stacks twice as big",
             "WeaponDurability": "weapons and suppressors last 10x as long",
             "CombineNoSplit": "combine part-used bandages, repair kits and filters, but never split them",
             "RepairToPristine": "repair kits repair items all the way to Pristine instead of stopping at Worn",
+            "QuickTransfer": "hold Left Alt and sweep the mouse over items to move them between you and the nearest open container",
         },
     ),
 }
@@ -175,7 +197,8 @@ def preview(folder, title, accent, path):
         footer = f"{len(PACKS[folder][3])} mods in one  ·  by DevilinJake"
     else:
         footer = "by DevilinJake"
-    order = list(MODS) + list(PACKS)
+    # mods added after the first bundle go last, so the older cards keep their texture
+    order = list(MODS)[:8] + list(PACKS) + list(MODS)[8:]
     seed = order.index(folder) * 10        # fixes the background texture per mod
     card(title.split("\n"), accent, PICTOGRAMS[folder], seed, path, footer=footer)
 
@@ -210,7 +233,7 @@ def description(folder, summary, what, defaults):
 [/list]"""
     else:
         covers = ""
-        others = "Works with any ammo, vanilla or modded, and any stack size, including [b]DevZ Ammo Stacks[/b]. Nothing to set up."
+        others = NO_SCAN[folder]
 
     return f"""{summary}
 
@@ -259,7 +282,7 @@ This Workshop build covers [b]vanilla items[/b], so it works on any server and n
 [/list]
 
 [h2]Your own settings and modded items[/h2]
-Every mod in the bundle comes with a [b]scanner[/b] that reads your server and every mod you run (clothing, weapons, kits...) and lists their items in a simple table, next to the vanilla ones. Change any values, build, and you have copies made for your exact mod list.
+The mods with item tables come with a [b]scanner[/b] that reads your server and every mod you run (clothing, weapons, kits...) and lists their items in a simple table, next to the vanilla ones. Change any values, build, and you have copies made for your exact mod list.
 [list]
 [*] The settings are built into the mods, so this download only holds the finished mods. The tables, scanners and build scripts are on [url={GITHUB}]GitHub[/url].
 [*] Step-by-step guide, no programming needed: [url={GITHUB}/blob/main/CUSTOMISING.md]CUSTOMISING.md[/url]

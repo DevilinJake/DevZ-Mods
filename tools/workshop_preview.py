@@ -7,7 +7,7 @@ ak_silhouette.png, an outline traced from a photo of a suppressed AKM.
     from workshop_preview import card
     card(["Ammo", "Stacks"], (214, 157, 70), "ammo", seed=10, path="preview.png")
 
-Pictograms: inventory, ammo, weapon, combine, recipes, repair, autostack, infected.
+Pictograms: inventory, ammo, weapon, combine, recipes, repair, autostack, infected, transfer.
 A bundle card takes a list of (pictogram, accent) pairs instead of a name and draws one small
 tile per mod, each in that mod's colour.
 """
@@ -323,6 +323,26 @@ class Pict:
         r, cx, cy = 11, 86, 26
         self.d.ellipse(self.p(cx - r, cy - r, cx + r, cy + r), fill=self.fg)
         self.d.text(self.p(cx, cy + 0.5), "1.5×", font=bahn(int(10 * self.k), "Bold"), fill=DARK, anchor="mm")
+
+    def transfer(self):
+        """a cursor sweeping over a row of items, which fly into a crate"""
+        # your inventory: a row of slots, the first two already emptied by the sweep
+        for i, x in enumerate([4, 22, 40]):
+            filled = i == 2
+            self.slot(x, 20, 15, fill=self.accent if filled else None, border=self.fg if filled else self.fg + (110,), radius=3)
+        # the sweep: a dashed trail along the row, then the mouse pointer
+        for x in range(6, 44, 6):
+            self.d.line(self.p(x, 42, x + 3, 42), fill=self.accent, width=self.lw(2.2))
+        cx, cy = 50, 30
+        self.d.polygon(self.p(cx, cy, cx, cy + 20, cx + 5, cy + 15, cx + 9, cy + 23, cx + 12, cy + 21,
+                              cx + 8, cy + 14, cx + 14, cy + 14), fill=self.fg, outline=DARK)
+        self.arrow(30, 62, 56, color=self.accent, w=3.2)
+        # the crate, its slots filling up
+        self.d.rounded_rectangle(self.p(60, 44, 98, 90), radius=4 * self.k, fill=(0, 0, 0, 110),
+                                 outline=self.fg, width=self.lw(2.4))
+        for j, y in enumerate([50, 70]):
+            for i, x in enumerate([64, 81]):
+                self.slot(x, y, 13, fill=self.accent if (i + 2 * j) < 2 else None, radius=3)
 
     def tiles(self, items):
         """A bundle: one small card-like tile per mod, each with that mod's own pictogram and

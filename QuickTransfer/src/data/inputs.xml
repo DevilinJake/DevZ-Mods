@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<modded_inputs>
+	<inputs>
+		<actions>
+			<input name="UADevZQuickTransfer" loc="Quick transfer (hold, then move the mouse over items)" />
+		</actions>
+		<sorting name="devz" loc="DevZ Mods">
+			<input name="UADevZQuickTransfer" />
+		</sorting>
+	</inputs>
+	<preset>
+		<input name="UADevZQuickTransfer">
+			<btn name="kLMenu" />
+		</input>
+	</preset>
+</modded_inputs>
