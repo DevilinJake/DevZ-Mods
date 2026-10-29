@@ -195,7 +195,7 @@ PICTOGRAMS = {
     "InfectedDamage": "infected",       # claw slashes over a health bar
     "QuickTransfer": "transfer",        # cursor sweeping items from a pack into a crate
     "CrashSafety": "crash",             # a heli tipped over on landing, a car into a wall, hull bar held at 10%
-    "AutoRun": "autorun",               # a Z keycap, a running figure with speed lines, an arrow ahead
+    "AutoRun": "autorun",               # the running-man sign with three speed lines behind it
 }
 # A bundle's picture is one small tile per mod in it, each with that mod's pictogram and colour
 # (filled in from PACKS below).
