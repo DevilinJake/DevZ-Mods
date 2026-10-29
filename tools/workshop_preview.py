@@ -446,6 +446,8 @@ class Pict:
         # speed lines behind the runner: stacked, the longest on top, round ends
         for x0, x1, y in [(2, 32, 36), (6, 30, 47), (10, 28, 58)]:
             self.stroke([x0, y, x1, y], self.accent, 3.6)
+        # the ground, just under the front foot
+        self.d.line(self.p(20, 91, 96, 91), fill=self.fg + (130,), width=self.lw(1.8))
 
     def tiles(self, items):
         """A bundle: one small card-like tile per mod, each with that mod's own pictogram and
