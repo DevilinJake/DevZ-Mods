@@ -427,8 +427,9 @@ class Pict:
             self.stroke(pts, color, w)
 
         shoulder, hip = (63, 32), (51, 58)
-        # behind: the back arm, bent, upper arm back and forearm angled up behind
-        limb([shoulder[0], shoulder[1], 47, 42, 38, 28])
+        # behind: the back arm pumping, elbow driven straight back at shoulder height, forearm
+        # dropping down and back from it
+        limb([shoulder[0], shoulder[1], 47, 30, 39, 41])
         # behind: the back leg, thigh back, shin kicked out almost flat behind
         limb([hip[0], hip[1], 38, 70, 16, 72])
         # the torso, leaning forward, and the head above it
