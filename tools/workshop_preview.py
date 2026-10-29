@@ -1,13 +1,14 @@
 """Draws a DevZ Workshop preview card (512x512 PNG). Used by make_workshop.py.
 
 Needs Pillow and numpy. Everything is drawn here: a moody dark background, a pictogram of
-what the mod does, the title in big condensed type and a DevZ tag. The only picture file is
-ak_silhouette.png, an outline traced from a photo of a suppressed AKM.
+what the mod does, the title in big condensed type and a DevZ tag. The only picture files are
+traced white-on-black outlines: ak_silhouette.png (a suppressed AKM), heli_silhouette.png (an
+MH-6 Little Bird) and landrover_silhouette.png (a Defender 110).
 
     from workshop_preview import card
     card(["Ammo", "Stacks"], (214, 157, 70), "ammo", seed=10, path="preview.png")
 
-Pictograms: inventory, ammo, weapon, combine, recipes, repair, autostack, infected, transfer.
+Pictograms: inventory, ammo, weapon, combine, recipes, repair, autostack, infected, transfer, crash.
 A bundle card takes a list of (pictogram, accent) pairs instead of a name and draws one small
 tile per mod, each in that mod's colour.
 """
@@ -344,26 +345,67 @@ class Pict:
             for i, x in enumerate([64, 81]):
                 self.slot(x, y, 13, fill=self.accent if (i + 2 * j) < 2 else None, radius=3)
 
+    def silhouette(self, mask_path, w, color, at, anchor=(0.5, 1.0), angle=0, halo=0):
+        """Paste a traced silhouette (white-on-black mask) scaled to width w units, rotated by
+        angle degrees (positive tips the left end down), so that the mask point `anchor`
+        (fractions of its width and height) lands on `at` (units). halo: width in units of a
+        dark keyline around it, to keep it apart from whatever is behind."""
+        m = Image.open(mask_path).convert("L")
+        s = int(w * self.k) / m.width
+        m = m.resize((int(w * self.k), int(round(m.height * s))), Image.LANCZOS)
+        pad = int(halo * self.k) + 2
+        big = Image.new("L", (m.width + 2 * pad, m.height + 2 * pad), 0)
+        big.paste(m, (pad, pad))
+        m = big
+        ax, ay = anchor[0] * (m.width - 2 * pad) + pad, anchor[1] * (m.height - 2 * pad) + pad
+        layers = [(m, color)]
+        if halo:
+            layers.insert(0, (m.filter(ImageFilter.MaxFilter(int(halo * self.k) | 1)), DARK))
+        dot = Image.new("L", m.size, 0)                      # follows the anchor through the rotation
+        ImageDraw.Draw(dot).ellipse([ax - 3, ay - 3, ax + 3, ay + 3], fill=255)
+        if angle:
+            dot = dot.rotate(angle, resample=Image.BICUBIC, expand=True)
+        ys, xs = np.nonzero(np.asarray(dot) > 100)
+        off = (int(at[0] * self.k - xs.mean()), int(at[1] * self.k - ys.mean()))
+        for mask, col in layers:
+            lay = Image.new("RGBA", mask.size, col[:3] + (255,))
+            lay.putalpha(mask)
+            if angle:
+                lay = lay.rotate(angle, resample=Image.BICUBIC, expand=True)
+            self.img.alpha_composite(lay, off)
+
     def crash(self):
-        """a car hitting a wall, its health bar stopped short of empty"""
-        # wall
-        for y in [14, 28, 42]:
-            self.d.rectangle(self.p(84, y, 96, y + 12), outline=self.fg, width=self.lw(2))
-        self.d.line(self.p(78, 20, 74, 16), fill=self.accent, width=self.lw(2.6))      # impact lines
-        self.d.line(self.p(78, 34, 72, 34), fill=self.accent, width=self.lw(2.6))
-        self.d.line(self.p(78, 48, 74, 52), fill=self.accent, width=self.lw(2.6))
-        # car, side on, nose into the wall
-        body = (0, 0, 0, 90)
-        self.d.polygon(self.p(10, 46, 22, 46, 30, 30, 56, 30, 64, 42, 80, 44, 80, 56, 10, 56),
-                       fill=body, outline=self.fg, width=self.lw(2.4))
-        self.d.polygon(self.p(32, 33, 54, 33, 59, 42, 27, 42), outline=self.fg, width=self.lw(1.8))
-        for cx in [24, 66]:
-            self.d.ellipse(self.p(cx - 7, 50, cx + 7, 64), fill=DARK, outline=self.fg, width=self.lw(2.2))
-        # hull bar: drained, but held above empty by a marker
-        self.d.rounded_rectangle(self.p(8, 74, 92, 88), radius=4 * self.k, fill=(0, 0, 0, 150),
+        """a Little Bird tipped onto its nose on landing and, apart from it, a Land Rover into
+        a wall; the hull bar drained to 10% but held there by a stop (Badly Damaged, never
+        Ruined). Drawn on a 720 layer (see card()) so the two crashes fit with a gap between."""
+        ground = 60
+        # the heli, nose down, resting on the front of its skids
+        self.silhouette(HERE / "heli_silhouette.png", 44, self.fg, at=(15, ground),
+                        anchor=(0.09, 0.99), angle=25)
+        cut = int((ground + 0.5) * self.k)
+        self.img.paste(Image.new("RGBA", (self.size, self.size - cut), (0, 0, 0, 0)), (0, cut))
+        # its nose: the leftmost solid pixel just above the ground line
+        a = np.asarray(self.img.getchannel("A"))[int((ground - 6) * self.k):cut]
+        nose = np.nonzero(a.max(axis=0) > 100)[0].min() / self.k
+        self.d.line(self.p(1, ground, 99, ground), fill=self.fg + (170,), width=self.lw(1.8))
+        # the Land Rover, its bumper against a wall of blocks at the right edge
+        self.silhouette(HERE / "landrover_silhouette.png", 36, self.fg, at=(72, ground))
+        wall, bumper = 94, 90
+        for i in range(3):
+            y = ground - (i + 1) * 6
+            self.d.rectangle(self.p(wall, y, 99, y + 6), fill=(0, 0, 0, 90), outline=self.fg, width=self.lw(2))
+        for dx0, dy0, dx1, dy1 in [(0.5, -9, 2.5, -13), (1, -5.5, 4, -6), (0.5, -2, 2.5, 2)]:
+            self.d.line(self.p(bumper + dx0, ground + dy0, bumper + dx1, ground + dy1), fill=self.accent,
+                        width=self.lw(2.6))
+        # impact strokes fanning out ahead of the heli's nose
+        ix, iy = nose - 1, ground - 2
+        for dx0, dy0, dx1, dy1 in [(-1, -4, -3.5, -10), (-3, -1.5, -10, -4), (-3, 2, -9, 5)]:
+            self.d.line(self.p(ix + dx0, iy + dy0, ix + dx1, iy + dy1), fill=self.accent, width=self.lw(3))
+        # hull bar: drained, but a stop holds it at 10%
+        self.d.rounded_rectangle(self.p(12, 72, 88, 86), radius=4 * self.k, fill=(0, 0, 0, 150),
                                  outline=self.fg, width=self.lw(2))
-        self.d.rounded_rectangle(self.p(10, 76, 24, 86), radius=3 * self.k, fill=self.accent)
-        self.d.line(self.p(25, 70, 25, 92), fill=self.fg, width=self.lw(2.6))
+        self.d.rounded_rectangle(self.p(14, 74, 27, 84), radius=3 * self.k, fill=self.accent)
+        self.d.rounded_rectangle(self.p(26.5, 67, 30, 91), radius=1.5 * self.k, fill=self.fg)
 
     def tiles(self, items):
         """A bundle: one small card-like tile per mod, each with that mod's own pictogram and
@@ -436,6 +478,8 @@ def card(title, accent, pict, seed, path, footer="by DevilinJake"):
     three = len(title) > 2
     bundle = isinstance(pict, (list, tuple))
     psize = 600 if pict == "weapon" else (470 if three else 520)   # the rifle is wide and short
+    if pict == "crash":
+        psize = 720                                                 # two crashes side by side, with a gap
     if bundle:
         psize = 720                                                 # a grid of tiles, wider than one pictogram
     p = pictogram(pict, psize, WHITE, accent)

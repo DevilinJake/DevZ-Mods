@@ -130,12 +130,12 @@ MODS = {
         "Crash\nSafety", (226, 120, 70),
         "Vehicle crashes hurt and knock out the crew instead of killing them, and leave the vehicle badly damaged instead of ruined. Server-side only.",
         [
-            "The crew lose 10-70% health and the worst crashes knock them out for up to a minute. A crash never kills.",
-            "Crashes, falls and fire stop at 10% hull (Badly Damaged), so the vehicle can be repaired. Engines, fuel tanks, rotors, wheels and doors still take full damage and can be ruined.",
+            "The crew lose 10-70% health and the worst crashes knock them out for up to 45 seconds. A crash never kills.",
+            "The hull, engine and fuel tank (the parts that can't be replaced) stop at 10% (Badly Damaged) from crashes, falls, fire, over-revving, no coolant or deep water, so the vehicle can always be repaired. Rotors, wheels, doors and other parts still take full damage and can be ruined.",
             "Expansion helicopters no longer burn out from a slow tip-over on landing.",
         ],
         [
-            "Hull floor 10%; guns and explosives can still destroy vehicles (set [b]HullFloorAgainstWeapons[/b] to 1 to stop that too).",
+            "Hull, engine and fuel tank floor 10%; guns and explosives can still destroy vehicles (set [b]FloorsAgainstWeapons[/b] to 1 to stop that too).",
             "Settings file: [b]<profiles>\\DevZ_CrashSafety\\Config.json[/b]. Change it with the server stopped; no rebuild needed.",
         ],
     ),
@@ -178,7 +178,7 @@ PICTOGRAMS = {
     "AutoStack": "autostack",           # two loose groups -> one stack
     "InfectedDamage": "infected",       # claw slashes over a health bar
     "QuickTransfer": "transfer",        # cursor sweeping items from a pack into a crate
-    "CrashSafety": "crash",             # a car with a health bar stopped above the red
+    "CrashSafety": "crash",             # a heli tipped over on landing, a car into a wall, hull bar held at 10%
 }
 # A bundle's picture is one small tile per mod in it, each with that mod's pictogram and colour
 # (filled in from PACKS below).
