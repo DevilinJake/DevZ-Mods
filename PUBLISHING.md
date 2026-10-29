@@ -42,14 +42,14 @@ write a short change note. Players get the update the next time they join.
 
 | Mod | Workshop ID |
 |---|---|
-| InventorySizes | |
-| AmmoStacks | |
-| WeaponDurability | |
-| CombineNoSplit | |
-| RemoveRecipes | |
-| RepairToPristine | |
-| QuickTransfer | |
-| AutoStack (server-side) | |
-| InfectedDamage (server-side) | |
-| CrashSafety (server-side) | |
-| Essentials (bundle) | |
+| InventorySizes | [3828750627](https://steamcommunity.com/sharedfiles/filedetails/?id=3828750627) |
+| AmmoStacks | [3828759176](https://steamcommunity.com/sharedfiles/filedetails/?id=3828759176) |
+| WeaponDurability | [3828759569](https://steamcommunity.com/sharedfiles/filedetails/?id=3828759569) |
+| CombineNoSplit | [3828760325](https://steamcommunity.com/sharedfiles/filedetails/?id=3828760325) |
+| RemoveRecipes | [3828760950](https://steamcommunity.com/sharedfiles/filedetails/?id=3828760950) |
+| RepairToPristine | [3828762289](https://steamcommunity.com/sharedfiles/filedetails/?id=3828762289) |
+| QuickTransfer | [3829388553](https://steamcommunity.com/sharedfiles/filedetails/?id=3829388553) |
+| AutoStack (server-side) | [3828762770](https://steamcommunity.com/sharedfiles/filedetails/?id=3828762770) |
+| InfectedDamage (server-side) | [3828763099](https://steamcommunity.com/sharedfiles/filedetails/?id=3828763099) |
+| CrashSafety (server-side) | [3829389536](https://steamcommunity.com/sharedfiles/filedetails/?id=3829389536) |
+| Essentials (bundle) | [3828767191](https://steamcommunity.com/sharedfiles/filedetails/?id=3828767191) |
