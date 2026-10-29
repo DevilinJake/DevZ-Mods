@@ -415,31 +415,72 @@ class Pict:
         for x, y in zip(pts[::2], pts[1::2]):
             self.d.ellipse(self.p(x - r, y - r, x + r, y + r), fill=color)
 
+    def survivor(self, color, key=DARK, kl=0.9):
+        """A solid silhouette of a survivor sprinting to the right: backpack on, rifle slung
+        across the back. Filled polygons and round-capped strokes in one colour, drawn back to
+        front, so the body, pack and rifle melt into one outline. Only the two limbs nearest
+        the viewer (front arm, front leg) get a thin dark keyline, so they read as their own
+        shapes where they cross the body and the other leg (the keyline vanishes against the
+        dark card). Occupies roughly x 20..90, y 0..80."""
+        def poly(*pts, keyed=False):
+            if keyed:
+                self.d.polygon(self.p(*pts), fill=color, outline=key, width=self.lw(kl))
+            else:
+                self.d.polygon(self.p(*pts), fill=color)
+
+        def cap(pts, w, keyed=False):
+            if keyed:
+                self.stroke(pts, key, w + 2 * kl)
+            self.stroke(pts, color, w)
+
+        def ball(x, y, r, keyed=False):
+            if keyed:
+                self.d.ellipse(self.p(x - r - kl, y - r - kl, x + r + kl, y + r + kl), fill=key)
+            self.d.ellipse(self.p(x - r, y - r, x + r, y + r), fill=color)
+
+        # the rifle, behind everything: barrel and front sight up past the shoulder, the butt
+        # showing below the pack, just behind the hip
+        cap([38, 52, 58, 2], 4)                             # barrel and receiver
+        poly(56, 5, 59, 4, 60, -1, 57, 0)                   # front sight
+        poly(31, 51, 39, 45, 45, 51, 36, 60)                # stock
+        # back leg: pushing off, stretched out behind, boot low
+        cap([54, 48, 42, 62], 9)
+        cap([42, 62, 30, 71], 7)
+        poly(31, 67, 34, 73, 21, 75, 20, 70)                # boot, toe pointing back
+        # back arm: swung back, elbow behind the pack, fist out behind it
+        cap([57, 29, 47, 40], 6.5)
+        cap([47, 40, 37, 34], 5)
+        ball(35.5, 33, 3.6)
+        # the backpack: a rounded hump on the back that follows the lean
+        poly(43, 24, 55, 23, 54, 32, 52, 44, 39, 42, 40, 32)
+        self.d.ellipse(self.p(40, 20, 55, 31), fill=color)
+        self.d.ellipse(self.p(37, 29, 51, 45), fill=color)
+        # torso, leaning into the run (shoulders top right, hips lower left)
+        poly(55, 23, 68, 25, 65, 36, 61, 48, 49, 47, 52, 34)
+        # neck, head with a cap peak pointing the way
+        cap([64, 20, 62, 25], 6)
+        self.d.ellipse(self.p(60, 7, 73, 21), fill=color)
+        poly(61, 12, 75, 10, 77, 13, 61, 16)
+        # front leg: thigh driving up and forward, shin down, boot flat ahead
+        cap([56, 46, 72, 54], 9, keyed=True)
+        cap([72, 54, 73, 72], 7, keyed=True)
+        poly(69, 71, 80, 73, 82, 78, 68, 78)                # boot
+        ball(72, 54, 4.5)                                   # knee, over the keylines' notch
+        # front arm: driving forward and up, bent at the elbow, fist
+        cap([64, 27, 77, 33], 7, keyed=True)
+        cap([77, 33, 86, 22], 5.5, keyed=True)
+        ball(86.5, 21.5, 3.6)
+        ball(77, 33, 3.5)                                   # elbow, over the keylines' notch
+
     def autorun(self):
-        """a running figure in full stride with speed lines trailing it and an arrow ahead, and
-        the Z key it starts with, lower left"""
-        # the runner: the classic running-man sign, leaning forward, drawn big and bold so it
-        # reads at thumbnail size
-        w = 6.5
-        hx, hy = 73, 14
-        self.d.ellipse(self.p(hx - 7, hy - 7, hx + 7, hy + 7), fill=self.fg)
-        self.stroke([66, 25, 57, 50], self.fg, w)                   # torso, leaning into the run
-        self.stroke([65, 29, 80, 34, 90, 26], self.fg, w)           # front arm, driving forward
-        self.stroke([65, 29, 51, 33, 43, 23], self.fg, w)           # back arm, swung back
-        self.stroke([57, 50, 74, 57, 78, 76], self.fg, w)           # front leg, knee up, foot down
-        self.stroke([57, 50, 50, 62, 38, 57], self.fg, w)           # back leg, kicked out behind
+        """a survivor sprinting right with speed lines trailing them and an arrow ahead"""
+        self.survivor(self.fg)
         # speed lines trailing the body
-        for x0, x1, y in [(22, 40, 36), (16, 34, 44), (24, 38, 52)]:
+        for x0, x1, y in [(10, 30, 28), (4, 26, 36), (12, 28, 44)]:
             self.stroke([x0, y, x1, y], self.accent, 2.8)
         # the ground, and the arrow: the way ahead
-        self.d.line(self.p(46, 82, 98, 82), fill=self.fg + (130,), width=self.lw(1.8))
-        self.arrow(50, 92, 96, color=self.accent, w=3.4)
-        # the keycap, lower left: a dark key with a recessed top face and a Z
-        self.d.rounded_rectangle(self.p(4, 62, 32, 92), radius=5 * self.k, fill=darken(self.fg, 0.6),
-                                 outline=self.fg, width=self.lw(2))
-        self.d.rounded_rectangle(self.p(7, 64, 29, 86), radius=4 * self.k, fill=(0, 0, 0, 120),
-                                 outline=self.fg + (120,), width=self.lw(1.2))
-        self.d.text(self.p(18, 75.5), "Z", font=bahn(int(18 * self.k), "Bold"), fill=self.fg, anchor="mm")
+        self.d.line(self.p(30, 82, 98, 82), fill=self.fg + (130,), width=self.lw(1.8))
+        self.arrow(36, 92, 96, color=self.accent, w=3.4)
 
     def tiles(self, items):
         """A bundle: one small card-like tile per mod, each with that mod's own pictogram and
