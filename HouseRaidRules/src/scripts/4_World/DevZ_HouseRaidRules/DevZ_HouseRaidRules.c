@@ -22,14 +22,34 @@ class DevZ_HouseRaidRules
 		return partName;
 	}
 
-	// True = let the hit through. hitPos is where the hit landed in the world.
+	// True when at least one rebuildable part of the house is built
+	static bool HasBuiltPart(BuildingBase house)
+	{
+		ConstructionBase construction = ConstructionBase.Cast(house.GetConstructionBasic());
+		if (!construction)
+			return false;
+		array<ConstructionPart> parts = construction.GetConstructionPartArray();
+		if (!parts)
+			return false;
+		foreach (ConstructionPart part : parts)
+		{
+			if (part && part.IsBuilt())
+				return true;
+		}
+		return false;
+	}
+
+	// True = let the hit through. partName is the built part hit, or "" for a hit elsewhere on a house
+	// that has built parts (blocked too: the engine can spread damage between a house's zones).
+	// hitPos is where the hit landed in the world.
 	static bool MayDamagePart(BuildingBase house, string partName, EntityAI source, int damageType, string ammo, vector hitPos)
 	{
 		DevZ_HouseRaidRulesConfig cfg = DevZ_HouseRaidRulesConfig.Get();
+		string hitKind = HitKind(source, damageType, ammo);
+		if (cfg.LogAllHits)
+			Print(LOG + "HIT house=" + house.GetType() + " part=" + PartLabel(partName) + " damageType=" + damageType + " kind=" + hitKind + " ammo=" + ammo + " source=" + SourceLabel(source));
 		if (!cfg.RulesOn())
 			return true;
-
-		string hitKind = HitKind(source, damageType, ammo);
 		if (!KindIsBlocked(cfg, hitKind))
 			return true;
 
@@ -37,33 +57,74 @@ class DevZ_HouseRaidRules
 		if (attacker && cfg.AdminsBypass() && attacker.NinjinsUpgraded_IsAdmin())
 			return true;
 
-		string zoneName;
-		string zoneType = ZoneTypeAt(hitPos, zoneName);
-
-		string reason = "";
-		string notice = "";
-		if (!cfg.DamageAllowedIn(zoneType))
-		{
-			reason = "zone";
-			notice = cfg.BlockedZoneText;
-		}
-		else if (cfg.RaidHoursOnly && !cfg.IsRaidTimeNow())
-		{
-			reason = "hours";
-			notice = cfg.BlockedHoursText;
-		}
+		string zoneLabel;
+		string notice;
+		string reason = BlockReason(cfg, hitPos, zoneLabel, notice);
 		if (reason == "")
 			return true;
 
 		if (cfg.LogBlocked)
-		{
-			string zoneLabel = zoneType;
-			if (zoneName != "")
-				zoneLabel = zoneLabel + "(" + zoneName + ")";
-			Print(LOG + "DENIED house=" + house.GetType() + " part=" + partName + " zone=" + zoneLabel + " kind=" + hitKind + " ammo=" + ammo + " attacker=" + AttackerLabel(attacker) + " reason=" + reason);
-		}
+			Print(LOG + "DENIED house=" + house.GetType() + " part=" + PartLabel(partName) + " zone=" + zoneLabel + " kind=" + hitKind + " ammo=" + ammo + " attacker=" + AttackerLabel(attacker) + " reason=" + reason);
 		TellAttacker(cfg, attacker, notice);
 		return false;
+	}
+
+	// Backstop for damage that reached a part without passing MayDamagePart (another mod applying
+	// damage directly, or a path the hook doesn't see). Called when the game is about to destroy a
+	// part because its health reached zero without a player action. True = keep the part instead.
+	// The attacker is unknown here, so there is no admin bypass and no notice.
+	static bool ShouldKeepPart(BuildingBase house, string partName)
+	{
+		DevZ_HouseRaidRulesConfig cfg = DevZ_HouseRaidRulesConfig.Get();
+		if (!cfg.RulesOn())
+			return false;
+		if (!cfg.BlocksBullets() && !cfg.BlocksExplosives() && !cfg.BlocksMelee())
+			return false;
+		string zoneLabel;
+		string notice;
+		string reason = BlockReason(cfg, house.GetPosition(), zoneLabel, notice);
+		if (reason == "")
+			return false;
+		if (cfg.LogBlocked)
+			Print(LOG + "RESTORED house=" + house.GetType() + " part=" + partName + " zone=" + zoneLabel + " reason=" + reason + " (health reached zero through damage this mod did not see; part kept and repaired)");
+		return true;
+	}
+
+	// "" when raiding is allowed at worldPos right now, else "zone" or "hours". zoneLabel is for the
+	// log, notice the text for the attacker.
+	protected static string BlockReason(DevZ_HouseRaidRulesConfig cfg, vector worldPos, out string zoneLabel, out string notice)
+	{
+		string zoneName;
+		string zoneType = ZoneTypeAt(worldPos, zoneName);
+		zoneLabel = zoneType;
+		if (zoneName != "")
+			zoneLabel = zoneLabel + "(" + zoneName + ")";
+		notice = "";
+		if (!cfg.DamageAllowedIn(zoneType))
+		{
+			notice = cfg.BlockedZoneText;
+			return "zone";
+		}
+		if (cfg.RaidHoursOnly && !cfg.IsRaidTimeNow())
+		{
+			notice = cfg.BlockedHoursText;
+			return "hours";
+		}
+		return "";
+	}
+
+	protected static string PartLabel(string partName)
+	{
+		if (partName == "")
+			return "(house)";
+		return partName;
+	}
+
+	protected static string SourceLabel(EntityAI source)
+	{
+		if (!source)
+			return "none";
+		return source.GetType();
 	}
 
 	// "explosive", "bullet", "melee" or "" for anything else (fire, falling, decay...)

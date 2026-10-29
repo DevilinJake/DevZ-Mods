@@ -37,6 +37,11 @@ Raid time is **Expansion's** `RaidSettings.json` schedule when Expansion Base Bu
 (default Friday 18:00 to Sunday 21:00, server time). Running Ninjins raid zones with their own
 schedule instead? Set `RaidHoursOnly` to `0` and list only `Raid` in `DamageAllowedInZoneTypes`.
 
+A hit elsewhere on a house that has built parts is checked the same way (the engine can spread
+damage between a house's zones). And as a **backstop**, when a part's health reaches zero without a
+player action, for example from damage another mod applied directly, the part is kept and its health
+restored if raiding isn't allowed there right now; that case is logged as `RESTORED`.
+
 A blocked hit is written to the server log and the attacker gets a short notice. Melee hits aren't
 something Ninjins Raid Extension covers; here they're blocked by default so a PvE house can't be
 chipped down with an axe. The sledgehammer and dismantling are **actions**, not hits: block
@@ -77,7 +82,8 @@ added to it after an update). Edit it with the server stopped.
 | `NoticeWaitSeconds` | `3` | At most one notice per player this often |
 | `BlockedZoneText` | `Rebuilt house parts can only be raided in the PvP zone` | |
 | `BlockedHoursText` | `Rebuilt house parts can only be raided during raid hours` | |
-| `LogBlocked` | `1` | Write each blocked hit to the server log (`[DevZ_HouseRaidRules] DENIED ...` lines with house, part, zone, kind, ammo, attacker and reason) |
+| `LogBlocked` | `1` | Write each blocked hit (`[DevZ_HouseRaidRules] DENIED ...` with house, part, zone, kind, ammo, attacker and reason) and each part the backstop kept (`RESTORED ...`) to the server log |
+| `LogAllHits` | `0` | Debug: also log every hit on a house with built parts (`HIT ...` with zone, damage type, kind, ammo and source), blocked or not. Turn on to see what an explosive actually does to a house |
 
 ## How it works, for modders
 
@@ -85,8 +91,10 @@ Vanilla `BuildingBase` creates a `Rebuilding` construction component; each rebui
 `ConstructionPart` whose name is also the house's damage zone for it. When a zone is ruined,
 `ConstructionBase.OnHealthLevelChanged` destroys the part. This mod overrides
 `BuildingBase.EEOnDamageCalculated` (server only), looks the zone up as a part, and if the part
-is built asks `DevZ_HouseRaidRules.MayDamagePart`; returning `false` cancels the damage before
-any health is taken. Zones come from `NinjinsUpgraded_ZoneEngineModule.GetEngine()`, the
+is built (or the house has any built part) asks `DevZ_HouseRaidRules.MayDamagePart`; returning
+`false` cancels the damage before any health is taken. `Rebuilding.DestroyPartServer` is the
+backstop: called with no player when a zone is ruined, it asks `ShouldKeepPart` and restores the
+zone's health instead of destroying the part. Zones come from `NinjinsUpgraded_ZoneEngineModule.GetEngine()`, the
 attacker from `NinjinsUpgraded_HitSource`, the admin flag from `PlayerBase.NinjinsUpgraded_IsAdmin()`
 and the switches from `g_NinjinsRaidExt_Config`. Two files: `DevZ_HouseRaidRulesConfig.c`
 (settings and the schedule) and `DevZ_HouseRaidRules.c` (the rules), plus the one-method

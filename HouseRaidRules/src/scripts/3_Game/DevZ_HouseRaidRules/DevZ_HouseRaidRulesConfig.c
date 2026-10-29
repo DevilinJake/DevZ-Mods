@@ -82,8 +82,10 @@ class DevZ_HouseRaidRulesConfig
 	string BlockedZoneText = "Rebuilt house parts can only be raided in the PvP zone";
 	string BlockedHoursText = "Rebuilt house parts can only be raided during raid hours";
 
-	// Write each blocked hit to the server log ([DevZ_HouseRaidRules] lines)
+	// Write each blocked hit, and each part kept by the backstop, to the server log ([DevZ_HouseRaidRules] lines)
 	int LogBlocked = 1;
+	// Debug: also log every hit on a house with built parts (zone, damage type, ammo, source), blocked or not
+	int LogAllHits = 0;
 
 	protected static ref DevZ_HouseRaidRulesConfig s_Instance;
 
