@@ -77,8 +77,6 @@ class DevZ_CrashSafetyContactZones
 		string nearest = bodyZones.Nearest(localPos);
 		if (nearest == "")
 			return zone;
-		if (cfg.DebugLog)
-			PrintFormat("[DevZ_CrashSafety:debug] %1 contact on '%2' at %3 moved to '%4'", vehicle.GetType(), zone, localPos, nearest);
 		return nearest;
 	}
 }

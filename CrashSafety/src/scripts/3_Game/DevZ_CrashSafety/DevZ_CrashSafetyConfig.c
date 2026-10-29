@@ -47,9 +47,6 @@ class DevZ_CrashSafetyConfig
 	ref TStringArray CatchAllZones;
 
 	int LogCrashes = 1;
-	// Temporary diagnostics (4_World\DevZ_CrashSafety\Debug.c): every hit, level change and
-	// destruction of a car or helicopter, with the code path for ruins. Very chatty: leave at 0.
-	int DebugLog = 0;
 
 	protected static ref DevZ_CrashSafetyConfig s_Instance;
 
