@@ -10,7 +10,7 @@ Steam.
    .\build.ps1 <Name> -Key ..\signing\DevZ.biprivatekey
    ```
    The folder to upload is `build\@DevZ_<Name>` (`addons\`, `keys\DevZ.bikey`, `mod.cpp`).
-   Server-side mods (AutoStack, InfectedDamage, CrashSafety) build without `-Key`, and get the
+   Server-side mods (AutoStack, InfectedDamage, CrashSafety, HouseRaidRules) build without `-Key`, and get the
    **Server-side mod** tag in Publisher.
 2. **Refresh the preview and description** if the defaults changed:
    `python tools\make_workshop.py` writes `<Name>\workshop\preview.png` and `description.txt`.
@@ -52,5 +52,6 @@ write a short change note. Players get the update the next time they join.
 | AutoRun | not uploaded yet |
 | AutoStack (server-side) | [3828762770](https://steamcommunity.com/sharedfiles/filedetails/?id=3828762770) |
 | InfectedDamage (server-side) | [3828763099](https://steamcommunity.com/sharedfiles/filedetails/?id=3828763099) |
+| HouseRaidRules (server-side) | not uploaded yet |
 | CrashSafety (server-side) | [3829389536](https://steamcommunity.com/sharedfiles/filedetails/?id=3829389536) |
 | Essentials (bundle) | [3828767191](https://steamcommunity.com/sharedfiles/filedetails/?id=3828767191) |

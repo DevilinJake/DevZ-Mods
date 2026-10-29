@@ -12,6 +12,7 @@ builds on its own and is set up so server admins can change the numbers without 
 | [WeaponDurability](WeaponDurability) | How fast weapons and suppressors wear: one multiplier each (default 10x), per-weapon overrides | Ready |
 | [InfectedDamage](InfectedDamage) | How hard zombies hit: Health, Blood, Shock, bleed chance and clothing wear multipliers (default 1.5x damage), per-attack overrides (server-side only) | Ready |
 | [CrashSafety](CrashSafety) | Vehicle crashes hurt and knock out the crew instead of killing them, and leave the vehicle Badly Damaged instead of Ruined (parts still break) (server-side only) | Ready |
+| [HouseRaidRules](HouseRaidRules) | Rebuilt house walls, doors and windows (vanilla rebuilding, e.g. Nasdara) follow Ninjins PvP/PvE Upgraded's PvE and raid-hour rules against bullets, explosives and melee; add-on for Ninjins (server-side only) | Ready |
 | [CombineNoSplit](CombineNoSplit) | Combine part-used bandages, repair kits and gas mask filters, but never split them; a scanner lists items from any mod to pick from | Ready |
 | [RemoveRecipes](RemoveRecipes) | Switch off right-click crafting recipes from vanilla or any mod, without editing it; a scanner lists every recipe to pick from | Ready |
 | [RepairToPristine](RepairToPristine) | Repair kits repair items all the way to Pristine instead of stopping at Worn; a scanner lists kits from any mod to pick from | Ready |
@@ -23,7 +24,7 @@ builds on its own and is set up so server admins can change the numbers without 
 
 Every mod is on the Steam Workshop, built with vanilla items only so it works on any server.
 Client mods: add them to `-mod=` and copy `keys\DevZ.bikey` into your server's `keys\`.
-Server-side mods (AutoStack, InfectedDamage, CrashSafety): add them to `-servermod=`; players download
+Server-side mods (AutoStack, InfectedDamage, CrashSafety, HouseRaidRules): add them to `-servermod=`; players download
 nothing and no key is needed.
 
 Want different numbers, or items from your own mods? See **[CUSTOMISING.md](CUSTOMISING.md)**:

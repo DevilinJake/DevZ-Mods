@@ -156,7 +156,7 @@ MODS = {
 }
 
 # Server-side mods: loaded with -servermod, players never download them
-SERVER_ONLY = {"AutoStack", "InfectedDamage", "CrashSafety"}
+SERVER_ONLY = {"AutoStack", "InfectedDamage", "CrashSafety", "HouseRaidRules"}
 
 
 # What each mod's scanner finds in other mods, for the "Works with your other mods" section

@@ -1,0 +1,30 @@
+Rebuilt house walls, doors, windows and barricades follow the same PvE and raid-hour rules as your fences and gates. Server-side add-on for Ninjins PvP/PvE Upgraded.
+
+[list]
+[*] Ninjins Raid Extension stops bullets and explosives on base-building [i]items[/i] outside your raid zones. A house rebuilt with bricks and a trowel (Nasdara and other maps with vanilla rebuilding) isn't an item: its rebuilt wall is part of the house, so it could be shot or blown open in a PvE zone while the fence next to it couldn't. This mod puts the same check on the house.
+[*] Zones, the admin flag and the on/off switches are read from Ninjins at runtime. Nothing of Ninjins' is copied or changed.
+[*] Raid hours come from Expansion's RaidSettings.json schedule when Expansion Base Building is loaded, otherwise from the mod's own schedule.
+[/list]
+
+[h2]Default settings[/h2]
+[list]
+[*] Hits land only in PvP and Raid zones, and only during raid hours (Friday 18:00 to Sunday 21:00 server time unless Expansion's schedule applies). Safe zones and PvE: no damage. Melee hits are held to the same rules.
+[*] Follows Ninjins Raid Extension's Enabled, BlockBulletDamage, BlockExplosiveDamage and BypassForAdmins, so there's one place to edit.
+[*] Settings file: [b]<profiles>\DevZ_HouseRaidRules\Config.json[/b]. Change it with the server stopped; no rebuild needed.
+[/list]
+
+[h2]Server setup[/h2]
+[list]
+[*] Needs Ninjins PvP/PvE Upgraded in -mod=. Expansion is optional.
+[*] Copy the mod folder into your server folder and add it to [b]-servermod=[/b] (not -mod=), after Ninjins.
+[*] Players don't download anything, and it needs no key.
+[*] The sledgehammer and dismantling are actions, not hits: block ActionDestroyPart and ActionDismantlePart in Ninjins Core's ActionsManager.json for your PvE and safe zones.
+[/list]
+
+[h2]Links[/h2]
+[list]
+[*] Details and source: [url=https://github.com/DevilinJake/DevZ-Mods/tree/main/HouseRaidRules]GitHub[/url]
+[*] More DevZ mods: [url=https://github.com/DevilinJake/DevZ-Mods]DevZ-Mods[/url]
+[/list]
+
+[b]Licence: MIT.[/b] Use it, change it and repack it, including in your own server pack. A credit is appreciated but not required.
