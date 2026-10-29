@@ -126,10 +126,23 @@ MODS = {
             "No settings file: there's nothing for admins to set.",
         ],
     ),
+    "CrashSafety": (
+        "Crash\nSafety", (226, 120, 70),
+        "Vehicle crashes hurt and knock out the crew instead of killing them, and leave the vehicle badly damaged instead of ruined. Server-side only.",
+        [
+            "The crew lose 10-70% health and the worst crashes knock them out for up to a minute. A crash never kills.",
+            "Crashes, falls and fire stop at 10% hull (Badly Damaged), so the vehicle can be repaired. Engines, fuel tanks, rotors, wheels and doors still take full damage and can be ruined.",
+            "Expansion helicopters no longer burn out from a slow tip-over on landing.",
+        ],
+        [
+            "Hull floor 10%; guns and explosives can still destroy vehicles (set [b]HullFloorAgainstWeapons[/b] to 1 to stop that too).",
+            "Settings file: [b]<profiles>\\DevZ_CrashSafety\\Config.json[/b]. Change it with the server stopped; no rebuild needed.",
+        ],
+    ),
 }
 
 # Server-side mods: loaded with -servermod, players never download them
-SERVER_ONLY = {"AutoStack", "InfectedDamage"}
+SERVER_ONLY = {"AutoStack", "InfectedDamage", "CrashSafety"}
 
 
 # What each mod's scanner finds in other mods, for the "Works with your other mods" section
@@ -143,12 +156,14 @@ SCANS = {
     "InfectedDamage": "the attacks of the zombies from any zombie mod",
     "AutoStack": None,  # needs no scanning: works with any ammo as it is
     "QuickTransfer": None,
+    "CrashSafety": None,
 }
 
 # For mods without a scanner: the "Works with your other mods" text
 NO_SCAN = {
     "AutoStack": "Works with any ammo, vanilla or modded, and any stack size, including [b]DevZ Ammo Stacks[/b]. Nothing to set up.",
     "QuickTransfer": "Works with items and containers from any mod, and with bigger inventories such as [b]DevZ Inventory Sizes[/b]. Nothing to set up.",
+    "CrashSafety": "Works with vanilla vehicles and modded ones built on them, including Expansion's helicopters and boats. Nothing to set up. Leave other mods' crew damage multipliers at 1.",
 }
 
 
@@ -163,6 +178,7 @@ PICTOGRAMS = {
     "AutoStack": "autostack",           # two loose groups -> one stack
     "InfectedDamage": "infected",       # claw slashes over a health bar
     "QuickTransfer": "transfer",        # cursor sweeping items from a pack into a crate
+    "CrashSafety": "crash",             # a car with a health bar stopped above the red
 }
 # A bundle's picture is one small tile per mod in it, each with that mod's pictogram and colour
 # (filled in from PACKS below).

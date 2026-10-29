@@ -344,6 +344,27 @@ class Pict:
             for i, x in enumerate([64, 81]):
                 self.slot(x, y, 13, fill=self.accent if (i + 2 * j) < 2 else None, radius=3)
 
+    def crash(self):
+        """a car hitting a wall, its health bar stopped short of empty"""
+        # wall
+        for y in [14, 28, 42]:
+            self.d.rectangle(self.p(84, y, 96, y + 12), outline=self.fg, width=self.lw(2))
+        self.d.line(self.p(78, 20, 74, 16), fill=self.accent, width=self.lw(2.6))      # impact lines
+        self.d.line(self.p(78, 34, 72, 34), fill=self.accent, width=self.lw(2.6))
+        self.d.line(self.p(78, 48, 74, 52), fill=self.accent, width=self.lw(2.6))
+        # car, side on, nose into the wall
+        body = (0, 0, 0, 90)
+        self.d.polygon(self.p(10, 46, 22, 46, 30, 30, 56, 30, 64, 42, 80, 44, 80, 56, 10, 56),
+                       fill=body, outline=self.fg, width=self.lw(2.4))
+        self.d.polygon(self.p(32, 33, 54, 33, 59, 42, 27, 42), outline=self.fg, width=self.lw(1.8))
+        for cx in [24, 66]:
+            self.d.ellipse(self.p(cx - 7, 50, cx + 7, 64), fill=DARK, outline=self.fg, width=self.lw(2.2))
+        # hull bar: drained, but held above empty by a marker
+        self.d.rounded_rectangle(self.p(8, 74, 92, 88), radius=4 * self.k, fill=(0, 0, 0, 150),
+                                 outline=self.fg, width=self.lw(2))
+        self.d.rounded_rectangle(self.p(10, 76, 24, 86), radius=3 * self.k, fill=self.accent)
+        self.d.line(self.p(25, 70, 25, 92), fill=self.fg, width=self.lw(2.6))
+
     def tiles(self, items):
         """A bundle: one small card-like tile per mod, each with that mod's own pictogram and
         accent colour. items: list of (pictogram name, accent). Laid out 3 across, then the rest

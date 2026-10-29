@@ -1,0 +1,30 @@
+Vehicle crashes hurt and knock out the crew instead of killing them, and leave the vehicle badly damaged instead of ruined. Server-side only.
+
+[list]
+[*] The crew lose 10-70% health and the worst crashes knock them out for up to a minute. A crash never kills.
+[*] Crashes, falls and fire stop at 10% hull (Badly Damaged), so the vehicle can be repaired. Engines, fuel tanks, rotors, wheels and doors still take full damage and can be ruined.
+[*] Expansion helicopters no longer burn out from a slow tip-over on landing.
+[/list]
+
+[h2]Default settings[/h2]
+[list]
+[*] Hull floor 10%; guns and explosives can still destroy vehicles (set [b]HullFloorAgainstWeapons[/b] to 1 to stop that too).
+[*] Settings file: [b]<profiles>\DevZ_CrashSafety\Config.json[/b]. Change it with the server stopped; no rebuild needed.
+[/list]
+
+[h2]Server setup[/h2]
+[list]
+[*] Copy the mod folder into your server folder and add it to [b]-servermod=[/b] (not -mod=).
+[*] Players don't download anything, and it needs no key.
+[/list]
+
+[h2]Works with your other mods[/h2]
+Works with vanilla vehicles and modded ones built on them, including Expansion's helicopters and boats. Nothing to set up. Leave other mods' crew damage multipliers at 1.
+
+[h2]Links[/h2]
+[list]
+[*] Details and source: [url=https://github.com/DevilinJake/DevZ-Mods/tree/main/CrashSafety]GitHub[/url]
+[*] More DevZ mods: [url=https://github.com/DevilinJake/DevZ-Mods]DevZ-Mods[/url]
+[/list]
+
+[b]Licence: MIT.[/b] Use it, change it and repack it, including in your own server pack. A credit is appreciated but not required.
