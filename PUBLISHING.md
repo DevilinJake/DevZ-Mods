@@ -49,6 +49,7 @@ write a short change note. Players get the update the next time they join.
 | RemoveRecipes | [3828760950](https://steamcommunity.com/sharedfiles/filedetails/?id=3828760950) |
 | RepairToPristine | [3828762289](https://steamcommunity.com/sharedfiles/filedetails/?id=3828762289) |
 | QuickTransfer | [3829388553](https://steamcommunity.com/sharedfiles/filedetails/?id=3829388553) |
+| AutoRun | not uploaded yet |
 | AutoStack (server-side) | [3828762770](https://steamcommunity.com/sharedfiles/filedetails/?id=3828762770) |
 | InfectedDamage (server-side) | [3828763099](https://steamcommunity.com/sharedfiles/filedetails/?id=3828763099) |
 | CrashSafety (server-side) | [3829389536](https://steamcommunity.com/sharedfiles/filedetails/?id=3829389536) |

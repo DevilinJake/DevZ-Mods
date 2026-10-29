@@ -139,6 +139,20 @@ MODS = {
             "Settings file: [b]<profiles>\\DevZ_CrashSafety\\Config.json[/b]. Change it with the server stopped; no rebuild needed.",
         ],
     ),
+    "AutoRun": (
+        "Auto\nRun", (120, 200, 170),
+        "Press a key and keep moving forward at the speed you have: walking, jogging or sprinting. Steer with the mouse. Any movement key stops it.",
+        [
+            "Keeps the speed you had when you pressed the key (jog if you were standing still). Sprint ends with your stamina and comes back with it, as it does when you hold Shift.",
+            "Stops on W, A, S, D, the key again, death, being knocked out, being restrained, getting into a vehicle, and menus you can't walk in (Esc, traders).",
+            "Doesn't stop for jumping, vaulting, crouching or going prone, the inventory, the map or typing in chat: you carry on, the way you would with W held.",
+            "Multiplayer-safe: the server is told the same state as your game, so you're never pulled back.",
+        ],
+        [
+            "Key: [b]Z[/b]. Change it in Options > Controls, under [b]DevZ Mods[/b]. (On a keyboard, vanilla doesn't use Z. Running Expansion? Its own auto-run is on Z too: switch one of them off.)",
+            "No settings file: there's nothing for admins to set.",
+        ],
+    ),
 }
 
 # Server-side mods: loaded with -servermod, players never download them
@@ -157,6 +171,7 @@ SCANS = {
     "AutoStack": None,  # needs no scanning: works with any ammo as it is
     "QuickTransfer": None,
     "CrashSafety": None,
+    "AutoRun": None,
 }
 
 # For mods without a scanner: the "Works with your other mods" text
@@ -164,6 +179,7 @@ NO_SCAN = {
     "AutoStack": "Works with any ammo, vanilla or modded, and any stack size, including [b]DevZ Ammo Stacks[/b]. Nothing to set up.",
     "QuickTransfer": "Works with items and containers from any mod, and with bigger inventories such as [b]DevZ Inventory Sizes[/b]. Nothing to set up.",
     "CrashSafety": "Works with vanilla vehicles and modded ones built on them, including Expansion's helicopters and boats. Nothing to set up. Leave other mods' crew damage multipliers at 1.",
+    "AutoRun": "Works on any map with any other mods: it changes no items and no settings. Nothing to set up.",
 }
 
 
@@ -179,6 +195,7 @@ PICTOGRAMS = {
     "InfectedDamage": "infected",       # claw slashes over a health bar
     "QuickTransfer": "transfer",        # cursor sweeping items from a pack into a crate
     "CrashSafety": "crash",             # a heli tipped over on landing, a car into a wall, hull bar held at 10%
+    "AutoRun": "autorun",               # a Z keycap, a running figure with speed lines, an arrow ahead
 }
 # A bundle's picture is one small tile per mod in it, each with that mod's pictogram and colour
 # (filled in from PACKS below).

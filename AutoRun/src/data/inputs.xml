@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<modded_inputs>
+	<inputs>
+		<actions>
+			<input name="UADevZAutoRun" loc="Auto run (press to start or stop)" />
+		</actions>
+		<sorting name="devz" loc="DevZ Mods">
+			<input name="UADevZAutoRun" />
+		</sorting>
+	</inputs>
+	<preset>
+		<input name="UADevZAutoRun">
+			<btn name="kZ" />
+		</input>
+	</preset>
+</modded_inputs>

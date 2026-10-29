@@ -8,7 +8,8 @@ MH-6 Little Bird) and landrover_silhouette.png (a Defender 110).
     from workshop_preview import card
     card(["Ammo", "Stacks"], (214, 157, 70), "ammo", seed=10, path="preview.png")
 
-Pictograms: inventory, ammo, weapon, combine, recipes, repair, autostack, infected, transfer, crash.
+Pictograms: inventory, ammo, weapon, combine, recipes, repair, autostack, infected, transfer, crash,
+autorun.
 A bundle card takes a list of (pictogram, accent) pairs instead of a name and draws one small
 tile per mod, each in that mod's colour.
 """
@@ -406,6 +407,30 @@ class Pict:
                                  outline=self.fg, width=self.lw(2))
         self.d.rounded_rectangle(self.p(14, 74, 27, 84), radius=3 * self.k, fill=self.accent)
         self.d.rounded_rectangle(self.p(26.5, 67, 30, 91), radius=1.5 * self.k, fill=self.fg)
+
+    def autorun(self):
+        """a Z keycap, a running figure with speed lines trailing it, an arrow ahead"""
+        # the keycap, lower left: a dark key with a lighter top face and a Z
+        self.d.rounded_rectangle(self.p(6, 58, 34, 88), radius=5 * self.k, fill=darken(self.fg, 0.6),
+                                 outline=self.fg, width=self.lw(2))
+        self.d.rounded_rectangle(self.p(9, 60, 31, 82), radius=4 * self.k, fill=(0, 0, 0, 120),
+                                 outline=self.fg + (120,), width=self.lw(1.2))
+        self.d.text(self.p(20, 71.5), "Z", font=bahn(int(17 * self.k), "Bold"), fill=self.fg, anchor="mm")
+        # the runner, mid-stride, leaning into the run (lines in 0..100 units)
+        w = self.lw(4.6)
+        hx, hy = 66, 18
+        self.d.ellipse(self.p(hx - 6, hy - 6, hx + 6, hy + 6), fill=self.fg)
+        self.d.line(self.p(63, 26, 55, 50), fill=self.fg, width=w, joint="curve")            # torso
+        self.d.line(self.p(61, 32, 72, 38, 80, 30), fill=self.fg, width=w, joint="curve")    # front arm
+        self.d.line(self.p(61, 32, 50, 36, 44, 28), fill=self.fg, width=w, joint="curve")    # back arm
+        self.d.line(self.p(55, 50, 70, 58, 76, 74), fill=self.fg, width=w, joint="curve")    # front leg
+        self.d.line(self.p(55, 50, 45, 62, 36, 60), fill=self.fg, width=w, joint="curve")    # back leg
+        # speed lines trailing the runner
+        for x0, x1, y in [(26, 38, 30), (22, 36, 40), (30, 40, 50)]:
+            self.d.line(self.p(x0, y, x1, y), fill=self.accent, width=self.lw(2.6))
+        # ground and the way ahead
+        self.d.line(self.p(40, 78, 98, 78), fill=self.fg + (150,), width=self.lw(1.8))
+        self.arrow(48, 90, 96, color=self.accent, w=3.4)
 
     def tiles(self, items):
         """A bundle: one small card-like tile per mod, each with that mod's own pictogram and

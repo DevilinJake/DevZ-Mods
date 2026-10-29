@@ -16,6 +16,7 @@ builds on its own and is set up so server admins can change the numbers without 
 | [RemoveRecipes](RemoveRecipes) | Switch off right-click crafting recipes from vanilla or any mod, without editing it; a scanner lists every recipe to pick from | Ready |
 | [RepairToPristine](RepairToPristine) | Repair kits repair items all the way to Pristine instead of stopping at Worn; a scanner lists kits from any mod to pick from | Ready |
 | [QuickTransfer](QuickTransfer) | Hold a key (Left Alt) with the inventory open and sweep the mouse over items: each one moves between you and the nearest open container | Ready |
+| [AutoRun](AutoRun) | Press a key (Z) to keep moving forward at the speed you have (walk, jog or sprint); any movement key stops it, jumping and crouching don't | Ready |
 | [Essentials](Essentials) | Bundle: Inventory Sizes, Ammo Stacks, Weapon & Suppressor Durability, Combine Kits, Repair To Pristine and Quick Transfer in one download (built with `build_pack.ps1`) | Ready |
 
 ## Using a mod
