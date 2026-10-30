@@ -14,7 +14,7 @@ class CfgMods
 	class DevZ_HouseCodeLock
 	{
 		dir = "DevZ_HouseCodeLock";
-		name = "DevZ House Code Lock";
+		name = "DevZ Expansion House CodeLock";
 		author = "DevilinJake";
 		type = "mod";
 		dependencies[] = {"World"};

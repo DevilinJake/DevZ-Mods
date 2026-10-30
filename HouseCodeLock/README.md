@@ -1,4 +1,4 @@
-# DevZ House Code Lock
+# DevZ Expansion House CodeLock
 
 Fit the **DayZ Expansion code lock** to rebuilt vanilla house doors. Expansion's code lock
 already works on its own walls, vanilla fence gates and tents, but not on house doors yet.

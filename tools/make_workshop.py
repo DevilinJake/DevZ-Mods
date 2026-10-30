@@ -154,7 +154,7 @@ MODS = {
         ],
     ),
     "HouseCodeLock": (
-        "House\nCode Lock", (200, 160, 90),
+        "Expansion\nHouse CodeLock", (200, 160, 90),
         "Fit the DayZ Expansion code lock to rebuilt vanilla house doors. A stopgap until Expansion supports house doors itself. Needs DayZ Expansion (Base Building).",
         [
             "Code lock in hands, looking at a closed, rebuilt house door: [b]Attach[/b]. It goes in the same spot as the vanilla digital code lock.",
@@ -213,7 +213,7 @@ PICTOGRAMS = {
     "QuickTransfer": "transfer",        # cursor sweeping items from a pack into a crate
     "CrashSafety": "crash",             # a heli tipped over on landing, a car into a wall, hull bar held at 10%
     "AutoRun": "autorun",               # the running-man sign with three speed lines behind it
-    "HouseCodeLock": "codelock",        # a house door with a keypad lock beside the handle
+    "HouseCodeLock": "codelock",        # a plain house door with a square keypad lock on it
 }
 # A bundle's picture is one small tile per mod in it, each with that mod's pictogram and colour
 # (filled in from PACKS below).
