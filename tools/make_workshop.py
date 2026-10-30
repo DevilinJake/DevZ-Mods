@@ -204,6 +204,8 @@ MODS = {
             "[b]Fixed: garden plots building as holograms.[/b] The original replaced the placement code for every item in the game; this version doesn't override placement at all.",
             "[b]Fixed: barrels on the rack showing open[/b] to players while they were closed on the server.",
             "[b]Fixed: the dismantle recipe and the kit's carry animation.[/b]",
+            "[b]Fixed: the rack faced away from you[/b] (placed against a wall, its barrels faced the wall). It now faces you.",
+            "[b]Fixed: a second's freeze[/b] the first time a kit appeared. The models are now in the game's fast-loading format (the kit went from 35 MB to 3.7 MB).",
             "[b]Changed on purpose: vanilla barrel rules are back.[/b] A barrel must be empty (and closed) to pick it up or put it in cargo, so you can't carry barrels full of loot or put barrels inside barrels.",
             "Same item names as the original ([b]Invictuz_Barrel_Storage[/b], [b]BarrelStorage_Kit[/b]): switching from it keeps your placed racks and your types.xml entries. Use this one [b]instead of[/b] the original, never both.",
         ],

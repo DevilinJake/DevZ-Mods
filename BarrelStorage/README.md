@@ -32,6 +32,8 @@ Take the original out of `-mod=`, add this one, and restart.
 | **Barrels on the rack looked open** to players while they were closed on the server | Vanilla opens a barrel the moment it's attached (meant for the truck bed), and players' games re-ran that whenever the rack came back into view. Now they keep the open/closed state the server sends |
 | **The dismantle recipe** set its result on the wrong slot | A screwdriver on an empty rack dismantles it and drops the kit on the ground |
 | **The carry animation** was set on the rack, which can't be held | It's set on the kit, so you carry it in both arms like a wooden crate |
+| **The rack faced away from you**: placed against a wall, its barrels faced the wall | The kit's preview (and so the rack) is turned 180°, so the front faces you |
+| **A second's freeze** the first time a kit appeared (after dismantling, or as loot), and the kit showing up late | The models were shipped in the editable format, which the game converts on the spot (the 35 MB kit took about 4 s). They're now binarized with DayZ Tools: 3.7 MB, loaded straight away |
 
 ## The deliberate change: vanilla barrel rules
 
@@ -86,10 +88,16 @@ Code: `src\scripts\4_World\`
 | `Barrel.c` | Adds attach/detach to barrels, and keeps a rack barrel's open/closed state on players' games |
 | `Recipes\` | The screwdriver dismantle recipe |
 | `Animations.c` | The kit's carry animation (CF's animation register) |
+| `Hologram.c` | Turns the kit's placement preview 180° (every other item keeps the vanilla facing) |
 
 **Why the PBO prefix is still `Invictuz_Barrel_Storage`:** the models point at their textures
 and at the six barrel spots by that folder name, inside the model files. Renaming the folder
 would leave the rack without barrel spots.
+
+**The models in `src\data\` are binarized** (game format, made with DayZ Tools' `binarize.exe`
+from Xantarn's originals, run from a folder holding `Invictuz_Barrel_Storage\data\` so it finds
+the materials). Xantarn's editable originals are in this repo's history (the first commit of
+this mod) and in the original Workshop mod.
 
 ## Testing it
 
