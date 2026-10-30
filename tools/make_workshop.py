@@ -215,6 +215,20 @@ MODS = {
             "No settings file.",
         ],
     ),
+    "BatteryLife": (
+        "Battery\nLife", (120, 200, 90),
+        "Batteries hold twice as much out of the box, so every flashlight, NVG, red dot and car battery lasts twice as long. Or build your own multipliers and per-battery values (see below).",
+        [
+            "A device uses the same energy per second as before; the battery just holds more. So one setting covers every device that runs on it, vanilla or modded.",
+            "Overrides only the battery's capacity ([b]energyStorageMax[/b]): no scripts, no performance cost.",
+            "New batteries still spawn full. A charger or a running engine adds the same charge per second as before, so a full charge takes longer too.",
+        ],
+        [
+            "9V, car and truck batteries hold 2x: a flashlight, headtorch or NVGs go from 83 minutes to almost 3 hours on one 9V, a red dot from 42 to 83 minutes, and a car battery runs the headlights (engine off) for 67 minutes instead of 33.",
+            "Gas canisters (lamps, stoves, blowtorch) stay vanilla; set [b]GasMultiplier[/b] to change them.",
+            "Batteries already in the world keep the charge they have, so a full one shows half full after you add the mod.",
+        ],
+    ),
 }
 
 # Server-side mods: loaded with -servermod, players never download them
@@ -238,6 +252,7 @@ SCANS = {
     "SatchelSoundFix": None,
     "HouseCodeLock": None,
     "BarrelStorage": None,
+    "BatteryLife": "the batteries and gas canisters from any mod (Expansion's helicopter battery, for example)",
 }
 
 # For mods without a scanner: the "Works with your other mods" text

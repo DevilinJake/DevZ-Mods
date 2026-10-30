@@ -1,0 +1,38 @@
+Batteries hold twice as much out of the box, so every flashlight, NVG, red dot and car battery lasts twice as long. Or build your own multipliers and per-battery values (see below).
+
+[list]
+[*] A device uses the same energy per second as before; the battery just holds more. So one setting covers every device that runs on it, vanilla or modded.
+[*] Overrides only the battery's capacity ([b]energyStorageMax[/b]): no scripts, no performance cost.
+[*] New batteries still spawn full. A charger or a running engine adds the same charge per second as before, so a full charge takes longer too.
+[/list]
+
+[h2]Default settings[/h2]
+[list]
+[*] 9V, car and truck batteries hold 2x: a flashlight, headtorch or NVGs go from 83 minutes to almost 3 hours on one 9V, a red dot from 42 to 83 minutes, and a car battery runs the headlights (engine off) for 67 minutes instead of 33.
+[*] Gas canisters (lamps, stoves, blowtorch) stay vanilla; set [b]GasMultiplier[/b] to change them.
+[*] Batteries already in the world keep the charge they have, so a full one shows half full after you add the mod.
+[/list]
+This Workshop build covers [b]vanilla items[/b], so it works on any server and needs no other mod. Running modded items? See below.
+
+[h2]Server setup[/h2]
+[list]
+[*] Add it to [b]-mod=[/b] (players need it too; they download it automatically when they join).
+[*] Copy [b]keys\DevZ.bikey[/b] from the mod folder into your server's [b]keys[/b] folder.
+[/list]
+
+[h2]Your own settings and modded items[/h2]
+The mod comes with a [b]scanner[/b] that reads your server and every mod you run, and lists the batteries and gas canisters from any mod (Expansion's helicopter battery, for example) in a simple table, next to the vanilla ones. Pick your own values for any of them (or keep the defaults), build it, and you have a copy made for your exact mod list.
+[list]
+[*] The settings are built into the mod, so this Workshop download only holds the finished mod. The tables, scanner and build script are on [url=https://github.com/DevilinJake/DevZ-Mods]GitHub[/url].
+[*] No programming: download the repo, run one command to scan, edit the table in Excel or Google Sheets, run one command to build. You need Python and DayZ Tools (both free).
+[*] Step-by-step guide: [url=https://github.com/DevilinJake/DevZ-Mods/blob/main/CUSTOMISING.md]CUSTOMISING.md[/url]
+[*] Then upload your copy to the Workshop (Unlisted is fine) or put it in your server pack, and use it instead of this one.
+[/list]
+
+[h2]Links[/h2]
+[list]
+[*] Details and source: [url=https://github.com/DevilinJake/DevZ-Mods/tree/main/BatteryLife]GitHub[/url]
+[*] More DevZ mods: [url=https://github.com/DevilinJake/DevZ-Mods]DevZ-Mods[/url]
+[/list]
+
+[b]Licence: MIT.[/b] Use it, change it and repack it, including in your own server pack. A credit is appreciated but not required.

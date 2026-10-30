@@ -74,6 +74,7 @@ in. Each mod's scanner:
 | [InventorySizes](InventorySizes) | `scan_sizes.py` | `sizes.csv` |
 | [AmmoStacks](AmmoStacks) | `scan_ammo.py` | `ammo.csv` |
 | [WeaponDurability](WeaponDurability) | `scan_durability.py` | `durability.csv` |
+| [BatteryLife](BatteryLife) | `scan_batteries.py` | `batteries.csv` |
 | [CombineNoSplit](CombineNoSplit) | `scan_items.py` | `items.csv` |
 | [RemoveRecipes](RemoveRecipes) | `scan_recipes.py` | `recipes.csv` |
 | [RepairToPristine](RepairToPristine) | `scan_kits.py` | `kits.csv` |

@@ -1,0 +1,7 @@
+﻿Type,Class,Parent,Example,Source,RequiredAddon,CurrentCapacity,CurrentAtSpawn,Multiplier
+Battery,Battery9V,Inventory_Base,9V Battery,Vanilla,DZ_Gear_Consumables,50.0,50.0,
+Battery,CarBattery,Inventory_Base,Car Battery,Vanilla,DZ_Vehicles_Parts,500.0,500.0,
+Battery,TruckBattery,Inventory_Base,Truck Battery,Vanilla,DZ_Vehicles_Parts,1500.0,1500.0,
+Gas,LargeGasCanister,Inventory_Base,Large Gas Canister,Vanilla,DZ_Gear_Consumables,800.0,800.0,
+Gas,MediumGasCanister,Inventory_Base,Medium Gas Canister,Vanilla,DZ_Gear_Consumables,650.0,650.0,
+Gas,SmallGasCanister,Inventory_Base,Small Gas Canister,Vanilla,DZ_Gear_Consumables,330.0,330.0,
