@@ -9,7 +9,7 @@ MH-6 Little Bird) and landrover_silhouette.png (a Defender 110).
     card(["Ammo", "Stacks"], (214, 157, 70), "ammo", seed=10, path="preview.png")
 
 Pictograms: inventory, ammo, weapon, combine, recipes, repair, autostack, infected, transfer, crash,
-autorun.
+autorun, houseraid.
 A bundle card takes a list of (pictogram, accent) pairs instead of a name and draws one small
 tile per mod, each in that mod's colour.
 """
@@ -448,6 +448,54 @@ class Pict:
             self.stroke([x0, y, x1, y], self.accent, 3.6)
         # the ground, just under the front foot
         self.d.line(self.p(20, 91, 96, 91), fill=self.fg + (130,), width=self.lw(1.8))
+
+    def houseraid(self):
+        """a house whose lower wall has been rebuilt in brick (tinted in the mod's colour), with a
+        boarded door; a PvE shield badge sits over the rebuilt wall and a bullet coming in from
+        the top left stops on it in a burst of sparks"""
+        fg, ac = self.fg, self.accent
+        L, R, eave, peak, ground = 38, 98, 40, 7, 92
+        cx = (L + R) / 2
+        # walls: dark glass with a white outline; the roof a thick gable with a little overhang
+        self.d.rectangle(self.p(L, eave, R, ground), fill=(0, 0, 0, 100), outline=fg, width=self.lw(2.4))
+        self.d.rectangle(self.p(84, 14, 90, 27), fill=fg)                                  # chimney
+        self.stroke([L - 4, eave + 1, cx, peak, R + 4, eave + 1], fg, 3.4)
+        # the rebuilt wall: courses of brick along the bottom, under a clean band of plaster
+        bx0, bx1, by0, bh, bw = L + 1.2, R - 1.2, 58, 5.6, 9.5
+        rows = int((ground - 1.2 - by0) / bh)
+        for r in range(rows):
+            y = by0 + r * bh
+            x = bx0 - (bw / 2 if r % 2 else 0)
+            while x < bx1:
+                x0, x1 = max(x, bx0), min(x + bw, bx1)
+                if x1 - x0 > 1.5:
+                    self.d.rectangle(self.p(x0 + 0.5, y + 0.5, x1 - 0.5, y + bh - 0.5),
+                                     fill=ac + (95,), outline=fg + (140,), width=self.lw(0.9))
+                x += bw
+        # the door, boarded across with two planks (a barricade), and a window beside it
+        self.d.rectangle(self.p(76, 62, 90, ground), fill=DARK + (230,), outline=fg, width=self.lw(2.2))
+        for y0, y1 in [(68, 75), (80, 87)]:
+            self.d.polygon(self.p(74, y0, 92, y1 - 5, 92, y1, 74, y0 + 5), fill=fg)
+        self.d.rectangle(self.p(57, 46, 69, 56), fill=(0, 0, 0, 120), outline=fg, width=self.lw(1.8))
+        self.d.line(self.p(63, 46, 63, 56), fill=fg, width=self.lw(1.4))
+        # the shield over the rebuilt wall, half on the house, half in front of it
+        sw, sx, sy = 32, 20, 48
+        self.shield(sx, sy, sw, ac, fg)
+        shx, shy = sx + sw / 2, sy + sw * 1.15 * 0.46        # the shield's visual centre
+        self.d.text(self.p(shx, shy + 0.5), "PvE", font=bahn(int(13 * self.k), "Bold"), fill=DARK, anchor="mm")
+        # a bullet in from the left, tracer dashes behind it, stopped flat on the shield's edge
+        hx, hy = sx + 0.8, shy - 1                            # where it hits the shield
+        for x0, x1 in [(-1, 3), (5.5, 7.5)]:
+            self.stroke([x0, hy, x1, hy], ac, 2.6)
+        # the bullet, nose on the shield, with a thin dark keyline so it stays apart from the
+        # shield's white rim
+        self.stroke([hx - 9.5, hy, hx - 3, hy], DARK, 8.5)
+        self.stroke([hx - 9.5, hy, hx - 3, hy], fg, 6.2)
+        # sparks fanning back from the hit, above and below the bullet
+        for ang in (-140, -108, 108, 140):
+            a = math.radians(ang)
+            self.stroke([hx + math.cos(a) * 7.5, hy + math.sin(a) * 7.5, hx + math.cos(a) * 13.5, hy + math.sin(a) * 13.5], fg, 1.9)
+        self.d.line(self.p(L - 6, ground, R + 2, ground), fill=fg + (130,), width=self.lw(1.8))
 
     def tiles(self, items):
         """A bundle: one small card-like tile per mod, each with that mod's own pictogram and
