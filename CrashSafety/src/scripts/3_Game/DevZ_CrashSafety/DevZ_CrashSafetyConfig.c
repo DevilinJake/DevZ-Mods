@@ -29,6 +29,11 @@ class DevZ_CrashSafetyConfig
 	float BikeSeverityStart = 40;
 	float BikeSeverityFull = 80;
 
+	// Medium car crashes (vanilla damage 150 to 750) only damage the body zone that was hit, so
+	// parts go straight from fine to ruined in the first heavy crash. This passes a share of a
+	// medium crash (in percent) on to the parts linked to that zone too. 0 = vanilla.
+	float MediumCrashPartsPercent = 25;
+
 	// Floors, in percent of each part's max health: crashes, falls, fire, engine abuse (over-revving,
 	// no coolant, deep water) and decay never take these parts below them, so they end up Badly
 	// Damaged instead of Ruined and can still be repaired. Ruined, the hull burns out, and the engine

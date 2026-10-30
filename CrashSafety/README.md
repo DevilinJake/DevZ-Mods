@@ -23,6 +23,17 @@ Severity runs from 0 (the smallest heavy crash) to 1 (a crash that would kill in
 crash never takes a player below 1 health. Players who are already badly hurt can still die of
 bleeding afterwards.
 
+## Medium crashes wear parts down
+
+Vanilla sorts car crashes into three bands. Small knocks do nothing. Medium crashes damage only
+the body panel that was hit. Heavy crashes also pass the damage on to the parts behind that panel
+(radiator, battery, lights...) and hurt the crew. So parts go straight from fine to ruined in the
+first heavy crash.
+
+With this mod a medium crash passes **25%** of its damage on to those parts too, so a radiator
+wears down over a few knocks and you can see it coming. Set `MediumCrashPartsPercent` to `0` for
+vanilla.
+
 ## The hull, engine and fuel tank
 
 A vehicle has an overall health (the hull) and separate parts. Three of them end a vehicle for
@@ -93,9 +104,10 @@ damage (new settings are added to it after an update). Edit it with the server s
 | `CarSeverityFull` | `1200` | Crash damage that counts as severity 1 for cars (vanilla kills here) |
 | `BikeSeverityStart` | `40` | The same for motorbikes |
 | `BikeSeverityFull` | `80` | |
+| `MediumCrashPartsPercent` | `25` | Share of a medium car crash (vanilla damage 150 to 750) passed on to the parts linked to the panel that was hit. `0` = vanilla (panel only) |
 | `HullFloorPercent` | `10` | The hull never drops below this % except to weapons (Badly Damaged is under 30). `0` turns it off |
 | `EngineFloorPercent` | `10` | The same for the engine |
 | `FuelTankFloorPercent` | `10` | The same for the fuel tank |
 | `FloorsAgainstWeapons` | `0` | `1` = guns and explosives can't ruin these parts either |
 | `CatchAllZones` | `["Chassis"]` | Zones some vehicle models report every crash on, passing nothing to the body or crew (Expansion's Land Rover). A crash on one of these counts against the body zone nearest the impact instead |
-| `LogCrashes` | `1` | Write each crash and each held part to the server log (`[DevZ_CrashSafety]` lines) |
+| `LogCrashes` | `1` | Write each crash (band, damage, crew damage, speed) and each held part to the server log (`[DevZ_CrashSafety]` lines) |
