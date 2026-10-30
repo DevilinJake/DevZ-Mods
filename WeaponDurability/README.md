@@ -19,7 +19,8 @@ This mod only changes `barrelArmor`, never the ammo, so every weapon can be tune
 ## Default settings
 
 - **Weapons last 10× as long.**
-- **Suppressors and muzzle attachments last 10× as long.**
+- **Suppressors and muzzle attachments last 10× as long**, except the plastic bottle (improvised)
+  suppressor, which lasts 3.3× as long: it's meant to be a stopgap, not a permanent fit.
 - Every weapon and attachment can be set on its own in `durability.csv`.
 
 ## The two settings files

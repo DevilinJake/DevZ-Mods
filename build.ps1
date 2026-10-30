@@ -1,4 +1,4 @@
-<#
+﻿<#
 Builds one mod from this repo into build\@<ModName>, ready to copy onto a server.
 
   .\build.ps1 InventorySizes
@@ -9,7 +9,8 @@ Steps:
   1. If the mod has generate_config.py, runs it (e.g. sizes.csv -> src\config.cpp)
   2. Packs src\ into build\@DevZ_<ModName>\addons\DevZ_<ModName>.pbo
   3. Signs the PBO with your private key and copies the matching .bikey into keys\
-  4. With -Install, copies the finished mod folder into your server folder and its key into keys\
+  4. Writes meta.cpp with the mod's Workshop ID from workshop_ids.txt (if it has one)
+  5. With -Install, copies the finished mod folder into your server folder and its key into keys\
 
 Needs Python 3 and, for signing, DayZ Tools (free on Steam).
 #>
@@ -43,6 +44,7 @@ New-Item -ItemType Directory -Force $addons, $keysDir | Out-Null
 python -I (Join-Path $PSScriptRoot 'tools\pbo_tool.py') pack (Join-Path $modSrc 'src') $pbo --prefix $name
 if ($LASTEXITCODE -ne 0) { throw 'Packing failed' }
 Copy-Item (Join-Path $modSrc 'mod.cpp') $outDir
+& (Join-Path $PSScriptRoot 'tools\write_meta.ps1') $ModName $outDir
 
 if ($Key) {
     # DSSignFile needs a full path

@@ -1,4 +1,4 @@
-<#
+﻿<#
 Builds a bundle: several client mods from this repo in one mod folder, build\@DevZ_<Pack>.
 
   .\build_pack.ps1 Essentials -Key C:\keys\MyServer.biprivatekey
@@ -42,6 +42,7 @@ foreach ($mod in $mods) {
     Copy-Item (Join-Path $modBuild 'keys\*.bikey') $keysDir -Force
 }
 Copy-Item (Join-Path $packSrc 'mod.cpp') $outDir
+& (Join-Path $PSScriptRoot 'tools\write_meta.ps1') $Pack $outDir
 
 if ($Install) {
     $target = Join-Path $Install "@$name"

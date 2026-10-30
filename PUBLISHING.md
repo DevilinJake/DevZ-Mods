@@ -30,7 +30,10 @@ In Publisher:
 | Change note | `First release` |
 
 After it uploads, open the item's page in Steam: copy its ID (the number in the address) into
-the table below. The first time, Steam may ask you to accept the Workshop agreement before
+the table below **and into `workshop_ids.txt`**, then build and upload the mod once more. The
+build writes that ID into `meta.cpp` (`publishedid`), which servers send to players' launchers so
+they can find the mod; Publisher's own first-upload `meta.cpp` says 0, which breaks that (a
+player reported exactly this on Weapon Durability). The first time, Steam may ask you to accept the Workshop agreement before
 anyone else can see the item.
 
 ## Updating
@@ -39,6 +42,8 @@ Pick the item from Publisher's list (so it keeps its ID), point it at the new bu
 write a short change note. Players get the update the next time they join.
 
 ## Published items
+
+The same IDs live in `workshop_ids.txt`, which the build scripts read.
 
 | Mod | Workshop ID |
 |---|---|
@@ -51,6 +56,7 @@ write a short change note. Players get the update the next time they join.
 | QuickTransfer | [3829388553](https://steamcommunity.com/sharedfiles/filedetails/?id=3829388553) |
 | AutoRun | not uploaded yet |
 | SatchelSoundFix | not uploaded yet |
+| HouseCodeLock | not uploaded yet |
 | AutoStack (server-side) | [3828762770](https://steamcommunity.com/sharedfiles/filedetails/?id=3828762770) |
 | InfectedDamage (server-side) | [3828763099](https://steamcommunity.com/sharedfiles/filedetails/?id=3828763099) |
 | CrashSafety (server-side) | [3829389536](https://steamcommunity.com/sharedfiles/filedetails/?id=3829389536) |
