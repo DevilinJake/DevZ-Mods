@@ -22,7 +22,7 @@ builds on its own and is set up so server admins can change the numbers without 
 | [HouseCodeLock](HouseCodeLock) | The DayZ Expansion code lock on rebuilt vanilla house doors (set code, lock, unlock with Expansion's keypad), until Expansion supports them. Needs Expansion | Testing |
 | [BarrelStorage](BarrelStorage) | A rack that holds six barrels: Xantarn's INVICTUZ_Barrel_Storage, fixed for DayZ 1.30, with vanilla barrel rules (same item names, so placed racks carry over). Needs CF | Testing |
 | [BatteryLife](BatteryLife) | Batteries hold more (default 2x), so every flashlight, NVG, red dot, radio and car battery lasts longer: one multiplier, per-battery overrides, gas canisters optional | Testing |
-| [Essentials](Essentials) | Bundle: Inventory Sizes, Ammo Stacks, Weapon & Suppressor Durability, Combine Kits, Repair To Pristine and Quick Transfer in one download (built with `build_pack.ps1`) | Ready |
+| [Essentials](Essentials) | Bundle: Inventory Sizes, Ammo Stacks, Weapon & Suppressor Durability, Combine Kits, Repair To Pristine, Quick Transfer, Auto Run and Battery Life in one download (built with `build_pack.ps1`) | Ready |
 
 ## Using a mod
 

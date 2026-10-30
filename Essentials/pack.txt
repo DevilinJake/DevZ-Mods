@@ -6,3 +6,4 @@ CombineNoSplit
 RepairToPristine
 QuickTransfer
 AutoRun
+BatteryLife

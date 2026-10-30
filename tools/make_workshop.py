@@ -311,7 +311,7 @@ CREDITS = {
 PACKS = {
     "Essentials": (
         "DevZ\nEssentials", (120, 200, 140),
-        "Seven DevZ mods in one download: bigger inventories, bigger ammo stacks, longer-lasting guns, kits that combine, repairs back to Pristine, quick looting with one key, and auto run.",
+        "Eight DevZ mods in one download: bigger inventories, bigger ammo stacks, longer-lasting guns, kits that combine, repairs back to Pristine, quick looting with one key, auto run, and batteries that last twice as long.",
         {
             "InventorySizes": "more room in clothing, backpacks, vests and pouches",
             "AmmoStacks": "loose ammo stacks twice as big",
@@ -320,6 +320,7 @@ PACKS = {
             "RepairToPristine": "repair kits repair items all the way to Pristine instead of stopping at Worn",
             "QuickTransfer": "hold Left Alt and sweep the mouse over items to move them between you and the nearest open container",
             "AutoRun": "press Z and your character keeps moving forward at the speed you had (walk, jog or sprint); W, A, S, D or Z stops it",
+            "BatteryLife": "batteries hold twice as much, so flashlights, NVGs, red dots, radios and car batteries last twice as long",
         },
     ),
 }

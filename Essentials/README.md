@@ -1,6 +1,6 @@
 # DevZ Essentials
 
-Seven DevZ client mods in one download, for servers that want all of them and fewer entries in
+Eight DevZ client mods in one download, for servers that want all of them and fewer entries in
 the launcher:
 
 | Mod | What it does |
@@ -12,6 +12,7 @@ the launcher:
 | [Repair To Pristine](../RepairToPristine) | Repair kits repair items all the way to Pristine |
 | [Quick Transfer](../QuickTransfer) | Hold Left Alt and sweep the mouse over items to move them between you and the nearest open container |
 | [Auto Run](../AutoRun) | Press Z and your character keeps moving forward at the speed you had |
+| [Battery Life](../BatteryLife) | Batteries hold twice as much, so every device on them lasts twice as long |
 
 It's the same files as the single mods, with the same default settings: each mod's README
 explains them. **Load either the bundle or the single mods, never both.**

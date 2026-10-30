@@ -1,4 +1,4 @@
-Seven DevZ mods in one download: bigger inventories, bigger ammo stacks, longer-lasting guns, kits that combine, repairs back to Pristine, quick looting with one key, and auto run.
+Eight DevZ mods in one download: bigger inventories, bigger ammo stacks, longer-lasting guns, kits that combine, repairs back to Pristine, quick looting with one key, auto run, and batteries that last twice as long.
 
 [h2]What's inside[/h2]
 [list]
@@ -9,6 +9,7 @@ Seven DevZ mods in one download: bigger inventories, bigger ammo stacks, longer-
 [*] [b]Repair To Pristine[/b]: repair kits repair items all the way to Pristine instead of stopping at Worn.
 [*] [b]Quick Transfer[/b]: hold Left Alt and sweep the mouse over items to move them between you and the nearest open container.
 [*] [b]Auto Run[/b]: press Z and your character keeps moving forward at the speed you had (walk, jog or sprint); W, A, S, D or Z stops it.
+[*] [b]Battery Life[/b]: batteries hold twice as much, so flashlights, NVGs, red dots, radios and car batteries last twice as long.
 [/list]
 Each one is also on the Workshop on its own. [b]Use either this bundle or the single mods, never both[/b]: they're the same files, so loading both loads every change twice.
 
@@ -21,6 +22,7 @@ Each one is also on the Workshop on its own. [b]Use either this bundle or the si
 [*] [b]Repair To Pristine:[/b] Every vanilla kit: Gun Cleaning Kit, Sewing Kit, Leather Sewing Kit, Duct Tape, Sharpening Stone, Epoxy Putty, Electrical Repair Kit, Tire Repair Kit, Blowtorch. Kits built on these count too.
 [*] [b]Quick Transfer:[/b] Key: [b]Left Alt[/b]. Change it in Options > Controls, under [b]DevZ Mods[/b]. No settings file: there's nothing for admins to set.
 [*] [b]Auto Run:[/b] Key: [b]Z[/b]. Change it in Options > Controls, under [b]DevZ Mods[/b]. (On a keyboard, vanilla doesn't use Z. Running Expansion? Its own auto-run is on Z too: switch one of them off.) No settings file: there's nothing for admins to set.
+[*] [b]Battery Life:[/b] 9V, car and truck batteries hold 2x: a flashlight, headtorch or NVGs go from 83 minutes to almost 3 hours on one 9V, a red dot from 42 to 83 minutes, and a car battery runs the headlights (engine off) for 67 minutes instead of 33. Gas canisters (lamps, stoves, blowtorch) stay vanilla; set [b]GasMultiplier[/b] to change them. Batteries already in the world keep the charge they have, so a full one shows half full after you add the mod.
 [/list]
 This Workshop build covers [b]vanilla items[/b], so it works on any server and needs no other mod.
 
@@ -41,7 +43,7 @@ The mods with item tables come with a [b]scanner[/b] that reads your server and 
 
 [h2]Links[/h2]
 [list]
-[*] Each mod's details: [url=https://github.com/DevilinJake/DevZ-Mods/tree/main/InventorySizes]Inventory Sizes[/url], [url=https://github.com/DevilinJake/DevZ-Mods/tree/main/AmmoStacks]Ammo Stacks[/url], [url=https://github.com/DevilinJake/DevZ-Mods/tree/main/WeaponDurability]Weapon & Suppressor Durability[/url], [url=https://github.com/DevilinJake/DevZ-Mods/tree/main/CombineNoSplit]Combine Kits[/url], [url=https://github.com/DevilinJake/DevZ-Mods/tree/main/RepairToPristine]Repair To Pristine[/url], [url=https://github.com/DevilinJake/DevZ-Mods/tree/main/QuickTransfer]Quick Transfer[/url], [url=https://github.com/DevilinJake/DevZ-Mods/tree/main/AutoRun]Auto Run[/url]
+[*] Each mod's details: [url=https://github.com/DevilinJake/DevZ-Mods/tree/main/InventorySizes]Inventory Sizes[/url], [url=https://github.com/DevilinJake/DevZ-Mods/tree/main/AmmoStacks]Ammo Stacks[/url], [url=https://github.com/DevilinJake/DevZ-Mods/tree/main/WeaponDurability]Weapon & Suppressor Durability[/url], [url=https://github.com/DevilinJake/DevZ-Mods/tree/main/CombineNoSplit]Combine Kits[/url], [url=https://github.com/DevilinJake/DevZ-Mods/tree/main/RepairToPristine]Repair To Pristine[/url], [url=https://github.com/DevilinJake/DevZ-Mods/tree/main/QuickTransfer]Quick Transfer[/url], [url=https://github.com/DevilinJake/DevZ-Mods/tree/main/AutoRun]Auto Run[/url], [url=https://github.com/DevilinJake/DevZ-Mods/tree/main/BatteryLife]Battery Life[/url]
 [*] More DevZ mods: [url=https://github.com/DevilinJake/DevZ-Mods]DevZ-Mods[/url]
 [/list]
 
