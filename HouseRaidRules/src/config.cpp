@@ -16,7 +16,7 @@ class CfgMods
 	class DevZ_HouseRaidRules
 	{
 		dir = "DevZ_HouseRaidRules";
-		name = "DevZ House Raid Rules";
+		name = "DevZ Ninjins House Raid Fix";
 		author = "DevilinJake";
 		type = "mod";
 		dependencies[] = {"Game", "World"};

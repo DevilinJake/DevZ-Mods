@@ -1,4 +1,6 @@
-# DevZ House Raid Rules
+# DevZ Ninjins House Raid Fix
+
+*(Folder, PBO and settings path are still `DevZ_HouseRaidRules`, its name before 2026-10-30, so existing servers keep their Config.json.)*
 
 Rebuilt house walls, doors, windows and barricades follow the same PvE and raid-hour rules as
 base-building items. An add-on for **Ninjins PvP/PvE Upgraded**: without it the mod has nothing to
