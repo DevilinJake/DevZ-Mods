@@ -33,19 +33,6 @@ modded class BuildingBase
 			codeLock.ExpansionUnlock();
 	}
 
-	// The keypads measure the door when they're placed; a lock that couldn't (door open) retries
-	override void OnDoorCloseFinish(DoorFinishParams params)
-	{
-		super.OnDoorCloseFinish(params);
-
-		if (g_Game.IsDedicatedServer())
-			return;
-
-		ExpansionCodeLock codeLock = DevZ_HouseCodeLock.FindLockOnDoor(this, params.param1);
-		if (codeLock)
-			codeLock.DevZ_OnDoorClosed();
-	}
-
 	// Vanilla only applies its door-lock rules to its own locks; apply them to the Expansion lock
 	// too: one lock per door (also against vanilla locks, either way round), and only while that
 	// door is shut

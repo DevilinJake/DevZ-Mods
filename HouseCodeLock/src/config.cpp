@@ -81,16 +81,14 @@ class CfgVehicles
 			class attach_fence { source = "user"; animPeriod = 0.01; initPhase = 1; };
 		};
 
-		// Where the two keypads go, in metres. The door's own geometry gives the direction through
-		// the door, but its box includes the frame trim, so the thickness comes from here: the
-		// inside keypad sits devz_doorThickness + devz_lockDepth behind the outside one (8 cm
-		// measured on Nasdara's rebuilt house doors). devz_keypadDir is the keypad's direction in
-		// the lock model's own axes, only used when the door's geometry can't be read.
+		// Where the two keypads go, in metres: the inside keypad sits devz_doorThickness +
+		// devz_lockDepth behind the outside one (8 cm door measured on Nasdara's rebuilt house
+		// doors), and both are raised devz_raise above the door's lock spot to clear the
+		// cross-planks on the inside. devz_outwardDir is the direction from the door to the
+		// outside in the lock model's own axes; the vanilla door slots all face it the same way.
 		devz_doorThickness = 0.08;
 		devz_lockDepth = 0.03;
-		devz_keypadDir = "0 0 1";
-		// Both keypads are raised this much above the door's lock spot (metres), to clear the
-		// cross-planks on the inside of Nasdara's rebuilt doors
+		devz_outwardDir = "0 0 1";
 		devz_raise = 0.30;
 	};
 };
