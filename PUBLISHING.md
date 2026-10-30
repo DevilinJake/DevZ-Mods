@@ -63,4 +63,5 @@ The same IDs live in `workshop_ids.txt`, which the build scripts read.
 | CrashSafety (server-side) | [3829389536](https://steamcommunity.com/sharedfiles/filedetails/?id=3829389536) |
 | HouseRaidRules (server-side, on branch `house-raid-rules`) | [3829986096](https://steamcommunity.com/sharedfiles/filedetails/?id=3829986096) |
 | BarrelStorage | [3830105193](https://steamcommunity.com/sharedfiles/filedetails/?id=3830105193) |
+| BatteryLife | [3830178347](https://steamcommunity.com/sharedfiles/filedetails/?id=3830178347) |
 | Essentials (bundle) | [3828767191](https://steamcommunity.com/sharedfiles/filedetails/?id=3828767191) |
