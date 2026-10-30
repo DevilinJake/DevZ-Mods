@@ -153,6 +153,21 @@ MODS = {
             "No settings file: there's nothing for admins to set.",
         ],
     ),
+    "HouseCodeLock": (
+        "House\nCode Lock", (200, 160, 90),
+        "Fit the DayZ Expansion code lock to rebuilt vanilla house doors. A stopgap until Expansion supports house doors itself. Needs DayZ Expansion (Base Building).",
+        [
+            "Code lock in hands, looking at a closed, rebuilt house door: [b]Attach[/b]. It goes in the same spot as the vanilla digital code lock.",
+            "Then the Expansion keypad, as on a gate: [b]Set code[/b], [b]Close & lock[/b], [b]Enter code[/b], [b]Unlock[/b] (players who know the code), [b]Change code[/b].",
+            "A locked door can't be opened, and a lockpick can't lock or unlock it. A ruined lock no longer holds the door, like the vanilla locks.",
+            "Expansion's own server settings apply: code length, remembering players who know the code, territory members, damage for a wrong code, raid logs.",
+            "Codes and lock states survive restarts.",
+        ],
+        [
+            "All 10 door spots on every rebuildable house, wooden and metal doors.",
+            "No settings file: it follows your Expansion BaseBuilding settings.",
+        ],
+    ),
 }
 
 # Server-side mods: loaded with -servermod, players never download them
@@ -172,6 +187,7 @@ SCANS = {
     "QuickTransfer": None,
     "CrashSafety": None,
     "AutoRun": None,
+    "HouseCodeLock": None,
 }
 
 # For mods without a scanner: the "Works with your other mods" text
@@ -180,6 +196,7 @@ NO_SCAN = {
     "QuickTransfer": "Works with items and containers from any mod, and with bigger inventories such as [b]DevZ Inventory Sizes[/b]. Nothing to set up.",
     "CrashSafety": "Works with vanilla vehicles and modded ones built on them, including Expansion's helicopters and boats. Nothing to set up. Leave other mods' crew damage multipliers at 1.",
     "AutoRun": "Works on any map with any other mods: it changes no items and no settings. Nothing to set up.",
+    "HouseCodeLock": "Needs [b]DayZ Expansion[/b] (the Bundle or Base Building): load it after Expansion in -mod=. Works on any map with rebuildable vanilla houses. Expansion's code locks on gates, walls, tents and safes work exactly as before. When Expansion adds house doors itself, remove this mod.",
 }
 
 
@@ -196,6 +213,7 @@ PICTOGRAMS = {
     "QuickTransfer": "transfer",        # cursor sweeping items from a pack into a crate
     "CrashSafety": "crash",             # a heli tipped over on landing, a car into a wall, hull bar held at 10%
     "AutoRun": "autorun",               # the running-man sign with three speed lines behind it
+    "HouseCodeLock": "codelock",        # a house door with a keypad lock beside the handle
 }
 # A bundle's picture is one small tile per mod in it, each with that mod's pictogram and colour
 # (filled in from PACKS below).
