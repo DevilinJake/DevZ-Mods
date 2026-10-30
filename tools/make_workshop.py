@@ -153,6 +153,21 @@ MODS = {
             "No settings file: there's nothing for admins to set.",
         ],
     ),
+    # folder, PBO and settings path are still HouseRaidRules / DevZ_HouseRaidRules (its old name)
+    "HouseRaidRules": (
+        "Ninjins\nHouse Raid Fix", (222, 104, 140),
+        "Rebuilt house walls, doors, windows and barricades follow the same PvE and raid-hour rules as your fences and gates. Server-side add-on for Ninjins PvP/PvE Upgraded.",
+        [
+            "Ninjins Raid Extension stops bullets and explosives on base-building [i]items[/i] outside your raid zones. A house rebuilt with bricks, mortar and a trowel (Nasdara and other maps with vanilla rebuilding) isn't an item: its rebuilt wall is part of the house, so it could be shot or blown open in a PvE zone while the fence next to it couldn't. This mod puts the same check on the house.",
+            "Zones, the admin flag and the on/off switches are read from Ninjins at runtime. Nothing of Ninjins' is copied or changed.",
+            "Raid hours come from Expansion's RaidSettings.json schedule when Expansion Base Building is loaded, otherwise from the mod's own schedule.",
+        ],
+        [
+            "Hits land only in PvP and Raid zones, and only during raid hours (Friday 18:00 to Sunday 21:00 server time unless Expansion's schedule applies). Safe zones and PvE: no damage. Melee hits are held to the same rules.",
+            "Follows Ninjins Raid Extension's Enabled, BlockBulletDamage, BlockExplosiveDamage and BypassForAdmins, so there's one place to edit.",
+            "Settings file: [b]<profiles>\\DevZ_HouseRaidRules\\Config.json[/b]. Change it with the server stopped; no rebuild needed.",
+        ],
+    ),
     "SatchelSoundFix": (
         "Satchel\nSound Fix", (230, 110, 100),
         "Fixes a DayZ Expansion bug: after a satchel charge explodes, its arming beep keeps squealing at the crater for minutes. With this mod the beeping stops with the bang.",
@@ -183,7 +198,7 @@ MODS = {
 }
 
 # Server-side mods: loaded with -servermod, players never download them
-SERVER_ONLY = {"AutoStack", "InfectedDamage", "CrashSafety"}
+SERVER_ONLY = {"AutoStack", "InfectedDamage", "CrashSafety", "HouseRaidRules"}
 
 
 # What each mod's scanner finds in other mods, for the "Works with your other mods" section
@@ -199,6 +214,7 @@ SCANS = {
     "QuickTransfer": None,
     "CrashSafety": None,
     "AutoRun": None,
+    "HouseRaidRules": None,
     "SatchelSoundFix": None,
     "HouseCodeLock": None,
 }
@@ -211,6 +227,12 @@ NO_SCAN = {
     "AutoRun": "Works on any map with any other mods: it changes no items and no settings. Nothing to set up.",
     "SatchelSoundFix": "Works alongside any other Expansion add-on: it only touches the satchel's beep. Nothing to set up.",
     "HouseCodeLock": "Needs [b]DayZ Expansion[/b] (the Bundle or Base Building): load it after Expansion in -mod=. Works on any map with rebuildable vanilla houses. Expansion's code locks on gates, walls, tents and safes work exactly as before. When Expansion adds house doors itself, remove this mod.",
+    "HouseRaidRules": "Works on any map with vanilla house rebuilding, next to Ninjins Raid Extension's own rules for fences, gates, towers and tents. With Expansion Base Building loaded, raid hours follow Expansion's RaidSettings.json, so the house parts open and close with Expansion's walls. The sledgehammer and dismantling are actions, not hits: block ActionDestroyPart and ActionDismantlePart in Ninjins Core's ActionsManager.json for your PvE and safe zones, as you would for any base.",
+}
+
+# Extra first lines for the "Server setup" section: what a mod needs loaded next to it
+SETUP_EXTRA = {
+    "HouseRaidRules": ["Needs [b]Ninjins PvP/PvE Upgraded[/b] in -mod= (its Core, Zones and Raid Extension), with this mod loaded after it; without Ninjins it has nothing to read and won't load. Expansion is optional."],
 }
 
 
@@ -227,6 +249,7 @@ PICTOGRAMS = {
     "QuickTransfer": "transfer",        # cursor sweeping items from a pack into a crate
     "CrashSafety": "crash",             # a heli tipped over on landing, a car into a wall, hull bar held at 10%
     "AutoRun": "autorun",               # the running-man sign with three speed lines behind it
+    "HouseRaidRules": "houseraid",      # a rebuilt brick house, a PvE shield over it stopping a bullet
     "SatchelSoundFix": "satchel",       # a satchel charge after the bang, its sound waves crossed out
     "HouseCodeLock": "codelock",        # a plain house door with a square keypad lock on it
 }
@@ -277,10 +300,10 @@ def description(folder, summary, what, defaults):
     scans = SCANS[folder]
 
     if server:
-        setup = """[list]
-[*] Copy the mod folder into your server folder and add it to [b]-servermod=[/b] (not -mod=).
-[*] Players don't download anything, and it needs no key.
-[/list]"""
+        setup = bullets(SETUP_EXTRA.get(folder, []) + [
+            "Copy the mod folder into your server folder and add it to [b]-servermod=[/b] (not -mod=).",
+            "Players don't download anything, and it needs no key.",
+        ])
     else:
         setup = """[list]
 [*] Add it to [b]-mod=[/b] (players need it too; they download it automatically when they join).
