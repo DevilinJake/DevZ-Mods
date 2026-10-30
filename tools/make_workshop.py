@@ -199,7 +199,7 @@ MODS = {
         "Barrel\nStorage", (176, 132, 82),
         "A base-building rack that holds up to six barrels. This is [b]INVICTUZ_Barrel_Storage by Xantarn[/b] ([url=https://steamcommunity.com/sharedfiles/filedetails/?id=3406014628]Workshop 3406014628[/url]), which broke on DayZ 1.30, fixed and with vanilla barrel rules. Xantarn gave permission to do anything with it.",
         [
-            "Place the kit like a fence kit, then attach up to six barrels to the rack. Barrels on the rack still [b]open and close normally[/b], to reach the loot or catch rain. Screwdriver on an empty rack: you get the kit back.",
+            "Place the kit, then attach up to six barrels to the rack. Barrels on the rack still [b]open and close normally[/b], to reach the loot or catch rain. Screwdriver on an empty rack: you get the kit back.",
             "[b]Fixed: kit placement on 1.30.[/b] The kit deleted itself in the middle of the place action and desynced. It now works like the vanilla base-building kits (fence, shelter).",
             "[b]Fixed: garden plots building as holograms.[/b] The original replaced the placement code for every item in the game; this version doesn't override placement at all.",
             "[b]Fixed: barrels on the rack showing open[/b] to players while they were closed on the server.",
