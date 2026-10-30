@@ -91,6 +91,6 @@ class CfgVehicles
 		devz_keypadDir = "0 0 1";
 		// Both keypads are raised this much above the door's lock spot (metres), to clear the
 		// cross-planks on the inside of Nasdara's rebuilt doors
-		devz_raise = 0.15;
+		devz_raise = 0.30;
 	};
 };
