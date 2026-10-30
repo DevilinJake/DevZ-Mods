@@ -11,13 +11,14 @@ already carry a stack of 40, and you end up with one stack of 52 instead of two.
 
 ## What it does
 
-When a loose-ammo pile is put somewhere:
+When a loose-ammo pile arrives somewhere (picked up, looted, or put into a container):
 
 | Where it goes | What happens |
 |---|---|
 | Anywhere in your clothing or backpack | Merges into other stacks of the same ammo you're carrying, fullest first |
 | Into a container (crate, tent, car trunk, backpack on the ground) | Merges into stacks of the same ammo in that container |
 | Into your hands | Nothing, so you can still hold a single stack |
+| Split off a stack, or moved around inside your own inventory | Nothing, so you can sort and split ammo by hand |
 
 If the stacks it merges into fill up, whatever's left stays as its own smaller stack. Ruined
 ammo is never merged.

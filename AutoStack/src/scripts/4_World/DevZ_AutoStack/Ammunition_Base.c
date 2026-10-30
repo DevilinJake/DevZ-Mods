@@ -1,12 +1,42 @@
 // When a loose-ammo pile lands in a player's inventory or a container, merge it into other piles
 // of the same ammo there, fullest first. Runs on the server only; the game syncs the result.
+// Piles split off or moved around inside the same player's inventory are left alone.
 modded class Ammunition_Base
 {
+	// Set while the game splits a pile, so the new half isn't merged straight back
+	protected static bool s_DevZ_Splitting;
+
+	override void SplitItemToInventoryLocation(notnull InventoryLocation dst)
+	{
+		s_DevZ_Splitting = true;
+		super.SplitItemToInventoryLocation(dst);
+		s_DevZ_Splitting = false;
+	}
+
+	override void SplitItem(PlayerBase player)
+	{
+		s_DevZ_Splitting = true;
+		super.SplitItem(player);
+		s_DevZ_Splitting = false;
+	}
+
+	override void SplitIntoStackMaxToInventoryLocation(notnull InventoryLocation dst)
+	{
+		s_DevZ_Splitting = true;
+		super.SplitIntoStackMaxToInventoryLocation(dst);
+		s_DevZ_Splitting = false;
+	}
+
 	override void EEItemLocationChanged(notnull InventoryLocation oldLoc, notnull InventoryLocation newLoc)
 	{
 		super.EEItemLocationChanged(oldLoc, newLoc);
 
-		if (!g_Game.IsServer() || !DevZ_IsStorageLocation(newLoc))
+		if (!g_Game.IsServer() || s_DevZ_Splitting || !DevZ_IsStorageLocation(newLoc))
+			return;
+
+		// Moving a pile within your own inventory (including from your hands) doesn't merge it
+		PlayerBase newOwner = PlayerBase.Cast(GetHierarchyRootPlayer());
+		if (newOwner && oldLoc.IsValid() && oldLoc.GetParent() && oldLoc.GetParent().GetHierarchyRootPlayer() == newOwner)
 			return;
 
 		DevZ_AutoStackConfig cfg = DevZ_AutoStackConfig.Get();

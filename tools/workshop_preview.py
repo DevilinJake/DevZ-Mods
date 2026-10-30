@@ -9,8 +9,7 @@ MH-6 Little Bird) and landrover_silhouette.png (a Defender 110).
     card(["Ammo", "Stacks"], (214, 157, 70), "ammo", seed=10, path="preview.png")
 
 Pictograms: inventory, ammo, weapon, combine, recipes, repair, autostack, infected, transfer, crash,
-autorun, houseraid.
-A bundle card takes a list of (pictogram, accent) pairs instead of a name and draws one small
+autorun, satchel, codelock, houseraid.\nA bundle card takes a list of (pictogram, accent) pairs instead of a name and draws one small
 tile per mod, each in that mod's colour.
 """
 import math
@@ -496,6 +495,62 @@ class Pict:
             a = math.radians(ang)
             self.stroke([hx + math.cos(a) * 7.5, hy + math.sin(a) * 7.5, hx + math.cos(a) * 13.5, hy + math.sin(a) * 13.5], fg, 1.9)
         self.d.line(self.p(L - 6, ground, R + 2, ground), fill=fg + (130,), width=self.lw(1.8))
+    def satchel(self):
+        """a satchel charge (a dark block with a red light and a short fuse wire) sitting on the
+        ground, with three sound arcs coming off it crossed out in the mod's colour"""
+        # the ground
+        self.d.line(self.p(8, 84, 92, 84), fill=self.fg + (130,), width=self.lw(1.8))
+        # the charge: a rounded block with a strap across it
+        self.d.rounded_rectangle(self.p(14, 46, 50, 82), radius=4 * self.k, fill=(0, 0, 0, 150),
+                                 outline=self.fg, width=self.lw(2.4))
+        self.d.rectangle(self.p(29, 46, 35, 82), fill=self.fg + (70,))
+        # the arming light and a wire looping out of the top
+        self.d.ellipse(self.p(40, 52, 45, 57), fill=(226, 70, 60))
+        self.stroke([22, 46, 20, 38, 26, 34, 24, 28], self.fg, 1.8)
+        # three sound arcs to the right, in the mod's colour
+        for r in (10, 19, 28):
+            cx, cy = 52, 60
+            self.d.arc(self.p(cx - r, cy - r, cx + r, cy + r), start=-50, end=50,
+                       fill=self.accent, width=self.lw(3.4))
+        # the no sign over the arcs
+        self.no_sign(70, 60, 16, self.fg, w=3.5)
+    def glow(self, x, y, r, color, alpha=120, blur=3):
+        """A soft spot of light: a blurred disc composited under whatever is drawn next."""
+        lay = Image.new("RGBA", self.img.size, (0, 0, 0, 0))
+        ImageDraw.Draw(lay).ellipse(self.p(x - r, y - r, x + r, y + r), fill=color[:3] + (alpha,))
+        lay = lay.filter(ImageFilter.GaussianBlur(blur * self.k))
+        self.img.alpha_composite(lay)
+
+    def codelock(self):
+        """a closed house door in its frame, a square keypad code lock on it where the vanilla
+        digital lock goes, its status light lit in the mod's colour"""
+        ground = 95
+        dl, dr, dt = 16, 76, 9                      # the door's left, right and top edges
+        # the frame: lintel and two jambs, open at the bottom, standing on the ground line
+        self.d.line(self.p(2, ground, 98, ground), fill=self.fg + (130,), width=self.lw(1.8))
+        self.d.line(self.p(dl - 4, ground, dl - 4, dt - 5, dr + 4, dt - 5, dr + 4, ground),
+                    fill=self.fg + (160,), width=self.lw(3), joint="curve")
+        # the door, closed and plain
+        self.d.rectangle(self.p(dl, dt, dr, ground), fill=(0, 0, 0, 120), outline=self.fg, width=self.lw(2.8))
+        # the keypad lock: a square dark box, set in from the door's edge at about hand height,
+        # with a status light at the top (lit, with a soft halo) and a 3x3 keypad under it
+        side = 26
+        lx1 = dr - 9
+        lx0, ly0 = lx1 - side, 37
+        lx1, ly1 = lx0 + side, ly0 + side
+        cx, ly = (lx0 + lx1) / 2, ly0 + 5.5
+        self.d.rounded_rectangle(self.p(lx0, ly0, lx1, ly1), radius=2.6 * self.k, fill=(14, 16, 18, 250),
+                                 outline=self.fg, width=self.lw(2.6))
+        self.glow(cx, ly, 6.5, self.accent, alpha=135, blur=2.4)
+        self.d.ellipse(self.p(cx - 2.6, ly - 2.6, cx + 2.6, ly + 2.6), fill=self.accent)
+        self.d.ellipse(self.p(cx - 1.2, ly - 1.5, cx + 0.1, ly - 0.2), fill=lighten(self.accent, 0.65))
+        kw, kh, gx, gy = 4.6, 3.4, 1.8, 1.4
+        kx0 = cx - (3 * kw + 2 * gx) / 2
+        ky0 = ly + 4.8
+        for j in range(3):
+            for i in range(3):
+                x, y = kx0 + i * (kw + gx), ky0 + j * (kh + gy)
+                self.d.rounded_rectangle(self.p(x, y, x + kw, y + kh), radius=0.8 * self.k, fill=self.fg + (230,))
 
     def tiles(self, items):
         """A bundle: one small card-like tile per mod, each with that mod's own pictogram and
@@ -572,6 +627,8 @@ def card(title, accent, pict, seed, path, footer="by DevilinJake"):
         psize = 720                                                 # two crashes side by side, with a gap
     if bundle:
         psize = 720                                                 # a grid of tiles, wider than one pictogram
+    if pict == "codelock":
+        psize = 560                                                 # a tall door: a little bigger, still clear of the title
     p = pictogram(pict, psize, WHITE, accent)
     paste_with_shadow(img, p, centered(p, int(h * (0.29 if three else 0.31))), blur=18, offset=(0, 14), alpha=170)
 

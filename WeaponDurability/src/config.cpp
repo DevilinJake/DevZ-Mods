@@ -84,7 +84,7 @@ class CfgVehicles
 
 	class ItemSuppressor: Inventory_Base { barrelArmor = 30000; };  // $UNT$Groza-4 Extended Barrel, was 3000 (x10)
 	class AK_Suppressor: ItemSuppressor { barrelArmor = 22500; };  // Normalized Suppressor, was 2250 (x10)
-	class ImprovisedSuppressor: ItemSuppressor { barrelArmor = 15000; };  // Plastic Bottle Suppressor, was 1500 (x10)
+	class ImprovisedSuppressor: ItemSuppressor { barrelArmor = 4950; };  // Plastic Bottle Suppressor, was 1500 (x3.3)
 	class M4_Suppressor: ItemSuppressor { barrelArmor = 22500; };  // Standardized Suppressor, was 2250 (x10)
 	class Mosin_Compensator: ItemSuppressor { barrelArmor = 390.63; };  // Mosin 91/30 Compensator, was 39.063 (x10)
 	class MP5_Compensator: ItemSuppressor { barrelArmor = 208.34; };  // SG5-K Compensator, was 20.834 (x10)

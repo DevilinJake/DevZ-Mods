@@ -1,0 +1,19 @@
+# Workshop item ID of each published DevZ mod: <Name> <ID>, one per line.
+# build.ps1 and build_pack.ps1 write it into the mod's meta.cpp (publishedid), which is how a
+# server tells players' launchers which Workshop item to download. A mod that isn't here yet
+# gets no meta.cpp; add its line after the first upload (Publisher's own meta.cpp says 0).
+InventorySizes    3828750627
+AmmoStacks        3828759176
+WeaponDurability  3828759569
+CombineNoSplit    3828760325
+RemoveRecipes     3828760950
+RepairToPristine  3828762289
+QuickTransfer     3829388553
+AutoStack         3828762770
+InfectedDamage    3828763099
+CrashSafety       3829389536
+Essentials        3828767191
+AutoRun           3829432690
+SatchelSoundFix   3829979817
+HouseCodeLock     3829980528
+HouseRaidRules    3829986096

@@ -168,6 +168,33 @@ MODS = {
             "Settings file: [b]<profiles>\\DevZ_HouseRaidRules\\Config.json[/b]. Change it with the server stopped; no rebuild needed.",
         ],
     ),
+    "SatchelSoundFix": (
+        "Satchel\nSound Fix", (230, 110, 100),
+        "Fixes a DayZ Expansion bug: after a satchel charge explodes, its arming beep keeps squealing at the crater for minutes. With this mod the beeping stops with the bang.",
+        [
+            "Expansion's satchel keeps a per-frame beep job running on every player's game after the explosion, and by then the fuse time is 0, so a new beep plays every frame. This mod removes that job the moment the explosion arrives, and never lets a 0-second fuse beep every frame.",
+            "Expansion's own explosion (bang, particles, damage) is untouched: the fix runs after it.",
+            "Needs [b]DayZ Expansion[/b] Base Building and must load after it. Without Expansion the mod compiles to nothing and does no harm. No Expansion files are copied or changed.",
+        ],
+        [
+            "No settings file: there's nothing for admins to set.",
+        ],
+    ),
+    "HouseCodeLock": (
+        "Expansion\nHouse CodeLock", (200, 160, 90),
+        "Fit the DayZ Expansion code lock to rebuilt vanilla house doors. A stopgap until Expansion supports house doors itself. Needs DayZ Expansion (Base Building).",
+        [
+            "Code lock in hands, looking at a closed, rebuilt house door: [b]Attach[/b]. It goes in the same spot as the vanilla digital code lock.",
+            "Then the Expansion keypad, as on a gate: [b]Set code[/b], [b]Close & lock[/b], [b]Enter code[/b], [b]Unlock[/b] (players who know the code), [b]Change code[/b].",
+            "A locked door can't be opened, and a lockpick can't lock or unlock it. A ruined lock no longer holds the door, like the vanilla locks.",
+            "Expansion's own server settings apply: code length, remembering players who know the code, territory members, damage for a wrong code, raid logs.",
+            "Codes and lock states survive restarts.",
+        ],
+        [
+            "All 10 door spots on every rebuildable house, wooden and metal doors.",
+            "No settings file: it follows your Expansion BaseBuilding settings.",
+        ],
+    ),
 }
 
 # Server-side mods: loaded with -servermod, players never download them
@@ -188,6 +215,8 @@ SCANS = {
     "CrashSafety": None,
     "AutoRun": None,
     "HouseRaidRules": None,
+    "SatchelSoundFix": None,
+    "HouseCodeLock": None,
 }
 
 # For mods without a scanner: the "Works with your other mods" text
@@ -196,6 +225,8 @@ NO_SCAN = {
     "QuickTransfer": "Works with items and containers from any mod, and with bigger inventories such as [b]DevZ Inventory Sizes[/b]. Nothing to set up.",
     "CrashSafety": "Works with vanilla vehicles and modded ones built on them, including Expansion's helicopters and boats. Nothing to set up. Leave other mods' crew damage multipliers at 1.",
     "AutoRun": "Works on any map with any other mods: it changes no items and no settings. Nothing to set up.",
+    "SatchelSoundFix": "Works alongside any other Expansion add-on: it only touches the satchel's beep. Nothing to set up.",
+    "HouseCodeLock": "Needs [b]DayZ Expansion[/b] (the Bundle or Base Building): load it after Expansion in -mod=. Works on any map with rebuildable vanilla houses. Expansion's code locks on gates, walls, tents and safes work exactly as before. When Expansion adds house doors itself, remove this mod.",
     "HouseRaidRules": "Works on any map with vanilla house rebuilding, next to Ninjins Raid Extension's own rules for fences, gates, towers and tents. With Expansion Base Building loaded, raid hours follow Expansion's RaidSettings.json, so the house parts open and close with Expansion's walls. The sledgehammer and dismantling are actions, not hits: block ActionDestroyPart and ActionDismantlePart in Ninjins Core's ActionsManager.json for your PvE and safe zones, as you would for any base.",
 }
 
@@ -219,6 +250,8 @@ PICTOGRAMS = {
     "CrashSafety": "crash",             # a heli tipped over on landing, a car into a wall, hull bar held at 10%
     "AutoRun": "autorun",               # the running-man sign with three speed lines behind it
     "HouseRaidRules": "houseraid",      # a rebuilt brick house, a PvE shield over it stopping a bullet
+    "SatchelSoundFix": "satchel",       # a satchel charge after the bang, its sound waves crossed out
+    "HouseCodeLock": "codelock",        # a plain house door with a square keypad lock on it
 }
 # A bundle's picture is one small tile per mod in it, each with that mod's pictogram and colour
 # (filled in from PACKS below).

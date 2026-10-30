@@ -33,7 +33,7 @@ direction, the same as in vanilla.
 - Jumping and vaulting: after a vault you carry on.
 - Crouching, going prone and standing back up: you move the way that stance normally moves
   (prone can't sprint, for example).
-- The inventory, the map, reading a note, the gesture and quickbar wheels, typing in chat:
+- The inventory, the map (vanilla or Expansion's), reading a note, the gesture and quickbar wheels, typing in chat:
   everything the game lets you walk through with the movement keys. Typed letters don't count
   as keys, so chatting "wasd" won't stop you. The game slows you to a walk while the
   inventory is open, as it does when you hold W.

@@ -141,10 +141,14 @@ class DevZ_AutoRun
 
 	// Screens the game lets you walk through with the movement keys (or type in): auto-run
 	// keeps going there too. Any other menu (Esc, a trader, a mod's screens) stops it.
+	// Expansion's map replaces the vanilla one with its own screen (a different menu number),
+	// so that is matched by class name: this mod doesn't depend on Expansion.
 	protected bool KeepsRunningIn(UIScriptedMenu menu)
 	{
 		int id = menu.GetID();
-		return id == MENU_INVENTORY || id == MENU_MAP || id == MENU_NOTE || id == MENU_GESTURES || id == MENU_RADIAL_QUICKBAR || id == MENU_CHAT_INPUT;
+		if (id == MENU_INVENTORY || id == MENU_MAP || id == MENU_NOTE || id == MENU_GESTURES || id == MENU_RADIAL_QUICKBAR || id == MENU_CHAT_INPUT)
+			return true;
+		return menu.ClassName() == "ExpansionMapMenu";
 	}
 
 	// True while the keyboard is typing into a text box (chat, a note), so letters aren't keys

@@ -54,7 +54,7 @@ Weapon,UMP45_Base,Rifle_Base,CfgWeapons,USG-45,12,Vanilla,DZ_Weapons_Firearms_UM
 Weapon,VSS_Base,Rifle_Base,CfgWeapons,SVAL,14,Vanilla,DZ_Weapons_Firearms_VSS,2.4,
 Weapon,Winchester70_Base,BoltActionRifle_InnerMagazine_Base,CfgWeapons,M70 Tundra,12,Vanilla,DZ_Weapons_Firearms_Winchester70,3.125,
 Suppressor,AK_Suppressor,ItemSuppressor,CfgVehicles,Normalized Suppressor,1,Vanilla,DZ_Weapons_Muzzles,2250.0,
-Suppressor,ImprovisedSuppressor,ItemSuppressor,CfgVehicles,Plastic Bottle Suppressor,1,Vanilla,DZ_Weapons_Muzzles,1500.0,
+Suppressor,ImprovisedSuppressor,ItemSuppressor,CfgVehicles,Plastic Bottle Suppressor,1,Vanilla,DZ_Weapons_Muzzles,1500.0,3.3
 Suppressor,ItemSuppressor,Inventory_Base,CfgVehicles,$UNT$Groza-4 Extended Barrel,4,Vanilla,DZ_Weapons_Muzzles,3000.0,
 Suppressor,M4_Suppressor,ItemSuppressor,CfgVehicles,Standardized Suppressor,1,Vanilla,DZ_Weapons_Muzzles,2250.0,
 Suppressor,PistolSuppressor,ItemSuppressor,CfgVehicles,Pistol Suppressor,1,Vanilla,DZ_Weapons_Muzzles,600.0,
