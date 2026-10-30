@@ -41,7 +41,7 @@ class DevZ_HouseRaidRules
 
 	// True = let the hit through. partName is the built part hit, or "" for a hit elsewhere on a house
 	// that has built parts (blocked too: the engine can spread damage between a house's zones).
-	// hitPos is where the hit landed in the world.
+	// hitPos is the world position used for the zone lookup (the house's position).
 	static bool MayDamagePart(BuildingBase house, string partName, EntityAI source, int damageType, string ammo, vector hitPos)
 	{
 		DevZ_HouseRaidRulesConfig cfg = DevZ_HouseRaidRulesConfig.Get();
@@ -64,7 +64,7 @@ class DevZ_HouseRaidRules
 			return true;
 
 		if (cfg.LogBlocked)
-			Print(LOG + "DENIED house=" + house.GetType() + " part=" + PartLabel(partName) + " zone=" + zoneLabel + " kind=" + hitKind + " ammo=" + ammo + " attacker=" + AttackerLabel(attacker) + " reason=" + reason);
+			Print(LOG + "DENIED house=" + house.GetType() + " part=" + PartLabel(partName) + " pos=" + hitPos.ToString() + " zone=" + zoneLabel + " kind=" + hitKind + " ammo=" + ammo + " attacker=" + AttackerLabel(attacker) + " reason=" + reason);
 		TellAttacker(cfg, attacker, notice);
 		return false;
 	}

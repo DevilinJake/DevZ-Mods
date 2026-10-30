@@ -19,7 +19,9 @@ modded class BuildingBase
 		string partName = DevZ_HouseRaidRules.RebuiltPartName(this, dmgZone);
 		if (partName == "" && !DevZ_HouseRaidRules.HasBuiltPart(this))
 			return true;
-		return DevZ_HouseRaidRules.MayDamagePart(this, partName, source, damageType, ammo, ModelToWorld(modelPos));
+		// The house's own position, as Ninjins uses the item's position: on buildings modelPos isn't
+		// reliably model space, and ModelToWorld on it can land kilometres away, outside every zone
+		return DevZ_HouseRaidRules.MayDamagePart(this, partName, source, damageType, ammo, GetPosition());
 	}
 }
 
