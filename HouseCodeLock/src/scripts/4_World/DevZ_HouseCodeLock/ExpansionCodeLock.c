@@ -210,12 +210,14 @@ modded class ExpansionCodeLock
 
 		Print("[DevZ_HouseCodeLock] keypads: measured=" + m_DevZ_KeypadsMeasured + " lockPos=" + lockMat[3] + " aside=" + lockMat[0] + " up=" + lockMat[1] + " dir=" + lockMat[2] + " centre=" + centre + " outwardNormal=" + outwardNormal + " boxThickness=" + boxThickness + " doorThickness=" + doorThickness + " halfDepth=" + halfDepth);
 
+		vector raise = Vector(0, g_Game.ConfigGetFloat("CfgVehicles DevZ_HouseCodeLockVisual devz_raise"), 0);
+
 		// Outside: the lock turned 180 degrees about the vertical through its centre
 		vector outsideMat[4];
 		outsideMat[0] = DevZ_TurnAround(lockMat[0]);
 		outsideMat[1] = DevZ_TurnAround(lockMat[1]);
 		outsideMat[2] = DevZ_TurnAround(lockMat[2]);
-		outsideMat[3] = centre + DevZ_TurnAround(lockMat[3] - centre);
+		outsideMat[3] = centre + DevZ_TurnAround(lockMat[3] - centre) + raise;
 		m_DevZ_KeypadOutside = DevZ_SpawnKeypad(lockMat, outsideMat);
 
 		// Inside: the lock as it is, moved through the door onto its inside face
@@ -223,7 +225,7 @@ modded class ExpansionCodeLock
 		insideMat[0] = lockMat[0];
 		insideMat[1] = lockMat[1];
 		insideMat[2] = lockMat[2];
-		insideMat[3] = lockMat[3] - outwardNormal * (2 * halfDepth + doorThickness);
+		insideMat[3] = lockMat[3] - outwardNormal * (2 * halfDepth + doorThickness) + raise;
 		m_DevZ_KeypadInside = DevZ_SpawnKeypad(lockMat, insideMat);
 	}
 
