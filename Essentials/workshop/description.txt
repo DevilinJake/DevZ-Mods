@@ -1,13 +1,14 @@
-Six DevZ mods in one download: bigger inventories, bigger ammo stacks, longer-lasting guns, kits that combine, repairs back to Pristine, and quick looting with one key.
+Seven DevZ mods in one download: bigger inventories, bigger ammo stacks, longer-lasting guns, kits that combine, repairs back to Pristine, quick looting with one key, and auto run.
 
 [h2]What's inside[/h2]
 [list]
 [*] [b]Inventory Sizes[/b]: more room in clothing, backpacks, vests and pouches.
 [*] [b]Ammo Stacks[/b]: loose ammo stacks twice as big.
-[*] [b]Weapon & Suppressor Durability[/b]: weapons and suppressors last 10x as long.
+[*] [b]Weapon & Suppressor Durability[/b]: weapons and suppressors last 10x as long (the plastic bottle suppressor 3.3x).
 [*] [b]Combine Kits[/b]: combine part-used bandages, repair kits and filters, but never split them.
 [*] [b]Repair To Pristine[/b]: repair kits repair items all the way to Pristine instead of stopping at Worn.
 [*] [b]Quick Transfer[/b]: hold Left Alt and sweep the mouse over items to move them between you and the nearest open container.
+[*] [b]Auto Run[/b]: press Z and your character keeps moving forward at the speed you had (walk, jog or sprint); W, A, S, D or Z stops it.
 [/list]
 Each one is also on the Workshop on its own. [b]Use either this bundle or the single mods, never both[/b]: they're the same files, so loading both loads every change twice.
 
@@ -15,10 +16,11 @@ Each one is also on the Workshop on its own. [b]Use either this bundle or the si
 [list]
 [*] [b]Inventory Sizes:[/b] Most items get a little less than double their vanilla space (typically 50-90% more). The largest backpacks go further (Field, Long Haul, Tactical, Mountain, up to 10x16), so they carry sheet metal, barrels and vehicle parts.
 [*] [b]Ammo Stacks:[/b] 2x stacks: 9x19 goes from 25 to 50, 12ga from 10 to 20, .22 from 50 to 100. Single-round items (rockets, 40mm grenades, darts) stay at 1. Loot: run [b]fix_loot.py[/b] from the GitHub repo once on your types.xml so the ammo found in the world stays the same size. Skip it if you want more ammo in the world.
-[*] [b]Weapon & Suppressor Durability:[/b] Weapons last 10x as long. Suppressors and other muzzle attachments last 10x as long.
+[*] [b]Weapon & Suppressor Durability:[/b] Weapons last 10x as long. Suppressors and other muzzle attachments last 10x as long. Exception: the plastic bottle (improvised) suppressor lasts 3.3x, so it stays a stopgap.
 [*] [b]Combine Kits:[/b] Bandage, Duct Tape, Electrical Repair Kit, Epoxy Putty, Gas Mask Filter, Improvised Gas Mask Filter, Leather Sewing Kit, Sewing Kit, Tire Repair Kit, Gun Cleaning Kit, Sharpening Stone.
 [*] [b]Repair To Pristine:[/b] Every vanilla kit: Gun Cleaning Kit, Sewing Kit, Leather Sewing Kit, Duct Tape, Sharpening Stone, Epoxy Putty, Electrical Repair Kit, Tire Repair Kit, Blowtorch. Kits built on these count too.
 [*] [b]Quick Transfer:[/b] Key: [b]Left Alt[/b]. Change it in Options > Controls, under [b]DevZ Mods[/b]. No settings file: there's nothing for admins to set.
+[*] [b]Auto Run:[/b] Key: [b]Z[/b]. Change it in Options > Controls, under [b]DevZ Mods[/b]. (On a keyboard, vanilla doesn't use Z. Running Expansion? Its own auto-run is on Z too: switch one of them off.) No settings file: there's nothing for admins to set.
 [/list]
 This Workshop build covers [b]vanilla items[/b], so it works on any server and needs no other mod.
 
@@ -39,7 +41,7 @@ The mods with item tables come with a [b]scanner[/b] that reads your server and 
 
 [h2]Links[/h2]
 [list]
-[*] Each mod's details: [url=https://github.com/DevilinJake/DevZ-Mods/tree/main/InventorySizes]Inventory Sizes[/url], [url=https://github.com/DevilinJake/DevZ-Mods/tree/main/AmmoStacks]Ammo Stacks[/url], [url=https://github.com/DevilinJake/DevZ-Mods/tree/main/WeaponDurability]Weapon & Suppressor Durability[/url], [url=https://github.com/DevilinJake/DevZ-Mods/tree/main/CombineNoSplit]Combine Kits[/url], [url=https://github.com/DevilinJake/DevZ-Mods/tree/main/RepairToPristine]Repair To Pristine[/url], [url=https://github.com/DevilinJake/DevZ-Mods/tree/main/QuickTransfer]Quick Transfer[/url]
+[*] Each mod's details: [url=https://github.com/DevilinJake/DevZ-Mods/tree/main/InventorySizes]Inventory Sizes[/url], [url=https://github.com/DevilinJake/DevZ-Mods/tree/main/AmmoStacks]Ammo Stacks[/url], [url=https://github.com/DevilinJake/DevZ-Mods/tree/main/WeaponDurability]Weapon & Suppressor Durability[/url], [url=https://github.com/DevilinJake/DevZ-Mods/tree/main/CombineNoSplit]Combine Kits[/url], [url=https://github.com/DevilinJake/DevZ-Mods/tree/main/RepairToPristine]Repair To Pristine[/url], [url=https://github.com/DevilinJake/DevZ-Mods/tree/main/QuickTransfer]Quick Transfer[/url], [url=https://github.com/DevilinJake/DevZ-Mods/tree/main/AutoRun]Auto Run[/url]
 [*] More DevZ mods: [url=https://github.com/DevilinJake/DevZ-Mods]DevZ-Mods[/url]
 [/list]
 

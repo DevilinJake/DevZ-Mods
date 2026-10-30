@@ -5,3 +5,4 @@ WeaponDurability
 CombineNoSplit
 RepairToPristine
 QuickTransfer
+AutoRun

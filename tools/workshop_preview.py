@@ -509,9 +509,9 @@ class Pict:
 
     def tiles(self, items):
         """A bundle: one small card-like tile per mod, each with that mod's own pictogram and
-        accent colour. items: list of (pictogram name, accent). Laid out 3 across, then the rest
-        on a second row, centred."""
-        per_row, gap = 3, 4.5
+        accent colour. items: list of (pictogram name, accent). Up to 6 are laid out 3 across;
+        7 or 8 go 4 across, so two rows still hold them. A short last row is centred."""
+        per_row, gap = (3, 4.5) if len(items) <= 6 else (4, 3.5)
         rows = [items[i:i + per_row] for i in range(0, len(items), per_row)]
         tile = (100 - gap * (per_row - 1)) / per_row
         pad = tile * 0.10
@@ -581,7 +581,7 @@ def card(title, accent, pict, seed, path, footer="by DevilinJake"):
     if pict == "crash":
         psize = 720                                                 # two crashes side by side, with a gap
     if bundle:
-        psize = 720                                                 # a grid of tiles, wider than one pictogram
+        psize = 720 if len(pict) <= 6 else 900                      # a grid of tiles, wider than one pictogram
     if pict == "codelock":
         psize = 560                                                 # a tall door: a little bigger, still clear of the title
     p = pictogram(pict, psize, WHITE, accent)

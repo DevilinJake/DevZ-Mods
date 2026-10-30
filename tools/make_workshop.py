@@ -49,7 +49,7 @@ MODS = {
         ],
         [
             "Weapons last 10x as long.",
-            "Suppressors and other muzzle attachments last 10x as long.",
+            "Suppressors and other muzzle attachments last 10x as long. Exception: the plastic bottle (improvised) suppressor lasts 3.3x, so it stays a stopgap.",
         ],
     ),
     "CombineNoSplit": (
@@ -239,14 +239,15 @@ PICTOGRAMS = {
 PACKS = {
     "Essentials": (
         "DevZ\nEssentials", (120, 200, 140),
-        "Six DevZ mods in one download: bigger inventories, bigger ammo stacks, longer-lasting guns, kits that combine, repairs back to Pristine, and quick looting with one key.",
+        "Seven DevZ mods in one download: bigger inventories, bigger ammo stacks, longer-lasting guns, kits that combine, repairs back to Pristine, quick looting with one key, and auto run.",
         {
             "InventorySizes": "more room in clothing, backpacks, vests and pouches",
             "AmmoStacks": "loose ammo stacks twice as big",
-            "WeaponDurability": "weapons and suppressors last 10x as long",
+            "WeaponDurability": "weapons and suppressors last 10x as long (the plastic bottle suppressor 3.3x)",
             "CombineNoSplit": "combine part-used bandages, repair kits and filters, but never split them",
             "RepairToPristine": "repair kits repair items all the way to Pristine instead of stopping at Worn",
             "QuickTransfer": "hold Left Alt and sweep the mouse over items to move them between you and the nearest open container",
+            "AutoRun": "press Z and your character keeps moving forward at the speed you had (walk, jog or sprint); W, A, S, D or Z stops it",
         },
     ),
 }
