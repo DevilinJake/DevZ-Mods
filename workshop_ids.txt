@@ -13,3 +13,7 @@ AutoStack         3828762770
 InfectedDamage    3828763099
 CrashSafety       3829389536
 Essentials        3828767191
+AutoRun           3829432690
+SatchelSoundFix   3829979817
+HouseCodeLock     3829980528
+HouseRaidRules    3829986096

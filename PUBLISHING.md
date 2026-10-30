@@ -54,10 +54,11 @@ The same IDs live in `workshop_ids.txt`, which the build scripts read.
 | RemoveRecipes | [3828760950](https://steamcommunity.com/sharedfiles/filedetails/?id=3828760950) |
 | RepairToPristine | [3828762289](https://steamcommunity.com/sharedfiles/filedetails/?id=3828762289) |
 | QuickTransfer | [3829388553](https://steamcommunity.com/sharedfiles/filedetails/?id=3829388553) |
-| AutoRun | not uploaded yet |
-| SatchelSoundFix | not uploaded yet |
-| HouseCodeLock | not uploaded yet |
+| AutoRun | [3829432690](https://steamcommunity.com/sharedfiles/filedetails/?id=3829432690) |
+| SatchelSoundFix | [3829979817](https://steamcommunity.com/sharedfiles/filedetails/?id=3829979817) |
+| HouseCodeLock | [3829980528](https://steamcommunity.com/sharedfiles/filedetails/?id=3829980528) |
 | AutoStack (server-side) | [3828762770](https://steamcommunity.com/sharedfiles/filedetails/?id=3828762770) |
 | InfectedDamage (server-side) | [3828763099](https://steamcommunity.com/sharedfiles/filedetails/?id=3828763099) |
 | CrashSafety (server-side) | [3829389536](https://steamcommunity.com/sharedfiles/filedetails/?id=3829389536) |
+| HouseRaidRules (server-side, on branch `house-raid-rules`) | [3829986096](https://steamcommunity.com/sharedfiles/filedetails/?id=3829986096) |
 | Essentials (bundle) | [3828767191](https://steamcommunity.com/sharedfiles/filedetails/?id=3828767191) |
