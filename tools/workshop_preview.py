@@ -457,7 +457,7 @@ class Pict:
         self.img.alpha_composite(lay)
 
     def codelock(self):
-        """a closed house door in its frame, a big keypad code lock on it where the vanilla
+        """a closed house door in its frame, a square keypad code lock on it where the vanilla
         digital lock goes, its status light lit in the mod's colour"""
         ground = 95
         dl, dr, dt = 16, 76, 9                      # the door's left, right and top edges
@@ -465,28 +465,27 @@ class Pict:
         self.d.line(self.p(2, ground, 98, ground), fill=self.fg + (130,), width=self.lw(1.8))
         self.d.line(self.p(dl - 4, ground, dl - 4, dt - 5, dr + 4, dt - 5, dr + 4, ground),
                     fill=self.fg + (160,), width=self.lw(3), joint="curve")
-        # the door, closed, with two raised panels down its left side
+        # the door, closed and plain
         self.d.rectangle(self.p(dl, dt, dr, ground), fill=(0, 0, 0, 120), outline=self.fg, width=self.lw(2.8))
-        for y0, y1 in [(17, 46), (54, 87)]:
-            self.d.rectangle(self.p(dl + 7, y0, dl + 24, y1), outline=self.fg + (120,), width=self.lw(1.8))
-        # the lever handle, under the lock
-        self.stroke([dr - 22, 66, dr - 8, 66], self.fg, 3.6)
-        # the keypad lock: a dark box with a status light at the top (lit, with a soft halo)
-        # and a 3x4 keypad under it, like Expansion's
-        lx0, ly0, lx1, ly1 = dr - 28, 17, dr - 3, 56
-        cx, ly = (lx0 + lx1) / 2, ly0 + 6.5
+        # the keypad lock: a square dark box, set in from the door's edge at about hand height,
+        # with a status light at the top (lit, with a soft halo) and a 3x3 keypad under it
+        side = 26
+        lx1 = dr - 9
+        lx0, ly0 = lx1 - side, 37
+        lx1, ly1 = lx0 + side, ly0 + side
+        cx, ly = (lx0 + lx1) / 2, ly0 + 5.5
         self.d.rounded_rectangle(self.p(lx0, ly0, lx1, ly1), radius=2.6 * self.k, fill=(14, 16, 18, 250),
                                  outline=self.fg, width=self.lw(2.6))
-        self.glow(cx, ly, 8.5, self.accent, alpha=135, blur=2.8)
-        self.d.ellipse(self.p(cx - 3.6, ly - 3.6, cx + 3.6, ly + 3.6), fill=self.accent)
-        self.d.ellipse(self.p(cx - 1.7, ly - 2.0, cx + 0.1, ly - 0.2), fill=lighten(self.accent, 0.65))
-        kw, kh, gx, gy = 5.4, 4.6, 1.8, 1.6
+        self.glow(cx, ly, 6.5, self.accent, alpha=135, blur=2.4)
+        self.d.ellipse(self.p(cx - 2.6, ly - 2.6, cx + 2.6, ly + 2.6), fill=self.accent)
+        self.d.ellipse(self.p(cx - 1.2, ly - 1.5, cx + 0.1, ly - 0.2), fill=lighten(self.accent, 0.65))
+        kw, kh, gx, gy = 4.6, 3.4, 1.8, 1.4
         kx0 = cx - (3 * kw + 2 * gx) / 2
-        ky0 = ly + 7
-        for j in range(4):
+        ky0 = ly + 4.8
+        for j in range(3):
             for i in range(3):
                 x, y = kx0 + i * (kw + gx), ky0 + j * (kh + gy)
-                self.d.rounded_rectangle(self.p(x, y, x + kw, y + kh), radius=0.9 * self.k, fill=self.fg + (230,))
+                self.d.rounded_rectangle(self.p(x, y, x + kw, y + kh), radius=0.8 * self.k, fill=self.fg + (230,))
 
     def tiles(self, items):
         """A bundle: one small card-like tile per mod, each with that mod's own pictogram and
