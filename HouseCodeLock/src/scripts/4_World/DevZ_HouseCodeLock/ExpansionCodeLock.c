@@ -192,15 +192,13 @@ modded class ExpansionCodeLock
 		float doorThickness;
 		m_DevZ_KeypadsMeasured = DevZ_MeasureDoor(centre, outwardNormal, doorThickness);
 
+		// The door's box includes its frame trim, so its measured thickness runs about twice the
+		// real panel; the box is only trusted for the direction. Thickness and lock depth come
+		// from config.cpp (devz_doorThickness, devz_lockDepth).
 		float halfDepth = g_Game.ConfigGetFloat("CfgVehicles DevZ_HouseCodeLockVisual devz_lockDepth") * 0.5;
-		if (m_DevZ_KeypadsMeasured)
-		{
-			// How far the keypad body's centre sits off the door face
-			float measuredHalfDepth = vector.Dot(centre - m_DevZ_DoorCentre, outwardNormal) - doorThickness * 0.5;
-			if (measuredHalfDepth > 0.005 && measuredHalfDepth < 0.1)
-				halfDepth = measuredHalfDepth;
-		}
-		else
+		float boxThickness = doorThickness;
+		doorThickness = g_Game.ConfigGetFloat("CfgVehicles DevZ_HouseCodeLockVisual devz_doorThickness");
+		if (!m_DevZ_KeypadsMeasured)
 		{
 			string dirText = g_Game.ConfigGetTextOut("CfgVehicles DevZ_HouseCodeLockVisual devz_keypadDir");
 			vector localDir = dirText.ToVector();
@@ -208,10 +206,9 @@ modded class ExpansionCodeLock
 				localDir = "0 0 1";
 			outwardNormal = lockMat[0] * localDir[0] + lockMat[1] * localDir[1] + lockMat[2] * localDir[2];
 			outwardNormal = outwardNormal.Normalized() * -1;
-			doorThickness = g_Game.ConfigGetFloat("CfgVehicles DevZ_HouseCodeLockVisual devz_doorThickness");
 		}
 
-		Print("[DevZ_HouseCodeLock] keypads: measured=" + m_DevZ_KeypadsMeasured + " lockPos=" + lockMat[3] + " aside=" + lockMat[0] + " up=" + lockMat[1] + " dir=" + lockMat[2] + " centre=" + centre + " outwardNormal=" + outwardNormal + " doorThickness=" + doorThickness + " halfDepth=" + halfDepth);
+		Print("[DevZ_HouseCodeLock] keypads: measured=" + m_DevZ_KeypadsMeasured + " lockPos=" + lockMat[3] + " aside=" + lockMat[0] + " up=" + lockMat[1] + " dir=" + lockMat[2] + " centre=" + centre + " outwardNormal=" + outwardNormal + " boxThickness=" + boxThickness + " doorThickness=" + doorThickness + " halfDepth=" + halfDepth);
 
 		// Outside: the lock turned 180 degrees about the vertical through its centre
 		vector outsideMat[4];
