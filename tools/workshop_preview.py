@@ -588,6 +588,40 @@ class Pict:
         mid = (left + right) / 2
         self.d.line(self.p(mid, top + 1.5, mid, ground), fill=wood + (110,), width=self.lw(1.6))
 
+    def battery(self):
+        """an upright 9V battery, its two snap terminals on top, full of charge in the mod's
+        colour with a lightning bolt over it, and the x2 badge from Ammo Stacks"""
+        x0, x1, y0, y1 = 22, 64, 24, 94
+        cx = (x0 + x1) / 2
+        # the terminals: a hexagonal one (left) and a round one (right)
+        hx, rx, ty = x0 + 11, x1 - 11, y0 - 6
+        r = 6
+        self.d.polygon(self.p(hx - r, ty, hx - r / 2, ty - r * 0.85, hx + r / 2, ty - r * 0.85,
+                              hx + r, ty, hx + r / 2, ty + r * 0.85, hx - r / 2, ty + r * 0.85),
+                       fill=self.fg)
+        self.d.rectangle(self.p(hx - 3, ty, hx + 3, y0 + 1), fill=self.fg)
+        self.d.ellipse(self.p(rx - r * 0.85, ty - r * 0.85, rx + r * 0.85, ty + r * 0.85), fill=self.fg)
+        self.d.ellipse(self.p(rx - r * 0.38, ty - r * 0.38, rx + r * 0.38, ty + r * 0.38), fill=DARK)
+        self.d.rectangle(self.p(rx - 3, ty, rx + 3, y0 + 1), fill=self.fg)
+        # the body, with a lighter cap band at the top
+        self.d.rounded_rectangle(self.p(x0, y0, x1, y1), radius=5 * self.k, fill=(0, 0, 0, 120),
+                                 outline=self.fg, width=self.lw(3))
+        self.d.line(self.p(x0 + 1.5, y0 + 9, x1 - 1.5, y0 + 9), fill=self.fg, width=self.lw(2.2))
+        # the charge: four full segments
+        gx0, gx1, gtop, gbot, gap = x0 + 6, x1 - 6, y0 + 14.5, y1 - 6, 2.4
+        sh = (gbot - gtop - 3 * gap) / 4
+        for i in range(4):
+            sy = gtop + i * (sh + gap)
+            self.d.rounded_rectangle(self.p(gx0, sy, gx1, sy + sh), radius=1.6 * self.k, fill=self.accent)
+        # a lightning bolt over the charge, in the dark colour so it reads as cut out
+        by, bh = gtop + 3, gbot - gtop - 6
+        self.d.polygon(self.p(cx + 4, by, cx - 9, by + bh * 0.56, cx - 1, by + bh * 0.56,
+                              cx - 4, by + bh, cx + 9, by + bh * 0.42, cx + 1, by + bh * 0.42), fill=DARK)
+        # the x2 badge, as on Ammo Stacks
+        r, bx, byy = 15, 82, 30
+        self.d.ellipse(self.p(bx - r, byy - r, bx + r, byy + r), fill=self.accent)
+        self.d.text(self.p(bx, byy + 0.5), "×2", font=bahn(int(17 * self.k), "Bold"), fill=DARK, anchor="mm")
+
     def tiles(self, items):
         """A bundle: one small card-like tile per mod, each with that mod's own pictogram and
         accent colour. items: list of (pictogram name, accent). Up to 6 are laid out 3 across;

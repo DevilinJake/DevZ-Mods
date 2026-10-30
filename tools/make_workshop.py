@@ -292,6 +292,7 @@ PICTOGRAMS = {
     "SatchelSoundFix": "satchel",       # a satchel charge after the bang, its sound waves crossed out
     "HouseCodeLock": "codelock",        # a plain house door with a square keypad lock on it
     "BarrelStorage": "barrelrack",      # a rack, three shelves of two barrels in the vanilla colours
+    "BatteryLife": "battery",           # a 9V battery full of charge with a bolt, x2 badge
 }
 
 # Mods based on someone else's work: shown in a Credits section, and the licence line says so
