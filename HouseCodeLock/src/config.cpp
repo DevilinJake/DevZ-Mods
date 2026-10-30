@@ -81,10 +81,12 @@ class CfgVehicles
 			class attach_fence { source = "user"; animPeriod = 0.01; initPhase = 1; };
 		};
 
-		// Where the two keypads go. The mod measures the door itself (a short ray from the lock
-		// finds the door's two faces); these are only used when that fails (door open at the time,
-		// odd door model). Metres, and the keypad direction in the lock model's own axes.
-		devz_doorThickness = 0.06;
+		// Where the two keypads go, in metres. The door's own geometry gives the direction through
+		// the door, but its box includes the frame trim, so the thickness comes from here: the
+		// inside keypad sits devz_doorThickness + devz_lockDepth behind the outside one (8.5 cm
+		// measured on Nasdara's rebuilt house doors). devz_keypadDir is the keypad's direction in
+		// the lock model's own axes, only used when the door's geometry can't be read.
+		devz_doorThickness = 0.085;
 		devz_lockDepth = 0.03;
 		devz_keypadDir = "0 0 1";
 	};
