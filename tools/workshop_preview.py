@@ -9,7 +9,7 @@ MH-6 Little Bird) and landrover_silhouette.png (a Defender 110).
     card(["Ammo", "Stacks"], (214, 157, 70), "ammo", seed=10, path="preview.png")
 
 Pictograms: inventory, ammo, weapon, combine, recipes, repair, autostack, infected, transfer, crash,
-autorun.
+autorun, satchel.
 A bundle card takes a list of (pictogram, accent) pairs instead of a name and draws one small
 tile per mod, each in that mod's colour.
 """
@@ -448,6 +448,26 @@ class Pict:
             self.stroke([x0, y, x1, y], self.accent, 3.6)
         # the ground, just under the front foot
         self.d.line(self.p(20, 91, 96, 91), fill=self.fg + (130,), width=self.lw(1.8))
+
+    def satchel(self):
+        """a satchel charge (a dark block with a red light and a short fuse wire) sitting on the
+        ground, with three sound arcs coming off it crossed out in the mod's colour"""
+        # the ground
+        self.d.line(self.p(8, 84, 92, 84), fill=self.fg + (130,), width=self.lw(1.8))
+        # the charge: a rounded block with a strap across it
+        self.d.rounded_rectangle(self.p(14, 46, 50, 82), radius=4 * self.k, fill=(0, 0, 0, 150),
+                                 outline=self.fg, width=self.lw(2.4))
+        self.d.rectangle(self.p(29, 46, 35, 82), fill=self.fg + (70,))
+        # the arming light and a wire looping out of the top
+        self.d.ellipse(self.p(40, 52, 45, 57), fill=(226, 70, 60))
+        self.stroke([22, 46, 20, 38, 26, 34, 24, 28], self.fg, 1.8)
+        # three sound arcs to the right, in the mod's colour
+        for r in (10, 19, 28):
+            cx, cy = 52, 60
+            self.d.arc(self.p(cx - r, cy - r, cx + r, cy + r), start=-50, end=50,
+                       fill=self.accent, width=self.lw(3.4))
+        # the no sign over the arcs
+        self.no_sign(70, 60, 16, self.fg, w=3.5)
 
     def tiles(self, items):
         """A bundle: one small card-like tile per mod, each with that mod's own pictogram and

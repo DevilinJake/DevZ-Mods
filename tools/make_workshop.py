@@ -153,6 +153,18 @@ MODS = {
             "No settings file: there's nothing for admins to set.",
         ],
     ),
+    "SatchelSoundFix": (
+        "Satchel\nSound Fix", (230, 110, 100),
+        "Fixes a DayZ Expansion bug: after a satchel charge explodes, its arming beep keeps squealing at the crater for minutes. With this mod the beeping stops with the bang.",
+        [
+            "Expansion's satchel keeps a per-frame beep job running on every player's game after the explosion, and by then the fuse time is 0, so a new beep plays every frame. This mod removes that job the moment the explosion arrives, and never lets a 0-second fuse beep every frame.",
+            "Expansion's own explosion (bang, particles, damage) is untouched: the fix runs after it.",
+            "Needs [b]DayZ Expansion[/b] Base Building and must load after it. Without Expansion the mod compiles to nothing and does no harm. No Expansion files are copied or changed.",
+        ],
+        [
+            "No settings file: there's nothing for admins to set.",
+        ],
+    ),
 }
 
 # Server-side mods: loaded with -servermod, players never download them
@@ -172,6 +184,7 @@ SCANS = {
     "QuickTransfer": None,
     "CrashSafety": None,
     "AutoRun": None,
+    "SatchelSoundFix": None,
 }
 
 # For mods without a scanner: the "Works with your other mods" text
@@ -180,6 +193,7 @@ NO_SCAN = {
     "QuickTransfer": "Works with items and containers from any mod, and with bigger inventories such as [b]DevZ Inventory Sizes[/b]. Nothing to set up.",
     "CrashSafety": "Works with vanilla vehicles and modded ones built on them, including Expansion's helicopters and boats. Nothing to set up. Leave other mods' crew damage multipliers at 1.",
     "AutoRun": "Works on any map with any other mods: it changes no items and no settings. Nothing to set up.",
+    "SatchelSoundFix": "Works alongside any other Expansion add-on: it only touches the satchel's beep. Nothing to set up.",
 }
 
 
@@ -196,6 +210,7 @@ PICTOGRAMS = {
     "QuickTransfer": "transfer",        # cursor sweeping items from a pack into a crate
     "CrashSafety": "crash",             # a heli tipped over on landing, a car into a wall, hull bar held at 10%
     "AutoRun": "autorun",               # the running-man sign with three speed lines behind it
+    "SatchelSoundFix": "satchel",       # a satchel charge after the bang, its sound waves crossed out
 }
 # A bundle's picture is one small tile per mod in it, each with that mod's pictogram and colour
 # (filled in from PACKS below).

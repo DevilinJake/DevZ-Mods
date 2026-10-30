@@ -1,0 +1,29 @@
+Fixes a DayZ Expansion bug: after a satchel charge explodes, its arming beep keeps squealing at the crater for minutes. With this mod the beeping stops with the bang.
+
+[list]
+[*] Expansion's satchel keeps a per-frame beep job running on every player's game after the explosion, and by then the fuse time is 0, so a new beep plays every frame. This mod removes that job the moment the explosion arrives, and never lets a 0-second fuse beep every frame.
+[*] Expansion's own explosion (bang, particles, damage) is untouched: the fix runs after it.
+[*] Needs [b]DayZ Expansion[/b] Base Building and must load after it. Without Expansion the mod compiles to nothing and does no harm. No Expansion files are copied or changed.
+[/list]
+
+[h2]Default settings[/h2]
+[list]
+[*] No settings file: there's nothing for admins to set.
+[/list]
+
+[h2]Server setup[/h2]
+[list]
+[*] Add it to [b]-mod=[/b] (players need it too; they download it automatically when they join).
+[*] Copy [b]keys\DevZ.bikey[/b] from the mod folder into your server's [b]keys[/b] folder.
+[/list]
+
+[h2]Works with your other mods[/h2]
+Works alongside any other Expansion add-on: it only touches the satchel's beep. Nothing to set up.
+
+[h2]Links[/h2]
+[list]
+[*] Details and source: [url=https://github.com/DevilinJake/DevZ-Mods/tree/main/SatchelSoundFix]GitHub[/url]
+[*] More DevZ mods: [url=https://github.com/DevilinJake/DevZ-Mods]DevZ-Mods[/url]
+[/list]
+
+[b]Licence: MIT.[/b] Use it, change it and repack it, including in your own server pack. A credit is appreciated but not required.
