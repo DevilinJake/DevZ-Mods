@@ -18,6 +18,7 @@ builds on its own and is set up so server admins can change the numbers without 
 | [QuickTransfer](QuickTransfer) | Hold a key (Left Alt) with the inventory open and sweep the mouse over items: each one moves between you and the nearest open container | Ready |
 | [AutoRun](AutoRun) | Press a key (Z) to keep moving forward at the speed you have (walk, jog or sprint); any movement key stops it, jumping and crouching don't | Ready |
 | [SatchelSoundFix](SatchelSoundFix) | Fixes a DayZ Expansion bug: the satchel charge's arming beep no longer carries on squealing after it explodes (needs Expansion Base Building; does nothing without it) | Ready |
+| [HouseCodeLock](HouseCodeLock) | The DayZ Expansion code lock on rebuilt vanilla house doors (set code, lock, unlock with Expansion's keypad), until Expansion supports them. Needs Expansion | Testing |
 | [Essentials](Essentials) | Bundle: Inventory Sizes, Ammo Stacks, Weapon & Suppressor Durability, Combine Kits, Repair To Pristine and Quick Transfer in one download (built with `build_pack.ps1`) | Ready |
 
 ## Using a mod
