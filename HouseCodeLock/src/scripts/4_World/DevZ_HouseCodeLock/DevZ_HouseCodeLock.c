@@ -7,6 +7,10 @@
 // house check that lock before a door opens. Nothing in Expansion's files is changed.
 class DevZ_HouseCodeLock
 {
+	// How close to the lock the cursor must be for the lock actions when Expansion's
+	// CodelockActionsAnywhere is off (metres from the lock; covers both keypads)
+	static const float LOCK_ACTION_REACH = 0.4;
+
 	// The door whose lock spots include slotName, or -1
 	static int DoorIndexForSlot(Building house, string slotName)
 	{
@@ -79,6 +83,68 @@ class DevZ_HouseCodeLock
 		}
 
 		return false;
+	}
+
+	// What the player is looking at, as a house door: either the door itself (any part of it) or
+	// the lock on it. Gives the house, the door and the Expansion lock on that door (null if none).
+	// False when the target is neither.
+	static bool ResolveDoor(ActionTarget target, out BuildingBase house, out int doorIndex, out ExpansionCodeLock codeLock)
+	{
+		house = null;
+		doorIndex = -1;
+		codeLock = null;
+
+		if (!target)
+			return false;
+
+		if (Class.CastTo(house, target.GetObject()))
+		{
+			doorIndex = house.GetDoorIndex(target.GetComponentIndex());
+			if (doorIndex < 0)
+				return false;
+
+			codeLock = FindLockOnDoor(house, doorIndex);
+			return true;
+		}
+
+		return ResolveLockTarget(target, house, doorIndex, codeLock);
+	}
+
+	// Only when the cursor is on the lock itself (its hidden body in the door's slot)
+	static bool ResolveLockTarget(ActionTarget target, out BuildingBase house, out int doorIndex, out ExpansionCodeLock codeLock)
+	{
+		house = null;
+		doorIndex = -1;
+		codeLock = null;
+
+		if (!target || !Class.CastTo(codeLock, target.GetObject()))
+			return false;
+
+		house = codeLock.DevZ_GetHouse();
+		if (!house)
+		{
+			codeLock = null;
+			return false;
+		}
+
+		doorIndex = codeLock.DevZ_GetDoorIndex();
+		return doorIndex > -1;
+	}
+
+	// Expansion's CodelockActionsAnywhere: on, the lock actions work from anywhere on the door;
+	// off, only while looking at (near) one of the keypads, like the lock selection on a gate
+	static bool LockActionsAllowed(ActionTarget target, ExpansionCodeLock codeLock)
+	{
+		if (!codeLock)
+			return false;
+
+		if (GetExpansionSettings().GetBaseBuilding().CodelockActionsAnywhere)
+			return true;
+
+		if (target.GetObject() == codeLock)
+			return true;
+
+		return vector.Distance(target.GetCursorHitPos(), codeLock.GetPosition()) <= LOCK_ACTION_REACH;
 	}
 
 	protected static map<int, ref AdditionalDoorInfo> GetDoors(Building house)

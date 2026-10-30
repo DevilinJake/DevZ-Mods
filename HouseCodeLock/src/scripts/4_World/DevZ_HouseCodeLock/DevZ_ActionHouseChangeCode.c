@@ -1,4 +1,6 @@
-// Looking at an unlocked Expansion code lock on a house door: "Change code" (Expansion's keypad)
+// Looking at a house door whose Expansion code lock is unlocked (or at the lock itself):
+// "Change code" (Expansion's keypad). All zeroes clears the code, which frees the lock to be
+// taken off, the same as on a gate. A player action (PlayerBase.c).
 class DevZ_ActionHouseChangeCode: ActionInteractBase
 {
 	// Only used on the player's side (IsLocal)
@@ -14,7 +16,7 @@ class DevZ_ActionHouseChangeCode: ActionInteractBase
 	override void CreateConditionComponents()
 	{
 		m_ConditionItem = new CCINone();
-		m_ConditionTarget = new CCTCursorInherited({ExpansionCodeLock}, UAMaxDistances.DEFAULT);
+		m_ConditionTarget = new CCTCursor(UAMaxDistances.DEFAULT);
 	}
 
 	override string GetText()
@@ -29,11 +31,17 @@ class DevZ_ActionHouseChangeCode: ActionInteractBase
 
 	override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
 	{
+		m_DevZ_CodeLock = null;
+
 		if (!GetExpansionSettings().GetBaseBuilding(false).IsLoaded())
 			return false;
 
-		m_DevZ_CodeLock = ExpansionCodeLock.Cast(target.GetObject());
-		if (!m_DevZ_CodeLock || !m_DevZ_CodeLock.DevZ_GetHouse())
+		BuildingBase house;
+		int doorIndex;
+		if (!DevZ_HouseCodeLock.ResolveDoor(target, house, doorIndex, m_DevZ_CodeLock) || !m_DevZ_CodeLock)
+			return false;
+
+		if (!DevZ_HouseCodeLock.LockActionsAllowed(target, m_DevZ_CodeLock))
 			return false;
 
 		return m_DevZ_CodeLock.HasCode() && !m_DevZ_CodeLock.ExpansionIsLocked();

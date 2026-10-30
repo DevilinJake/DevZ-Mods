@@ -15,23 +15,36 @@ Rebuild a house door with the vanilla rebuilding (bricks, mortar, trowel), close
 
 | Do this | What happens |
 |---|---|
-| Code lock in hands, look at the closed door | **Attach**. The lock goes in the same spot as the vanilla digital code lock |
-| Look at the lock | **Set code** opens Expansion's keypad. With the door shut it locks straight away |
-| Look at an unlocked lock | **Close & lock** (shuts the door if it's open), or **Change code** |
-| Look at a locked lock | **Enter code**, or **Unlock** if you've entered the code before |
+| Code lock in hands, look at the closed door | **Attach**. A keypad appears on each side of the door |
+| Look at the door | **Set Code** opens Expansion's keypad. With the door shut it locks straight away |
+| Door locked, you know the code | **Open locked door**: one step, the same as an Expansion gate. Opening unlocks it |
+| Door locked, you don't | **Enter Code** (keypad), or **Unlock** once you've entered it before |
+| Door unlocked, code set | **Lock** (shuts the door first if it's open), or **Change Code** |
 
-- A locked door can't be opened from either side, the same as an Expansion gate.
+It works exactly like the Expansion code lock on a vanilla fence gate:
+
+- While it's **locked**, only players who know the code can open the door (anyone who has
+  entered the right code, or a territory member when Expansion is set up that way). They just
+  look at the door and open it; that unlocks the lock (light goes red).
+- While it's **unlocked**, anyone can use the door. Lock it again with **Lock**, or (with
+  Expansion's `CodelockActionsAnywhere` off, its default) by closing the door, which then reads
+  **Lock**.
+- The lock actions come from the door itself, so they work from both sides. With
+  `CodelockActionsAnywhere` off they only show while looking at one of the keypads, like the lock
+  selection on a gate; on, from anywhere on the door.
 - A lockpick can't lock or unlock a door with the code lock fitted.
 - One lock per door. It can't go next to a vanilla lock on the same door, and only goes on
   while the door is shut (the vanilla rules for its own locks).
 - A ruined lock (shot or blown up) no longer holds the door, like the vanilla locks.
-- The lock can't be taken off while it has a code. Set the code to all zeroes to clear it,
-  the same as on a gate.
+- The lock can't be taken off while it has a code. **Change Code** to all zeroes clears it,
+  the same as on a gate; then it can be taken off.
 - **Codes and lock states survive restarts.**
 
 Expansion's own BaseBuilding settings apply as they do on gates: code length, remembering
 players who know the code (`RememberCode`), territory members (`AuthenticateCodeLockIfTerritoryMember`),
-damage for a wrong code (`DoDamageWhenEnterWrongCodeLock`) and the code lock raid logs.
+lock actions anywhere on the door (`CodelockActionsAnywhere`), the keypad opening right after
+attaching (client setting), damage for a wrong code (`DoDamageWhenEnterWrongCodeLock`) and the
+code lock raid logs.
 
 **Not covered:** Expansion's own lock-raiding tools (`ExpansionActionDestroyLock`) only know
 items, so they don't work on a house lock. To raid a locked house door, destroy the door or the
@@ -47,8 +60,18 @@ mod puts the code, lock state and known players straight back afterwards.
 
 ## Looks
 
-The lock is drawn with Expansion's model in the vanilla code lock's spot on the door, so it
-can sit a little off. The light is red when unlocked and green when locked.
+Two keypads, one on each side of the door, drawn with Expansion's lock model. The light is red
+when unlocked and green when locked.
+
+Why two: the door's lock spot was made for the vanilla digital code lock, and it points
+Expansion's model the wrong way (keypad into the door), with nothing to use from inside. So the
+real lock sits hidden in that spot and the mod draws two keypads as children of it: the outside
+one is the model turned round, the inside one is moved through the door onto its inside face.
+They're client-side only (never saved or sent over the network) and follow the lock, so they
+move with the door. A short ray from the lock finds the door and measures its thickness; if that
+fails (the door was open at the time), the fallbacks in `config.cpp` are used:
+`devz_doorThickness` (m), `devz_lockDepth` (m) and `devz_keypadDir` (the keypad's direction in
+the lock model's own axes). Tweak those if the keypads sit off on your map's doors.
 
 ## Installing
 
@@ -77,14 +100,17 @@ Code: `src\scripts\4_World\DevZ_HouseCodeLock\`
 
 | File | What |
 |---|---|
-| `config.cpp` | Adds the vanilla digital code lock's 20 door spots (`Att_CodeLock1_Wood` ... `Att_CodeLock10_Metal`) to `ExpansionCodeLock`'s `inventorySlot[]` |
-| `DevZ_HouseCodeLock.c` | Finds which door a lock spot belongs to, and the lock on a door |
+| `config.cpp` | Adds the vanilla digital code lock's 20 door spots (`Att_CodeLock1_Wood` ... `Att_CodeLock10_Metal`) to `ExpansionCodeLock`'s `inventorySlot[]`; the keypad visual class and its fallback measurements |
+| `DevZ_HouseCodeLock.c` | Finds which door a lock spot belongs to, the lock on a door, and the door the player is looking at (door or lock) |
 | `DevZ_ActionAttachCodeLockToHouse.c` | "Attach": the vanilla attach-to-door action, limited to house doors |
-| `DevZ_ActionHouseCodeLock.c`, `DevZ_ActionHouseChangeCode.c` | Set code, Close & lock, Enter code, Unlock, Change code: the same choices as Expansion's gate actions, sent to the lock |
-| `ExpansionCodeLock.c` | On a house the lock counts as "open" while its door is, "Close & lock" shuts the door, the light shows the lock state, and the code is kept over a restart (Expansion's start-up check clears the code of a lock that isn't on an item) |
-| `BuildingBase.c` | A door with a locked code lock won't open, and the vanilla door-lock rules apply when the lock is fitted |
+| `DevZ_ActionHouseCodeLock.c`, `DevZ_ActionHouseChangeCode.c`, `PlayerBase.c` | Set Code, Lock, Enter Code, Unlock, Change Code: the same choices as Expansion's gate actions, sent to the lock. Player actions on the door, listed after Open / Close |
+| `ActionOpenDoors.c`, `ActionCloseDoors.c` | "Open locked door" for players who know the code; "Close" locks when `CodelockActionsAnywhere` is off |
+| `ExpansionCodeLock.c` | On a house the lock counts as "open" while its door is, "Lock" shuts the door, the code is kept over a restart (Expansion's start-up check clears the code of a lock that isn't on an item), and the two keypads are placed and lit |
+| `DevZ_HouseCodeLockVisual.c` | The keypad object: no actions, not takeable, invisible to the cursor and the vicinity |
+| `BuildingBase.c` | A locked door opens only for a player who knows the code, opening unlocks it, and the vanilla door-lock rules apply when the lock is fitted |
 
-**For the Expansion team:** if you add house doors yourselves, the two spots that need it are
-the parent lookups (`ItemBase.Cast(GetHierarchyParent())` in `ExpansionCodeLock.DeferredInit`
-and `UpdateVisuals_Deferred`, and `ItemBase.Cast(target...)` in the code lock actions) and a
-`BuildingBase.CanDoorBeOpened` check. Feel free to take anything from here (MIT).
+**For the Expansion team:** if you add house doors yourselves, the spots that need it are the
+parent lookups (`ItemBase.Cast(GetHierarchyParent())` in `ExpansionCodeLock.DeferredInit` and
+`UpdateVisuals_Deferred`, and `ItemBase.Cast(target...)` in the code lock actions), a
+`BuildingBase.CanDoorBeOpened` check with `IsKnownUser`, and a two-sided model placement for the
+vanilla door slots (they face the model into the door). Feel free to take anything from here (MIT).

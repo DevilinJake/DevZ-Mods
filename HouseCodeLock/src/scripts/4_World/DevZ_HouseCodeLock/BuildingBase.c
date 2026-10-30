@@ -1,17 +1,49 @@
 modded class BuildingBase
 {
-	// A door with a locked Expansion code lock stays shut (checked on the player's side and again
-	// on the server). A ruined lock no longer holds it, like the vanilla locks.
+	// A door with a locked Expansion code lock stays shut, except for a player who knows the code
+	// (entered it before, or a territory member when Expansion is set up that way): they get
+	// "Open locked door" straight away, like on an Expansion gate. Checked on the player's side
+	// and again on the server. A ruined lock no longer holds the door, like the vanilla locks.
 	override bool CanDoorBeOpened(notnull DoorManipulationParams params)
 	{
 		if (!super.CanDoorBeOpened(params))
 			return false;
 
 		ExpansionCodeLock codeLock = DevZ_HouseCodeLock.FindLockOnDoor(this, params.m_DoorIndex);
-		if (codeLock && codeLock.ExpansionIsLocked() && !codeLock.IsRuined())
-			return false;
+		if (codeLock && codeLock.DevZ_HoldsDoor())
+		{
+			PlayerBase player = PlayerBase.Cast(params.m_Caller);
+			return player && codeLock.IsKnownUser(player);
+		}
 
 		return true;
+	}
+
+	// Opening a locked door unlocks it (the same as opening a locked Expansion gate): the light
+	// goes red and anyone can use the door until it's locked again
+	override void OnDoorOpenStart(DoorStartParams params)
+	{
+		super.OnDoorOpenStart(params);
+
+		if (!g_Game.IsServer())
+			return;
+
+		ExpansionCodeLock codeLock = DevZ_HouseCodeLock.FindLockOnDoor(this, params.param1);
+		if (codeLock && codeLock.ExpansionIsLocked())
+			codeLock.ExpansionUnlock();
+	}
+
+	// The keypads measure the door when they're placed; a lock that couldn't (door open) retries
+	override void OnDoorCloseFinish(DoorFinishParams params)
+	{
+		super.OnDoorCloseFinish(params);
+
+		if (g_Game.IsDedicatedServer())
+			return;
+
+		ExpansionCodeLock codeLock = DevZ_HouseCodeLock.FindLockOnDoor(this, params.param1);
+		if (codeLock)
+			codeLock.DevZ_OnDoorClosed();
 	}
 
 	// Vanilla only applies its door-lock rules to its own locks; apply them to the Expansion lock

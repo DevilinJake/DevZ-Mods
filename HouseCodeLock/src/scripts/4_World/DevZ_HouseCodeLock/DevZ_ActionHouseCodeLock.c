@@ -1,6 +1,7 @@
-// Looking at an Expansion code lock on a house door: Set code / Close & lock / Enter code /
-// Unlock, the same choices and keypad Expansion gives on a gate. The keypad talks to the lock
-// itself, so Expansion's own server checks (wrong-code damage, known players, logs) all apply.
+// Looking at a house door with an Expansion code lock (or at the lock itself): Set code / Lock /
+// Enter code / Unlock, the same choices and keypad Expansion gives on a gate. The keypad talks to
+// the lock itself, so Expansion's own server checks (wrong-code damage, known players, logs) all
+// apply. A player action (PlayerBase.c), listed after the door's own Open / Close.
 class DevZ_ActionHouseCodeLock: ActionInteractBase
 {
 	// Only used on the player's side (IsLocal)
@@ -17,7 +18,7 @@ class DevZ_ActionHouseCodeLock: ActionInteractBase
 	override void CreateConditionComponents()
 	{
 		m_ConditionItem = new CCINone();
-		m_ConditionTarget = new CCTCursorInherited({ExpansionCodeLock}, UAMaxDistances.DEFAULT);
+		m_ConditionTarget = new CCTCursor(UAMaxDistances.DEFAULT);
 	}
 
 	override string GetText()
@@ -41,11 +42,17 @@ class DevZ_ActionHouseCodeLock: ActionInteractBase
 
 	override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
 	{
+		m_DevZ_CodeLock = null;
+
 		if (!GetExpansionSettings().GetBaseBuilding(false).IsLoaded())
 			return false;
 
-		m_DevZ_CodeLock = ExpansionCodeLock.Cast(target.GetObject());
-		if (!m_DevZ_CodeLock || !m_DevZ_CodeLock.DevZ_GetHouse())
+		BuildingBase house;
+		int doorIndex;
+		if (!DevZ_HouseCodeLock.ResolveDoor(target, house, doorIndex, m_DevZ_CodeLock) || !m_DevZ_CodeLock)
+			return false;
+
+		if (!DevZ_HouseCodeLock.LockActionsAllowed(target, m_DevZ_CodeLock))
 			return false;
 
 		m_DevZ_IsKnownUser = m_DevZ_CodeLock.IsKnownUser(player);

@@ -1,6 +1,7 @@
 // Code lock in hands, looking at a closed, rebuilt house door: "Attach". Uses the vanilla attach
 // action, limited to house doors (Expansion's own attach action still handles gates, walls and
-// tents).
+// tents). With Expansion's "open lock menu after placing" client setting on, the keypad opens
+// right away, as it does on a gate.
 class DevZ_ActionAttachCodeLockToHouse: ActionAttachToConstruction
 {
 	override protected int FindAndTranslateAttachmentSlot(PlayerBase player, ActionTarget target, ItemBase item)
@@ -36,5 +37,31 @@ class DevZ_ActionAttachCodeLockToHouse: ActionAttachToConstruction
 		}
 
 		return InventorySlots.INVALID;
+	}
+
+	override void OnExecuteClient(ActionData action_data)
+	{
+		super.OnExecuteClient(action_data);
+
+		if (!GetExpansionClientSettings().AutoOpenLockMenuAfterPlacing)
+			return;
+
+		ExpansionCodeLock codeLock = ExpansionCodeLock.Cast(action_data.m_MainItem);
+		if (codeLock)
+			g_Game.GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(DevZ_OpenKeypad, 250, false, codeLock);
+	}
+
+	void DevZ_OpenKeypad(ExpansionCodeLock codeLock)
+	{
+		if (!codeLock || !codeLock.DevZ_GetHouse() || codeLock.HasCode())
+			return;
+
+		ExpansionCodeLockUI menu = ExpansionCodeLockUI.Cast(g_Game.GetUIManager().EnterScriptedMenu(MENU_EXPANSION_CODELOCK_MENU, null));
+		if (menu)
+		{
+			menu.SetChangeCodelock(false);
+			menu.SetConfirm(true);
+			menu.SetTarget(codeLock, "");
+		}
 	}
 }
