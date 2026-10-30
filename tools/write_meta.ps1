@@ -12,6 +12,7 @@ param(
 $ErrorActionPreference = 'Stop'
 $idsFile = Join-Path (Split-Path $PSScriptRoot) 'workshop_ids.txt'
 $id = $null
+if (-not (Test-Path $idsFile)) { return }   # e.g. a copy of the repo without the ID list (server pack build)
 foreach ($line in Get-Content $idsFile) {
     $parts = -split $line.Trim()
     if ($parts.Count -ge 2 -and $parts[0] -eq $ModName) { $id = $parts[1] }
