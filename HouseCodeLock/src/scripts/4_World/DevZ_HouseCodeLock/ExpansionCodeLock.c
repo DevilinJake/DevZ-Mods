@@ -175,8 +175,8 @@ modded class ExpansionCodeLock
 	// The lock model in the door's slot sits flush on the outside of the door with its keypad
 	// facing INTO the door, so the outside keypad is that model turned 180 degrees about the
 	// vertical through its own centre, and the inside keypad is the model as it is, moved through
-	// the door onto the inside face. A short ray from the lock's centre finds the door and its
-	// thickness; config.cpp holds fallbacks for when it can't.
+	// the door onto the inside face. The door's own geometry (its view-geometry component box)
+	// gives the direction through the door and its thickness; config.cpp holds fallbacks.
 	protected void DevZ_CreateKeypads()
 	{
 		DevZ_DeleteKeypads();
@@ -187,22 +187,31 @@ modded class ExpansionCodeLock
 		vector centre = g_Game.ObjectGetSelectionPositionLS(this, "Codelock");
 		centre = centre.Multiply4(lockMat);
 
-		vector keypadDir;
-		float halfDepth;
+		// outwardNormal points from the door towards the lock (the outside)
+		vector outwardNormal;
 		float doorThickness;
-		m_DevZ_KeypadsMeasured = DevZ_MeasureDoor(lockMat, centre, keypadDir, halfDepth, doorThickness);
+		m_DevZ_KeypadsMeasured = DevZ_MeasureDoor(centre, outwardNormal, doorThickness);
 
-		if (!m_DevZ_KeypadsMeasured)
+		float halfDepth = g_Game.ConfigGetFloat("CfgVehicles DevZ_HouseCodeLockVisual devz_lockDepth") * 0.5;
+		if (m_DevZ_KeypadsMeasured)
+		{
+			// How far the keypad body's centre sits off the door face
+			float measuredHalfDepth = vector.Dot(centre - m_DevZ_DoorCentre, outwardNormal) - doorThickness * 0.5;
+			if (measuredHalfDepth > 0.005 && measuredHalfDepth < 0.1)
+				halfDepth = measuredHalfDepth;
+		}
+		else
 		{
 			string dirText = g_Game.ConfigGetTextOut("CfgVehicles DevZ_HouseCodeLockVisual devz_keypadDir");
 			vector localDir = dirText.ToVector();
 			if (localDir == vector.Zero)
 				localDir = "0 0 1";
-			keypadDir = lockMat[0] * localDir[0] + lockMat[1] * localDir[1] + lockMat[2] * localDir[2];
-			keypadDir = keypadDir.Normalized();
-			halfDepth = g_Game.ConfigGetFloat("CfgVehicles DevZ_HouseCodeLockVisual devz_lockDepth") * 0.5;
+			outwardNormal = lockMat[0] * localDir[0] + lockMat[1] * localDir[1] + lockMat[2] * localDir[2];
+			outwardNormal = outwardNormal.Normalized() * -1;
 			doorThickness = g_Game.ConfigGetFloat("CfgVehicles DevZ_HouseCodeLockVisual devz_doorThickness");
 		}
+
+		Print("[DevZ_HouseCodeLock] keypads: measured=" + m_DevZ_KeypadsMeasured + " lockPos=" + lockMat[3] + " aside=" + lockMat[0] + " up=" + lockMat[1] + " dir=" + lockMat[2] + " centre=" + centre + " outwardNormal=" + outwardNormal + " doorThickness=" + doorThickness + " halfDepth=" + halfDepth);
 
 		// Outside: the lock turned 180 degrees about the vertical through its centre
 		vector outsideMat[4];
@@ -217,7 +226,7 @@ modded class ExpansionCodeLock
 		insideMat[0] = lockMat[0];
 		insideMat[1] = lockMat[1];
 		insideMat[2] = lockMat[2];
-		insideMat[3] = lockMat[3] + keypadDir * (2 * halfDepth + doorThickness);
+		insideMat[3] = lockMat[3] - outwardNormal * (2 * halfDepth + doorThickness);
 		m_DevZ_KeypadInside = DevZ_SpawnKeypad(lockMat, insideMat);
 	}
 
@@ -243,75 +252,72 @@ modded class ExpansionCodeLock
 		return keypad;
 	}
 
-	// Finds which way the lock model's keypad points (towards the door) and how thick the door is.
-	// True when the door was found; the thickness falls back to config.cpp if the far face isn't.
-	protected bool DevZ_MeasureDoor(vector lockMat[4], vector centre, out vector keypadDir, out float halfDepth, out float doorThickness)
+	protected vector m_DevZ_DoorCentre;
+
+	// The door's box in the house model: its thinnest horizontal side is the way through the
+	// door, and that side's size is the door's thickness. outwardNormal points towards the lock.
+	// False when the door's geometry can't be found or isn't a thin slab along a model axis.
+	protected bool DevZ_MeasureDoor(vector lockCentre, out vector outwardNormal, out float doorThickness)
 	{
 		BuildingBase house = DevZ_GetHouse();
-		if (!house)
+		int doorIndex = DevZ_GetDoorIndex();
+		if (!house || doorIndex < 0)
 			return false;
 
-		// The door must be within a few centimetres of the lock's centre, along one of its axes
-		float best = 0.08;
-		bool found = false;
-		for (int i = 0; i < 6; i++)
+		int level = house.GetViewGeometryLevel();
+		vector boxMin = "0 0 0";
+		vector boxMax = "0 0 0";
+		int found = 0;
+		for (int component = 0; component < 2048; component++)
 		{
-			vector dir = lockMat[i / 2];
-			if (i % 2 == 1)
-				dir = dir * -1;
-
-			float dist;
-			if (DevZ_RayToHouse(house, centre, centre + dir * 0.3, dist) && dist < best)
-			{
-				best = dist;
-				keypadDir = dir;
-				found = true;
-			}
-		}
-
-		if (!found)
-			return false;
-
-		halfDepth = best;
-
-		// The inside face: look back at the door from half a metre inside the house
-		doorThickness = g_Game.ConfigGetFloat("CfgVehicles DevZ_HouseCodeLockVisual devz_doorThickness");
-		vector far = centre + keypadDir * 0.5;
-		float back;
-		if (DevZ_RayToHouse(house, far, centre, back))
-		{
-			float measured = 0.5 - back - halfDepth;
-			if (measured > 0.01 && measured < 0.3)
-				doorThickness = measured;
-		}
-
-		return true;
-	}
-
-	// Distance from begin to the nearest point of the house along the ray, false if it isn't hit
-	protected bool DevZ_RayToHouse(BuildingBase house, vector begin, vector end, out float dist)
-	{
-		RaycastRVParams rayInput = new RaycastRVParams(begin, end, this, 0.0);
-		rayInput.type = ObjIntersectView;
-		rayInput.flags = CollisionFlags.ALLOBJECTS;
-		rayInput.sorted = true;
-
-		array<ref RaycastRVResult> results = new array<ref RaycastRVResult>();
-		if (!DayZPhysics.RaycastRVProxy(rayInput, results))
-			return false;
-
-		dist = -1;
-		foreach (RaycastRVResult result: results)
-		{
-			if (result.obj != house && result.parent != house)
+			if (house.GetDoorIndex(component) != doorIndex)
 				continue;
 
-			float d = vector.Distance(begin, result.pos);
-			if (dist < 0 || d < dist)
-				dist = d;
+			vector compMin;
+			vector compMax;
+			house.GetActionComponentMinMax(level, component, compMin, compMax);
+			if (compMin == compMax)
+				continue;
+
+			if (found == 0)
+			{
+				boxMin = compMin;
+				boxMax = compMax;
+			}
+			else
+			{
+				for (int axis = 0; axis < 3; axis++)
+				{
+					boxMin[axis] = Math.Min(boxMin[axis], compMin[axis]);
+					boxMax[axis] = Math.Max(boxMax[axis], compMax[axis]);
+				}
+			}
+			found++;
 		}
 
-		return dist >= 0;
+		Print("[DevZ_HouseCodeLock] door " + doorIndex + " of " + house.GetType() + ": " + found + " components, box " + boxMin + " .. " + boxMax);
+
+		if (found == 0)
+			return false;
+
+		vector size = boxMax - boxMin;
+		// The thinnest horizontal side (x or z in the house model; y is up)
+		int thinAxis = 0;
+		if (size[2] < size[0])
+			thinAxis = 2;
+		doorThickness = size[thinAxis];
+		if (doorThickness < 0.01 || doorThickness > 0.2)
+			return false;
+
+		vector houseMat[4];
+		house.GetTransform(houseMat);
+		vector doorCentreLS = (boxMin + boxMax) * 0.5;
+		m_DevZ_DoorCentre = doorCentreLS.Multiply4(houseMat);
+		outwardNormal = houseMat[thinAxis].Normalized();
+		if (vector.Dot(lockCentre - m_DevZ_DoorCentre, outwardNormal) < 0)
+			outwardNormal = outwardNormal * -1;
+
+		return true;
 	}
 
 	protected void DevZ_DeleteKeypads()

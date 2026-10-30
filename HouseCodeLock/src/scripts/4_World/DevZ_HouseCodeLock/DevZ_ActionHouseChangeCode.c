@@ -44,6 +44,11 @@ class DevZ_ActionHouseChangeCode: ActionInteractBase
 		if (!DevZ_HouseCodeLock.LockActionsAllowed(target, m_DevZ_CodeLock))
 			return false;
 
+		// Only with the door shut, like Expansion on a gate: the lock goes red every time the
+		// door is opened, so with it open anyone could walk up and change the code
+		if (house.IsDoorOpen(doorIndex))
+			return false;
+
 		return m_DevZ_CodeLock.HasCode() && !m_DevZ_CodeLock.ExpansionIsLocked();
 	}
 
