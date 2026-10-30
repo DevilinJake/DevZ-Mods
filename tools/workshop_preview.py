@@ -9,7 +9,7 @@ MH-6 Little Bird) and landrover_silhouette.png (a Defender 110).
     card(["Ammo", "Stacks"], (214, 157, 70), "ammo", seed=10, path="preview.png")
 
 Pictograms: inventory, ammo, weapon, combine, recipes, repair, autostack, infected, transfer, crash,
-autorun, satchel, codelock, houseraid.\nA bundle card takes a list of (pictogram, accent) pairs instead of a name and draws one small
+autorun, satchel, codelock, houseraid, barrelrack.\nA bundle card takes a list of (pictogram, accent) pairs instead of a name and draws one small
 tile per mod, each in that mod's colour.
 """
 import math
@@ -551,6 +551,42 @@ class Pict:
             for i in range(3):
                 x, y = kx0 + i * (kw + gx), ky0 + j * (kh + gy)
                 self.d.rounded_rectangle(self.p(x, y, x + kw, y + kh), radius=0.8 * self.k, fill=self.fg + (230,))
+
+    def barrel(self, x, y, w, h, color):
+        """an upright steel drum seen a little from above: the body in the given colour, two raised
+        hoops that curve round it, an oval lid with its bung, and a highlight so it reads round"""
+        e = w * 0.22                                        # height of the oval ends
+        dark, light = darken(color, 0.45), lighten(color, 0.35)
+        self.d.ellipse(self.p(x, y + h - e, x + w, y + h), fill=dark)                    # bottom rim
+        self.d.rectangle(self.p(x, y + e / 2, x + w, y + h - e / 2), fill=color)
+        for f in (0.36, 0.68):                              # hoops: the front half of an oval
+            hy = y + h * f
+            self.d.arc(self.p(x, hy - e / 2, x + w, hy + e / 2), start=0, end=180, fill=dark, width=self.lw(1.5))
+        self.d.line(self.p(x + w * 0.2, y + e, x + w * 0.2, y + h - e), fill=light + (170,), width=self.lw(2))
+        self.d.ellipse(self.p(x, y, x + w, y + e), fill=light, outline=dark, width=self.lw(1))   # lid
+        self.d.ellipse(self.p(x + w * 0.62, y + e * 0.3, x + w * 0.76, y + e * 0.7), fill=dark)
+
+    def barrelrack(self):
+        """a rack with three shelves, two barrels standing on each, in the vanilla barrel colours"""
+        ground = 95
+        left, right, top = 18, 82, 5
+        wood = self.fg
+        self.d.line(self.p(4, ground, 96, ground), fill=self.fg + (130,), width=self.lw(1.8))
+        shelves = [top + 29, top + 59, ground - 1]          # the board each row of barrels stands on
+        bw, bh = 21, 25
+        colours = iter([(64, 104, 168), (86, 120, 70), (176, 62, 52), (204, 168, 54), (86, 120, 70), (64, 104, 168)])
+        for sy in shelves:
+            for bx in (left + 6, right - 6 - bw):
+                self.barrel(bx, sy - bh - 1.2, bw, bh, next(colours))
+        # the frame on top of the barrels: two posts, a top rail and the shelf boards
+        for x in (left, right):
+            self.d.line(self.p(x, top, x, ground), fill=wood, width=self.lw(3.2))
+        self.d.line(self.p(left - 2, top, right + 2, top), fill=wood, width=self.lw(3.2))
+        for sy in shelves[:2]:
+            self.d.line(self.p(left - 2, sy, right + 2, sy), fill=wood, width=self.lw(3))
+        # a thin centre post at the back, between the two barrels of each shelf
+        mid = (left + right) / 2
+        self.d.line(self.p(mid, top + 1.5, mid, ground), fill=wood + (110,), width=self.lw(1.6))
 
     def tiles(self, items):
         """A bundle: one small card-like tile per mod, each with that mod's own pictogram and

@@ -20,6 +20,7 @@ builds on its own and is set up so server admins can change the numbers without 
 | [AutoRun](AutoRun) | Press a key (Z) to keep moving forward at the speed you have (walk, jog or sprint); any movement key stops it, jumping and crouching don't | Ready |
 | [SatchelSoundFix](SatchelSoundFix) | Fixes a DayZ Expansion bug: the satchel charge's arming beep no longer carries on squealing after it explodes (needs Expansion Base Building; does nothing without it) | Ready |
 | [HouseCodeLock](HouseCodeLock) | The DayZ Expansion code lock on rebuilt vanilla house doors (set code, lock, unlock with Expansion's keypad), until Expansion supports them. Needs Expansion | Testing |
+| [BarrelStorage](BarrelStorage) | A rack that holds six barrels: Xantarn's INVICTUZ_Barrel_Storage, fixed for DayZ 1.30, with vanilla barrel rules (same item names, so placed racks carry over). Needs CF | Testing |
 | [Essentials](Essentials) | Bundle: Inventory Sizes, Ammo Stacks, Weapon & Suppressor Durability, Combine Kits, Repair To Pristine and Quick Transfer in one download (built with `build_pack.ps1`) | Ready |
 
 ## Using a mod

@@ -62,4 +62,5 @@ The same IDs live in `workshop_ids.txt`, which the build scripts read.
 | HouseRaidRules (server-side) | not uploaded yet |
 | CrashSafety (server-side) | [3829389536](https://steamcommunity.com/sharedfiles/filedetails/?id=3829389536) |
 | HouseRaidRules (server-side, on branch `house-raid-rules`) | [3829986096](https://steamcommunity.com/sharedfiles/filedetails/?id=3829986096) |
+| BarrelStorage | not uploaded yet |
 | Essentials (bundle) | [3828767191](https://steamcommunity.com/sharedfiles/filedetails/?id=3828767191) |

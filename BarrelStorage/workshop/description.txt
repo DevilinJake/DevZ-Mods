@@ -1,0 +1,40 @@
+A base-building rack that holds up to six barrels. This is [b]INVICTUZ_Barrel_Storage by Xantarn[/b] ([url=https://steamcommunity.com/sharedfiles/filedetails/?id=3406014628]Workshop 3406014628[/url]), which broke on DayZ 1.30, fixed and with vanilla barrel rules. Xantarn gave permission to do anything with it.
+
+[list]
+[*] Place the kit like a fence kit, then attach up to six barrels to the rack. Barrels on the rack still [b]open and close normally[/b], to reach the loot or catch rain. Screwdriver on an empty rack: you get the kit back.
+[*] [b]Fixed: kit placement on 1.30.[/b] The kit deleted itself in the middle of the place action and desynced. It now works like the vanilla base-building kits (fence, shelter).
+[*] [b]Fixed: garden plots building as holograms.[/b] The original replaced the placement code for every item in the game; this version doesn't override placement at all.
+[*] [b]Fixed: barrels on the rack showing open[/b] to players while they were closed on the server.
+[*] [b]Fixed: the dismantle recipe and the kit's carry animation.[/b]
+[*] [b]Changed on purpose: vanilla barrel rules are back.[/b] A barrel must be empty (and closed) to pick it up or put it in cargo, so you can't carry barrels full of loot or put barrels inside barrels.
+[*] Same item names as the original ([b]Invictuz_Barrel_Storage[/b], [b]BarrelStorage_Kit[/b]): switching from it keeps your placed racks and your types.xml entries. Use this one [b]instead of[/b] the original, never both.
+[/list]
+
+[h2]Default settings[/h2]
+[list]
+[*] Rack lifetime: we recommend [b]3888000[/b] (45 days) in types.xml, so a base that's visited now and then keeps its rack. The types.xml entries are on GitHub.
+[*] Kit loot: nominal 10, min 2, in towns, villages, farms, industrial, coast and hunting spots, tiers 1 to 3.
+[*] No settings file.
+[/list]
+
+[h2]Server setup[/h2]
+[list]
+[*] Needs [b]Community Framework (CF)[/b] in -mod=, loaded before this mod.
+[*] Add the two types.xml entries (rack and kit) from the GitHub page to your mission's [b]db\types.xml[/b]. Switching from the original? You already have them.
+[*] Add it to [b]-mod=[/b] (players need it too; they download it automatically when they join).
+[*] Copy [b]keys\DevZ.bikey[/b] from the mod folder into your server's [b]keys[/b] folder.
+[/list]
+
+[h2]Works with your other mods[/h2]
+Works on any map. Barrels from other mods that are built on the vanilla barrel fit the rack too. Don't load it next to the original INVICTUZ_Barrel_Storage: they use the same item names.
+
+[h2]Links[/h2]
+[list]
+[*] Details and source: [url=https://github.com/DevilinJake/DevZ-Mods/tree/main/BarrelStorage]GitHub[/url]
+[*] More DevZ mods: [url=https://github.com/DevilinJake/DevZ-Mods]DevZ-Mods[/url]
+[/list]
+
+[h2]Credits[/h2]
+Based on [b]INVICTUZ_Barrel_Storage[/b] by [b]Xantarn[/b]: the rack, the kit, their models and textures are Xantarn's work. Xantarn gave permission to do anything with it. Original: [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3406014628]Workshop 3406014628[/url].
+
+[b]Licence:[/b] the DevZ fixes are MIT. The models and textures are Xantarn's, used with permission; please credit Xantarn if you reuse them.

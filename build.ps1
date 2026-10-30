@@ -41,7 +41,12 @@ if ((Test-Path $generator) -and -not $NoGenerate) {
 if (Test-Path $outDir) { Remove-Item $outDir -Recurse -Force }
 New-Item -ItemType Directory -Force $addons, $keysDir | Out-Null
 
-python -I (Join-Path $PSScriptRoot 'tools\pbo_tool.py') pack (Join-Path $modSrc 'src') $pbo --prefix $name
+# The prefix is the mod's name, unless src\$PBOPREFIX$ says otherwise (BarrelStorage keeps the
+# original mod's prefix, because its models point at their textures and proxies by that path)
+$prefix = $name
+$prefixFile = Join-Path $modSrc 'src\$PBOPREFIX$'
+if (Test-Path -LiteralPath $prefixFile) { $prefix = (Get-Content -LiteralPath $prefixFile -Raw).Trim() }
+python -I (Join-Path $PSScriptRoot 'tools\pbo_tool.py') pack (Join-Path $modSrc 'src') $pbo --prefix $prefix
 if ($LASTEXITCODE -ne 0) { throw 'Packing failed' }
 Copy-Item (Join-Path $modSrc 'mod.cpp') $outDir
 & (Join-Path $PSScriptRoot 'tools\write_meta.ps1') $ModName $outDir

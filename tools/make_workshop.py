@@ -195,6 +195,24 @@ MODS = {
             "No settings file: it follows your Expansion BaseBuilding settings.",
         ],
     ),
+    "BarrelStorage": (
+        "Barrel\nStorage", (176, 132, 82),
+        "A base-building rack that holds up to six barrels. This is [b]INVICTUZ_Barrel_Storage by Xantarn[/b] ([url=https://steamcommunity.com/sharedfiles/filedetails/?id=3406014628]Workshop 3406014628[/url]), which broke on DayZ 1.30, fixed and with vanilla barrel rules. Xantarn gave permission to do anything with it.",
+        [
+            "Place the kit like a fence kit, then attach up to six barrels to the rack. Barrels on the rack still [b]open and close normally[/b], to reach the loot or catch rain. Screwdriver on an empty rack: you get the kit back.",
+            "[b]Fixed: kit placement on 1.30.[/b] The kit deleted itself in the middle of the place action and desynced. It now works like the vanilla base-building kits (fence, shelter).",
+            "[b]Fixed: garden plots building as holograms.[/b] The original replaced the placement code for every item in the game; this version doesn't override placement at all.",
+            "[b]Fixed: barrels on the rack showing open[/b] to players while they were closed on the server.",
+            "[b]Fixed: the dismantle recipe and the kit's carry animation.[/b]",
+            "[b]Changed on purpose: vanilla barrel rules are back.[/b] A barrel must be empty (and closed) to pick it up or put it in cargo, so you can't carry barrels full of loot or put barrels inside barrels.",
+            "Same item names as the original ([b]Invictuz_Barrel_Storage[/b], [b]BarrelStorage_Kit[/b]): switching from it keeps your placed racks and your types.xml entries. Use this one [b]instead of[/b] the original, never both.",
+        ],
+        [
+            "Rack lifetime: we recommend [b]3888000[/b] (45 days) in types.xml, so a base that's visited now and then keeps its rack. The types.xml entries are on GitHub.",
+            "Kit loot: nominal 10, min 2, in towns, villages, farms, industrial, coast and hunting spots, tiers 1 to 3.",
+            "No settings file.",
+        ],
+    ),
 }
 
 # Server-side mods: loaded with -servermod, players never download them
@@ -217,6 +235,7 @@ SCANS = {
     "HouseRaidRules": None,
     "SatchelSoundFix": None,
     "HouseCodeLock": None,
+    "BarrelStorage": None,
 }
 
 # For mods without a scanner: the "Works with your other mods" text
@@ -227,11 +246,14 @@ NO_SCAN = {
     "AutoRun": "Works on any map with any other mods: it changes no items and no settings. Nothing to set up.",
     "SatchelSoundFix": "Works alongside any other Expansion add-on: it only touches the satchel's beep. Nothing to set up.",
     "HouseCodeLock": "Needs [b]DayZ Expansion[/b] (the Bundle or Base Building): load it after Expansion in -mod=. Works on any map with rebuildable vanilla houses. Expansion's code locks on gates, walls, tents and safes work exactly as before. When Expansion adds house doors itself, remove this mod.",
+    "BarrelStorage": "Works on any map. Barrels from other mods that are built on the vanilla barrel fit the rack too. Don't load it next to the original INVICTUZ_Barrel_Storage: they use the same item names.",
     "HouseRaidRules": "Works on any map with vanilla house rebuilding, next to Ninjins Raid Extension's own rules for fences, gates, towers and tents. With Expansion Base Building loaded, raid hours follow Expansion's RaidSettings.json, so the house parts open and close with Expansion's walls. The sledgehammer and dismantling are actions, not hits: block ActionDestroyPart and ActionDismantlePart in Ninjins Core's ActionsManager.json for your PvE and safe zones, as you would for any base.",
 }
 
 # Extra first lines for the "Server setup" section: what a mod needs loaded next to it
 SETUP_EXTRA = {
+    "BarrelStorage": ["Needs [b]Community Framework (CF)[/b] in -mod=, loaded before this mod.",
+                      "Add the two types.xml entries (rack and kit) from the GitHub page to your mission's [b]db\\types.xml[/b]. Switching from the original? You already have them."],
     "HouseRaidRules": ["Needs [b]Ninjins PvP/PvE Upgraded[/b] in -mod= (its Core, Zones and Raid Extension), with this mod loaded after it; without Ninjins it has nothing to read and won't load. Expansion is optional."],
 }
 
@@ -252,6 +274,15 @@ PICTOGRAMS = {
     "HouseRaidRules": "houseraid",      # a rebuilt brick house, a PvE shield over it stopping a bullet
     "SatchelSoundFix": "satchel",       # a satchel charge after the bang, its sound waves crossed out
     "HouseCodeLock": "codelock",        # a plain house door with a square keypad lock on it
+    "BarrelStorage": "barrelrack",      # a rack, three shelves of two barrels in the vanilla colours
+}
+
+# Mods based on someone else's work: shown in a Credits section, and the licence line says so
+CREDITS = {
+    "BarrelStorage": (
+        "Based on [b]INVICTUZ_Barrel_Storage[/b] by [b]Xantarn[/b]: the rack, the kit, their models and textures are Xantarn's work. Xantarn gave permission to do anything with it. Original: [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3406014628]Workshop 3406014628[/url].",
+        "[b]Licence:[/b] the DevZ fixes are MIT. The models and textures are Xantarn's, used with permission; please credit Xantarn if you reuse them.",
+    ),
 }
 # A bundle's picture is one small tile per mod in it, each with that mod's pictogram and colour
 # (filled in from PACKS below).
@@ -305,10 +336,10 @@ def description(folder, summary, what, defaults):
             "Players don't download anything, and it needs no key.",
         ])
     else:
-        setup = """[list]
-[*] Add it to [b]-mod=[/b] (players need it too; they download it automatically when they join).
-[*] Copy [b]keys\\DevZ.bikey[/b] from the mod folder into your server's [b]keys[/b] folder.
-[/list]"""
+        setup = bullets(SETUP_EXTRA.get(folder, []) + [
+            "Add it to [b]-mod=[/b] (players need it too; they download it automatically when they join).",
+            "Copy [b]keys\\DevZ.bikey[/b] from the mod folder into your server's [b]keys[/b] folder.",
+        ])
 
     if scans:
         covers = "This Workshop build covers [b]vanilla items[/b], so it works on any server and needs no other mod. Running modded items? See below.\n"
@@ -324,6 +355,12 @@ def description(folder, summary, what, defaults):
     else:
         covers = ""
         others = NO_SCAN[folder]
+
+    licence = "[b]Licence: MIT.[/b] Use it, change it and repack it, including in your own server pack. A credit is appreciated but not required."
+    credits = ""
+    if folder in CREDITS:
+        credits = f"\n[h2]Credits[/h2]\n{CREDITS[folder][0]}\n"
+        licence = CREDITS[folder][1]
 
     return f"""{summary}
 
@@ -343,8 +380,8 @@ def description(folder, summary, what, defaults):
 [*] Details and source: [url={url}]GitHub[/url]
 [*] More DevZ mods: [url={GITHUB}]DevZ-Mods[/url]
 [/list]
-
-[b]Licence: MIT.[/b] Use it, change it and repack it, including in your own server pack. A credit is appreciated but not required.
+{credits}
+{licence}
 """
 
 
