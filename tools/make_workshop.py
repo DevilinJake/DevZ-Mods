@@ -132,9 +132,11 @@ MODS = {
         [
             "The crew lose 10-70% health and the worst crashes knock them out for up to 45 seconds. A crash never kills.",
             "The hull, engine and fuel tank (the parts that can't be replaced) stop at 10% (Badly Damaged) from crashes, falls, fire, over-revving, no coolant or deep water, so the vehicle can always be repaired. Rotors, wheels, doors and other parts still take full damage and can be ruined.",
+            "Medium crashes wear parts down: vanilla only damages the body panel until a crash is heavy, then ruins the radiator, battery and lights in one go. Here a medium crash passes a share of its damage on to them, so they wear out over a few knocks.",
             "Expansion helicopters no longer burn out from a slow tip-over on landing.",
         ],
         [
+            "Medium crashes pass 25% on to the parts behind the panel ([b]MediumCrashPartsPercent[/b], 0 = vanilla).",
             "Hull, engine and fuel tank floor 10%; guns and explosives can still destroy vehicles (set [b]FloorsAgainstWeapons[/b] to 1 to stop that too).",
             "Settings file: [b]<profiles>\\DevZ_CrashSafety\\Config.json[/b]. Change it with the server stopped; no rebuild needed.",
         ],
