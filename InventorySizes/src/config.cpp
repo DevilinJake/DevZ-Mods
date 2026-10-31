@@ -8,7 +8,7 @@ class CfgPatches
 		units[] = {};
 		weapons[] = {};
 		requiredVersion = 0.1;
-		requiredAddons[] = {"DZ_Data", "DZ_Characters", "DZ_Characters_Backpacks", "DZ_Characters_Tops", "DZ_Characters_Vests", "DZ_Characters_Pants", "DZ_Characters_Belts", "DZ_Gear_Containers"};
+		requiredAddons[] = {"DZ_Data", "DZ_Characters", "DZ_Characters_Backpacks", "DZ_Characters_Tops", "DZ_Characters_Nasdara_Tops", "DZ_Characters_Vests", "DZ_Characters_Nasdara_Vests", "DZ_Characters_Pants", "DZ_Characters_Nasdara_Pants", "DZ_Characters_Belts", "DZ_Characters_Nasdara_Belts", "DZ_Gear_Containers"};
 	};
 };
 
@@ -41,6 +41,7 @@ class CfgVehicles
 	class TortillaBag: Clothing { itemsCargoSize[] = {8, 12}; };  // Combat Backpack, was 7x8
 	// Belts
 	class HipPack_ColorBase: Clothing { itemsCargoSize[] = {4, 3}; };  // Hip Pack, was 3x2
+	class LeatherHipPack_Colorbase: Clothing { itemsCargoSize[] = {4, 3}; };  // Leather Hip Pack, was 3x2
 	// Pants
 	class BDUPants: Clothing { itemsCargoSize[] = {6, 5}; };  // BDU Pants, was 5x4
 	class Breeches_ColorBase: Clothing { itemsCargoSize[] = {5, 4}; };  // Capri Pants, was 4x3
@@ -48,6 +49,7 @@ class CfgVehicles
 	class CanvasPants_ColorBase: Clothing { itemsCargoSize[] = {5, 4}; };  // Hiking Pants, was 4x3
 	class CargoPants_ColorBase: Clothing { itemsCargoSize[] = {6, 5}; };  // Cargo Pants, was 5x4
 	class Chainmail_Leggings: Clothing { itemsCargoSize[] = {5, 3}; };  // Chainmail Leggings, was 4x2
+	class FNOPants: Clothing { itemsCargoSize[] = {6, 5}; };  // Fishtail Night Ops Pants, was 5x4
 	class FirefightersPants_ColorBase: Clothing { itemsCargoSize[] = {6, 5}; };  // Firefighter Pants, was 5x4
 	class GorkaPants_ColorBase: Clothing { itemsCargoSize[] = {6, 5}; };  // Patrol Pants, was 5x4
 	class HunterPants_ColorBase: Clothing { itemsCargoSize[] = {6, 5}; };  // Hunter Pants, was 5x4
@@ -56,7 +58,9 @@ class CfgVehicles
 	class LeatherPants_ColorBase: Clothing { itemsCargoSize[] = {4, 3}; };  // Leather Pants, was 3x2
 	class LegsCover_Improvised: Clothing { itemsCargoSize[] = {4, 3}; };  // Improvised Legs Wrapping, was 3x2
 	class MedicalScrubsPants_ColorBase: Clothing { itemsCargoSize[] = {5, 4}; };  // Scrub Pants, was 4x3
+	class MensShalwarPants_ColorBase: Clothing { itemsCargoSize[] = {5, 4}; };  // Shalwar, was 4x3
 	class NBCPantsBase: Clothing { itemsCargoSize[] = {5, 4}; };  // NBC Pants, was 4x3
+	class OBRPants_ColorBase: Clothing { itemsCargoSize[] = {6, 5}; };  // OBR Pants, was 5x4
 	class OMKPants_ColorBase: Clothing { itemsCargoSize[] = {6, 5}; };  // OMK Pants, was 5x4
 	class ParamedicPants_ColorBase: Clothing { itemsCargoSize[] = {6, 4}; };  // Paramedic Pants, was 5x3
 	class PolicePants: Clothing { itemsCargoSize[] = {5, 4}; };  // Navy Uniform Pants, was 4x3
@@ -68,6 +72,7 @@ class CfgVehicles
 	class TTSKOPants: Clothing { itemsCargoSize[] = {6, 4}; };  // Combat Pants, was 5x3
 	class TrackSuitPants_ColorBase: Clothing { itemsCargoSize[] = {5, 4}; };  // Tracksuit Pants, was 4x3
 	class USMCPants_ColorBase: Clothing { itemsCargoSize[] = {6, 5}; };  // CUU Pants, was 5x4
+	class WomensShalwarPants_ColorBase: Clothing { itemsCargoSize[] = {5, 4}; };  // Shalwar, was 4x3
 	// Pouches
 	class PlateCarrierPouches: Container_Base { itemsCargoSize[] = {6, 4}; };  // Pouches, was 5x3
 	// Tops
@@ -79,6 +84,7 @@ class CfgVehicles
 	class ChernarusSportShirt: Clothing { itemsCargoSize[] = {4, 4}; };  // Sports Shirt, was 3x3
 	class DenimJacket: Clothing { itemsCargoSize[] = {6, 5}; };  // Denim Jacket, was 5x4
 	class DownJacket_ColorBase: Clothing { itemsCargoSize[] = {8, 5}; };  // Down Jacket, was 6x4
+	class FNOJacket: Clothing { itemsCargoSize[] = {6, 5}; };  // Fishtail Night Ops Jacket, was 5x4
 	class FirefighterJacket_ColorBase: Clothing { itemsCargoSize[] = {8, 5}; };  // Firefighter Jacket, was 6x4
 	class GorkaEJacket_ColorBase: Clothing { itemsCargoSize[] = {8, 5}; };  // Patrol Jacket, was 6x4
 	class GulagJacket_ColorBase: Clothing { itemsCargoSize[] = {4, 4}; };  // Heavy Labor Jacket, was 3x3
@@ -86,6 +92,7 @@ class CfgVehicles
 	class Hoodie_ColorBase: Clothing { itemsCargoSize[] = {6, 4}; };  // Hoodie, was 5x3
 	class HuntingJacket_ColorBase: Clothing { itemsCargoSize[] = {8, 5}; };  // Hunter Jacket, was 6x4
 	class JumpsuitJacket_ColorBase: Clothing { itemsCargoSize[] = {8, 5}; };  // Jumpsuit Jacket, was 6x4
+	class KameezShirt_ColorBase: Clothing { itemsCargoSize[] = {4, 4}; };  // Kameez, was 3x3
 	class LabCoat: Clothing { itemsCargoSize[] = {6, 5}; };  // Lab Coat, was 5x4
 	class LeatherJacket_ColorBase: Clothing { itemsCargoSize[] = {8, 5}; };  // Leather Jacket, was 6x4
 	class LeatherShirt_ColorBase: Clothing { itemsCargoSize[] = {4, 4}; };  // Leather Shirt, was 3x3
@@ -96,16 +103,19 @@ class CfgVehicles
 	class MiniDress_ColorBase: Clothing { itemsCargoSize[] = {4, 4}; };  // Collar Dress, was 3x3
 	class NBCJacketBase: Clothing { itemsCargoSize[] = {5, 4}; };  // NBC Jacket, was 4x3
 	class NurseDress_ColorBase: Clothing { itemsCargoSize[] = {6, 5}; };  // Nurse Dress, was 5x4
+	class OBRJacket_ColorBase: Clothing { itemsCargoSize[] = {6, 5}; };  // OBR Jacket, was 5x4
 	class OMKJacket_ColorBase: Clothing { itemsCargoSize[] = {8, 7}; };  // OMK Jacket, was 6x5
 	class ParamedicJacket_ColorBase: Clothing { itemsCargoSize[] = {6, 5}; };  // Paramedic Jacket, was 5x4
 	class PilotJacket_ColorBase: Clothing { itemsCargoSize[] = {6, 5}; };  // Pilot Jacket, was 5x4
 	class PoliceJacket: Clothing { itemsCargoSize[] = {6, 5}; };  // Police Jacket, was 5x4
 	class PoliceJacketOrel: Clothing { itemsCargoSize[] = {6, 5}; };  // OREL Police Jacket, was 5x4
+	class PoliceShortSleeveShirt_ColorBase: Clothing { itemsCargoSize[] = {5, 4}; };  // Short Sleeve Shirt, was 4x3
 	class PrisonUniformJacket: Clothing { itemsCargoSize[] = {6, 4}; };  // Prisoner Jacket, was 5x3
 	class QuiltedJacket_ColorBase: Clothing { itemsCargoSize[] = {8, 5}; };  // Quilted Jacket, was 6x4
 	class Raincoat_ColorBase: Clothing { itemsCargoSize[] = {5, 4}; };  // Raincoat, was 4x3
 	class RidersJacket_ColorBase: Clothing { itemsCargoSize[] = {6, 5}; };  // Rider Jacket, was 5x4
 	class Shirt_ColorBase: Clothing { itemsCargoSize[] = {5, 4}; };  // Shirt, was 4x3
+	class ShortSleeveShirt_ColorBase: Clothing { itemsCargoSize[] = {5, 4}; };  // Short Sleeve Shirt, was 4x3
 	class Sweater_ColorBase: Clothing { itemsCargoSize[] = {4, 4}; };  // Sweater, was 3x3
 	class TShirt_ColorBase: Clothing { itemsCargoSize[] = {4, 4}; };  // Anniversary T-Shirt, was 3x3
 	class TTsKOJacket_ColorBase: Clothing { itemsCargoSize[] = {8, 5}; };  // Combat Jacket, was 6x4
@@ -118,10 +128,13 @@ class CfgVehicles
 	class WomanSuit_ColorBase: Clothing { itemsCargoSize[] = {6, 5}; };  // Womens Suit Jacket, was 5x4
 	class WoolCoat_ColorBase: Clothing { itemsCargoSize[] = {6, 5}; };  // Navy Uniform Jacket, was 5x4
 	// Vests
+	class ChestRigVest_ColorBase: Clothing { itemsCargoSize[] = {7, 5}; };  // Chest Rig, was 5x4
 	class HighCapacityVest_ColorBase: Clothing { itemsCargoSize[] = {7, 5}; };  // Tactical Vest, was 5x4
 	class HuntingVest: Clothing { itemsCargoSize[] = {7, 5}; };  // Hunter Vest, was 4x4
 	class LeatherStorageVest_ColorBase: Clothing { itemsCargoSize[] = {6, 7}; };  // Leather Vest, was 5x5
+	class LinenVest_ColorBase: Clothing { itemsCargoSize[] = {7, 5}; };  // Linen Vest, was 4x4
 	class PressVest_ColorBase: Clothing { itemsCargoSize[] = {7, 5}; };  // Ballistic Vest, was 4x4
+	class RobeVest_ColorBase: Clothing { itemsCargoSize[] = {7, 5}; };  // Robe, was 5x4
 	class SmershVest: Clothing { itemsCargoSize[] = {7, 5}; };  // Assault Vest, was 4x4
 	class UKAssVest_ColorBase: Clothing { itemsCargoSize[] = {7, 5}; };  // Field Vest, was 5x4
 };
