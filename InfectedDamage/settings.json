@@ -2,6 +2,6 @@
     "HealthMultiplier": 1.5,
     "ShockMultiplier": 1.5,
     "BloodMultiplier": 1.0,
-    "BleedChanceMultiplier": 1.5,
+    "BleedChanceMultiplier": 1.0,
     "ClothingDamageMultiplier": 1.0
 }

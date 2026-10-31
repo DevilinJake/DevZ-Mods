@@ -24,7 +24,7 @@ class CfgAmmo
 		class DamageApplied
 		{
 			type = "Infected";
-			bleedThreshold = 0.212;  // 16.5% bleed chance per hit, no clothing
+			bleedThreshold = 0.16;  // 11.0% bleed chance per hit, no clothing
 			class Health { damage = 9.75; armorDamage = 0.55; };
 			class Blood { damage = 100; };
 			class Shock { damage = 18; };
@@ -38,7 +38,7 @@ class CfgAmmo
 		class DamageApplied
 		{
 			type = "Infected";
-			bleedThreshold = 0.212;  // 16.5% bleed chance per hit, no clothing
+			bleedThreshold = 0.16;  // 11.0% bleed chance per hit, no clothing
 			class Health { damage = 12.75; armorDamage = 0.55; };
 			class Blood { damage = 100; };
 			class Shock { damage = 18; };
@@ -52,7 +52,7 @@ class CfgAmmo
 		class DamageApplied
 		{
 			type = "Infected";
-			bleedThreshold = 0.29;  // 26.2% bleed chance per hit, no clothing
+			bleedThreshold = 0.22;  // 17.5% bleed chance per hit, no clothing
 			class Health { damage = 12.75; armorDamage = 0.55; };
 			class Blood { damage = 100; };
 			class Shock { damage = 18; };
@@ -66,7 +66,7 @@ class CfgAmmo
 		class DamageApplied
 		{
 			type = "Infected";
-			bleedThreshold = 0.29;  // 26.2% bleed chance per hit, no clothing
+			bleedThreshold = 0.22;  // 17.5% bleed chance per hit, no clothing
 			class Health { damage = 16.5; armorDamage = 0.55; };
 			class Blood { damage = 100; };
 			class Shock { damage = 24; };
@@ -80,7 +80,7 @@ class CfgAmmo
 		class DamageApplied
 		{
 			type = "Infected";
-			bleedThreshold = 0.26;  // 22.5% bleed chance per hit, no clothing
+			bleedThreshold = 0.2;  // 15.0% bleed chance per hit, no clothing
 			class Health { damage = 12; armorDamage = 0.55; };
 			class Blood { damage = 100; };
 			class Shock { damage = 18; };
@@ -94,7 +94,7 @@ class CfgAmmo
 		class DamageApplied
 		{
 			type = "Infected";
-			bleedThreshold = 0.26;  // 22.5% bleed chance per hit, no clothing
+			bleedThreshold = 0.2;  // 15.0% bleed chance per hit, no clothing
 			class Health { damage = 12; armorDamage = 0.55; };
 			class Blood { damage = 100; };
 			class Shock { damage = 22.5; };

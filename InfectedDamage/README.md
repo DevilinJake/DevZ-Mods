@@ -34,11 +34,12 @@ short distance away. Vanilla values:
 
 ## Default settings
 
-Everything a rough 50% harder:
+Health and Shock a rough 50% harder:
 
 - **Health 1.5×**: 11 swipes or 8 lunges kill a player with no armour (vanilla 16 / 12).
 - **Shock 1.5×**: 18 per hit, so a group can knock you out with quick hits.
-- **Bleed chance 1.5×**: 16.5% per hit (vanilla 11%).
+- **Bleed chance 1×**: unchanged (11% per hit). Zombie virus and wound infection mods (such as
+  ZenVirus) infect on bleeding hits, so a higher bleed chance makes them much harsher.
 - **Blood 1×, clothing wear 1×**: unchanged.
 
 Soldier and police zombies keep hitting harder than the rest, by the same proportion.
@@ -52,7 +53,7 @@ Soldier and police zombies keep hitting harder than the rest, by the same propor
 | `HealthMultiplier` | `1.5` | Health damage per hit |
 | `ShockMultiplier` | `1.5` | Shock damage per hit (knock-outs) |
 | `BloodMultiplier` | `1.0` | Blood taken by the hit itself (not by bleeding) |
-| `BleedChanceMultiplier` | `1.5` | Chance per hit to start bleeding |
+| `BleedChanceMultiplier` | `1.0` | Chance per hit to start bleeding |
 | `ClothingDamageMultiplier` | `1.0` | How much the hit wears the clothing it lands on |
 
 Use `1.0` for vanilla, less than 1 to make zombies weaker. Bleed chance can't go above 100%.

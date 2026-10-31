@@ -9,7 +9,7 @@ Zombies hit 1.5x harder out of the box, or build your own multipliers for Health
 [list]
 [*] Health 1.5x: 11 swipes kill a player with no armour (vanilla 16).
 [*] Shock 1.5x: a group can knock you out with quick hits.
-[*] Bleed chance 1.5x: 16.5% per hit (vanilla 11%).
+[*] Bleed chance 1x: unchanged (11% per hit), so virus and wound infection mods that infect on bleeding hits stay fair.
 [*] Blood and clothing wear unchanged.
 [/list]
 This Workshop build covers [b]vanilla items[/b], so it works on any server and needs no other mod. Running modded items? See below.
