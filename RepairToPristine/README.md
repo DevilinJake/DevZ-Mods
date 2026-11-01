@@ -18,6 +18,12 @@ Almost every item answers no; only tents, fences, watchtowers, shelters and the 
 say yes. The kit is never asked, and there's no config setting for it. This mod remembers which
 kit is being used while a repair is checked or done, and says yes when that kit is on the list.
 
+**Cars are repaired differently.** Car doors (and hood/trunk), the engine and the car's body
+zones (chassis, fuel tank, bumpers, fenders, roof, windows...) each have their own repair action
+that never asks the item and always stops at Worn. The mod changes those actions too: with a
+listed kit, a Worn door or zone can be repaired once more, straight to Pristine. A door on a car
+still has to be open, and the engine still has to be off. Motorbikes and boats keep the game's rule.
+
 ## Default kits
 
 Every vanilla kit is on, so everything repairable can go back to Pristine:
@@ -32,7 +38,7 @@ Every vanilla kit is on, so everything repairable can go back to Pristine:
 | Epoxy Putty | `EpoxyPutty` | Helmets, hard plastics, some gun parts |
 | Electrical Repair Kit | `ElectronicRepairKit` | Radios, lights, batteries |
 | Tire Repair Kit | `TireRepairKit` | Vehicle wheels |
-| Blowtorch | `Blowtorch` | Metal vehicle and base parts |
+| Blowtorch | `Blowtorch` | Car doors, engine, chassis and body; metal base parts |
 
 Kits built on a listed kit count too. Listing a kit from a mod you don't run is harmless.
 
