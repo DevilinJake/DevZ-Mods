@@ -8,7 +8,12 @@ class DevZ_RepairToPristine
 
 	static bool KitAllows()
 	{
-		if (!s_Kit)
+		return IsListed(s_Kit);
+	}
+
+	static bool IsListed(ItemBase kit)
+	{
+		if (!kit)
 			return false;
 
 		if (!s_Kits)
@@ -17,9 +22,9 @@ class DevZ_RepairToPristine
 			g_Game.ConfigGetTextArray("CfgDevZ_RepairToPristine kits", s_Kits);
 		}
 
-		foreach (string kit : s_Kits)
+		foreach (string listed : s_Kits)
 		{
-			if (s_Kit.IsKindOf(kit))
+			if (kit.IsKindOf(listed))
 				return true;
 		}
 		return false;

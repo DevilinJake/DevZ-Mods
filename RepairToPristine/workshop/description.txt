@@ -2,6 +2,7 @@ Repair kits repair items all the way to Pristine instead of stopping at Worn.
 
 [list]
 [*] Each repair still moves an item up one condition level and uses some of the kit, so Worn to Pristine costs one more repair.
+[*] Cars too: doors, hood and trunk, the engine, chassis, fuel tank and body parts go back to Pristine with a listed kit (blowtorch, epoxy putty).
 [*] Ruined items stay unrepairable, the game's way.
 [/list]
 
