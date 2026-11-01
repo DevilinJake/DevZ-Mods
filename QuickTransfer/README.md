@@ -20,6 +20,13 @@ With the inventory open, hold the key and move the mouse over items:
 | In your clothing or backpack | The nearest container you have **open** in the vicinity list (crate, tent, barrel, car trunk, backpack on the ground) |
 | In a vicinity container, or on the ground | Your clothing or backpack, wherever there's room |
 
+- **Rebuildable houses too.** A house you're rebuilding has no cargo, only slots for materials
+  (bricks, mortar, planks...), grouped per wall, doorway or floor. Swept items go into an empty
+  slot that takes them, but only in the groups the inventory is showing you right now: the
+  parts they need are built and you're standing near them. Go upstairs and the upstairs slots
+  fill. A slot that already holds some of the same material is topped up first (what doesn't
+  fit stays in your inventory); materials of a part that's already built are left alone. Door
+  locks are never swept onto a door.
 - **Only what fits moves.** If the nearest open container is full, the item goes to the next
   nearest one with room; if none has room, it stays where it is.
 - **Nothing you wear or hold moves**: clothing, your backpack itself, the item in your hands
