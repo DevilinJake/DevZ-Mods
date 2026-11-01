@@ -2,6 +2,7 @@ With the inventory open, hold a key and sweep the mouse over items: each one mov
 
 [list]
 [*] Items in your clothing and backpack go to the nearest container you have open in vicinity (crate, tent, car trunk, barrel...). Items in a container or on the ground come into your inventory.
+[*] Rebuildable houses: materials top up or fill the house slots you can see, on whatever floor you're on.
 [*] Only moves what fits. Nothing you wear or hold is moved, and an item never bounces back while you keep the key down.
 [*] Every move is a normal inventory move, so the server checks it exactly like a drag and drop.
 [/list]

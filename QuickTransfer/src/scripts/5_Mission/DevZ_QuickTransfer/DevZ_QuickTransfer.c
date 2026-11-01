@@ -1,6 +1,7 @@
 // Hold the Quick Transfer key with the inventory open and move the mouse over items. Each item
 // the cursor touches moves, if there's room:
 //   from your clothing or backpack           -> the nearest open container in vicinity
+//                                               (or an empty slot of a rebuildable house)
 //   from a vicinity container or the ground  -> your clothing or backpack
 // Runs on the client only. Every move is an ordinary inventory move, so the server checks it
 // exactly like a drag and drop.
@@ -73,13 +74,14 @@ class DevZ_QuickTransfer
 			return;
 
 		InventoryLocation dst;
+		ItemBase stack;
 		int type = src.GetType();
 		if (item.GetHierarchyRootPlayer() == player)
 		{
 			// Only things in your clothing and backpack: never what you wear or hold
 			if (type != InventoryLocationType.CARGO)
 				return;
-			dst = FindNearestOpenContainer(player, item, vicinity);
+			dst = FindNearestOpenContainer(player, item, vicinity, stack);
 		}
 		else
 		{
@@ -94,14 +96,18 @@ class DevZ_QuickTransfer
 				return;
 		}
 
-		if (dst)
+		if (stack)
+			stack.CombineItemsClient(item, true);
+		else if (dst)
 			player.PredictiveTakeToDst(src, dst);
 	}
 
 	// The free spot for the item in the nearest container that's open in the vicinity list,
 	// skipping containers without room. Bodies are left out: you loot them, you don't fill them.
-	protected InventoryLocation FindNearestOpenContainer(PlayerBase player, EntityAI item, VicinityContainer vicinity)
+	// stack is set instead when the item tops up a partly filled house slot.
+	protected InventoryLocation FindNearestOpenContainer(PlayerBase player, EntityAI item, VicinityContainer vicinity, out ItemBase stack)
 	{
+		stack = null;
 		if (!vicinity)
 			return null;
 
@@ -120,13 +126,67 @@ class DevZ_QuickTransfer
 				continue;
 
 			InventoryLocation loc = new InventoryLocation();
+			ItemBase houseStack = null;
 			if (!container.GetInventory().FindFreeLocationFor(item, FindInventoryLocationType.CARGO, loc))
-				continue;
+			{
+				BuildingBase house = BuildingBase.Cast(container);
+				if (!house || !FindHouseSlot(house, item, loc, houseStack))
+					continue;
+			}
 
 			best = loc;
+			stack = houseStack;
 			bestDist = dist;
 		}
 		return best;
+	}
+
+	// Rebuildable houses have no cargo: materials go in attachment slots, in groups per wall,
+	// doorway or floor. Only groups the inventory is showing right now count (the parts they
+	// need are built and you're standing near them), so upstairs slots fill once you're upstairs.
+	// A partly filled slot of the same material is topped up first (stack), else an empty slot.
+	protected bool FindHouseSlot(BuildingBase house, EntityAI item, InventoryLocation loc, out ItemBase stack)
+	{
+		stack = null;
+		// Door locks are fitted on purpose, never swept onto a door
+		ItemBase itemIB = ItemBase.Cast(item);
+		if (itemIB && itemIB.IsExternalLockType())
+			return false;
+
+		TypeAttachmentGroupsDataHolder groups = house.GetTypeAttachmentGroupInfoHolder();
+		if (!groups || !groups.GetAttachmentGroupMap())
+			return false;
+
+		bool foundEmpty = false;
+		foreach (string groupName, TypeAttachmentGroupData group : groups.GetAttachmentGroupMap())
+		{
+			if (!house.CanDisplayAttachmentCategory(groupName))
+				continue;
+
+			foreach (string slotName : group.m_AttSlots)
+			{
+				int slotId = InventorySlots.GetSlotIdFromString(slotName);
+				if (slotId == InventorySlots.INVALID || !house.CanDisplayAttachmentSlot(slotId))
+					continue;
+
+				ItemBase inSlot = ItemBase.Cast(house.GetInventory().FindAttachment(slotId));
+				if (inSlot)
+				{
+					// Built parts lock their materials in place
+					if (!house.GetInventory().GetSlotLock(slotId) && inSlot.CanBeCombined(item))
+					{
+						stack = inSlot;
+						return true;
+					}
+				}
+				else if (!foundEmpty && house.GetInventory().CanAddAttachmentEx(item, slotId))
+				{
+					loc.SetAttachment(house, item, slotId);
+					foundEmpty = true;
+				}
+			}
+		}
+		return foundEmpty;
 	}
 
 	protected bool IsOpenInVicinity(EntityAI item, VicinityContainer vicinity)
