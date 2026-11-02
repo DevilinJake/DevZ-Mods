@@ -231,6 +231,18 @@ MODS = {
             "Batteries already in the world keep the charge they have, so a full one shows half full after you add the mod.",
         ],
     ),
+    "GPSArrowFix": (
+        "GPS\nArrow Fix", (90, 180, 220),
+        "Fixes a DayZ Expansion bug: your player arrow on the GPS mini-map disappears after you open the inventory or any other menu, and only comes back when you cycle the GPS. With this mod it comes back as soon as the menu closes.",
+        [
+            "Expansion's GPS hides the arrow while a menu is open, but its \"menu closed\" check hides it again instead of showing it. This mod shows it again whenever Expansion's own rules say it should be visible.",
+            "Everything else about Expansion's GPS (zoom, stats, compass, settings) is untouched: the fix runs after it.",
+            "Needs [b]DayZ Expansion[/b] Navigation and must load after it. No Expansion files are copied or changed.",
+        ],
+        [
+            "No settings file: there's nothing for admins to set.",
+        ],
+    ),
 }
 
 # Server-side mods: loaded with -servermod, players never download them
@@ -254,6 +266,7 @@ SCANS = {
     "SatchelSoundFix": None,
     "HouseCodeLock": None,
     "BarrelStorage": None,
+    "GPSArrowFix": None,
     "BatteryLife": "the batteries and gas canisters from any mod (Expansion's helicopter battery, for example)",
 }
 
@@ -264,6 +277,7 @@ NO_SCAN = {
     "CrashSafety": "Works with vanilla vehicles and modded ones built on them, including Expansion's helicopters and boats. Nothing to set up. Leave other mods' crew damage multipliers at 1.",
     "AutoRun": "Works on any map with any other mods: it changes no items and no settings. Nothing to set up.",
     "SatchelSoundFix": "Works alongside any other Expansion add-on: it only touches the satchel's beep. Nothing to set up.",
+    "GPSArrowFix": "Works alongside any other Expansion add-on: it only touches the GPS mini-map's player arrow. Nothing to set up.",
     "HouseCodeLock": "Needs [b]DayZ Expansion[/b] (the Bundle or Base Building): load it after Expansion in -mod=. Works on any map with rebuildable vanilla houses. Expansion's code locks on gates, walls, tents and safes work exactly as before. When Expansion adds house doors itself, remove this mod.",
     "BarrelStorage": "Works on any map. Barrels from other mods that are built on the vanilla barrel fit the rack too. Don't load it next to the original INVICTUZ_Barrel_Storage: they use the same item names.",
     "HouseRaidRules": "Works on any map with vanilla house rebuilding, next to Ninjins Raid Extension's own rules for fences, gates, towers and tents. With Expansion Base Building loaded, raid hours follow Expansion's RaidSettings.json, so the house parts open and close with Expansion's walls. The sledgehammer and dismantling are actions, not hits: block ActionDestroyPart and ActionDismantlePart in Ninjins Core's ActionsManager.json for your PvE and safe zones, as you would for any base.",
@@ -295,6 +309,7 @@ PICTOGRAMS = {
     "HouseCodeLock": "codelock",        # a plain house door with a square keypad lock on it
     "BarrelStorage": "barrelrack",      # a rack, three shelves of two barrels in the vanilla colours
     "BatteryLife": "battery",           # a 9V battery full of charge with a bolt, x2 badge
+    "GPSArrowFix": "gps",               # a GPS handset, its map screen showing the player arrow, a tick
 }
 
 # Mods based on someone else's work: shown in a Credits section, and the licence line says so
