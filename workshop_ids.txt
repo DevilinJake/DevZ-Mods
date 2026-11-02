@@ -19,3 +19,4 @@ HouseCodeLock     3829980528
 HouseRaidRules    3829986096
 BarrelStorage     3830105193
 BatteryLife       3830178347
+GPSArrowFix       3832246830

@@ -9,7 +9,7 @@ MH-6 Little Bird) and landrover_silhouette.png (a Defender 110).
     card(["Ammo", "Stacks"], (214, 157, 70), "ammo", seed=10, path="preview.png")
 
 Pictograms: inventory, ammo, weapon, combine, recipes, repair, autostack, infected, transfer, crash,
-autorun, satchel, codelock, houseraid, barrelrack.\nA bundle card takes a list of (pictogram, accent) pairs instead of a name and draws one small
+autorun, satchel, codelock, houseraid, barrelrack, battery, gps.\nA bundle card takes a list of (pictogram, accent) pairs instead of a name and draws one small
 tile per mod, each in that mod's colour.
 """
 import math
@@ -621,6 +621,34 @@ class Pict:
         r, bx, byy = 15, 82, 30
         self.d.ellipse(self.p(bx - r, byy - r, bx + r, byy + r), fill=self.accent)
         self.d.text(self.p(bx, byy + 0.5), "×2", font=bahn(int(17 * self.k), "Bold"), fill=DARK, anchor="mm")
+
+    def gps(self):
+        """a handheld GPS (stubby antenna, three buttons) whose screen shows a map with roads and
+        the player's arrow in the mod's colour, and a tick badge: the arrow is back"""
+        x0, x1, y0, y1 = 24, 66, 22, 92
+        # the antenna, then the body
+        self.d.rounded_rectangle(self.p(x0 + 5, y0 - 14, x0 + 12, y0 + 2), radius=2.5 * self.k, fill=self.fg)
+        self.d.rounded_rectangle(self.p(x0, y0, x1, y1), radius=7 * self.k, fill=(0, 0, 0, 140),
+                                 outline=self.fg, width=self.lw(3))
+        # the screen: a dark map with a few roads and a contour
+        sx0, sx1, sy0, sy1 = x0 + 6, x1 - 6, y0 + 7, y0 + 47
+        self.d.rectangle(self.p(sx0, sy0, sx1, sy1), fill=(30, 44, 40), outline=self.fg, width=self.lw(1.6))
+        road = self.fg + (110,)
+        self.d.line(self.p(sx0, sy0 + 12, sx1, sy0 + 26), fill=road, width=self.lw(1.6))
+        self.d.line(self.p(sx0 + 9, sy1, sx0 + 18, sy0), fill=road, width=self.lw(1.4))
+        self.d.arc(self.p(sx0 + 14, sy0 + 18, sx1 + 10, sy1 + 16), start=200, end=280,
+                   fill=self.fg + (70,), width=self.lw(1.2))
+        # the player's arrow in the middle of the screen, pointing up-right, with a soft glow
+        cx, cy = (sx0 + sx1) / 2 + 1, (sy0 + sy1) / 2 + 1
+        self.glow(cx, cy, 9, self.accent, alpha=110, blur=3)
+        self.d.polygon(self.p(cx + 7, cy - 9, cx - 8, cy - 1, cx - 1, cy + 1, cx + 2, cy + 9), fill=self.accent)
+        # three buttons under the screen
+        for bx in (x0 + 12, (x0 + x1) / 2, x1 - 12):
+            self.d.ellipse(self.p(bx - 3.2, y1 - 17, bx + 3.2, y1 - 10.6), fill=self.fg)
+        # a tick badge
+        r, bx, byy = 15, 82, 30
+        self.d.ellipse(self.p(bx - r, byy - r, bx + r, byy + r), fill=self.accent)
+        self.tick(bx, byy, s=7, color=DARK, w=4.5)
 
     def tiles(self, items):
         """A bundle: one small card-like tile per mod, each with that mod's own pictogram and
