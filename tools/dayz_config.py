@@ -112,6 +112,8 @@ def _class(b, off):
             name, i = _cstr(b, i)
             v, i = _array(b, i)
             body[name] = v
+            if t == 5:
+                body.setdefault('__append', set()).add(name)
         elif t in (3, 4):  # external declaration / delete
             name, i = _cstr(b, i)
     return body
@@ -179,6 +181,8 @@ def _cpp_body(toks, i, parent=''):
             name = t; i += 1
             if toks[i] == '[':
                 i += 2  # '[' ']'
+                if toks[i] == '+=':
+                    body.setdefault('__append', set()).add(name)
                 i += 1  # '=' or '+='
                 body[name], i = _cpp_array(toks, i)
             else:
@@ -221,7 +225,8 @@ def read_configs(pbo):
 
 
 def load_classes(pbos, root='CfgVehicles'):
-    """Merge `root` classes from every PBO's config.bin, later PBOs overriding earlier ones.
+    """Merge `root` classes from every PBO's config.bin, later PBOs overriding earlier ones
+    (an "+=" array is added to the one already there).
 
     Config names are case-insensitive, so classes are keyed by lower-case name.
     Returns {class_lower: {'name': str, 'parent': str_lower, 'props': dict, 'source': str}}.
@@ -237,7 +242,13 @@ def load_classes(pbos, root='CfgVehicles'):
                                                            'source': pbo})
                 if body['__parent']:
                     entry['parent'] = body['__parent'].lower()
-                entry['props'].update({k: v for k, v in body.items() if not k.startswith('__')})
+                for k, v in body.items():
+                    if k.startswith('__'):
+                        continue
+                    if k in body.get('__append', ()):
+                        # "+=" adds to the list the class already has (or inherits)
+                        v = list(resolve(classes, name, k, [])[0] or []) + v
+                    entry['props'][k] = v
     return classes
 
 
