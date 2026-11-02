@@ -6,8 +6,8 @@ cycle the GPS with its key. With this mod the arrow comes back as soon as the me
 
 - **Players need it too** (it's a normal mod, not a server-only one): the GPS is drawn on each
   player's own game, so the fix has to be there.
-- **Needs Expansion Navigation.** Without it the mod compiles to nothing and does no harm.
-  Load it **after** Expansion.
+- **Needs Expansion Navigation.** Its config lists Expansion's navigation scripts as required,
+  so the game compiles it after them; without Expansion it won't load. Load it **after** Expansion.
 - **Changes nothing else.** No items, no settings, no Expansion files: it's a small script
   override, the same way every Expansion add-on works.
 
@@ -25,8 +25,8 @@ One small override of `IngameHud.Update()`, in
 arrow is hidden but Expansion's own rules say it should show (no menu or inventory open, GPS on,
 mini-map showing, the server shows player positions), it's shown again.
 
-The whole file is wrapped in `#ifdef EXPANSIONMODNAVIGATION`, Expansion's own marker, so
-without Expansion Navigation nothing is compiled. The comment at the top of the file describes
+The mod's `config.cpp` requires `DayZExpansion_Navigation_Scripts`: without that, the game can
+compile this file before Expansion's `IngameHud` and fail to find its members. The comment at the top of the file describes
 the bug in Expansion's terms, so its team can lift the fix if they want it.
 
 ## Installing
