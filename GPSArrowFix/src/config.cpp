@@ -5,7 +5,8 @@ class CfgPatches
 		units[] = {};
 		weapons[] = {};
 		requiredVersion = 0.1;
-		requiredAddons[] = {"DZ_Data", "DZ_Scripts"};
+		// Expansion's navigation scripts first, so its IngameHud members exist when ours compiles
+		requiredAddons[] = {"DZ_Data", "DZ_Scripts", "DayZExpansion_Navigation_Scripts"};
 	};
 };
 
