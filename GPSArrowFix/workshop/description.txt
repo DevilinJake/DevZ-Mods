@@ -1,0 +1,29 @@
+Fixes a DayZ Expansion bug: your player arrow on the GPS mini-map disappears after you open the inventory or any other menu, and only comes back when you cycle the GPS. With this mod it comes back as soon as the menu closes.
+
+[list]
+[*] Expansion's GPS hides the arrow while a menu is open, but its "menu closed" check hides it again instead of showing it. This mod shows it again whenever Expansion's own rules say it should be visible.
+[*] Everything else about Expansion's GPS (zoom, stats, compass, settings) is untouched: the fix runs after it.
+[*] Needs [b]DayZ Expansion[/b] Navigation and must load after it. Without Expansion the mod compiles to nothing and does no harm. No Expansion files are copied or changed.
+[/list]
+
+[h2]Default settings[/h2]
+[list]
+[*] No settings file: there's nothing for admins to set.
+[/list]
+
+[h2]Server setup[/h2]
+[list]
+[*] Add it to [b]-mod=[/b] (players need it too; they download it automatically when they join).
+[*] Copy [b]keys\DevZ.bikey[/b] from the mod folder into your server's [b]keys[/b] folder.
+[/list]
+
+[h2]Works with your other mods[/h2]
+Works alongside any other Expansion add-on: it only touches the GPS mini-map's player arrow. Nothing to set up.
+
+[h2]Links[/h2]
+[list]
+[*] Details and source: [url=https://github.com/DevilinJake/DevZ-Mods/tree/main/GPSArrowFix]GitHub[/url]
+[*] More DevZ mods: [url=https://github.com/DevilinJake/DevZ-Mods]DevZ-Mods[/url]
+[/list]
+
+[b]Licence: MIT.[/b] Use it, change it and repack it, including in your own server pack. A credit is appreciated but not required.
