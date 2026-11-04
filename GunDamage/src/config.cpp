@@ -8,7 +8,7 @@ class CfgPatches
 		units[] = {};
 		weapons[] = {};
 		requiredVersion = 0.1;
-		requiredAddons[] = {"DZ_Data", "DZ_Weapons_Projectiles", "DZ_Characters_Vests", "DZ_Scripts"};
+		requiredAddons[] = {"DZ_Data", "DZ_Weapons_Projectiles", "DayZExpansion_Weapons_Sniper_AWM", "DZ_Characters_Vests", "DZ_Scripts"};
 	};
 };
 
@@ -200,6 +200,22 @@ class CfgAmmo
 			class Health { damage = 43.75; };
 			class Blood { damage = 100; };
 			class Shock { damage = 43.75; };
+		};
+	};
+
+	// Expansion_AWM Expansion_AWM_Black Expansion_AWM_Green
+	// was Health 147, Shock 125
+	class Bullet_Expansion_338: Bullet_Base
+	{
+		class DamageApplied
+		{
+			type = "Projectile";
+			dispersion = 0;
+			bleedThreshold = 1;
+			defaultDamageOverride[] = {{0.5, 1}};
+			class Health { damage = 217.5; };
+			class Blood { damage = 100; };
+			class Shock { damage = 150; };
 		};
 	};
 };

@@ -25,3 +25,4 @@ GrenadeM4,Bullet_Base,UnderSlugGrenadeM4,weapons_projectiles.pbo,DZ_Weapons_Proj
 Rocket_RPG7_HE,Rocket_RPG7_Base,RPG7,weapons_projectiles.pbo,DZ_Weapons_Projectiles,Projectile,0.0,0.800000011920929,"[[0.5, 1.0]]",150.0,100.0,0.0,,
 Rocket_RPG7_AP,Rocket_RPG7_Base,RPG7,weapons_projectiles.pbo,DZ_Weapons_Projectiles,Projectile,0.0,0.800000011920929,"[[0.5, 1.0]]",150.0,100.0,0.0,,
 Rocket_LAW_HE,Rocket_LAW_Base,LAW,weapons_projectiles.pbo,DZ_Weapons_Projectiles,Projectile,0.0,0.800000011920929,"[[0.5, 1.0]]",150.0,100.0,0.0,,
+Bullet_Expansion_338,Bullet_Base,Expansion_AWM Expansion_AWM_Black Expansion_AWM_Green,objects_weapons_firearms_sniper_awm.pbo (Expansion),DayZExpansion_Weapons_Sniper_AWM,Projectile,0,1,"[[0.5, 1]]",147,100,125,1.479592,1.2
