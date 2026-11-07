@@ -1,0 +1,7 @@
+Sleeping bag models, textures and materials by Zenarchist, from Zen's Sleeping Mod.
+Source: https://github.com/ZenarchistCode/ZenSleepV2 (commit 1dbfc4ef4948138260532243fee9a4765f37f636)
+Workshop: https://steamcommunity.com/sharedfiles/filedetails/?id=3468961047
+
+His readme says: "You can repack this mod if you like, and do anything else you want with it for that matter."
+These files keep his terms: they aren't under this mod's own licence. The compiled models are the ones in his Workshop release. Material paths were changed to fit this mod.
+If he asks, they come out.

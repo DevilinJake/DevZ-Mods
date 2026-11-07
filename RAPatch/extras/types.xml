@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<!-- RA's Types\basebuilding.xml has no loot rows for its tools or explosives. These numbers are a starting point
+     to tune for your server. Add to the mission's cfgeconomycore.xml:  <ce folder="rapatch"><file name="types.xml" type="types" /></ce> -->
+<types>
+	<type name="RA_Gunpowder">
+		<nominal>10</nominal><lifetime>7200</lifetime><restock>1800</restock><min>5</min>
+		<quantmin>-1</quantmin><quantmax>-1</quantmax><cost>100</cost>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0"/>
+		<category name="tools"/><usage name="Military"/><usage name="Industrial"/>
+	</type>
+	<type name="RA_Improvised_C4">
+		<nominal>0</nominal><lifetime>7200</lifetime><restock>0</restock><min>0</min>
+		<quantmin>-1</quantmin><quantmax>-1</quantmax><cost>100</cost>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="1" deloot="0"/>
+		<category name="tools"/>
+	</type>
+	<type name="RA_C4">
+		<nominal>3</nominal><lifetime>7200</lifetime><restock>3600</restock><min>1</min>
+		<quantmin>-1</quantmin><quantmax>-1</quantmax><cost>100</cost>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0"/>
+		<category name="tools"/><usage name="Military"/>
+	</type>
+	<type name="RA_Cinderblock">
+		<nominal>30</nominal><lifetime>7200</lifetime><restock>1800</restock><min>15</min>
+		<quantmin>-1</quantmin><quantmax>-1</quantmax><cost>100</cost>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0"/>
+		<category name="tools"/><usage name="Industrial"/>
+	</type>
+	<type name="RA_ClawHammer_Blue">
+		<nominal>3</nominal><lifetime>7200</lifetime><restock>1800</restock><min>1</min>
+		<quantmin>-1</quantmin><quantmax>-1</quantmax><cost>100</cost>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0"/>
+		<category name="tools"/><usage name="Industrial"/><usage name="Town"/>
+	</type>
+	<type name="RA_ClawHammer_Red">
+		<nominal>3</nominal><lifetime>7200</lifetime><restock>1800</restock><min>1</min>
+		<quantmin>-1</quantmin><quantmax>-1</quantmax><cost>100</cost>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0"/>
+		<category name="tools"/><usage name="Industrial"/><usage name="Town"/>
+	</type>
+	<type name="RA_ClawHammer_Yellow">
+		<nominal>3</nominal><lifetime>7200</lifetime><restock>1800</restock><min>1</min>
+		<quantmin>-1</quantmin><quantmax>-1</quantmax><cost>100</cost>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0"/>
+		<category name="tools"/><usage name="Industrial"/><usage name="Town"/>
+	</type>
+	<type name="RA_CodeLock">
+		<nominal>10</nominal><lifetime>7200</lifetime><restock>1800</restock><min>5</min>
+		<quantmin>-1</quantmin><quantmax>-1</quantmax><cost>100</cost>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0"/>
+		<category name="tools"/><usage name="Industrial"/><usage name="Town"/>
+	</type>
+	<type name="RAPatch_SleepingBag_Black">
+		<nominal>2</nominal><lifetime>7200</lifetime><restock>1800</restock><min>1</min>
+		<quantmin>-1</quantmin><quantmax>-1</quantmax><cost>100</cost>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0"/>
+		<category name="containers"/><usage name="Town"/><usage name="Village"/>
+	</type>
+	<type name="RAPatch_SleepingBag_Black_Deployed">
+		<lifetime>1209600</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="1" deloot="0"/>
+	</type>
+	<type name="RAPatch_SleepingBag_Blue">
+		<nominal>2</nominal><lifetime>7200</lifetime><restock>1800</restock><min>1</min>
+		<quantmin>-1</quantmin><quantmax>-1</quantmax><cost>100</cost>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0"/>
+		<category name="containers"/><usage name="Town"/><usage name="Village"/>
+	</type>
+	<type name="RAPatch_SleepingBag_Blue_Deployed">
+		<lifetime>1209600</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="1" deloot="0"/>
+	</type>
+	<type name="RAPatch_SleepingBag_Green">
+		<nominal>2</nominal><lifetime>7200</lifetime><restock>1800</restock><min>1</min>
+		<quantmin>-1</quantmin><quantmax>-1</quantmax><cost>100</cost>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0"/>
+		<category name="containers"/><usage name="Town"/><usage name="Village"/>
+	</type>
+	<type name="RAPatch_SleepingBag_Green_Deployed">
+		<lifetime>1209600</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="1" deloot="0"/>
+	</type>
+	<type name="RAPatch_SleepingBag_Grey">
+		<nominal>2</nominal><lifetime>7200</lifetime><restock>1800</restock><min>1</min>
+		<quantmin>-1</quantmin><quantmax>-1</quantmax><cost>100</cost>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0"/>
+		<category name="containers"/><usage name="Town"/><usage name="Village"/>
+	</type>
+	<type name="RAPatch_SleepingBag_Grey_Deployed">
+		<lifetime>1209600</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="1" deloot="0"/>
+	</type>
+	<type name="RAPatch_SleepingBag_Red">
+		<nominal>2</nominal><lifetime>7200</lifetime><restock>1800</restock><min>1</min>
+		<quantmin>-1</quantmin><quantmax>-1</quantmax><cost>100</cost>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="0" deloot="0"/>
+		<category name="containers"/><usage name="Town"/><usage name="Village"/>
+	</type>
+	<type name="RAPatch_SleepingBag_Red_Deployed">
+		<lifetime>1209600</lifetime>
+		<flags count_in_cargo="0" count_in_hoarder="0" count_in_map="1" count_in_player="0" crafted="1" deloot="0"/>
+	</type>
+</types>

@@ -1,0 +1,826 @@
+FrameWidgetClass DashboardRoot {
+ position 0 0
+ size 1 1
+ hexactpos 0
+ vexactpos 0
+ hexactsize 0
+ vexactsize 0
+ priority 900
+ {
+  PanelWidgetClass Window {
+  color 0.07 0.09 0.11 0.96
+  position 0 0
+  size 900 560
+  halign center_ref
+  valign center_ref
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  style rover_sim_colorable
+  {
+  PanelWidgetClass WindowBacking {
+  ignorepointer 1
+  color 0.07 0.09 0.11 0.96
+  position 0 0
+  size 1 1
+  hexactpos 1
+  vexactpos 1
+  hexactsize 0
+  vexactsize 0
+  style rover_sim_colorable
+  }
+  TextWidgetClass TitleText {
+  ignorepointer 1
+  position 24 16
+  size 600 34
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  text "TERRITORY HQ"
+  font "gui/fonts/sdf_MetronBook24"
+  "exact text" 1
+  "exact text size" 26
+  "text valign" center
+  }
+  ButtonWidgetClass CloseButton {
+  color 0 0 0 0
+  position 16 16
+  size 90 34
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  halign right_ref
+  style Empty
+  {
+   PanelWidgetClass CloseButtonBack {
+    ignorepointer 1
+    color 0.6 0.14 0.12 1
+    position 0 0
+    size 1 1
+    hexactpos 0
+    vexactpos 0
+    hexactsize 0
+    vexactsize 0
+    style rover_sim_colorable
+   }
+   TextWidgetClass CloseButtonLabel {
+    ignorepointer 1
+    position 0 0
+    size 1 1
+    halign center_ref
+    valign center_ref
+    hexactpos 1
+    vexactpos 1
+    hexactsize 0
+    vexactsize 0
+    text "Close"
+    font "gui/fonts/sdf_MetronBook24"
+    "exact text" 1
+    "exact text size" 16
+    "text halign" center
+    "text valign" center
+   }
+  }
+  }
+  PanelWidgetClass TitleLine {
+  ignorepointer 1
+  color 0.85 0.55 0.15 1
+  position 0 58
+  size 1 2
+  hexactpos 1
+  vexactpos 1
+  hexactsize 0
+  vexactsize 1
+  style rover_sim_colorable
+  }
+  TextWidgetClass InfoHeading {
+  ignorepointer 1
+  position 24 70
+  size 360 26
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  text "THIS TERRITORY"
+  font "gui/fonts/sdf_MetronBook24"
+  "exact text" 1
+  "exact text size" 18
+  "text valign" center
+  }
+  MultilineTextWidgetClass InfoText {
+  ignorepointer 1
+  position 24 100
+  size 360 240
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  text "Loading..."
+  font "gui/fonts/sdf_MetronLight24"
+  "exact text" 1
+  "exact text size" 18
+  wrap 1
+  }
+  TextWidgetClass ModulesHeading {
+  ignorepointer 1
+  position 410 70
+  size 200 26
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  text "MODULES"
+  font "gui/fonts/sdf_MetronBook24"
+  "exact text" 1
+  "exact text size" 18
+  "text valign" center
+  }
+  ButtonWidgetClass ModulesPrev {
+  visible 0
+  color 0 0 0 0
+  position 790 68
+  size 40 28
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  style Empty
+  {
+   PanelWidgetClass ModulesPrevBack {
+    ignorepointer 1
+    color 0.25 0.3 0.45 1
+    position 0 0
+    size 1 1
+    hexactpos 0
+    vexactpos 0
+    hexactsize 0
+    vexactsize 0
+    style rover_sim_colorable
+   }
+   TextWidgetClass ModulesPrevLabel {
+    ignorepointer 1
+    position 0 0
+    size 1 1
+    halign center_ref
+    valign center_ref
+    hexactpos 1
+    vexactpos 1
+    hexactsize 0
+    vexactsize 0
+    text "<"
+    font "gui/fonts/sdf_MetronBook24"
+    "exact text" 1
+    "exact text size" 15
+    "text halign" center
+    "text valign" center
+   }
+  }
+  }
+  ButtonWidgetClass ModulesNext {
+  visible 0
+  color 0 0 0 0
+  position 836 68
+  size 40 28
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  style Empty
+  {
+   PanelWidgetClass ModulesNextBack {
+    ignorepointer 1
+    color 0.25 0.3 0.45 1
+    position 0 0
+    size 1 1
+    hexactpos 0
+    vexactpos 0
+    hexactsize 0
+    vexactsize 0
+    style rover_sim_colorable
+   }
+   TextWidgetClass ModulesNextLabel {
+    ignorepointer 1
+    position 0 0
+    size 1 1
+    halign center_ref
+    valign center_ref
+    hexactpos 1
+    vexactpos 1
+    hexactsize 0
+    vexactsize 0
+    text ">"
+    font "gui/fonts/sdf_MetronBook24"
+    "exact text" 1
+    "exact text size" 15
+    "text halign" center
+    "text valign" center
+   }
+  }
+  }
+  PanelWidgetClass ModuleRow0 {
+  visible 0
+  color 0 0 0 0
+  position 410 100
+  size 466 50
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  style rover_sim_colorable
+  {
+  TextWidgetClass ModuleName0 {
+  ignorepointer 1
+  position 0 0
+  size 380 20
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  text ""
+  font "gui/fonts/sdf_MetronBook24"
+  "exact text" 1
+  "exact text size" 16
+  "text valign" center
+  }
+  MultilineTextWidgetClass ModuleDesc0 {
+  ignorepointer 1
+  position 0 20
+  size 380 30
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  text ""
+  font "gui/fonts/sdf_MetronLight24"
+  "exact text" 1
+  "exact text size" 13
+  wrap 1
+  }
+  ButtonWidgetClass ModuleRemove0 {
+  color 0 0 0 0
+  position 390 8
+  size 76 28
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  style Empty
+  {
+   PanelWidgetClass ModuleRemove0Back {
+    ignorepointer 1
+    color 0.45 0.2 0.18 1
+    position 0 0
+    size 1 1
+    hexactpos 0
+    vexactpos 0
+    hexactsize 0
+    vexactsize 0
+    style rover_sim_colorable
+   }
+   TextWidgetClass ModuleRemove0Label {
+    ignorepointer 1
+    position 0 0
+    size 1 1
+    halign center_ref
+    valign center_ref
+    hexactpos 1
+    vexactpos 1
+    hexactsize 0
+    vexactsize 0
+    text "Remove"
+    font "gui/fonts/sdf_MetronBook24"
+    "exact text" 1
+    "exact text size" 14
+    "text halign" center
+    "text valign" center
+   }
+  }
+  }
+  }
+  }
+  PanelWidgetClass ModuleRow1 {
+  visible 0
+  color 0 0 0 0
+  position 410 152
+  size 466 50
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  style rover_sim_colorable
+  {
+  TextWidgetClass ModuleName1 {
+  ignorepointer 1
+  position 0 0
+  size 380 20
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  text ""
+  font "gui/fonts/sdf_MetronBook24"
+  "exact text" 1
+  "exact text size" 16
+  "text valign" center
+  }
+  MultilineTextWidgetClass ModuleDesc1 {
+  ignorepointer 1
+  position 0 20
+  size 380 30
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  text ""
+  font "gui/fonts/sdf_MetronLight24"
+  "exact text" 1
+  "exact text size" 13
+  wrap 1
+  }
+  ButtonWidgetClass ModuleRemove1 {
+  color 0 0 0 0
+  position 390 8
+  size 76 28
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  style Empty
+  {
+   PanelWidgetClass ModuleRemove1Back {
+    ignorepointer 1
+    color 0.45 0.2 0.18 1
+    position 0 0
+    size 1 1
+    hexactpos 0
+    vexactpos 0
+    hexactsize 0
+    vexactsize 0
+    style rover_sim_colorable
+   }
+   TextWidgetClass ModuleRemove1Label {
+    ignorepointer 1
+    position 0 0
+    size 1 1
+    halign center_ref
+    valign center_ref
+    hexactpos 1
+    vexactpos 1
+    hexactsize 0
+    vexactsize 0
+    text "Remove"
+    font "gui/fonts/sdf_MetronBook24"
+    "exact text" 1
+    "exact text size" 14
+    "text halign" center
+    "text valign" center
+   }
+  }
+  }
+  }
+  }
+  PanelWidgetClass ModuleRow2 {
+  visible 0
+  color 0 0 0 0
+  position 410 204
+  size 466 50
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  style rover_sim_colorable
+  {
+  TextWidgetClass ModuleName2 {
+  ignorepointer 1
+  position 0 0
+  size 380 20
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  text ""
+  font "gui/fonts/sdf_MetronBook24"
+  "exact text" 1
+  "exact text size" 16
+  "text valign" center
+  }
+  MultilineTextWidgetClass ModuleDesc2 {
+  ignorepointer 1
+  position 0 20
+  size 380 30
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  text ""
+  font "gui/fonts/sdf_MetronLight24"
+  "exact text" 1
+  "exact text size" 13
+  wrap 1
+  }
+  ButtonWidgetClass ModuleRemove2 {
+  color 0 0 0 0
+  position 390 8
+  size 76 28
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  style Empty
+  {
+   PanelWidgetClass ModuleRemove2Back {
+    ignorepointer 1
+    color 0.45 0.2 0.18 1
+    position 0 0
+    size 1 1
+    hexactpos 0
+    vexactpos 0
+    hexactsize 0
+    vexactsize 0
+    style rover_sim_colorable
+   }
+   TextWidgetClass ModuleRemove2Label {
+    ignorepointer 1
+    position 0 0
+    size 1 1
+    halign center_ref
+    valign center_ref
+    hexactpos 1
+    vexactpos 1
+    hexactsize 0
+    vexactsize 0
+    text "Remove"
+    font "gui/fonts/sdf_MetronBook24"
+    "exact text" 1
+    "exact text size" 14
+    "text halign" center
+    "text valign" center
+   }
+  }
+  }
+  }
+  }
+  PanelWidgetClass ModuleRow3 {
+  visible 0
+  color 0 0 0 0
+  position 410 256
+  size 466 50
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  style rover_sim_colorable
+  {
+  TextWidgetClass ModuleName3 {
+  ignorepointer 1
+  position 0 0
+  size 380 20
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  text ""
+  font "gui/fonts/sdf_MetronBook24"
+  "exact text" 1
+  "exact text size" 16
+  "text valign" center
+  }
+  MultilineTextWidgetClass ModuleDesc3 {
+  ignorepointer 1
+  position 0 20
+  size 380 30
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  text ""
+  font "gui/fonts/sdf_MetronLight24"
+  "exact text" 1
+  "exact text size" 13
+  wrap 1
+  }
+  ButtonWidgetClass ModuleRemove3 {
+  color 0 0 0 0
+  position 390 8
+  size 76 28
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  style Empty
+  {
+   PanelWidgetClass ModuleRemove3Back {
+    ignorepointer 1
+    color 0.45 0.2 0.18 1
+    position 0 0
+    size 1 1
+    hexactpos 0
+    vexactpos 0
+    hexactsize 0
+    vexactsize 0
+    style rover_sim_colorable
+   }
+   TextWidgetClass ModuleRemove3Label {
+    ignorepointer 1
+    position 0 0
+    size 1 1
+    halign center_ref
+    valign center_ref
+    hexactpos 1
+    vexactpos 1
+    hexactsize 0
+    vexactsize 0
+    text "Remove"
+    font "gui/fonts/sdf_MetronBook24"
+    "exact text" 1
+    "exact text size" 14
+    "text halign" center
+    "text valign" center
+   }
+  }
+  }
+  }
+  }
+  PanelWidgetClass ModuleRow4 {
+  visible 0
+  color 0 0 0 0
+  position 410 308
+  size 466 50
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  style rover_sim_colorable
+  {
+  TextWidgetClass ModuleName4 {
+  ignorepointer 1
+  position 0 0
+  size 380 20
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  text ""
+  font "gui/fonts/sdf_MetronBook24"
+  "exact text" 1
+  "exact text size" 16
+  "text valign" center
+  }
+  MultilineTextWidgetClass ModuleDesc4 {
+  ignorepointer 1
+  position 0 20
+  size 380 30
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  text ""
+  font "gui/fonts/sdf_MetronLight24"
+  "exact text" 1
+  "exact text size" 13
+  wrap 1
+  }
+  ButtonWidgetClass ModuleRemove4 {
+  color 0 0 0 0
+  position 390 8
+  size 76 28
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  style Empty
+  {
+   PanelWidgetClass ModuleRemove4Back {
+    ignorepointer 1
+    color 0.45 0.2 0.18 1
+    position 0 0
+    size 1 1
+    hexactpos 0
+    vexactpos 0
+    hexactsize 0
+    vexactsize 0
+    style rover_sim_colorable
+   }
+   TextWidgetClass ModuleRemove4Label {
+    ignorepointer 1
+    position 0 0
+    size 1 1
+    halign center_ref
+    valign center_ref
+    hexactpos 1
+    vexactpos 1
+    hexactsize 0
+    vexactsize 0
+    text "Remove"
+    font "gui/fonts/sdf_MetronBook24"
+    "exact text" 1
+    "exact text size" 14
+    "text halign" center
+    "text valign" center
+   }
+  }
+  }
+  }
+  }
+  PanelWidgetClass AlarmPanel {
+  visible 0
+  color 0 0 0 0
+  position 0 372
+  size 1 180
+  hexactpos 1
+  vexactpos 1
+  hexactsize 0
+  vexactsize 1
+  style rover_sim_colorable
+  {
+  PanelWidgetClass AlarmLine {
+  ignorepointer 1
+  color 0.85 0.55 0.15 1
+  position 0 0
+  size 1 2
+  hexactpos 1
+  vexactpos 1
+  hexactsize 0
+  vexactsize 1
+  style rover_sim_colorable
+  }
+  TextWidgetClass AlarmHeading {
+  ignorepointer 1
+  position 24 12
+  size 400 26
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  text "RAID ALARM"
+  font "gui/fonts/sdf_MetronBook24"
+  "exact text" 1
+  "exact text size" 18
+  "text valign" center
+  }
+  MultilineTextWidgetClass AlarmText {
+  ignorepointer 1
+  position 24 42
+  size 850 28
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  text ""
+  font "gui/fonts/sdf_MetronLight24"
+  "exact text" 1
+  "exact text size" 16
+  wrap 1
+  }
+  PanelWidgetClass WebhookBack {
+  ignorepointer 1
+  color 0.17 0.2 0.24 1
+  position 24 76
+  size 850 30
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  style rover_sim_colorable
+  }
+  EditBoxWidgetClass WebhookBox {
+  position 30 76
+  size 838 30
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  style Empty
+  "exact text" 1
+  "exact text size" 15
+  font "gui/fonts/sdf_MetronLight24"
+  }
+  ButtonWidgetClass SaveButton {
+  color 0 0 0 0
+  position 24 118
+  size 150 36
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  style Empty
+  {
+   PanelWidgetClass SaveButtonBack {
+    ignorepointer 1
+    color 0.2 0.45 0.25 1
+    position 0 0
+    size 1 1
+    hexactpos 0
+    vexactpos 0
+    hexactsize 0
+    vexactsize 0
+    style rover_sim_colorable
+   }
+   TextWidgetClass SaveButtonLabel {
+    ignorepointer 1
+    position 0 0
+    size 1 1
+    halign center_ref
+    valign center_ref
+    hexactpos 1
+    vexactpos 1
+    hexactsize 0
+    vexactsize 0
+    text "Save webhook"
+    font "gui/fonts/sdf_MetronBook24"
+    "exact text" 1
+    "exact text size" 15
+    "text halign" center
+    "text valign" center
+   }
+  }
+  }
+  ButtonWidgetClass TestButton {
+  color 0 0 0 0
+  position 186 118
+  size 150 36
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  style Empty
+  {
+   PanelWidgetClass TestButtonBack {
+    ignorepointer 1
+    color 0.25 0.3 0.45 1
+    position 0 0
+    size 1 1
+    hexactpos 0
+    vexactpos 0
+    hexactsize 0
+    vexactsize 0
+    style rover_sim_colorable
+   }
+   TextWidgetClass TestButtonLabel {
+    ignorepointer 1
+    position 0 0
+    size 1 1
+    halign center_ref
+    valign center_ref
+    hexactpos 1
+    vexactpos 1
+    hexactsize 0
+    vexactsize 0
+    text "Send a test"
+    font "gui/fonts/sdf_MetronBook24"
+    "exact text" 1
+    "exact text size" 15
+    "text halign" center
+    "text valign" center
+   }
+  }
+  }
+  ButtonWidgetClass RemoveButton {
+  color 0 0 0 0
+  position 348 118
+  size 160 36
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  style Empty
+  {
+   PanelWidgetClass RemoveButtonBack {
+    ignorepointer 1
+    color 0.45 0.2 0.18 1
+    position 0 0
+    size 1 1
+    hexactpos 0
+    vexactpos 0
+    hexactsize 0
+    vexactsize 0
+    style rover_sim_colorable
+   }
+   TextWidgetClass RemoveButtonLabel {
+    ignorepointer 1
+    position 0 0
+    size 1 1
+    halign center_ref
+    valign center_ref
+    hexactpos 1
+    vexactpos 1
+    hexactsize 0
+    vexactsize 0
+    text "Remove webhook"
+    font "gui/fonts/sdf_MetronBook24"
+    "exact text" 1
+    "exact text size" 15
+    "text halign" center
+    "text valign" center
+   }
+  }
+  }
+  }
+  }
+  }
+  }
+ }
+}

@@ -1,0 +1,748 @@
+FrameWidgetClass LockPlacerRoot {
+ position 0 0
+ size 1 1
+ hexactpos 0
+ vexactpos 0
+ hexactsize 0
+ vexactsize 0
+ priority 900
+ {
+  PanelWidgetClass Panel {
+  color 0.07 0.09 0.11 0.96
+  position 24 24
+  size 440 270
+  halign right_ref
+  valign bottom_ref
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  style rover_sim_colorable
+  {
+  PanelWidgetClass PanelBacking {
+  ignorepointer 1
+  color 0.07 0.09 0.11 0.96
+  position 0 0
+  size 1 1
+  hexactpos 1
+  vexactpos 1
+  hexactsize 0
+  vexactsize 0
+  style rover_sim_colorable
+  }
+  TextWidgetClass TitleText {
+  ignorepointer 1
+  position 16 10
+  size 408 28
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  text "Code lock placement"
+  font "gui/fonts/sdf_MetronBook24"
+  "exact text" 1
+  "exact text size" 18
+  "text valign" center
+  }
+  TextWidgetClass XCaption {
+  ignorepointer 1
+  position 16 48
+  size 130 30
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  text "Left / right"
+  font "gui/fonts/sdf_MetronLight24"
+  "exact text" 1
+  "exact text size" 15
+  "text valign" center
+  }
+  ButtonWidgetClass XMinus {
+  color 0 0 0 0
+  position 146 48
+  size 44 30
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  style Empty
+  {
+   PanelWidgetClass XMinusBack {
+    ignorepointer 1
+    color 0.25 0.3 0.45 1
+    position 0 0
+    size 1 1
+    hexactpos 0
+    vexactpos 0
+    hexactsize 0
+    vexactsize 0
+    style rover_sim_colorable
+   }
+   TextWidgetClass XMinusLabel {
+    ignorepointer 1
+    position 0 0
+    size 1 1
+    halign center_ref
+    valign center_ref
+    hexactpos 1
+    vexactpos 1
+    hexactsize 0
+    vexactsize 0
+    text "-"
+    font "gui/fonts/sdf_MetronBook24"
+    "exact text" 1
+    "exact text size" 18
+    "text halign" center
+    "text valign" center
+   }
+  }
+  }
+  ButtonWidgetClass XPlus {
+  color 0 0 0 0
+  position 194 48
+  size 44 30
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  style Empty
+  {
+   PanelWidgetClass XPlusBack {
+    ignorepointer 1
+    color 0.25 0.3 0.45 1
+    position 0 0
+    size 1 1
+    hexactpos 0
+    vexactpos 0
+    hexactsize 0
+    vexactsize 0
+    style rover_sim_colorable
+   }
+   TextWidgetClass XPlusLabel {
+    ignorepointer 1
+    position 0 0
+    size 1 1
+    halign center_ref
+    valign center_ref
+    hexactpos 1
+    vexactpos 1
+    hexactsize 0
+    vexactsize 0
+    text "+"
+    font "gui/fonts/sdf_MetronBook24"
+    "exact text" 1
+    "exact text size" 18
+    "text halign" center
+    "text valign" center
+   }
+  }
+  }
+  TextWidgetClass YCaption {
+  ignorepointer 1
+  position 16 82
+  size 130 30
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  text "Down / up"
+  font "gui/fonts/sdf_MetronLight24"
+  "exact text" 1
+  "exact text size" 15
+  "text valign" center
+  }
+  ButtonWidgetClass YMinus {
+  color 0 0 0 0
+  position 146 82
+  size 44 30
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  style Empty
+  {
+   PanelWidgetClass YMinusBack {
+    ignorepointer 1
+    color 0.25 0.3 0.45 1
+    position 0 0
+    size 1 1
+    hexactpos 0
+    vexactpos 0
+    hexactsize 0
+    vexactsize 0
+    style rover_sim_colorable
+   }
+   TextWidgetClass YMinusLabel {
+    ignorepointer 1
+    position 0 0
+    size 1 1
+    halign center_ref
+    valign center_ref
+    hexactpos 1
+    vexactpos 1
+    hexactsize 0
+    vexactsize 0
+    text "-"
+    font "gui/fonts/sdf_MetronBook24"
+    "exact text" 1
+    "exact text size" 18
+    "text halign" center
+    "text valign" center
+   }
+  }
+  }
+  ButtonWidgetClass YPlus {
+  color 0 0 0 0
+  position 194 82
+  size 44 30
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  style Empty
+  {
+   PanelWidgetClass YPlusBack {
+    ignorepointer 1
+    color 0.25 0.3 0.45 1
+    position 0 0
+    size 1 1
+    hexactpos 0
+    vexactpos 0
+    hexactsize 0
+    vexactsize 0
+    style rover_sim_colorable
+   }
+   TextWidgetClass YPlusLabel {
+    ignorepointer 1
+    position 0 0
+    size 1 1
+    halign center_ref
+    valign center_ref
+    hexactpos 1
+    vexactpos 1
+    hexactsize 0
+    vexactsize 0
+    text "+"
+    font "gui/fonts/sdf_MetronBook24"
+    "exact text" 1
+    "exact text size" 18
+    "text halign" center
+    "text valign" center
+   }
+  }
+  }
+  TextWidgetClass ZCaption {
+  ignorepointer 1
+  position 16 116
+  size 130 30
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  text "Back / forward"
+  font "gui/fonts/sdf_MetronLight24"
+  "exact text" 1
+  "exact text size" 15
+  "text valign" center
+  }
+  ButtonWidgetClass ZMinus {
+  color 0 0 0 0
+  position 146 116
+  size 44 30
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  style Empty
+  {
+   PanelWidgetClass ZMinusBack {
+    ignorepointer 1
+    color 0.25 0.3 0.45 1
+    position 0 0
+    size 1 1
+    hexactpos 0
+    vexactpos 0
+    hexactsize 0
+    vexactsize 0
+    style rover_sim_colorable
+   }
+   TextWidgetClass ZMinusLabel {
+    ignorepointer 1
+    position 0 0
+    size 1 1
+    halign center_ref
+    valign center_ref
+    hexactpos 1
+    vexactpos 1
+    hexactsize 0
+    vexactsize 0
+    text "-"
+    font "gui/fonts/sdf_MetronBook24"
+    "exact text" 1
+    "exact text size" 18
+    "text halign" center
+    "text valign" center
+   }
+  }
+  }
+  ButtonWidgetClass ZPlus {
+  color 0 0 0 0
+  position 194 116
+  size 44 30
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  style Empty
+  {
+   PanelWidgetClass ZPlusBack {
+    ignorepointer 1
+    color 0.25 0.3 0.45 1
+    position 0 0
+    size 1 1
+    hexactpos 0
+    vexactpos 0
+    hexactsize 0
+    vexactsize 0
+    style rover_sim_colorable
+   }
+   TextWidgetClass ZPlusLabel {
+    ignorepointer 1
+    position 0 0
+    size 1 1
+    halign center_ref
+    valign center_ref
+    hexactpos 1
+    vexactpos 1
+    hexactsize 0
+    vexactsize 0
+    text "+"
+    font "gui/fonts/sdf_MetronBook24"
+    "exact text" 1
+    "exact text size" 18
+    "text halign" center
+    "text valign" center
+   }
+  }
+  }
+  TextWidgetClass YawCaption {
+  ignorepointer 1
+  position 262 48
+  size 70 30
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  text "Yaw"
+  font "gui/fonts/sdf_MetronLight24"
+  "exact text" 1
+  "exact text size" 15
+  "text valign" center
+  }
+  ButtonWidgetClass YawMinus {
+  color 0 0 0 0
+  position 332 48
+  size 44 30
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  style Empty
+  {
+   PanelWidgetClass YawMinusBack {
+    ignorepointer 1
+    color 0.25 0.3 0.45 1
+    position 0 0
+    size 1 1
+    hexactpos 0
+    vexactpos 0
+    hexactsize 0
+    vexactsize 0
+    style rover_sim_colorable
+   }
+   TextWidgetClass YawMinusLabel {
+    ignorepointer 1
+    position 0 0
+    size 1 1
+    halign center_ref
+    valign center_ref
+    hexactpos 1
+    vexactpos 1
+    hexactsize 0
+    vexactsize 0
+    text "-"
+    font "gui/fonts/sdf_MetronBook24"
+    "exact text" 1
+    "exact text size" 18
+    "text halign" center
+    "text valign" center
+   }
+  }
+  }
+  ButtonWidgetClass YawPlus {
+  color 0 0 0 0
+  position 380 48
+  size 44 30
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  style Empty
+  {
+   PanelWidgetClass YawPlusBack {
+    ignorepointer 1
+    color 0.25 0.3 0.45 1
+    position 0 0
+    size 1 1
+    hexactpos 0
+    vexactpos 0
+    hexactsize 0
+    vexactsize 0
+    style rover_sim_colorable
+   }
+   TextWidgetClass YawPlusLabel {
+    ignorepointer 1
+    position 0 0
+    size 1 1
+    halign center_ref
+    valign center_ref
+    hexactpos 1
+    vexactpos 1
+    hexactsize 0
+    vexactsize 0
+    text "+"
+    font "gui/fonts/sdf_MetronBook24"
+    "exact text" 1
+    "exact text size" 18
+    "text halign" center
+    "text valign" center
+   }
+  }
+  }
+  TextWidgetClass PitchCaption {
+  ignorepointer 1
+  position 262 82
+  size 70 30
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  text "Pitch"
+  font "gui/fonts/sdf_MetronLight24"
+  "exact text" 1
+  "exact text size" 15
+  "text valign" center
+  }
+  ButtonWidgetClass PitchMinus {
+  color 0 0 0 0
+  position 332 82
+  size 44 30
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  style Empty
+  {
+   PanelWidgetClass PitchMinusBack {
+    ignorepointer 1
+    color 0.25 0.3 0.45 1
+    position 0 0
+    size 1 1
+    hexactpos 0
+    vexactpos 0
+    hexactsize 0
+    vexactsize 0
+    style rover_sim_colorable
+   }
+   TextWidgetClass PitchMinusLabel {
+    ignorepointer 1
+    position 0 0
+    size 1 1
+    halign center_ref
+    valign center_ref
+    hexactpos 1
+    vexactpos 1
+    hexactsize 0
+    vexactsize 0
+    text "-"
+    font "gui/fonts/sdf_MetronBook24"
+    "exact text" 1
+    "exact text size" 18
+    "text halign" center
+    "text valign" center
+   }
+  }
+  }
+  ButtonWidgetClass PitchPlus {
+  color 0 0 0 0
+  position 380 82
+  size 44 30
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  style Empty
+  {
+   PanelWidgetClass PitchPlusBack {
+    ignorepointer 1
+    color 0.25 0.3 0.45 1
+    position 0 0
+    size 1 1
+    hexactpos 0
+    vexactpos 0
+    hexactsize 0
+    vexactsize 0
+    style rover_sim_colorable
+   }
+   TextWidgetClass PitchPlusLabel {
+    ignorepointer 1
+    position 0 0
+    size 1 1
+    halign center_ref
+    valign center_ref
+    hexactpos 1
+    vexactpos 1
+    hexactsize 0
+    vexactsize 0
+    text "+"
+    font "gui/fonts/sdf_MetronBook24"
+    "exact text" 1
+    "exact text size" 18
+    "text halign" center
+    "text valign" center
+   }
+  }
+  }
+  TextWidgetClass RollCaption {
+  ignorepointer 1
+  position 262 116
+  size 70 30
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  text "Roll"
+  font "gui/fonts/sdf_MetronLight24"
+  "exact text" 1
+  "exact text size" 15
+  "text valign" center
+  }
+  ButtonWidgetClass RollMinus {
+  color 0 0 0 0
+  position 332 116
+  size 44 30
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  style Empty
+  {
+   PanelWidgetClass RollMinusBack {
+    ignorepointer 1
+    color 0.25 0.3 0.45 1
+    position 0 0
+    size 1 1
+    hexactpos 0
+    vexactpos 0
+    hexactsize 0
+    vexactsize 0
+    style rover_sim_colorable
+   }
+   TextWidgetClass RollMinusLabel {
+    ignorepointer 1
+    position 0 0
+    size 1 1
+    halign center_ref
+    valign center_ref
+    hexactpos 1
+    vexactpos 1
+    hexactsize 0
+    vexactsize 0
+    text "-"
+    font "gui/fonts/sdf_MetronBook24"
+    "exact text" 1
+    "exact text size" 18
+    "text halign" center
+    "text valign" center
+   }
+  }
+  }
+  ButtonWidgetClass RollPlus {
+  color 0 0 0 0
+  position 380 116
+  size 44 30
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  style Empty
+  {
+   PanelWidgetClass RollPlusBack {
+    ignorepointer 1
+    color 0.25 0.3 0.45 1
+    position 0 0
+    size 1 1
+    hexactpos 0
+    vexactpos 0
+    hexactsize 0
+    vexactsize 0
+    style rover_sim_colorable
+   }
+   TextWidgetClass RollPlusLabel {
+    ignorepointer 1
+    position 0 0
+    size 1 1
+    halign center_ref
+    valign center_ref
+    hexactpos 1
+    vexactpos 1
+    hexactsize 0
+    vexactsize 0
+    text "+"
+    font "gui/fonts/sdf_MetronBook24"
+    "exact text" 1
+    "exact text size" 18
+    "text halign" center
+    "text valign" center
+   }
+  }
+  }
+  TextWidgetClass Readout {
+  ignorepointer 1
+  position 16 152
+  size 408 30
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  text ""
+  font "gui/fonts/sdf_MetronLight24"
+  "exact text" 1
+  "exact text size" 13
+  "text valign" center
+  }
+  ButtonWidgetClass StepButton {
+  color 0 0 0 0
+  position 16 186
+  size 408 30
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  style Empty
+  {
+   PanelWidgetClass StepButtonBack {
+    ignorepointer 1
+    color 0.25 0.3 0.45 1
+    position 0 0
+    size 1 1
+    hexactpos 0
+    vexactpos 0
+    hexactsize 0
+    vexactsize 0
+    style rover_sim_colorable
+   }
+   TextWidgetClass StepButtonLabel {
+    ignorepointer 1
+    position 0 0
+    size 1 1
+    halign center_ref
+    valign center_ref
+    hexactpos 1
+    vexactpos 1
+    hexactsize 0
+    vexactsize 0
+    text "Step"
+    font "gui/fonts/sdf_MetronBook24"
+    "exact text" 1
+    "exact text size" 15
+    "text halign" center
+    "text valign" center
+   }
+  }
+  }
+  ButtonWidgetClass SaveButton {
+  color 0 0 0 0
+  position 16 224
+  size 300 34
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  style Empty
+  {
+   PanelWidgetClass SaveButtonBack {
+    ignorepointer 1
+    color 0.2 0.45 0.25 1
+    position 0 0
+    size 1 1
+    hexactpos 0
+    vexactpos 0
+    hexactsize 0
+    vexactsize 0
+    style rover_sim_colorable
+   }
+   TextWidgetClass SaveButtonLabel {
+    ignorepointer 1
+    position 0 0
+    size 1 1
+    halign center_ref
+    valign center_ref
+    hexactpos 1
+    vexactpos 1
+    hexactsize 0
+    vexactsize 0
+    text "Save for this car class"
+    font "gui/fonts/sdf_MetronBook24"
+    "exact text" 1
+    "exact text size" 15
+    "text halign" center
+    "text valign" center
+   }
+  }
+  }
+  ButtonWidgetClass CloseButton {
+  color 0 0 0 0
+  position 324 224
+  size 100 34
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  style Empty
+  {
+   PanelWidgetClass CloseButtonBack {
+    ignorepointer 1
+    color 0.6 0.14 0.12 1
+    position 0 0
+    size 1 1
+    hexactpos 0
+    vexactpos 0
+    hexactsize 0
+    vexactsize 0
+    style rover_sim_colorable
+   }
+   TextWidgetClass CloseButtonLabel {
+    ignorepointer 1
+    position 0 0
+    size 1 1
+    halign center_ref
+    valign center_ref
+    hexactpos 1
+    vexactpos 1
+    hexactsize 0
+    vexactsize 0
+    text "Close"
+    font "gui/fonts/sdf_MetronBook24"
+    "exact text" 1
+    "exact text size" 15
+    "text halign" center
+    "text valign" center
+   }
+  }
+  }
+  }
+  }
+ }
+}

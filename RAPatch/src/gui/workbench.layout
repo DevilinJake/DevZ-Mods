@@ -1,0 +1,779 @@
+FrameWidgetClass WorkbenchRoot {
+ position 0 0
+ size 1 1
+ hexactpos 0
+ vexactpos 0
+ hexactsize 0
+ vexactsize 0
+ priority 900
+ {
+  PanelWidgetClass Window {
+  color 0.07 0.09 0.11 0.96
+  position 0 0
+  size 900 600
+  halign center_ref
+  valign center_ref
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  style rover_sim_colorable
+  {
+  PanelWidgetClass WindowBacking {
+  ignorepointer 1
+  color 0.07 0.09 0.11 0.96
+  position 0 0
+  size 1 1
+  hexactpos 0
+  vexactpos 0
+  hexactsize 0
+  vexactsize 0
+  style rover_sim_colorable
+  }
+  TextWidgetClass TitleText {
+  ignorepointer 1
+  position 24 16
+  size 600 34
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  text "WORKBENCH"
+  font "gui/fonts/sdf_MetronBook24"
+  "exact text" 1
+  "exact text size" 26
+  "text valign" center
+  }
+  ButtonWidgetClass CloseButton {
+  color 0 0 0 0
+  position 16 16
+  size 90 34
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  halign right_ref
+  style Empty
+  {
+   PanelWidgetClass CloseButtonBack {
+    ignorepointer 1
+    color 0.6 0.14 0.12 1
+    position 0 0
+    size 1 1
+    hexactpos 0
+    vexactpos 0
+    hexactsize 0
+    vexactsize 0
+    style rover_sim_colorable
+   }
+   TextWidgetClass CloseButtonLabel {
+    ignorepointer 1
+    position 0 0
+    size 1 1
+    halign center_ref
+    valign center_ref
+    hexactpos 1
+    vexactpos 1
+    hexactsize 0
+    vexactsize 0
+    text "Close"
+    font "gui/fonts/sdf_MetronBook24"
+    "exact text" 1
+    "exact text size" 16
+    "text halign" center
+    "text valign" center
+   }
+  }
+  }
+  PanelWidgetClass TitleLine {
+  ignorepointer 1
+  color 0.85 0.55 0.15 1
+  position 0 58
+  size 1 2
+  hexactpos 1
+  vexactpos 1
+  hexactsize 0
+  vexactsize 1
+  style rover_sim_colorable
+  }
+  TextWidgetClass RecipesHeading {
+  ignorepointer 1
+  position 24 68
+  size 160 26
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  text "RECIPES"
+  font "gui/fonts/sdf_MetronBook24"
+  "exact text" 1
+  "exact text size" 18
+  "text valign" center
+  }
+  ButtonWidgetClass RecipesPrev {
+  visible 0
+  color 0 0 0 0
+  position 226 66
+  size 40 28
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  style Empty
+  {
+   PanelWidgetClass RecipesPrevBack {
+    ignorepointer 1
+    color 0.25 0.3 0.45 1
+    position 0 0
+    size 1 1
+    hexactpos 0
+    vexactpos 0
+    hexactsize 0
+    vexactsize 0
+    style rover_sim_colorable
+   }
+   TextWidgetClass RecipesPrevLabel {
+    ignorepointer 1
+    position 0 0
+    size 1 1
+    halign center_ref
+    valign center_ref
+    hexactpos 1
+    vexactpos 1
+    hexactsize 0
+    vexactsize 0
+    text "<"
+    font "gui/fonts/sdf_MetronBook24"
+    "exact text" 1
+    "exact text size" 15
+    "text halign" center
+    "text valign" center
+   }
+  }
+  }
+  ButtonWidgetClass RecipesNext {
+  visible 0
+  color 0 0 0 0
+  position 272 66
+  size 40 28
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  style Empty
+  {
+   PanelWidgetClass RecipesNextBack {
+    ignorepointer 1
+    color 0.25 0.3 0.45 1
+    position 0 0
+    size 1 1
+    hexactpos 0
+    vexactpos 0
+    hexactsize 0
+    vexactsize 0
+    style rover_sim_colorable
+   }
+   TextWidgetClass RecipesNextLabel {
+    ignorepointer 1
+    position 0 0
+    size 1 1
+    halign center_ref
+    valign center_ref
+    hexactpos 1
+    vexactpos 1
+    hexactsize 0
+    vexactsize 0
+    text ">"
+    font "gui/fonts/sdf_MetronBook24"
+    "exact text" 1
+    "exact text size" 15
+    "text halign" center
+    "text valign" center
+   }
+  }
+  }
+  PanelWidgetClass RecipeArea {
+  color 0 0 0 0
+  position 24 100
+  size 288 284
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  style rover_sim_colorable
+  }
+  ButtonWidgetClass Recipe0 {
+  visible 0
+  color 0 0 0 0
+  position 24 100
+  size 288 32
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  style Empty
+  {
+   PanelWidgetClass Recipe0Back {
+    ignorepointer 1
+    color 0.18 0.21 0.26 1
+    position 0 0
+    size 1 1
+    hexactpos 0
+    vexactpos 0
+    hexactsize 0
+    vexactsize 0
+    style rover_sim_colorable
+   }
+   TextWidgetClass Recipe0Label {
+    ignorepointer 1
+    position 0 0
+    size 1 1
+    halign center_ref
+    valign center_ref
+    hexactpos 1
+    vexactpos 1
+    hexactsize 0
+    vexactsize 0
+    text ""
+    font "gui/fonts/sdf_MetronBook24"
+    "exact text" 1
+    "exact text size" 15
+    "text halign" center
+    "text valign" center
+   }
+  }
+  }
+  ButtonWidgetClass Recipe1 {
+  visible 0
+  color 0 0 0 0
+  position 24 136
+  size 288 32
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  style Empty
+  {
+   PanelWidgetClass Recipe1Back {
+    ignorepointer 1
+    color 0.18 0.21 0.26 1
+    position 0 0
+    size 1 1
+    hexactpos 0
+    vexactpos 0
+    hexactsize 0
+    vexactsize 0
+    style rover_sim_colorable
+   }
+   TextWidgetClass Recipe1Label {
+    ignorepointer 1
+    position 0 0
+    size 1 1
+    halign center_ref
+    valign center_ref
+    hexactpos 1
+    vexactpos 1
+    hexactsize 0
+    vexactsize 0
+    text ""
+    font "gui/fonts/sdf_MetronBook24"
+    "exact text" 1
+    "exact text size" 15
+    "text halign" center
+    "text valign" center
+   }
+  }
+  }
+  ButtonWidgetClass Recipe2 {
+  visible 0
+  color 0 0 0 0
+  position 24 172
+  size 288 32
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  style Empty
+  {
+   PanelWidgetClass Recipe2Back {
+    ignorepointer 1
+    color 0.18 0.21 0.26 1
+    position 0 0
+    size 1 1
+    hexactpos 0
+    vexactpos 0
+    hexactsize 0
+    vexactsize 0
+    style rover_sim_colorable
+   }
+   TextWidgetClass Recipe2Label {
+    ignorepointer 1
+    position 0 0
+    size 1 1
+    halign center_ref
+    valign center_ref
+    hexactpos 1
+    vexactpos 1
+    hexactsize 0
+    vexactsize 0
+    text ""
+    font "gui/fonts/sdf_MetronBook24"
+    "exact text" 1
+    "exact text size" 15
+    "text halign" center
+    "text valign" center
+   }
+  }
+  }
+  ButtonWidgetClass Recipe3 {
+  visible 0
+  color 0 0 0 0
+  position 24 208
+  size 288 32
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  style Empty
+  {
+   PanelWidgetClass Recipe3Back {
+    ignorepointer 1
+    color 0.18 0.21 0.26 1
+    position 0 0
+    size 1 1
+    hexactpos 0
+    vexactpos 0
+    hexactsize 0
+    vexactsize 0
+    style rover_sim_colorable
+   }
+   TextWidgetClass Recipe3Label {
+    ignorepointer 1
+    position 0 0
+    size 1 1
+    halign center_ref
+    valign center_ref
+    hexactpos 1
+    vexactpos 1
+    hexactsize 0
+    vexactsize 0
+    text ""
+    font "gui/fonts/sdf_MetronBook24"
+    "exact text" 1
+    "exact text size" 15
+    "text halign" center
+    "text valign" center
+   }
+  }
+  }
+  ButtonWidgetClass Recipe4 {
+  visible 0
+  color 0 0 0 0
+  position 24 244
+  size 288 32
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  style Empty
+  {
+   PanelWidgetClass Recipe4Back {
+    ignorepointer 1
+    color 0.18 0.21 0.26 1
+    position 0 0
+    size 1 1
+    hexactpos 0
+    vexactpos 0
+    hexactsize 0
+    vexactsize 0
+    style rover_sim_colorable
+   }
+   TextWidgetClass Recipe4Label {
+    ignorepointer 1
+    position 0 0
+    size 1 1
+    halign center_ref
+    valign center_ref
+    hexactpos 1
+    vexactpos 1
+    hexactsize 0
+    vexactsize 0
+    text ""
+    font "gui/fonts/sdf_MetronBook24"
+    "exact text" 1
+    "exact text size" 15
+    "text halign" center
+    "text valign" center
+   }
+  }
+  }
+  ButtonWidgetClass Recipe5 {
+  visible 0
+  color 0 0 0 0
+  position 24 280
+  size 288 32
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  style Empty
+  {
+   PanelWidgetClass Recipe5Back {
+    ignorepointer 1
+    color 0.18 0.21 0.26 1
+    position 0 0
+    size 1 1
+    hexactpos 0
+    vexactpos 0
+    hexactsize 0
+    vexactsize 0
+    style rover_sim_colorable
+   }
+   TextWidgetClass Recipe5Label {
+    ignorepointer 1
+    position 0 0
+    size 1 1
+    halign center_ref
+    valign center_ref
+    hexactpos 1
+    vexactpos 1
+    hexactsize 0
+    vexactsize 0
+    text ""
+    font "gui/fonts/sdf_MetronBook24"
+    "exact text" 1
+    "exact text size" 15
+    "text halign" center
+    "text valign" center
+   }
+  }
+  }
+  ButtonWidgetClass Recipe6 {
+  visible 0
+  color 0 0 0 0
+  position 24 316
+  size 288 32
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  style Empty
+  {
+   PanelWidgetClass Recipe6Back {
+    ignorepointer 1
+    color 0.18 0.21 0.26 1
+    position 0 0
+    size 1 1
+    hexactpos 0
+    vexactpos 0
+    hexactsize 0
+    vexactsize 0
+    style rover_sim_colorable
+   }
+   TextWidgetClass Recipe6Label {
+    ignorepointer 1
+    position 0 0
+    size 1 1
+    halign center_ref
+    valign center_ref
+    hexactpos 1
+    vexactpos 1
+    hexactsize 0
+    vexactsize 0
+    text ""
+    font "gui/fonts/sdf_MetronBook24"
+    "exact text" 1
+    "exact text size" 15
+    "text halign" center
+    "text valign" center
+   }
+  }
+  }
+  ButtonWidgetClass Recipe7 {
+  visible 0
+  color 0 0 0 0
+  position 24 352
+  size 288 32
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  style Empty
+  {
+   PanelWidgetClass Recipe7Back {
+    ignorepointer 1
+    color 0.18 0.21 0.26 1
+    position 0 0
+    size 1 1
+    hexactpos 0
+    vexactpos 0
+    hexactsize 0
+    vexactsize 0
+    style rover_sim_colorable
+   }
+   TextWidgetClass Recipe7Label {
+    ignorepointer 1
+    position 0 0
+    size 1 1
+    halign center_ref
+    valign center_ref
+    hexactpos 1
+    vexactpos 1
+    hexactsize 0
+    vexactsize 0
+    text ""
+    font "gui/fonts/sdf_MetronBook24"
+    "exact text" 1
+    "exact text size" 15
+    "text halign" center
+    "text valign" center
+   }
+  }
+  }
+  TextWidgetClass ChosenName {
+  ignorepointer 1
+  position 340 68
+  size 536 28
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  text ""
+  font "gui/fonts/sdf_MetronBook24"
+  "exact text" 1
+  "exact text size" 20
+  "text valign" center
+  }
+  TextWidgetClass ChosenTime {
+  ignorepointer 1
+  position 340 98
+  size 536 24
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  text ""
+  font "gui/fonts/sdf_MetronLight24"
+  "exact text" 1
+  "exact text size" 15
+  "text valign" center
+  }
+  MultilineTextWidgetClass PartsText {
+  ignorepointer 1
+  position 340 128
+  size 536 170
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  text ""
+  font "gui/fonts/sdf_MetronLight24"
+  "exact text" 1
+  "exact text size" 16
+  wrap 1
+  }
+  ButtonWidgetClass CraftButton {
+  color 0 0 0 0
+  position 340 306
+  size 170 38
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  style Empty
+  {
+   PanelWidgetClass CraftButtonBack {
+    ignorepointer 1
+    color 0.2 0.45 0.25 1
+    position 0 0
+    size 1 1
+    hexactpos 0
+    vexactpos 0
+    hexactsize 0
+    vexactsize 0
+    style rover_sim_colorable
+   }
+   TextWidgetClass CraftButtonLabel {
+    ignorepointer 1
+    position 0 0
+    size 1 1
+    halign center_ref
+    valign center_ref
+    hexactpos 1
+    vexactpos 1
+    hexactsize 0
+    vexactsize 0
+    text "Craft"
+    font "gui/fonts/sdf_MetronBook24"
+    "exact text" 1
+    "exact text size" 17
+    "text halign" center
+    "text valign" center
+   }
+  }
+  }
+  MultilineTextWidgetClass MessageText {
+  ignorepointer 1
+  position 524 304
+  size 352 44
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  text ""
+  font "gui/fonts/sdf_MetronLight24"
+  "exact text" 1
+  "exact text size" 14
+  wrap 1
+  }
+  PanelWidgetClass LowerLine {
+  ignorepointer 1
+  color 0.85 0.55 0.15 1
+  position 0 396
+  size 1 2
+  hexactpos 1
+  vexactpos 1
+  hexactsize 0
+  vexactsize 1
+  style rover_sim_colorable
+  }
+  TextWidgetClass QueueHeading {
+  ignorepointer 1
+  position 24 404
+  size 300 26
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  text "BEING MADE"
+  font "gui/fonts/sdf_MetronBook24"
+  "exact text" 1
+  "exact text size" 18
+  "text valign" center
+  }
+  MultilineTextWidgetClass QueueText {
+  ignorepointer 1
+  position 24 432
+  size 420 112
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  text ""
+  font "gui/fonts/sdf_MetronLight24"
+  "exact text" 1
+  "exact text size" 15
+  wrap 1
+  }
+  ButtonWidgetClass CancelButton {
+  color 0 0 0 0
+  position 24 548
+  size 200 34
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  style Empty
+  {
+   PanelWidgetClass CancelButtonBack {
+    ignorepointer 1
+    color 0.45 0.2 0.18 1
+    position 0 0
+    size 1 1
+    hexactpos 0
+    vexactpos 0
+    hexactsize 0
+    vexactsize 0
+    style rover_sim_colorable
+   }
+   TextWidgetClass CancelButtonLabel {
+    ignorepointer 1
+    position 0 0
+    size 1 1
+    halign center_ref
+    valign center_ref
+    hexactpos 1
+    vexactpos 1
+    hexactsize 0
+    vexactsize 0
+    text "Cancel the last one"
+    font "gui/fonts/sdf_MetronBook24"
+    "exact text" 1
+    "exact text size" 15
+    "text halign" center
+    "text valign" center
+   }
+  }
+  }
+  TextWidgetClass ReadyHeading {
+  ignorepointer 1
+  position 470 404
+  size 300 26
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  text "READY TO COLLECT"
+  font "gui/fonts/sdf_MetronBook24"
+  "exact text" 1
+  "exact text size" 18
+  "text valign" center
+  }
+  MultilineTextWidgetClass ReadyText {
+  ignorepointer 1
+  position 470 432
+  size 406 112
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  text ""
+  font "gui/fonts/sdf_MetronLight24"
+  "exact text" 1
+  "exact text size" 15
+  wrap 1
+  }
+  ButtonWidgetClass CollectButton {
+  color 0 0 0 0
+  position 470 548
+  size 200 34
+  hexactpos 1
+  vexactpos 1
+  hexactsize 1
+  vexactsize 1
+  style Empty
+  {
+   PanelWidgetClass CollectButtonBack {
+    ignorepointer 1
+    color 0.2 0.45 0.25 1
+    position 0 0
+    size 1 1
+    hexactpos 0
+    vexactpos 0
+    hexactsize 0
+    vexactsize 0
+    style rover_sim_colorable
+   }
+   TextWidgetClass CollectButtonLabel {
+    ignorepointer 1
+    position 0 0
+    size 1 1
+    halign center_ref
+    valign center_ref
+    hexactpos 1
+    vexactpos 1
+    hexactsize 0
+    vexactsize 0
+    text "Collect all"
+    font "gui/fonts/sdf_MetronBook24"
+    "exact text" 1
+    "exact text size" 15
+    "text halign" center
+    "text valign" center
+   }
+  }
+  }
+  }
+  }
+ }
+}
