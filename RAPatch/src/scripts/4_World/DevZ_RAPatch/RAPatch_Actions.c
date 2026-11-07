@@ -256,6 +256,20 @@ modded class ActionDeployObject
 	// RA checks where the player's standing, so someone just outside a territory could place inside it
 	override bool ActionConditionContinue(ActionData action_data)
 	{
+		// Respawn.BagsNeedOwnTerritory, at the spot where the bag lands. Going by the outline's class covers any mod's bag.
+		if (g_Game.IsDedicatedServer())
+		{
+			Hologram bagHologram = action_data.m_Player.GetHologramServer();
+			if (bagHologram && bagHologram.GetProjectionEntity() && RAPatch_Respawn.IsBag(bagHologram.GetProjectionEntity()))
+			{
+				string bagRefusal = RAPatch_Respawn.BagSpotRefusal(action_data.m_Player, bagHologram.GetProjectionEntity().GetPosition());
+				if (bagRefusal != "")
+				{
+					RAPatch_Respawn.TellBagRefused(action_data.m_Player, bagRefusal);
+					return false;
+				}
+			}
+		}
 		if (g_Game.IsDedicatedServer() && RAPatch_Settings.Get().Desk.DeployChecksPlacedSpot)
 		{
 			Hologram hologram = action_data.m_Player.GetHologramServer();

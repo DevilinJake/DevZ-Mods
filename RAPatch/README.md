@@ -80,12 +80,13 @@ Where a dead player comes back. There's one way back, not a chain:
 | `CooldownMaxSeconds` | 7200 | The longest a cooldown can grow to. 0 = no limit |
 | `RespawnWaterPercent`, `RespawnEnergyPercent` | 50, 50 | Water and energy to come back with at a bag or desk. Health and blood are full |
 | `BagWearPercent` | 10 | Of the bag's health, per respawn. It stops working when ruined. 0 = no wear |
+| `BagsNeedOwnTerritory` | 0 | 1: a bag can only be laid out inside a territory the player is authorised on. The outline goes red and the action says why, and the server checks the spot where the bag lands too. Any bag in `BagClasses` that's laid out with an outline is covered |
 | `BagPickup` | 2 | Our bag only. 0 anyone, 1 only who laid it out, 2 any team member: who laid it out, or anyone authorised on the desk it's in |
 | `BagLifetimeHours` | 336 | How long our laid-out bag lasts, when it's not moved or used |
 
 **The penalty, with the default numbers:** the bag's cooldown is 30 minutes. Respawn on it within 30 minutes of that ending, and the next cooldown is 40. Do it again and it's 50, up to 2 hours. Stay away for more than 30 minutes after a cooldown ends, and it's back to 30.
 
-**Our bag:** `RAPatch_SleepingBag_Black`, `_Blue`, `_Green`, `_Grey` and `_Red`. Hold it, raise the hologram, place it, and look at it: "Set or clear respawn here". A player has one bag at a time, and a whole team can set the same one. Inside a territory, only its team can set a bag. Whether a bag can be laid out in someone else's follows `Desk.DeployRule`.
+**Our bag:** `RAPatch_SleepingBag_Black`, `_Blue`, `_Green`, `_Grey` and `_Red`. Hold it, raise the hologram, place it, and look at it: "Set or clear respawn here". A player has one bag at a time, and a whole team can set the same one. Inside a territory, only its team can set a bag. Whether a bag can be laid out in someone else's follows `Desk.DeployRule`, unless `BagsNeedOwnTerritory` is on: that's stricter, and refuses both someone else's territory and open ground. Where desks overlap, the oldest owns the spot. It only limits laying out: a bag already down stays usable if its desk goes.
 
 **Another mod's bag:** put its laid-out class in `BagClasses`, such as `ZenSleepingBagDeployed_Base` for Zen's, and take ours out if you don't want it. You don't need ours or any change to that mod. The catch is that `BagPickup` and laying out only cover our own bag, because another mod's bag has its own actions. What a player has set is saved in `RespawnData.json` as the object's class and position, so moving or packing a bag clears it.
 

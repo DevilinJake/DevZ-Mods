@@ -20,6 +20,16 @@ class RAPatch_BagRules
 			return isDeployer;
 		return isDeployer || isAuthorized;
 	}
+
+	// Respawn.BagsNeedOwnTerritory. Empty text means a bag can go there
+	static string SpotRefusal(bool inTerritory, bool isOwn)
+	{
+		if (!inTerritory)
+			return "A sleeping bag can only be laid out inside your own territory, and this spot isn't in a territory.";
+		if (!isOwn)
+			return "A sleeping bag can only be laid out inside your own territory, and this is someone else's.";
+		return "";
+	}
 }
 
 // Packed: carried, and laid out with a hologram
@@ -29,6 +39,14 @@ class RAPatch_SleepingBag_Base : ItemBase
 	{
 		if (g_Game.IsClient())
 			return;
+		// The last check, at the spot the player's game sent. A refused bag stays packed, on the ground where it was put.
+		string refusal = RAPatch_Respawn.BagSpotRefusal(player, position);
+		if (refusal != "")
+		{
+			RAPatch_Settings.Log("refused laying out " + GetType() + " at " + position + ": " + refusal);
+			RAPatch_Respawn.TellBagRefused(player, refusal);
+			return;
+		}
 		RAPatch_SleepingBagDeployed_Base bag = RAPatch_SleepingBagDeployed_Base.Cast(g_Game.CreateObject(GetType() + "_Deployed", position, false));
 		if (!bag)
 		{
@@ -298,6 +316,43 @@ modded class Hologram
 			return m_Parent.GetType() + "_Deployed";
 		return super.ProjectionBasedOnParent();
 	}
+
+	// Red outline on the player's game. The server runs this as well when it checks the hologram's spot
+	override bool IsPlacementPermitted()
+	{
+		if (m_Player && m_Projection && RAPatch_Respawn.IsBag(m_Projection))
+		{
+			if (RAPatch_Respawn.BagSpotRefusal(m_Player, GetProjectionPosition()) != "")
+				return false;
+		}
+		return super.IsPlacementPermitted();
+	}
+}
+
+// The text while holding the outline: this is what tells a player why the bag won't go down
+modded class ActionTogglePlaceObject
+{
+	static const string BAG_DENIED_TEXT = "Can't lay out (your own territory only)";
+
+	override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
+	{
+		if (!super.ActionCondition(player, target, item))
+			return false;
+		if (g_Game.IsDedicatedServer())
+			return true;
+		Hologram hologram = player.GetHologramLocal();
+		if (hologram && hologram.GetProjectionEntity() && RAPatch_Respawn.IsBag(hologram.GetProjectionEntity()))
+		{
+			if (RAPatch_Respawn.BagSpotRefusal(player, hologram.GetProjectionEntity().GetPosition()) != "")
+				m_Text = BAG_DENIED_TEXT;
+		}
+		return true;
+	}
+
+	override bool IsIconDisabled()
+	{
+		return super.IsIconDisabled() || GetText().Contains(BAG_DENIED_TEXT);
+	}
 }
 
 modded class ModItemRegisterCallbacks
@@ -426,6 +481,42 @@ class RAPatch_Respawn
 		if (ours && ours.RAPatch_IsDeployer(player))
 			return true;
 		return TerritoryHQ.HasPermissionsAtPosition(player, bag.GetPosition());
+	}
+
+	// Respawn.BagsNeedOwnTerritory. Empty text means a bag can go here. Works on the player's game and on the server.
+	static string BagSpotRefusal(Man player, vector position)
+	{
+		if (!RAPatch_Settings.Get().Respawn.BagsNeedOwnTerritory)
+			return "";
+		string id = "";
+		if (player && player.GetIdentity())
+			id = player.GetIdentity().GetId();
+		return BagSpotRefusalFor(id, position);
+	}
+
+	// By ID, so the self test can ask without a real player. Overlapping desks: the oldest owns the spot, as everywhere in RA.
+	static string BagSpotRefusalFor(string id, vector position)
+	{
+		array<TerritoryHQ> here = new array<TerritoryHQ>;
+		array<TerritoryHQ> desks = TerritoryHQ.All_HQs;
+		for (int i = 0; i < desks.Count(); i++)
+		{
+			TerritoryHQ desk = desks[i];
+			if (desk && !desk.IsRuined() && !desk.IsHologram() && vector.Distance(desk.GetPosition(), position) <= desk.GetRadius())
+				here.Insert(desk);
+		}
+		if (here.Count() == 0)
+			return RAPatch_BagRules.SpotRefusal(false, false);
+		TerritoryHQ owner = TerritoryHQ.GetOldestHQ(here);
+		if (!owner)
+			owner = here[0];
+		return RAPatch_BagRules.SpotRefusal(true, id != "" && owner.IsAuthorized(id));
+	}
+
+	static void TellBagRefused(Man player, string refusal)
+	{
+		if (player && player.GetIdentity())
+			NotificationSystem.SendNotificationToPlayerExtended(player, 8, "Sleeping bag", refusal);
 	}
 
 	void SetBag(string id, Object bag)

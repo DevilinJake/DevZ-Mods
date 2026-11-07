@@ -651,6 +651,76 @@ class RAPatch_SelfTest
 		ItemBase charge = ItemBase.Cast(Spawn("RA_C4", Offset(-35, -20)));
 		Check(charge && charge.CanPlaceInEnemyTerritory(), "charges can always be placed");
 		Check(!m_Near.CanPlaceInEnemyTerritory(), "and building parts never can");
+
+		CheckBagTerritoryRule();
+	}
+
+	// Respawn.BagsNeedOwnTerritory, off by default so servers keep what they had
+	protected void CheckBagTerritoryRule()
+	{
+		RAPatch_RespawnSettings rules = RAPatch_Settings.Get().Respawn;
+		bool wasOn = rules.BagsNeedOwnTerritory;
+		string owner = "selftest-bag-owner";
+		string stranger = "selftest-bag-stranger";
+		vector inside = Offset(10, 10);
+		inside[1] = GetGame().SurfaceY(inside[0], inside[2]);
+		vector outside = Offset(RAPatch_Settings.Get().Desk.Radius + 100, 0);
+		outside[1] = GetGame().SurfaceY(outside[0], outside[2]);
+		m_Desk.AuthorizePlayer(owner);
+
+		// The rule's own answers
+		Check(RAPatch_BagRules.SpotRefusal(true, true) == "", "bag rule: inside your own territory is fine");
+		Check(RAPatch_BagRules.SpotRefusal(false, false) != "", "bag rule: outside any territory is refused");
+		Check(RAPatch_BagRules.SpotRefusal(true, false) != "", "bag rule: someone else's territory is refused");
+
+		// Off: anywhere, for anyone, as before this setting existed
+		rules.BagsNeedOwnTerritory = false;
+		Check(RAPatch_Respawn.BagSpotRefusal(null, outside) == "", "bag rule off: a bag can go outside any territory");
+		Check(RAPatch_Respawn.BagSpotRefusal(null, inside) == "", "bag rule off: the rule doesn't ask about territory");
+		RAPatch_RespawnSettings defaults = new RAPatch_RespawnSettings;
+		Check(!defaults.BagsNeedOwnTerritory, "the bag rule is off by default");
+
+		// On, against a real desk
+		rules.BagsNeedOwnTerritory = true;
+		Check(RAPatch_Respawn.BagSpotRefusalFor(owner, inside) == "", "bag rule on: authorised, inside the desk's radius: allowed");
+		Check(RAPatch_Respawn.BagSpotRefusalFor(stranger, inside) != "", "bag rule on: not authorised, inside the radius: refused");
+		Check(RAPatch_Respawn.BagSpotRefusalFor(owner, outside) != "", "bag rule on: authorised, but outside the radius: refused");
+		Check(RAPatch_Respawn.BagSpotRefusal(m_Player, inside) != "", "bag rule on: a character with no identity is nobody's teammate");
+
+		// The server's last check, through the bag's own placing code. The packed bag stays, and no laid-out one appears.
+		RAPatch_SleepingBag_Base packed = RAPatch_SleepingBag_Base.Cast(Spawn("RAPatch_SleepingBag_Red", outside));
+		Check(packed != null, "a packed bag spawns");
+		if (packed)
+		{
+			packed.OnPlacementComplete(m_Player, outside, "0 0 0");
+			array<Object> nearby = new array<Object>;
+			GetGame().GetObjectsAtPosition3D(outside, 3, nearby, null);
+			bool laidOut = false;
+			foreach (Object thing : nearby)
+			{
+				if (RAPatch_SleepingBagDeployed_Base.Cast(thing))
+					laidOut = true;
+			}
+			Check(!laidOut, "bag rule on: refused at the placed spot, no laid-out bag appeared there");
+			Check(!packed.IsSetForDeletion(), "bag rule on: and it stays packed");
+
+			rules.BagsNeedOwnTerritory = false;
+			packed.OnPlacementComplete(m_Player, outside, "0 0 0");
+			nearby.Clear();
+			GetGame().GetObjectsAtPosition3D(outside, 3, nearby, null);
+			foreach (Object placed : nearby)
+			{
+				if (RAPatch_SleepingBagDeployed_Base.Cast(placed))
+				{
+					laidOut = true;
+					m_Spawned.Insert(placed);
+				}
+			}
+			Check(laidOut, "bag rule off: the same bag lays out at that spot");
+		}
+
+		m_Desk.DeauthorizePlayer(owner);
+		rules.BagsNeedOwnTerritory = wasOn;
 	}
 
 	protected void CheckVehicleLock()

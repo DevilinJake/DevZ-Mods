@@ -70,6 +70,7 @@ class RAPatch_RespawnSettings
 	float RespawnWaterPercent = 50;				// water and energy to come back with at a bag or desk. Health and blood are full
 	float RespawnEnergyPercent = 50;
 	float BagWearPercent = 10;			// of the bag's health, per respawn on it. It's gone when it's ruined
+	bool BagsNeedOwnTerritory = false;	// true: a bag can only be laid out inside a territory the player is authorised on
 	int BagPickup = 2;					// this mod's own bag only: another mod's bag has its own pack action. 0 anyone, 1 only who laid it out, 2 any team member
 	float BagLifetimeHours = 336;		// how long a laid-out bag lasts
 }
@@ -304,7 +305,7 @@ class RAPatch_CraftSettings
 
 class RAPatch_Settings
 {
-	int Version = 13;
+	int Version = 14;
 
 	ref RAPatch_DecaySettings Decay = new RAPatch_DecaySettings;
 	ref RAPatch_DeskSettings Desk = new RAPatch_DeskSettings;
@@ -319,7 +320,7 @@ class RAPatch_Settings
 	float SelfTestZ = 7500;
 	bool SelfTestKeepDesk = false;	// true: leave the desk and its modules in place, to check they survive a restart
 
-	static const int CURRENT_VERSION = 13;
+	static const int CURRENT_VERSION = 14;
 	static const int MAX_RECIPES = 12;
 	static const int MAX_MODULES = 16;
 	static const string FOLDER = "$profile:DevZ_RAPatch";
@@ -688,6 +689,7 @@ class RAPatch_Settings
 		shared.Build.BlueprintSeconds = Build.BlueprintSeconds;
 		shared.Respawn.BagsEnabled = Respawn.BagsEnabled;
 		shared.Respawn.BagPickup = Respawn.BagPickup;
+		shared.Respawn.BagsNeedOwnTerritory = Respawn.BagsNeedOwnTerritory;
 		shared.Respawn.BagClasses = Respawn.BagClasses;
 		shared.VehicleLocks.Enabled = VehicleLocks.Enabled;
 		shared.VehicleLocks.LockItem = VehicleLocks.LockItem;
