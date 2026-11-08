@@ -80,7 +80,7 @@ Where a dead player comes back. There's one way back, not a chain:
 | `CooldownMaxSeconds` | 7200 | The longest a cooldown can grow to. 0 = no limit |
 | `RespawnWaterPercent`, `RespawnEnergyPercent` | 50, 50 | Water and energy to come back with at a bag or desk. Health and blood are full |
 | `BagWearPercent` | 10 | Of the bag's health, per respawn. It stops working when ruined. 0 = no wear |
-| `BagsNeedOwnTerritory` | 0 | 1: a bag can only be laid out inside a territory the player is authorised on. The outline goes red and the action says why, and the server checks the spot where the bag lands too. Any bag in `BagClasses` that's laid out with an outline is covered |
+| `BagsNeedOwnTerritory` | 0 | 1: a bag can only be laid out inside a territory the player is authorised on. It also only works while it stays in one: if they're taken off the desk, or the desk is gone, it's skipped and they get vanilla's spawn points. The outline goes red and the action says why, and the server checks the spot where the bag lands too. Any bag in `BagClasses` that's laid out with an outline is covered |
 | `BagPickup` | 2 | Our bag only. 0 anyone, 1 only who laid it out, 2 any team member: who laid it out, or anyone authorised on the desk it's in |
 | `BagLifetimeHours` | 336 | How long our laid-out bag lasts, when it's not moved or used |
 

@@ -655,6 +655,26 @@ class RAPatch_SelfTest
 		CheckBagTerritoryRule();
 	}
 
+	// With the rule on, a set bag only works while it's in the player's territory
+	protected void CheckBagStillInTerritory(string owner, vector inside)
+	{
+		RAPatch_Respawn respawn = RAPatch_Respawn.Get();
+		respawn.Forget(owner);
+		Object bag = Spawn("RAPatch_SleepingBag_Green_Deployed", inside);
+		if (!bag)
+			return;
+		respawn.SetBag(owner, bag);
+		vector spot;
+		string kind;
+		string note;
+		Check(respawn.Decide(owner, spot, kind, note) && kind == RAPatch_Respawn.BAG, "bag rule on: a bag in your territory works");
+		m_Desk.DeauthorizePlayer(owner);
+		note = "";
+		Check(!respawn.Decide(owner, spot, kind, note) && note != "", "taken off the desk: the bag no longer works. " + note);
+		m_Desk.AuthorizePlayer(owner);
+		respawn.Forget(owner);
+	}
+
 	// Respawn.BagsNeedOwnTerritory, off by default so servers keep what they had
 	protected void CheckBagTerritoryRule()
 	{
@@ -683,6 +703,7 @@ class RAPatch_SelfTest
 		// On, against a real desk
 		rules.BagsNeedOwnTerritory = true;
 		Check(RAPatch_Respawn.BagSpotRefusalFor(owner, inside) == "", "bag rule on: authorised, inside the desk's radius: allowed");
+		CheckBagStillInTerritory(owner, inside);
 		Check(RAPatch_Respawn.BagSpotRefusalFor(stranger, inside) != "", "bag rule on: not authorised, inside the radius: refused");
 		Check(RAPatch_Respawn.BagSpotRefusalFor(owner, outside) != "", "bag rule on: authorised, but outside the radius: refused");
 		Check(RAPatch_Respawn.BagSpotRefusal(m_Player, inside) != "", "bag rule on: a character with no identity is nobody's teammate");
@@ -820,13 +841,15 @@ class RAPatch_SelfTest
 				found++;
 		}
 		Check(found == 1, "saving a class twice replaces its row");
+		array<ref RAPatch_VehicleLockSpot> savedSpots = rules.Spots;
+		rules.Spots = new array<ref RAPatch_VehicleLockSpot>;
 		RAPatch_VehicleLockSpot colour = new RAPatch_VehicleLockSpot;
 		colour.VehicleClass = "Sedan_02_Grey";
 		rules.Spots.Insert(colour);
 		Check(RAPatch_VehicleLocks.SpotFor("Sedan_02_Grey") == colour, "a colour finds its own row");
 		Check(RAPatch_VehicleLocks.SpotFor("Sedan_02_Red") == colour, "another colour of that car uses it too");
 		Check(RAPatch_VehicleLocks.SpotFor("OffroadHatchback_Blue") == null, "an unrelated car doesn't");
-		rules.Spots.RemoveItem(colour);
+		rules.Spots = savedSpots;
 		Check(RAPatch_VehicleLocks.SpotFor("SelfTestCar") != null, "and it can be found");
 		for (int j = rules.Spots.Count() - 1; j >= 0; j--)
 		{

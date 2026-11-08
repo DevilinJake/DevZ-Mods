@@ -589,6 +589,12 @@ class RAPatch_Respawn
 			Object bag = FindBag(id);
 			if (!bag)
 				return false;
+			// With BagsNeedOwnTerritory on, a bag only works while it's in a territory they're authorised on: not after they're taken off the desk, or the desk is gone
+			if (rules.BagsNeedOwnTerritory && BagSpotRefusalFor(id, bag.GetPosition()) != "")
+			{
+				note = "Your sleeping bag isn't in your territory any more.";
+				return false;
+			}
 			int bagLeft = SecondsLeft(id, BAG);
 			if (bagLeft == 0)
 			{

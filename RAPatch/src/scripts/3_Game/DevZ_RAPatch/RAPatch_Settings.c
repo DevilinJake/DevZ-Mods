@@ -70,7 +70,7 @@ class RAPatch_RespawnSettings
 	float RespawnWaterPercent = 50;				// water and energy to come back with at a bag or desk. Health and blood are full
 	float RespawnEnergyPercent = 50;
 	float BagWearPercent = 10;			// of the bag's health, per respawn on it. It's gone when it's ruined
-	bool BagsNeedOwnTerritory = false;	// true: a bag can only be laid out inside a territory the player is authorised on
+	bool BagsNeedOwnTerritory = false;	// true: a bag can only be laid out inside a territory the player is authorised on, and only works while it stays in one
 	int BagPickup = 2;					// this mod's own bag only: another mod's bag has its own pack action. 0 anyone, 1 only who laid it out, 2 any team member
 	float BagLifetimeHours = 336;		// how long a laid-out bag lasts
 }
