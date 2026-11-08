@@ -585,8 +585,8 @@ class RAPatch_Respawn
 	}
 
 	// Where this player would come back, without changing anything. True when they have a bag or a desk to come back to, with
-	// how long until it's ready. A chain: their bag if it's set and working, otherwise a desk they're authorised on. A bag that's
-	// set and working but cooling down is waited for: the desk isn't a way round its cooldown.
+	// how long until it's ready. Bags on: their bag only, unless DeskWhenNoBag lets a desk stand in when they have no working bag.
+	// Bags off: a desk they're authorised on. A bag that's set and working but cooling down is waited for, never swapped for the desk.
 	bool Plan(string id, out vector position, out string kind, out int secondsLeft, out string note)
 	{
 		RAPatch_RespawnSettings rules = RAPatch_Settings.Get().Respawn;
@@ -606,6 +606,8 @@ class RAPatch_Respawn
 				secondsLeft = SecondsLeft(id, BAG);
 				return true;
 			}
+			if (!rules.DeskWhenNoBag)
+				return false;
 		}
 		if (rules.HQEnabled)
 		{

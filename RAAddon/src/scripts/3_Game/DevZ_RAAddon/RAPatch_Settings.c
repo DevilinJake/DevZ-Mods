@@ -61,6 +61,7 @@ class RAPatch_RespawnSettings
 {
 	bool BagsEnabled = true;
 	bool HQEnabled = true;
+	bool DeskWhenNoBag = false;	// false: with bags on, a bag is the only way back, and no bag means vanilla's spawn points. true: no working bag, the desk instead
 	ref array<string> BagClasses = new array<string>;	// laid-out objects that count as a sleeping bag. Any mod's class, or anything inheriting from it
 	float BagCooldownSeconds = 180;
 	float HQCooldownSeconds = 180;
@@ -305,7 +306,7 @@ class RAPatch_CraftSettings
 
 class RAPatch_Settings
 {
-	int Version = 14;
+	int Version = 15;
 
 	ref RAPatch_DecaySettings Decay = new RAPatch_DecaySettings;
 	ref RAPatch_DeskSettings Desk = new RAPatch_DeskSettings;
@@ -320,7 +321,7 @@ class RAPatch_Settings
 	float SelfTestZ = 7500;
 	bool SelfTestKeepDesk = false;	// true: leave the desk and its modules in place, to check they survive a restart
 
-	static const int CURRENT_VERSION = 14;
+	static const int CURRENT_VERSION = 15;
 	static const int MAX_RECIPES = 12;
 	static const int MAX_MODULES = 16;
 	static const string FOLDER = "$profile:DevZ_RAAddon";

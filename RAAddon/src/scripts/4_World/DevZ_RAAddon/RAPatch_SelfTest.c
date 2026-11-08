@@ -544,7 +544,15 @@ class RAPatch_SelfTest
 		// The desk
 		m_Desk.AuthorizePlayer(id);
 		kind = "";
-		Check(respawn.Decide(id, spot, kind, note) && kind == RAPatch_Respawn.HQ, "bags on, none set, authorised on a desk: the desk");
+		bool wasDeskWhenNoBag = rules.DeskWhenNoBag;
+		rules.DeskWhenNoBag = false;
+		Check(!respawn.Decide(id, spot, kind, note), "bags on, none set, authorised on a desk: vanilla's, the bag is the only way back");
+		rules.DeskWhenNoBag = true;
+		kind = "";
+		Check(respawn.Decide(id, spot, kind, note) && kind == RAPatch_Respawn.HQ, "with DeskWhenNoBag on: the desk stands in");
+		rules.DeskWhenNoBag = wasDeskWhenNoBag;
+		RAPatch_RespawnSettings freshRules = new RAPatch_RespawnSettings;
+		Check(!freshRules.DeskWhenNoBag, "DeskWhenNoBag is off by default");
 		bool wasBagsOn = rules.BagsEnabled;
 		rules.BagsEnabled = false;
 		kind = "";

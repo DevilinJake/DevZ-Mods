@@ -65,16 +65,19 @@ Upkeep can't be exactly 0: the addon keeps it at 0.00001 or more, which is what 
 
 ### Respawn
 
-Where a dead player comes back, in order:
+Where a dead player comes back. There's one way back, not a chain:
 
-1. **Their sleeping bag,** if they've set one and it still counts (not ruined or moved, and with `BagsNeedOwnTerritory` on, still inside a territory they're authorised on). If it's on cooldown they wait for it: the desk isn't a way round a bag's cooldown.
-2. **Otherwise a Territory HQ they're authorised on,** beside it and level with it, if it's off cooldown.
-3. **Otherwise vanilla's spawn points,** and when what they'd use is on cooldown. A message says when their bag or desk is ready.
+1. **Bags on:** their sleeping bag, if they've set one and it still counts (not ruined or moved, and with `BagsNeedOwnTerritory` on, still inside a territory they're authorised on), and it's off cooldown. The desk isn't used.
+2. **Bags off:** a Territory HQ they're authorised on, beside it and level with it, if it's off cooldown.
+3. **Anything else,** including a cooldown: vanilla's spawn points. A message says when their bag or desk is ready.
+
+`DeskWhenNoBag` 1 turns the first two into a chain: with bags on, a player with no working bag comes back at their desk instead. A bag on cooldown is still waited for, never swapped for the desk.
 
 | Setting | Default | What it does |
 |---|---|---|
 | `BagsEnabled` | 1 | 0: no bag respawning, so desks are used instead |
-| `HQEnabled` | 1 | Only matters with bags off. 0 as well: vanilla's spawn points |
+| `HQEnabled` | 1 | Only matters with bags off, or with `DeskWhenNoBag` on. 0: never the desk |
+| `DeskWhenNoBag` | 0 | 1: with bags on, a player with no working bag comes back at their desk instead of vanilla's spawn points |
 | `BagClasses` | our bag | Laid-out objects that count as a sleeping bag: any mod's class, or anything inheriting from it |
 | `BagCooldownSeconds`, `HQCooldownSeconds` | 180, 180 | Per player, and restarts don't clear them |
 | `CooldownPenaltySeconds` | 120 | Respawn again within the window, and the next cooldown is this much longer. It adds up. 0 = off |
