@@ -405,6 +405,7 @@ class RAPatch_SelfTest
 		Check(RAPatch_Webhook.IsValid("https://discord.com/api/webhooks/123456789012345678/abcdefghijklmnopqrstuvwxyzABCDEF_-0123"), "a Discord webhook is accepted");
 		Check(!RAPatch_Webhook.IsValid("https://discord.com/api/webhooks/1/abc"), "one that's cut short is refused");
 		Check(!RAPatch_Webhook.IsValid("https://discord.com/api/webhooks/wrongaddress"), "so is a made-up ending");
+		StartStaffAlerts();
 		if (!hasRow)
 			return;
 
@@ -449,6 +450,50 @@ class RAPatch_SelfTest
 		GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(CheckDoomedDesk, 1000, false);
 	}
 
+	// Staff alerts: any base, with no raid alarm and no team webhook. Nothing goes to Discord: the posts are only counted.
+	protected TerritoryHQ m_StaffDesk;
+	protected string m_StaffWasWebhook;
+
+	protected void StartStaffAlerts()
+	{
+		RAPatch_AdminAlertSettings admin = RAPatch_Settings.Get().AdminAlerts;
+		m_StaffWasWebhook = admin.Webhook;
+		RAPatch_Webhook.DryRun = true;
+		RAPatch_Webhook.DryRunAll.Clear();
+		m_StaffDesk = TerritoryHQ.Cast(Spawn("TerritoryHQ", Offset(-140, -100)));
+		admin.Webhook = "";
+		RAPatch_Webhook.DryRunCount = 0;
+		m_StaffDesk.RAPatch_RaidHit("Gunfire", "Test wall", null);
+		Check(RAPatch_Webhook.DryRunCount == 0, "no admin webhook: no staff alert");
+		admin.Webhook = "https://example.com/api/webhooks/123456789012345678/abcdefghijklmnopqrstuvwxyzABCDEF_-0123";
+		m_StaffDesk.RAPatch_RaidHit("Gunfire", "Test wall", null);
+		Check(RAPatch_Webhook.DryRunCount == 0, "an admin webhook that isn't Discord's: no staff alert");
+		admin.Webhook = "https://discord.com/api/webhooks/123456789012345678/abcdefghijklmnopqrstuvwxyzABCDEF_-0123";
+		m_StaffDesk.RAPatch_RaidHit("Gunfire", "Test wall", null);
+		bool staffFirst = RAPatch_Webhook.DryRunCount == 1 && RAPatch_Webhook.DryRunLast.IndexOf("RAID: ") == 0;
+		Check(staffFirst, "a base with no raid alarm still alerts staff: " + RAPatch_Webhook.DryRunLast);
+		Check(RAPatch_Webhook.DryRunLast.IndexOf("discord") == -1, "the alert doesn't contain the webhook");
+		m_StaffDesk.RAPatch_RaidHit("Melee", "Test door", null);
+		Check(RAPatch_Webhook.DryRunCount == 1, "staff alerts have their own cooldown");
+		Check(!m_StaffDesk.RAPatch_WebhookIsSet(), "and the team's webhook stays empty");
+		m_StaffDesk.SetHealth("", "", 0);
+		admin.Webhook = m_StaffWasWebhook;	// before the team alarm's tests, which expect no staff posts
+		GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(CheckStaffAlerts, 1000, false);
+	}
+
+	protected void CheckStaffAlerts()
+	{
+		bool told = false;
+		foreach (string sent : RAPatch_Webhook.DryRunAll)
+		{
+			if (sent.Contains("destroyed in a raid"))
+				told = true;
+		}
+		Check(told, "a desk destroyed in a raid tells staff");
+		if (m_StaffDesk)
+			GetGame().ObjectDelete(m_StaffDesk);
+	}
+
 	protected void CheckDoomedDesk()
 	{
 		Check(m_DoomedDesk && !m_DoomedDesk.RAPatch_WebhookIsSet(), "a killed desk forgets its webhook");
@@ -458,7 +503,11 @@ class RAPatch_SelfTest
 	protected void CheckClientCopy()
 	{
 		RAPatch_Settings settings = RAPatch_Settings.Get();
+		string wasStaff = settings.AdminAlerts.Webhook;
+		settings.AdminAlerts.Webhook = "https://discord.com/api/webhooks/123456789012345678/abcdefghijklmnopqrstuvwxyzABCDEF_-0123";
 		string text = settings.ToJsonForClients();
+		settings.AdminAlerts.Webhook = wasStaff;
+		Check(text.IndexOf("discord") == -1, "clients never get the admin webhook");
 		RAPatch_Settings sent = RAPatch_Settings.FromJson(text);
 		Check(sent != null, "the copy for clients can be read back");
 		if (!sent)

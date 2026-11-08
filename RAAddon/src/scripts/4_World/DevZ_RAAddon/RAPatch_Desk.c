@@ -522,6 +522,9 @@ modded class TerritoryHQ
 	protected int m_RAPatch_AlarmReadyAt;	// in game milliseconds
 	protected int m_RAPatch_AlarmHits;
 	protected int m_RAPatch_TestReadyAt;
+	protected int m_RAPatch_AdminReadyAt;	// the staff alert's own cooldown
+	protected int m_RAPatch_AdminHits;
+	protected int m_RAPatch_LastRaidHitAt = -1;
 	protected int m_RAPatch_PartCount;
 	protected int m_RAPatch_DoorCount;
 	protected int m_RAPatch_GateCount;
@@ -597,37 +600,74 @@ modded class TerritoryHQ
 
 	void RAPatch_RaidHit(string kind, string what, Man attacker)
 	{
-		if (!g_Game.IsServer() || m_RAPatch_Webhook == "" || !RAPatch_HasRaidAlarm())
+		if (!g_Game.IsServer())
 			return;
 		// A team's own building and repairs aren't a raid. RA's charges don't say who armed them, so those always alert.
 		if (attacker && attacker.GetIdentity() && IsAuthorized(attacker))
 			return;
 		int now = g_Game.GetTime();
+		m_RAPatch_LastRaidHitAt = now;
+		string hit = kind + " hit: " + RAPatch_Clean(what) + ".";
+		RAPatch_AdminRaidHit(hit, attacker, now);
+		if (m_RAPatch_Webhook == "" || !RAPatch_HasRaidAlarm())
+			return;
 		if (now < m_RAPatch_AlarmReadyAt)
 		{
 			m_RAPatch_AlarmHits++;
 			return;
 		}
 		m_RAPatch_AlarmReadyAt = now + RAPatch_Settings.Get().Desk.RaidAlarmCooldownSeconds * 1000;
-		string message = "RAID ALARM: your base at map position " + RAPatch_Where() + " is under attack. " + kind + " hit: " + RAPatch_Clean(what) + ".";
+		string message = "RAID ALARM: your base at map position " + RAPatch_Where() + " is under attack. " + hit;
 		if (m_RAPatch_AlarmHits > 0)
 			message += " " + m_RAPatch_AlarmHits + " more hits since the last alert.";
 		m_RAPatch_AlarmHits = 0;
 		RAPatch_Webhook.Post(m_RAPatch_Webhook, message);
 	}
 
-	// Item names go inside a JSON string, so nothing that could break out of it
+	// The staff channel: every base, with or without a raid alarm or a team webhook
+	protected void RAPatch_AdminRaidHit(string hit, Man attacker, int now)
+	{
+		string url = RAPatch_Webhook.AdminUrl();
+		if (url == "")
+			return;
+		if (now < m_RAPatch_AdminReadyAt)
+		{
+			m_RAPatch_AdminHits++;
+			return;
+		}
+		RAPatch_AdminAlertSettings admin = RAPatch_Settings.Get().AdminAlerts;
+		m_RAPatch_AdminReadyAt = now + admin.CooldownSeconds * 1000;
+		string message = "RAID: the base at map position " + RAPatch_Where() + " is under attack. " + hit;
+		if (admin.ShowAttacker && attacker && attacker.GetIdentity())
+			message += " By " + RAPatch_Clean(attacker.GetIdentity().GetName()) + " (Steam64 " + attacker.GetIdentity().GetPlainId() + ").";
+		message += " The base's team: " + RAPatch_AuthorizedCount() + " players.";
+		if (m_RAPatch_AdminHits > 0)
+			message += " " + m_RAPatch_AdminHits + " more hits since the last alert.";
+		m_RAPatch_AdminHits = 0;
+		RAPatch_Webhook.Post(url, message);
+	}
+
+	// Item and player names go inside a JSON string, so nothing that could break out of it
 	protected string RAPatch_Clean(string text)
 	{
 		text.Replace("\"", "");
 		text.Replace("\\", "");
+		text.Replace("\n", " ");
+		text.Replace("\r", " ");
+		text.Replace("\t", " ");
 		return text;
 	}
 
 	// The last message. The desk's gone, so its webhook goes too.
 	protected void RAPatch_AlarmDestroyed()
 	{
-		if (!g_Game.IsServer() || m_RAPatch_Webhook == "")
+		if (!g_Game.IsServer())
+			return;
+		// Staff hear about it when it went down in a raid: a raid hit in the last 30 minutes. Decay alone isn't a raid.
+		string staff = RAPatch_Webhook.AdminUrl();
+		if (staff != "" && m_RAPatch_LastRaidHitAt >= 0 && g_Game.GetTime() - m_RAPatch_LastRaidHitAt < 1800000)
+			RAPatch_Webhook.Post(staff, "RAID: the Territory HQ at map position " + RAPatch_Where() + " has been destroyed in a raid. Its team had " + RAPatch_AuthorizedCount() + " players.");
+		if (m_RAPatch_Webhook == "")
 			return;
 		if (RAPatch_HasRaidAlarm())
 			RAPatch_Webhook.Post(m_RAPatch_Webhook, "RAID ALARM: your Territory HQ at map position " + RAPatch_Where() + " has been destroyed.");

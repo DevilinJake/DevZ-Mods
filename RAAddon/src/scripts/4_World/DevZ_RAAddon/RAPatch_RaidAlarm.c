@@ -52,6 +52,26 @@ class RAPatch_Webhook
 	static bool DryRun;			// the self test: count what would be sent, and don't send it
 	static int DryRunCount;
 	static string DryRunLast;
+	static ref array<string> DryRunAll = new array<string>;
+
+	protected static bool s_AdminWarned;
+
+	// The staff channel from AdminAlerts.Webhook, or "" when it's off or isn't a real Discord webhook
+	static string AdminUrl()
+	{
+		string url = RAPatch_Settings.Get().AdminAlerts.Webhook;
+		url.TrimInPlace();
+		if (url == "")
+			return "";
+		if (!IsValid(url))
+		{
+			if (!s_AdminWarned)
+				RAPatch_Settings.Log("WARNING AdminAlerts.Webhook isn't a Discord webhook address, so staff raid alerts are off");
+			s_AdminWarned = true;
+			return "";
+		}
+		return url;
+	}
 
 	protected static ref array<ref RAPatch_WebhookCallback> s_Callbacks = new array<ref RAPatch_WebhookCallback>;
 
@@ -99,6 +119,7 @@ class RAPatch_Webhook
 		{
 			DryRunCount++;
 			DryRunLast = message;
+			DryRunAll.Insert(message);
 			return;
 		}
 		if (!IsValid(url))

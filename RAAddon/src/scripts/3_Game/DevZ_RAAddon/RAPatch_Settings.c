@@ -217,6 +217,15 @@ class RAPatch_RaidSettings
 	ref array<ref RAPatch_RaidWindow> RaidWindows = new array<ref RAPatch_RaidWindow>;
 }
 
+// For the server's staff: every raid on every base, posted to the admin's own Discord webhook, whether or not the base has
+// a raid alarm. This section stays on the server: it's never sent to players, and the address is never logged.
+class RAPatch_AdminAlertSettings
+{
+	string Webhook = "";			// a Discord webhook address for a staff channel. Empty = off
+	float CooldownSeconds = 300;	// the most often one base posts. Hits in between are counted in its next message
+	bool ShowAttacker = true;		// the attacker's name and Steam64 ID, when a player made the hit. RA's charges don't say who armed them
+}
+
 class RAPatch_DismantleSettings
 {
 	bool ToolRemoveEnabled = true;		// the hammer or hatchet's Remove on RA's parts. It always needs desk permission, or no desk in range
@@ -308,7 +317,7 @@ class RAPatch_CraftSettings
 
 class RAPatch_Settings
 {
-	int Version = 16;
+	int Version = 17;
 
 	ref RAPatch_DecaySettings Decay = new RAPatch_DecaySettings;
 	ref RAPatch_DeskSettings Desk = new RAPatch_DeskSettings;
@@ -318,12 +327,13 @@ class RAPatch_Settings
 	ref RAPatch_CraftSettings Crafting = new RAPatch_CraftSettings;
 	ref RAPatch_RespawnSettings Respawn = new RAPatch_RespawnSettings;
 	ref RAPatch_VehicleLockSettings VehicleLocks = new RAPatch_VehicleLockSettings;
+	ref RAPatch_AdminAlertSettings AdminAlerts = new RAPatch_AdminAlertSettings;
 	bool SelfTest = false;	// true: on boot, spawn test parts at SelfTestX, SelfTestZ, check them against this file, and write SelfTest.txt
 	float SelfTestX = 7500;
 	float SelfTestZ = 7500;
 	bool SelfTestKeepDesk = false;	// true: leave the desk and its modules in place, to check they survive a restart
 
-	static const int CURRENT_VERSION = 16;
+	static const int CURRENT_VERSION = 17;
 	static const int MAX_RECIPES = 12;
 	static const int MAX_MODULES = 16;
 	static const string FOLDER = "$profile:DevZ_RAAddon";
@@ -653,7 +663,7 @@ class RAPatch_Settings
 	}
 
 	// What a player's game is sent. The settings file itself is only ever on the server. A client needs what its hologram,
-	// action texts and recipe list read, and nothing else: raid numbers, decay, no-build zones and test settings stay here.
+	// action texts and recipe list read, and nothing else: raid numbers, decay, no-build zones, admin alerts and test settings stay here.
 	// The placement tool
 	void RAPatch_PutSpot(RAPatch_VehicleLockSpot spot)
 	{

@@ -167,6 +167,18 @@ A `Costs` row's `Part` is a class name such as `BaseBuilding_WoodWall`, or `Tier
 | `MeleeDamage`, `BulletDamage`, `OtherExplosiveDamage` | 1, 1, 1 | Whether these can hurt parts. The last doesn't cover RA's charges |
 | `RaidHoursEnabled`, `RaidHoursUtcOffset`, `RaidWindows` | 0, 10, Fri-Sun | When on, charges can only be armed in these windows. A lit fuse still finishes. The offset is fixed: it doesn't follow daylight saving. Other mods can read this clock, and force it open or closed for testing (`RAPatch_RaidClock.Forced`) |
 
+### Admin alerts
+
+For the server's staff: one Discord webhook that hears about **every** raid on **every** base, whether or not the base has a raid alarm or its team has added a webhook. It works alongside the teams' own raid alarms, which carry on as before.
+
+| Setting | Default | What it does |
+|---|---|---|
+| `Webhook` | empty | A Discord webhook address for a staff channel. Empty = off. Anything that isn't a real Discord webhook is refused, with a warning in the server log |
+| `CooldownSeconds` | 300 | The most often one base posts. Hits in between are counted in its next message |
+| `ShowAttacker` | 1 | The attacker's name and Steam64 ID, when a player made the hit. RA's charges don't say who armed them: `ChargeLog.txt` has who armed each one |
+
+A raid is the same as for the teams' alarms: an enemy's melee, gunfire, grenade or charge on anything in a territory. Zombies, animals, decay and the team's own hits don't count. When a desk goes down within 30 minutes of a raid hit, staff get a last message that it was destroyed in a raid. This section is only ever on the server: players' games are never sent it, and the address is never written to a log. Keep the address out of screenshots: anyone who has it can post to that channel.
+
 ### Dismantling
 
 | Setting | Default | What it does |
