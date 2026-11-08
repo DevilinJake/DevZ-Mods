@@ -308,7 +308,7 @@ class RAPatch_CraftSettings
 
 class RAPatch_Settings
 {
-	int Version = 15;
+	int Version = 16;
 
 	ref RAPatch_DecaySettings Decay = new RAPatch_DecaySettings;
 	ref RAPatch_DeskSettings Desk = new RAPatch_DeskSettings;
@@ -323,7 +323,7 @@ class RAPatch_Settings
 	float SelfTestZ = 7500;
 	bool SelfTestKeepDesk = false;	// true: leave the desk and its modules in place, to check they survive a restart
 
-	static const int CURRENT_VERSION = 15;
+	static const int CURRENT_VERSION = 16;
 	static const int MAX_RECIPES = 12;
 	static const int MAX_MODULES = 16;
 	static const string FOLDER = "$profile:DevZ_RAAddon";
