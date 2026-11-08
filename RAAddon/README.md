@@ -160,12 +160,12 @@ A `Costs` row's `Part` is a class name such as `BaseBuilding_WoodWall`, or `Tier
 | `PenetrationDepth`, `PenetrationFalloff` | 0, 0.65 | Parts the blast goes through, and damage kept per part |
 | `C4PlayerAmmo`, `ImprovisedPlayerAmmo` | RA's | The vanilla explosion made for players and sound. `Plastic_Explosive_Ammo` hurts more |
 | `FrameDamageMultiplier`, and `Wood`, `Metal`, `Concrete` | 1 | The blast's damage against each tier |
-| `DeskBlastDamage` | 1 | RA's charges skip the desk. 1: they hit it, touching it like a wall. 0: charges can't hurt the desk. `DoorsOnly` and `BlastProofClasses` (`TerritoryHQ`) keep it safe too |
-| `DeskC4ToDestroy` | 3 | C4 charges that destroy a desk. Improvised charges take their share by `ImprovisedDamage` against `C4Damage`: at 750 and 1275, 6 of them. When it's destroyed, its territory ends, its modules and bench items drop beside it, and anyone can loot its storage |
+| `DeskBlastDamage` | 0 | RA's charges skip the desk. 1: they can destroy it, touching it like a wall. 0: charges can't hurt the desk (RA's small extra explosion is ignored too). `DoorsOnly` and `BlastProofClasses` (`TerritoryHQ`) keep it safe as well |
+| `DeskC4ToDestroy` | 3 | With `DeskBlastDamage` 1: C4 charges that destroy a desk, whatever `C4Damage` is. 1.5 works too: two C4s, or three improvised. Improvised charges take their share by `ImprovisedDamage` against `C4Damage`: at 750 and 1275, 6 of them. When it's destroyed, its territory ends, its modules and bench items drop beside it, and anyone can loot its storage |
 | `DoorsOnly` | 0 | 1: only doors, gates, hatches, windows and shutters take blast damage |
 | `BlastProofClasses` | empty | Classes that take no blast damage, with anything inheriting from them |
 | `MeleeDamage`, `BulletDamage`, `OtherExplosiveDamage` | 1, 1, 1 | Whether these can hurt parts. The last doesn't cover RA's charges |
-| `RaidHoursEnabled`, `RaidHoursUtcOffset`, `RaidWindows` | 0, 10, Fri-Sun | When on, charges can only be armed in these windows. A lit fuse still finishes. The offset is fixed: it doesn't follow daylight saving. The Battle Royale mod uses this same clock for its desks, and its test round can force it open or closed |
+| `RaidHoursEnabled`, `RaidHoursUtcOffset`, `RaidWindows` | 0, 10, Fri-Sun | When on, charges can only be armed in these windows. A lit fuse still finishes. The offset is fixed: it doesn't follow daylight saving. Other mods can read this clock, and force it open or closed for testing (`RAPatch_RaidClock.Forced`) |
 
 ### Dismantling
 
