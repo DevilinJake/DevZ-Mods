@@ -97,6 +97,76 @@ class RAPatch_Modules
 	}
 }
 
+// Desk.RadiusMayOverlap false: no two territories overlap. RA only refuses a desk placed inside another's radius, so two desks
+// could stand a little more than one radius apart and share ground. Works on clients too, for the outline and the action's text.
+class RAPatch_DeskSpacing
+{
+	static const string DENIED_TEXT = "Can't place (territories would overlap)";
+
+	// "" when a new desk can go here. ignore: a desk that's just been put there, which mustn't count against itself
+	static string Refusal(vector position, TerritoryHQ ignore = null)
+	{
+		RAPatch_DeskSettings desk = RAPatch_Settings.Get().Desk;
+		if (desk.RadiusMayOverlap || !TerritoryHQ.All_HQs)
+			return "";
+		foreach (TerritoryHQ other : TerritoryHQ.All_HQs)
+		{
+			if (!other || other == ignore || other.IsHologram() || other.IsRuined())
+				continue;
+			float apart = vector.Distance(position, other.GetPosition());
+			if (apart < other.GetRadius() + desk.Radius)
+			{
+				int needed = Math.Ceil(other.GetRadius() + desk.Radius - apart);
+				return "Too close to another territory: territories can't overlap. Move " + needed.ToString() + " m further away.";
+			}
+		}
+		return "";
+	}
+}
+
+modded class TerritoryHQ_Kit
+{
+	override bool CanBePlaced(Man player, vector position)
+	{
+		if (RAPatch_DeskSpacing.Refusal(position) != "")
+			return false;
+		return super.CanBePlaced(player, position);
+	}
+
+	// The last check, at the spot the player's game sent. The game deletes the kit as the desk goes down, so a refusal gives a new kit back.
+	override void OnPlacementComplete(Man player, vector position = "0 0 0", vector orientation = "0 0 0")
+	{
+		if (g_Game.IsServer())
+		{
+			string refusal = RAPatch_DeskSpacing.Refusal(position);
+			if (refusal != "")
+			{
+				RAPatch_Settings.Log("refused a desk at " + position + ": " + refusal);
+				vector kitSpot = position;
+				if (player)
+					kitSpot = player.GetPosition();
+				g_Game.CreateObjectEx("TerritoryHQ_Kit", kitSpot, ECE_PLACE_ON_SURFACE);
+				if (player)
+					NotificationSystem.SendNotificationToPlayerExtended(player, 8, "Territory HQ", refusal);
+				return;
+			}
+		}
+		super.OnPlacementComplete(player, position, orientation);
+	}
+}
+
+// RA's "[ADMIN] AUTHORIZE" only checks for an admin when VPP Admin Tools is loaded. Without it, it shows to everyone on a desk
+// with a code lock, and the server authorises them. So without VPP it's off: admins can use their admin tool's own way in.
+#ifndef AVPPAdminTools
+modded class ActionAdminTerritoryAuthorize
+{
+	override bool ActionCondition(PlayerBase player, ActionTarget target, ItemBase item)
+	{
+		return false;
+	}
+}
+#endif
+
 modded class TerritoryHQ
 {
 	protected ref array<string> m_RAPatch_InstalledNames = new array<string>;

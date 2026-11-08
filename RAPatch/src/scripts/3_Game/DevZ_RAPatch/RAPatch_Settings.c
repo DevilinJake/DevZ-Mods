@@ -9,11 +9,11 @@ class RAPatch_DecaySettings
 	float WoodHours = 12;
 	float MetalHours = 18;
 	float ConcreteHours = 24;
-	float DeskHours = 24;
+	float DeskHours = 0;			// 0: the desk itself never decays. Its parts still do, without nails
 	float ContainerHours = 24;		// tents, barrels, crates
 	float PartNailsPerDay = 0.5;	// each part in the desk's radius
 	float LadderNailsPerDay = 0.001;
-	float DeskNailsPerDay = 50;
+	float DeskNailsPerDay = 0;		// the desk's own upkeep. Parts in its radius still pay theirs
 	float ContainerNailsPerDay = 0.00001;
 }
 
@@ -47,7 +47,7 @@ class RAPatch_DeskSettings
 	ref array<ref RAPatch_ModuleRow> Modules = new array<ref RAPatch_ModuleRow>;	// up to 16. Empty = no modules
 	float ModuleInstallSeconds = 5;
 	bool ModulesRemovable = true;	// true: authorised players can take a module back out. false: it stays until the desk is gone
-	bool RadiusMayOverlap = false;	// false: a radius module is refused if it would overlap another desk's territory
+	bool RadiusMayOverlap = false;	// false: territories can't overlap. A desk can't be placed where its territory would, and a radius module that would is refused
 	float ModuleCraftDistance = 5;	// how close to the desk a recipe's NeedsModule counts, in metres
 	int DeployRule = 0;					// deploying inside a territory. 0 only its team, 1 anyone, 2 only its team, except traps and mines. RA's charges can always be placed
 	bool DeployChecksPlacedSpot = true;	// RA checks where the player stands. This also checks where the object lands
@@ -62,15 +62,15 @@ class RAPatch_RespawnSettings
 	bool BagsEnabled = true;
 	bool HQEnabled = true;
 	ref array<string> BagClasses = new array<string>;	// laid-out objects that count as a sleeping bag. Any mod's class, or anything inheriting from it
-	float BagCooldownSeconds = 1800;
-	float HQCooldownSeconds = 3600;
-	float CooldownPenaltySeconds = 600;			// respawn again within the window, and the next cooldown is this much longer. It adds up. 0 = off
-	float CooldownPenaltyWindowSeconds = 1800;	// how long after a cooldown ends a respawn still counts. Wait longer, and it's back to the base cooldown
+	float BagCooldownSeconds = 180;
+	float HQCooldownSeconds = 180;
+	float CooldownPenaltySeconds = 120;			// respawn again within the window, and the next cooldown is this much longer. It adds up. 0 = off
+	float CooldownPenaltyWindowSeconds = 120;	// how long after a cooldown ends a respawn still counts. Wait longer, and it's back to the base cooldown
 	float CooldownMaxSeconds = 7200;			// the longest a cooldown can grow to. 0 = no limit
 	float RespawnWaterPercent = 50;				// water and energy to come back with at a bag or desk. Health and blood are full
 	float RespawnEnergyPercent = 50;
 	float BagWearPercent = 10;			// of the bag's health, per respawn on it. It's gone when it's ruined
-	bool BagsNeedOwnTerritory = false;	// true: a bag can only be laid out inside a territory the player is authorised on, and only works while it stays in one
+	bool BagsNeedOwnTerritory = true;	// true: a bag can only be laid out inside a territory the player is authorised on, and only works while it stays in one
 	int BagPickup = 2;					// this mod's own bag only: another mod's bag has its own pack action. 0 anyone, 1 only who laid it out, 2 any team member
 	float BagLifetimeHours = 336;		// how long a laid-out bag lasts
 }
@@ -221,7 +221,7 @@ class RAPatch_DismantleSettings
 	float VanillaSecondsAuthorized = 5;		// vanilla parts (a watchtower) with permission
 	float VanillaSecondsOutsider = 300;		// and without. RA's two BASE_DISMANTLE numbers
 	bool VanillaOutsidersAllowed = true;
-	int DeskPackUp = 0;					// the screwdriver or pliers' "Dismantle into box" on a desk with no lock. 0 = anyone (RA), 1 = authorised players only, 2 = nobody
+	int DeskPackUp = 1;					// the screwdriver or pliers' "Dismantle into box" on a desk with no lock. 0 = anyone (RA), 1 = authorised players only, 2 = nobody
 	float DeskPackUpSeconds = 2.5;
 }
 

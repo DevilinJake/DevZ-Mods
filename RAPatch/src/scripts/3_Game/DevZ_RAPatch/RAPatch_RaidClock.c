@@ -2,6 +2,10 @@
 class RAPatch_RaidClock
 {
 	static const string DAYS = "SunMonTueWedThuFriSat";
+	static const int FOLLOW_SETTINGS = 0;
+	static const int FORCED_OPEN = 1;
+	static const int FORCED_CLOSED = 2;
+	static int Forced = FOLLOW_SETTINGS;	// another mod's test commands can force the clock: the Battle Royale mod's test round does
 
 	// 0 = Sunday. Sakamoto's method.
 	static int DayOfWeek(int year, int month, int day)
@@ -37,6 +41,10 @@ class RAPatch_RaidClock
 
 	static bool IsOpenNow()
 	{
+		if (Forced == FORCED_OPEN)
+			return true;
+		if (Forced == FORCED_CLOSED)
+			return false;
 		RAPatch_RaidSettings raid = RAPatch_Settings.Get().Raiding;
 		if (!raid.RaidHoursEnabled)
 			return true;

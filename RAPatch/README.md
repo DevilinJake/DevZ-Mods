@@ -16,9 +16,9 @@ Most numbers start as RA's own. Worth a look, because they're ours: the gunpowde
 |---|---|---|
 | `Enabled` | 1 | 0: nothing decays and no nails are used |
 | `FrameHours`, `WoodHours`, `MetalHours`, `ConcreteHours` | 2, 12, 18, 24 | Hours for a part with no upkeep to go from full health to gone |
-| `DeskHours`, `ContainerHours` | 24, 24 | The same for the desk, and for tents, barrels and crates |
+| `DeskHours`, `ContainerHours` | 0, 24 | The same for the desk, and for tents, barrels and crates. 0 = never: by default a desk doesn't decay, and the parts in its radius still do without nails |
 | `PartNailsPerDay`, `LadderNailsPerDay` | 0.5, 0.001 | Nails a day per part in a desk's radius |
-| `DeskNailsPerDay`, `ContainerNailsPerDay` | 50, 0.00001 | The same for the desk itself, and containers |
+| `DeskNailsPerDay`, `ContainerNailsPerDay` | 0, 0.00001 | The same for the desk itself, and containers. RA's own is 50 for the desk |
 
 Upkeep can't be exactly 0: the patch keeps it at 0.00001 or more, which is what RA uses for "as good as free". With `Enabled` 0, the desk still shows a time left, but nothing comes of it.
 
@@ -32,7 +32,7 @@ Upkeep can't be exactly 0: the patch keeps it at 0.00001 or more, which is what 
 | `Modules` | empty | Items that upgrade a desk (see below) |
 | `ModuleInstallSeconds` | 5 | How long installing or removing one takes |
 | `ModulesRemovable` | 1 | 0: a module stays until the desk is gone |
-| `RadiusMayOverlap` | 0 | 1: a radius module may overlap another desk's territory |
+| `RadiusMayOverlap` | 0 | 0: territories can't overlap. A desk can't be placed where its territory would overlap another's (the outline goes red, the action says why, and the server checks the placed spot), and a radius module that would is refused. 1: RA's own way, where only placing inside another's radius is refused |
 | `ModuleCraftDistance` | 5 | How close to the desk counts for a recipe's `NeedsModule`, in metres |
 | `DeployRule` | 0 | Deploying inside a territory. 0 only its team, 1 anyone, 2 only its team, except traps and mines, which is RA's own way. RA's charges can always be placed, and building parts have their own rules |
 | `DeployChecksPlacedSpot` | 1 | RA checks where the player stands, so someone just outside could place inside. This also checks where the object lands |
@@ -40,6 +40,8 @@ Upkeep can't be exactly 0: the patch keeps it at 0.00001 or more, which is what 
 | `MaxDoors` | 8 | Single and double doors per territory, shown on the dashboard. 0 = no limit |
 | `MaxGates` | 2 | Compound gates and garage doors per territory. 0 = no limit |
 | `RaidAlarmCooldownSeconds` | 300 | The most often a desk posts to Discord. Hits in between are counted in the next message |
+
+**RA's "[ADMIN] AUTHORIZE"** is switched off unless VPP Admin Tools is loaded. RA only checks for an admin through VPP, so without it the action showed to everyone on a desk with a code lock, and let them in.
 
 **Modules** can be any item class. You name them here, then decide how players find them in your own loot tables or trader. Hold the item, look at the desk, and choose Install. It's used up, and comes back if it's removed. The dashboard has a Remove button per module, and empty hands on the desk offers Remove for the last one in.
 
@@ -63,28 +65,30 @@ Upkeep can't be exactly 0: the patch keeps it at 0.00001 or more, which is what 
 
 ### Respawn
 
-Where a dead player comes back. There's one way back, not a chain:
+Where a dead player comes back, in order:
 
-1. **Bags on:** their sleeping bag, if they've set one and it's off cooldown. The desk isn't used.
-2. **Bags off, desks on:** a Territory HQ they're authorised on, if it's off cooldown.
-3. **Anything else,** including a cooldown: vanilla's spawn points. A message says when their bag or desk is ready.
+1. **Their sleeping bag,** if they've set one and it still counts (not ruined or moved, and with `BagsNeedOwnTerritory` on, still inside a territory they're authorised on). If it's on cooldown they wait for it: the desk isn't a way round a bag's cooldown.
+2. **Otherwise a Territory HQ they're authorised on,** beside it and level with it, if it's off cooldown.
+3. **Otherwise vanilla's spawn points,** and when what they'd use is on cooldown. A message says when their bag or desk is ready.
+
+The Battle Royale mod uses this as it is, and adds only its round: from Phase 2 nobody gets vanilla's spawn points, they wait for their bag or desk instead, and with their team's desk gone they're out.
 
 | Setting | Default | What it does |
 |---|---|---|
 | `BagsEnabled` | 1 | 0: no bag respawning, so desks are used instead |
 | `HQEnabled` | 1 | Only matters with bags off. 0 as well: vanilla's spawn points |
 | `BagClasses` | our bag | Laid-out objects that count as a sleeping bag: any mod's class, or anything inheriting from it |
-| `BagCooldownSeconds`, `HQCooldownSeconds` | 1800, 3600 | Per player, and restarts don't clear them |
-| `CooldownPenaltySeconds` | 600 | Respawn again within the window, and the next cooldown is this much longer. It adds up. 0 = off |
-| `CooldownPenaltyWindowSeconds` | 1800 | How long after a cooldown ends a respawn still counts. Wait longer, and it's back to the base cooldown |
+| `BagCooldownSeconds`, `HQCooldownSeconds` | 180, 180 | Per player, and restarts don't clear them |
+| `CooldownPenaltySeconds` | 120 | Respawn again within the window, and the next cooldown is this much longer. It adds up. 0 = off |
+| `CooldownPenaltyWindowSeconds` | 120 | How long after a cooldown ends a respawn still counts. Wait longer, and it's back to the base cooldown |
 | `CooldownMaxSeconds` | 7200 | The longest a cooldown can grow to. 0 = no limit |
 | `RespawnWaterPercent`, `RespawnEnergyPercent` | 50, 50 | Water and energy to come back with at a bag or desk. Health and blood are full |
 | `BagWearPercent` | 10 | Of the bag's health, per respawn. It stops working when ruined. 0 = no wear |
-| `BagsNeedOwnTerritory` | 0 | 1: a bag can only be laid out inside a territory the player is authorised on. It also only works while it stays in one: if they're taken off the desk, or the desk is gone, it's skipped and they get vanilla's spawn points. The outline goes red and the action says why, and the server checks the spot where the bag lands too. Any bag in `BagClasses` that's laid out with an outline is covered |
+| `BagsNeedOwnTerritory` | 1 | 1: a bag can only be laid out inside a territory the player is authorised on. It also only works while it stays in one: if they're taken off the desk, or the desk is gone, it's skipped and the desk, or vanilla's spawn points, come next. 0: a bag can go anywhere. The outline goes red and the action says why, and the server checks the spot where the bag lands too. Any bag in `BagClasses` that's laid out with an outline is covered |
 | `BagPickup` | 2 | Our bag only. 0 anyone, 1 only who laid it out, 2 any team member: who laid it out, or anyone authorised on the desk it's in |
 | `BagLifetimeHours` | 336 | How long our laid-out bag lasts, when it's not moved or used |
 
-**The penalty, with the default numbers:** the bag's cooldown is 30 minutes. Respawn on it within 30 minutes of that ending, and the next cooldown is 40. Do it again and it's 50, up to 2 hours. Stay away for more than 30 minutes after a cooldown ends, and it's back to 30.
+**The penalty, with the default numbers:** the cooldown is 3 minutes. Respawn within 2 minutes of that ending, which is within 5 minutes of the last respawn, and the next is 5 minutes. Again and it's 7, then 9, up to 2 hours. Stay away for more than 2 minutes after a cooldown ends, and it's back to 3.
 
 **Our bag:** `RAPatch_SleepingBag_Black`, `_Blue`, `_Green`, `_Grey` and `_Red`. Hold it, raise the hologram, place it, and look at it: "Set or clear respawn here". A player has one bag at a time, and a whole team can set the same one. Inside a territory, only its team can set a bag. Whether a bag can be laid out in someone else's follows `Desk.DeployRule`, unless `BagsNeedOwnTerritory` is on: that's stricter, and refuses both someone else's territory and open ground. Where desks overlap, the oldest owns the spot. It only limits laying out: a bag already down stays usable if its desk goes.
 
@@ -158,7 +162,7 @@ A `Costs` row's `Part` is a class name such as `BaseBuilding_WoodWall`, or `Tier
 | `DoorsOnly` | 0 | 1: only doors, gates, hatches, windows and shutters take blast damage |
 | `BlastProofClasses` | empty | Classes that take no blast damage, with anything inheriting from them |
 | `MeleeDamage`, `BulletDamage`, `OtherExplosiveDamage` | 1, 1, 1 | Whether these can hurt parts. The last doesn't cover RA's charges |
-| `RaidHoursEnabled`, `RaidHoursUtcOffset`, `RaidWindows` | 0, 10, Fri-Sun | When on, charges can only be armed in these windows. A lit fuse still finishes |
+| `RaidHoursEnabled`, `RaidHoursUtcOffset`, `RaidWindows` | 0, 10, Fri-Sun | When on, charges can only be armed in these windows. A lit fuse still finishes. The offset is fixed: it doesn't follow daylight saving. The Battle Royale mod uses this same clock for its desks, and its test round can force it open or closed |
 
 ### Dismantling
 
@@ -168,7 +172,7 @@ A `Costs` row's `Part` is a class name such as `BaseBuilding_WoodWall`, or `Tier
 | `RemoveWindowSeconds` | 600 | How long after being placed or upgraded a part can be removed or rotated |
 | `VanillaSecondsAuthorized`, `VanillaSecondsOutsider` | 5, 300 | Dismantling vanilla parts such as a watchtower |
 | `VanillaOutsidersAllowed` | 1 | 0: outsiders can't dismantle vanilla parts at all |
-| `DeskPackUp` | 0 | Screwdriver or pliers on a desk with no lock. 0 = anyone (RA), 1 = authorised players, 2 = nobody |
+| `DeskPackUp` | 1 | Screwdriver or pliers on a desk with no lock. 0 = anyone (RA), 1 = authorised players, 2 = nobody |
 | `DeskPackUpSeconds` | 2.5 | |
 
 ### Crafting

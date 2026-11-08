@@ -544,7 +544,7 @@ class RAPatch_SelfTest
 		// The desk
 		m_Desk.AuthorizePlayer(id);
 		kind = "";
-		Check(!respawn.Decide(id, spot, kind, note), "bags on, none set, authorised on a desk: still vanilla's, not the desk");
+		Check(respawn.Decide(id, spot, kind, note) && kind == RAPatch_Respawn.HQ, "bags on, none set, authorised on a desk: the desk");
 		bool wasBagsOn = rules.BagsEnabled;
 		rules.BagsEnabled = false;
 		kind = "";
@@ -602,7 +602,10 @@ class RAPatch_SelfTest
 		Check(Near(respawn.SecondsLeft(id, RAPatch_Respawn.BAG), rules.BagCooldownSeconds), "the bag's first cooldown is the base: " + respawn.SecondsLeft(id, RAPatch_Respawn.BAG) + " s");
 		kind = "";
 		note = "";
-		Check(!respawn.Decide(id, spot, kind, note) && note != "", "bag on cooldown: vanilla's, not the desk. Note: " + note);
+		Check(!respawn.Decide(id, spot, kind, note) && note != "", "bag on cooldown: wait for it, the desk isn't a way round. Note: " + note);
+		int planLeft;
+		string planNote;
+		Check(respawn.Plan(id, spot, kind, planLeft, planNote) && kind == RAPatch_Respawn.BAG && planLeft > 0, "the plan says the bag, in " + planLeft + " s");
 		wasBagsOn = rules.BagsEnabled;
 		rules.BagsEnabled = false;
 		respawn.RecordUse(id, RAPatch_Respawn.HQ);
@@ -670,12 +673,12 @@ class RAPatch_SelfTest
 		Check(respawn.Decide(owner, spot, kind, note) && kind == RAPatch_Respawn.BAG, "bag rule on: a bag in your territory works");
 		m_Desk.DeauthorizePlayer(owner);
 		note = "";
-		Check(!respawn.Decide(owner, spot, kind, note) && note != "", "taken off the desk: the bag no longer works. " + note);
+		Check(!respawn.Decide(owner, spot, kind, note) && note != "", "taken off the desk: the bag no longer works, and there's no desk either. " + note);
 		m_Desk.AuthorizePlayer(owner);
 		respawn.Forget(owner);
 	}
 
-	// Respawn.BagsNeedOwnTerritory, off by default so servers keep what they had
+	// Respawn.BagsNeedOwnTerritory
 	protected void CheckBagTerritoryRule()
 	{
 		RAPatch_RespawnSettings rules = RAPatch_Settings.Get().Respawn;
@@ -698,7 +701,8 @@ class RAPatch_SelfTest
 		Check(RAPatch_Respawn.BagSpotRefusal(null, outside) == "", "bag rule off: a bag can go outside any territory");
 		Check(RAPatch_Respawn.BagSpotRefusal(null, inside) == "", "bag rule off: the rule doesn't ask about territory");
 		RAPatch_RespawnSettings defaults = new RAPatch_RespawnSettings;
-		Check(!defaults.BagsNeedOwnTerritory, "the bag rule is off by default");
+		Check(defaults.BagsNeedOwnTerritory, "the bag rule is on by default");
+		Check(defaults.BagCooldownSeconds == 180 && defaults.HQCooldownSeconds == 180 && defaults.CooldownPenaltySeconds == 120 && defaults.CooldownPenaltyWindowSeconds == 120, "cooldown defaults: 3 min, plus 2 min within 2 min of the last ending");
 
 		// On, against a real desk
 		rules.BagsNeedOwnTerritory = true;

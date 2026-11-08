@@ -1,7 +1,7 @@
 // Sleeping bags, and where a dead player comes back. The model and textures are Zenarchist's: see data\sleepingbag\CREDIT.txt.
 //
 // Order: a bag the player has set, then a desk they're authorised on, then vanilla's spawn points. Each can be switched
-// off, and one that's switched off or on cooldown passes to the next.
+// off, and one that's switched off, or a bag that's gone or no longer counts, passes to the next. A bag that's cooling down is waited for.
 //
 // A bag is any object whose class is in Respawn.BagClasses, from this mod or another. So what a player has set is saved
 // with them, as the object's class and position, not on the object: nothing about another mod's bag has to change.
@@ -346,12 +346,17 @@ modded class ActionTogglePlaceObject
 			if (RAPatch_Respawn.BagSpotRefusal(player, hologram.GetProjectionEntity().GetPosition()) != "")
 				m_Text = BAG_DENIED_TEXT;
 		}
+		if (hologram && TerritoryHQ.Cast(hologram.GetProjectionEntity()))
+		{
+			if (RAPatch_DeskSpacing.Refusal(hologram.GetProjectionEntity().GetPosition()) != "")
+				m_Text = RAPatch_DeskSpacing.DENIED_TEXT;
+		}
 		return true;
 	}
 
 	override bool IsIconDisabled()
 	{
-		return super.IsIconDisabled() || GetText().Contains(BAG_DENIED_TEXT);
+		return super.IsIconDisabled() || GetText().Contains(BAG_DENIED_TEXT) || GetText().Contains(RAPatch_DeskSpacing.DENIED_TEXT);
 	}
 }
 
@@ -579,46 +584,55 @@ class RAPatch_Respawn
 		return desk.GetPosition() + "0 0.5 0";
 	}
 
-	// True when the player comes back somewhere other than vanilla's spawn points. Note says what happened, if it needs saying.
-	bool Decide(string id, out vector position, out string kind, out string note)
+	// Where this player would come back, without changing anything. True when they have a bag or a desk to come back to, with
+	// how long until it's ready. A chain: their bag if it's set and working, otherwise a desk they're authorised on. A bag that's
+	// set and working but cooling down is waited for: the desk isn't a way round its cooldown.
+	bool Plan(string id, out vector position, out string kind, out int secondsLeft, out string note)
 	{
-		// One way back, not a chain: bags if they're on, the desk only if bags are off. On cooldown, or none set: vanilla's spawn points.
 		RAPatch_RespawnSettings rules = RAPatch_Settings.Get().Respawn;
 		if (rules.BagsEnabled)
 		{
 			Object bag = FindBag(id);
-			if (!bag)
-				return false;
 			// With BagsNeedOwnTerritory on, a bag only works while it's in a territory they're authorised on: not after they're taken off the desk, or the desk is gone
-			if (rules.BagsNeedOwnTerritory && BagSpotRefusalFor(id, bag.GetPosition()) != "")
+			if (bag && rules.BagsNeedOwnTerritory && BagSpotRefusalFor(id, bag.GetPosition()) != "")
 			{
 				note = "Your sleeping bag isn't in your territory any more.";
-				return false;
+				bag = null;
 			}
-			int bagLeft = SecondsLeft(id, BAG);
-			if (bagLeft == 0)
+			if (bag)
 			{
 				position = bag.GetPosition() + "0 0.2 0";
 				kind = BAG;
+				secondsLeft = SecondsLeft(id, BAG);
 				return true;
 			}
-			note = "Your sleeping bag is ready in " + ReadableTime(bagLeft) + ".";
-			return false;
 		}
 		if (rules.HQEnabled)
 		{
 			TerritoryHQ desk = FindDesk(id);
-			if (!desk)
-				return false;
-			int deskLeft = SecondsLeft(id, HQ);
-			if (deskLeft == 0)
+			if (desk)
 			{
 				position = SpotBesideDesk(desk);
 				kind = HQ;
+				secondsLeft = SecondsLeft(id, HQ);
 				return true;
 			}
-			note = "Your Territory HQ is ready in " + ReadableTime(deskLeft) + ".";
 		}
+		return false;
+	}
+
+	// True when the player comes back somewhere other than vanilla's spawn points. Note says what happened, if it needs saying.
+	bool Decide(string id, out vector position, out string kind, out string note)
+	{
+		int secondsLeft;
+		if (!Plan(id, position, kind, secondsLeft, note))
+			return false;
+		if (secondsLeft == 0)
+			return true;
+		if (kind == BAG)
+			note = "Your sleeping bag is ready in " + ReadableTime(secondsLeft) + ".";
+		else
+			note = "Your Territory HQ is ready in " + ReadableTime(secondsLeft) + ".";
 		return false;
 	}
 
@@ -670,6 +684,17 @@ class RAPatch_Respawn
 	void EndCooldownForTest(string id, int secondsAgo)
 	{
 		Record(id).BagReadyAt = Now() - secondsAgo;
+	}
+
+	// For an admin's test: both cooldowns over now, and no penalty building up
+	void EndCooldownsNow(string id)
+	{
+		RAPatch_RespawnRecord record = Record(id);
+		record.BagReadyAt = 0;
+		record.HQReadyAt = 0;
+		record.BagPenalties = 0;
+		record.HQPenalties = 0;
+		Save();
 	}
 
 	// Health and blood stay full
