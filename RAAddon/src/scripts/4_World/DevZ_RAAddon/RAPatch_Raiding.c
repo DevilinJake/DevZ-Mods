@@ -73,6 +73,63 @@ modded class ImprovisedC4Explosion
 
 modded class ScriptedExplosion
 {
+	// RA's blast only damages building parts, and the desk isn't one. The same search as RA's, before RA's own runs,
+	// so a charge touching the desk takes health off it like a wall.
+	override void DoExplosion(EntityAI source)
+	{
+		if (g_Game.IsServer())
+			RAPatch_BlastDesks(source);
+		super.DoExplosion(source);
+	}
+
+	protected void RAPatch_BlastDesks(EntityAI source)
+	{
+		RAPatch_RaidSettings raid = RAPatch_Settings.Get().Raiding;
+		if (!raid.DeskBlastDamage || raid.DoorsOnly || raid.C4Damage <= 0 || raid.DeskC4ToDestroy <= 0 || GetExplosiveDamage() <= 0)
+			return;
+		array<ref SphereCastResult> results = ShapeCast.Sphere(GetPosition(), GetExplosionRadius(), source, GetExplosionCheckIterations(), GetPenetrationDepth(), ObjIntersectFire);
+		map<TerritoryHQ, int> desks = new map<TerritoryHQ, int>;
+		foreach (SphereCastResult result : results)
+		{
+			TerritoryHQ desk = TerritoryHQ.Cast(result.Target);
+			if (!desk || desk.IsRuined())
+				continue;
+			if (!desks.Contains(desk) || result.PenetrationLevel < desks.Get(desk))
+				desks.Set(desk, result.PenetrationLevel);
+		}
+		foreach (TerritoryHQ hit, int level : desks)
+		{
+			if (RAPatch_IsBlastProof(hit))
+				continue;
+			float change = RAPatch_DeskBlastDamage(hit, GetExplosiveDamage()) * Math.Pow(GetPenetrationFalloff(), level);
+			if (!OnDamageCalculated(hit, change, level))
+				continue;
+			hit.RAPatch_RaidHit("Explosive charge", hit.GetDisplayName(), null);
+			hit.DecreaseHealth("GlobalHealth", "Health", change);
+			if (hit)
+				hit.SetHealthSynchDirty();
+		}
+	}
+
+	// The desk's health is in RA's config (500), so the hit is sized to it: one C4 takes 1 / DeskC4ToDestroy of it, a smaller charge less.
+	// A hair over, so the last charge always finishes it.
+	static float RAPatch_DeskBlastDamage(TerritoryHQ desk, float blastDamage)
+	{
+		RAPatch_RaidSettings raid = RAPatch_Settings.Get().Raiding;
+		float perC4 = desk.GetMaxHealth("GlobalHealth", "Health") / raid.DeskC4ToDestroy;
+		return perC4 * blastDamage / raid.C4Damage + 0.01;
+	}
+
+	static bool RAPatch_IsBlastProof(Object target)
+	{
+		foreach (string proof : RAPatch_Settings.Get().Raiding.BlastProofClasses)
+		{
+			if (target.IsKindOf(proof))
+				return true;
+		}
+		return false;
+	}
+
 	// RA asks this just before taking health off, and takes it off itself if the answer's yes. The amount it passes
 	// can't be changed, so when a part has a multiplier the addon takes the health off and answers no.
 	override bool OnDamageCalculated(Object target, float damage, int penetration_level)

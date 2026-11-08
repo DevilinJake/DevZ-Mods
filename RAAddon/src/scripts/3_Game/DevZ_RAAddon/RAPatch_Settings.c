@@ -205,6 +205,8 @@ class RAPatch_RaidSettings
 	float WoodDamageMultiplier = 1;
 	float MetalDamageMultiplier = 1;
 	float ConcreteDamageMultiplier = 1;
+	bool DeskBlastDamage = true;		// false: charges can't hurt the desk. RA's own blast skips desks; this lets it hit them
+	float DeskC4ToDestroy = 3;			// C4 charges that destroy a desk. Improvised charges take their share by their damage against C4Damage: 6 at 750 and 1275
 	bool DoorsOnly = false;				// true: only doors, gates, hatches, windows and shutters take blast damage
 	ref array<string> BlastProofClasses = new array<string>;	// these classes, and any inheriting from them, take no blast damage
 	bool MeleeDamage = true;			// false: melee can't hurt parts

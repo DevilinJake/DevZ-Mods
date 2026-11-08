@@ -160,6 +160,8 @@ A `Costs` row's `Part` is a class name such as `BaseBuilding_WoodWall`, or `Tier
 | `PenetrationDepth`, `PenetrationFalloff` | 0, 0.65 | Parts the blast goes through, and damage kept per part |
 | `C4PlayerAmmo`, `ImprovisedPlayerAmmo` | RA's | The vanilla explosion made for players and sound. `Plastic_Explosive_Ammo` hurts more |
 | `FrameDamageMultiplier`, and `Wood`, `Metal`, `Concrete` | 1 | The blast's damage against each tier |
+| `DeskBlastDamage` | 1 | RA's charges skip the desk. 1: they hit it, touching it like a wall. 0: charges can't hurt the desk. `DoorsOnly` and `BlastProofClasses` (`TerritoryHQ`) keep it safe too |
+| `DeskC4ToDestroy` | 3 | C4 charges that destroy a desk. Improvised charges take their share by `ImprovisedDamage` against `C4Damage`: at 750 and 1275, 6 of them. When it's destroyed, its territory ends, its modules and bench items drop beside it, and anyone can loot its storage |
 | `DoorsOnly` | 0 | 1: only doors, gates, hatches, windows and shutters take blast damage |
 | `BlastProofClasses` | empty | Classes that take no blast damage, with anything inheriting from them |
 | `MeleeDamage`, `BulletDamage`, `OtherExplosiveDamage` | 1, 1, 1 | Whether these can hurt parts. The last doesn't cover RA's charges |

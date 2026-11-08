@@ -23,6 +23,9 @@ class RAPatch_SelfTest
 	protected ref array<Object> m_Spawned = new array<Object>;
 	protected ref array<BaseBuilding> m_BlastWalls = new array<BaseBuilding>;
 	protected ref array<float> m_BlastOffsets = new array<float>;
+	protected ref array<TerritoryHQ> m_BlastDesks = new array<TerritoryHQ>;
+	protected ref array<float> m_BlastDeskHeights = new array<float>;
+	protected TerritoryHQ m_ThreeC4Desk;
 
 	static void Start()
 	{
@@ -1158,12 +1161,92 @@ class RAPatch_SelfTest
 				charge.SetArmState(true);
 		}
 		RA_C4 sample = RA_C4.Cast(m_Spawned[m_Spawned.Count() - 1]);
+		StartDeskBlast();
 		Check(Near(sample.GetArmDelay(), settings.Raiding.C4FuseSeconds), "C4 fuse is " + sample.GetArmDelay() + " s");
 		GetGame().GetCallQueue(CALL_CATEGORY_GAMEPLAY).CallLater(CheckBlast, (settings.Raiding.C4FuseSeconds + 3) * 1000, false);
 	}
 
+	// Charges on desks: RA's blast skips desks, the addon's doesn't. The desk's top isn't known here, so several heights.
+	protected void StartDeskBlast()
+	{
+		RAPatch_RaidSettings raid = RAPatch_Settings.Get().Raiding;
+		m_BlastDeskHeights = {0.4, 0.6, 0.75, 0.85, 0.95, 1.1};
+		for (int i = 0; i < m_BlastDeskHeights.Count(); i++)
+		{
+			vector deskSpot = Offset(-340, i * 40);
+			TerritoryHQ desk = TerritoryHQ.Cast(Spawn("TerritoryHQ", deskSpot));
+			m_BlastDesks.Insert(desk);
+			if (!desk)
+				continue;
+			RA_C4 charge = RA_C4.Cast(Spawn("RA_C4", deskSpot));
+			charge.SetPosition(desk.GetPosition() + Vector(0, m_BlastDeskHeights[i], 0));
+			if (RAPatch_RaidClock.IsOpenNow())
+				charge.SetArmState(true);
+		}
+		// DeskC4ToDestroy real charges, side by side on one desk's top
+		vector threeSpot = Offset(-380, 0);
+		m_ThreeC4Desk = TerritoryHQ.Cast(Spawn("TerritoryHQ", threeSpot));
+		int count = Math.Ceil(raid.DeskC4ToDestroy - 0.001);
+		for (int j = 0; m_ThreeC4Desk && j < count && RAPatch_RaidClock.IsOpenNow(); j++)
+		{
+			RA_C4 more = RA_C4.Cast(Spawn("RA_C4", threeSpot));
+			more.SetPosition(m_ThreeC4Desk.GetPosition() + Vector(-0.3 + j * 0.3, 0.85, 0));
+			more.SetArmState(true);
+		}
+		TerritoryHQ first = m_BlastDesks[0];
+		if (!first || raid.C4Damage <= 0 || raid.DeskC4ToDestroy <= 0)
+			return;
+		float max = first.GetMaxHealth("GlobalHealth", "Health");
+		float c4 = ScriptedExplosion.RAPatch_DeskBlastDamage(first, raid.C4Damage);
+		float improvised = ScriptedExplosion.RAPatch_DeskBlastDamage(first, raid.ImprovisedDamage);
+		int c4Needed = Math.Ceil(max / c4);
+		int improvisedNeeded = Math.Ceil(max / improvised);
+		Note("desk: " + max + " health, a C4 takes " + c4 + ", an improvised " + improvised + ": " + c4Needed + " C4 or " + improvisedNeeded + " improvised");
+		Check(c4Needed == Math.Ceil(raid.DeskC4ToDestroy - 0.001), "DeskC4ToDestroy C4 charges destroy a desk: " + c4Needed);
+	}
+
+	protected void CheckDeskBlast()
+	{
+		RAPatch_RaidSettings raid = RAPatch_Settings.Get().Raiding;
+		bool safe = !raid.DeskBlastDamage || raid.DoorsOnly || raid.C4Damage <= 0 || raid.DeskC4ToDestroy <= 0;
+		int hits = 0;
+		for (int i = 0; i < m_BlastDesks.Count(); i++)
+		{
+			TerritoryHQ desk = m_BlastDesks[i];
+			if (!desk)
+				continue;
+			if (!safe && ScriptedExplosion.RAPatch_IsBlastProof(desk))
+				safe = true;
+			float full = desk.GetMaxHealth("GlobalHealth", "Health");
+			float lost = full - desk.GetHealth("GlobalHealth", "Health");
+			Note("desk blast, charge " + m_BlastDeskHeights[i] + " m above the desk's centre: lost " + lost + " of " + full + ", ruined " + desk.IsRuined());
+			// Below the desk's top the blast misses. The vanilla explosion alongside is ignored by desks while DeskBlastDamage is on
+			Check(lost < 1 || lost > 20, "a charge on a desk either missed or hit, nothing from the vanilla explosion");
+			if (lost > 20)
+			{
+				hits++;
+				float want = ScriptedExplosion.RAPatch_DeskBlastDamage(desk, raid.C4Damage);
+				if (!safe)
+					Check(Math.AbsFloat(lost - want) < 1, "a C4 on a desk took " + want);
+			}
+		}
+		if (!RAPatch_RaidClock.IsOpenNow())
+			return;
+		if (!safe)
+		{
+			bool gone = !m_ThreeC4Desk || m_ThreeC4Desk.IsRuined();
+			Note("desk with " + raid.DeskC4ToDestroy + " C4 on it: ruined " + gone);
+			Check(gone, "DeskC4ToDestroy real C4 charges destroyed a desk");
+		}
+		if (safe)
+			Check(hits == 0, "desks are safe from charges with these settings");
+		else
+			Check(hits > 0, "at least one charge hit its desk");
+	}
+
 	protected void CheckBlast()
 	{
+		CheckDeskBlast();
 		RAPatch_RaidSettings raid = RAPatch_Settings.Get().Raiding;
 		float want = raid.C4Damage * raid.WoodDamageMultiplier;
 		int hits = 0;

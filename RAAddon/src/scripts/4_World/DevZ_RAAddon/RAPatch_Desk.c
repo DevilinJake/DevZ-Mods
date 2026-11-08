@@ -438,6 +438,16 @@ modded class TerritoryHQ
 		return super.CanLoadItemIntoCargo(item);
 	}
 
+	// A charge also sets off a small vanilla explosion for players. The desk ignores that one: with Raiding.DeskBlastDamage on,
+	// the addon's own hit makes DeskC4ToDestroy exact, and with it off, charges can't hurt the desk. Grenades still count.
+	override bool EEOnDamageCalculated(TotalDamageResult damageResult, int damageType, EntityAI source, int component, string dmgZone, string ammo, vector modelPos, float speedCoef)
+	{
+		RAPatch_RaidSettings raid = RAPatch_Settings.Get().Raiding;
+		if (damageType == DamageType.EXPLOSION && (ammo == raid.C4PlayerAmmo || ammo == raid.ImprovisedPlayerAmmo))
+			return false;
+		return super.EEOnDamageCalculated(damageResult, damageType, source, component, dmgZone, ammo, modelPos, speedCoef);
+	}
+
 	override void OnDamageDestroyed(int oldLevel)
 	{
 		RAPatch_AlarmDestroyed();
