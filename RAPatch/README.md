@@ -16,9 +16,9 @@ Most numbers start as RA's own. Worth a look, because they're ours: the gunpowde
 |---|---|---|
 | `Enabled` | 1 | 0: nothing decays and no nails are used |
 | `FrameHours`, `WoodHours`, `MetalHours`, `ConcreteHours` | 2, 12, 18, 24 | Hours for a part with no upkeep to go from full health to gone |
-| `DeskHours`, `ContainerHours` | 0, 24 | The same for the desk, and for tents, barrels and crates. 0 = never: by default a desk doesn't decay, and the parts in its radius still do without nails |
+| `DeskHours`, `ContainerHours` | 24, 24 | The same for the desk, and for tents, barrels and crates. 0 = never |
 | `PartNailsPerDay`, `LadderNailsPerDay` | 0.5, 0.001 | Nails a day per part in a desk's radius |
-| `DeskNailsPerDay`, `ContainerNailsPerDay` | 0, 0.00001 | The same for the desk itself, and containers. RA's own is 50 for the desk |
+| `DeskNailsPerDay`, `ContainerNailsPerDay` | 50, 0.00001 | The same for the desk itself, and containers |
 
 Upkeep can't be exactly 0: the patch keeps it at 0.00001 or more, which is what RA uses for "as good as free". With `Enabled` 0, the desk still shows a time left, but nothing comes of it.
 

@@ -9,11 +9,11 @@ class RAPatch_DecaySettings
 	float WoodHours = 12;
 	float MetalHours = 18;
 	float ConcreteHours = 24;
-	float DeskHours = 0;			// 0: the desk itself never decays. Its parts still do, without nails
+	float DeskHours = 24;
 	float ContainerHours = 24;		// tents, barrels, crates
 	float PartNailsPerDay = 0.5;	// each part in the desk's radius
 	float LadderNailsPerDay = 0.001;
-	float DeskNailsPerDay = 0;		// the desk's own upkeep. Parts in its radius still pay theirs
+	float DeskNailsPerDay = 50;
 	float ContainerNailsPerDay = 0.00001;
 }
 
