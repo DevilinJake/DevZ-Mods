@@ -37,6 +37,12 @@ def multiplier(row, col):
 def changed_ammo():
     out = []
     for r in read('ammo.csv'):
+        # A bullet from another mod would make this mod need that mod to load at all. Those go in the server's
+        # Config.json Ammo list instead (HealthMultiplier, ShockMultiplier), which does nothing without the mod.
+        if not r['RequiredAddon'].startswith('DZ_') and (r.get('Health', '').strip() or r.get('Shock', '').strip()):
+            print(f"Skipped {r['Class']}: it needs {r['RequiredAddon']}. Put it in Config.json's Ammo list instead "
+                  f"(HealthMultiplier {r.get('Health') or 1}, ShockMultiplier {r.get('Shock') or 1}).")
+            continue
         old = {z: float(r['Current' + z]) for z in ZONES}
         new = {'Health': round(old['Health'] * multiplier(r, 'Health'), 4), 'Blood': old['Blood'],
                'Shock': round(old['Shock'] * multiplier(r, 'Shock'), 4)}

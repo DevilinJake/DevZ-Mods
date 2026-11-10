@@ -9,12 +9,18 @@ class DevZ_GunDamageRule
 	// A bullet does less damage as it slows down over distance. It never drops below this share of
 	// its full damage (0.85 = 85%). 0 = the game's normal drop-off.
 	float RangeFloor = 0;
+	// Extra on Health only, and on Shock only, on top of DamageMultiplier. For bullets from other mods (whose
+	// damage the mod's config can't change without needing that mod), such as Expansion's .338. 1 = no change.
+	float HealthMultiplier = 1;
+	float ShockMultiplier = 1;
 
-	void DevZ_GunDamageRule(string cls = "", float multiplier = 1, float floor = 0)
+	void DevZ_GunDamageRule(string cls = "", float multiplier = 1, float floor = 0, float health = 1, float shock = 1)
 	{
 		ClassName = cls;
 		DamageMultiplier = multiplier;
 		RangeFloor = floor;
+		HealthMultiplier = health;
+		ShockMultiplier = shock;
 	}
 }
 
@@ -23,7 +29,7 @@ class DevZ_GunDamageConfig
 {
 	static const string FOLDER = "$profile:DevZ_GunDamage\\";
 	static const string FILE = FOLDER + "Config.json";
-	static const int VERSION = 1;
+	static const int VERSION = 2;	// 2: Expansion's .338 moved from the config to Ammo (so the mod loads without Expansion); TestOnStart
 
 	// The settings version this file was written for. Don't edit.
 	int ConfigVersion = 0;
@@ -40,9 +46,9 @@ class DevZ_GunDamageConfig
 
 	// 1 = write a line to the server's script log for every hit this mod changes
 	int LogHits = 1;
-	// Testing only: 1 = also re-apply hits this mod wouldn't change, at their normal damage, and
-	// log them, to check a re-applied hit does exactly what the original would have
-	int TestReapplyAll = 0;
+	// Testing only: 1 = about 30 s after the server starts, two test characters near the middle of the map take
+	// real hits with the mod's script off and on, checked against these settings. Results in the script log.
+	int TestOnStart = 0;
 
 	protected static ref DevZ_GunDamageConfig s_Instance;
 
@@ -78,7 +84,14 @@ class DevZ_GunDamageConfig
 		array<ref DevZ_GunDamageRule> rules = new array<ref DevZ_GunDamageRule>();
 		// Slugs stay useful out to about 150 m
 		rules.Insert(new DevZ_GunDamageRule("Bullet_12GaugeSlug", 1, 0.7));
+		rules.Insert(Expansion338());
 		return rules;
+	}
+
+	// Expansion's AWM .338 at sniper damage (Health 147 to 217.5, Shock 125 to 150). Does nothing without Expansion.
+	static DevZ_GunDamageRule Expansion338()
+	{
+		return new DevZ_GunDamageRule("Bullet_Expansion_338", 1, 0, 1.479592, 1.2);
 	}
 
 	// Fills in settings added since the file was written
@@ -88,6 +101,23 @@ class DevZ_GunDamageConfig
 			Weapons = DefaultWeapons();
 		if (!Ammo)
 			Ammo = DefaultAmmo();
+		if (ConfigVersion < 2)
+		{
+			// A file from before version 2 has no HealthMultiplier or ShockMultiplier, and the game reads a missing
+			// number as 0, not as the default: that would make every rule do no damage at all (tested). So 1.
+			foreach (DevZ_GunDamageRule weapon : Weapons)
+			{
+				weapon.HealthMultiplier = 1;
+				weapon.ShockMultiplier = 1;
+			}
+			foreach (DevZ_GunDamageRule bullet : Ammo)
+			{
+				bullet.HealthMultiplier = 1;
+				bullet.ShockMultiplier = 1;
+			}
+			if (!AmmoRule("Bullet_Expansion_338"))
+				Ammo.Insert(Expansion338());
+		}
 		ConfigVersion = VERSION;
 	}
 
