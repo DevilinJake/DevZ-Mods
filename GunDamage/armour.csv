@@ -1,0 +1,4 @@
+Class,Parent,RequiredAddon,CurrentHealth,CurrentBlood,CurrentShock,Health,Blood,Shock
+PlateCarrierVest,Clothing,DZ_Characters_Vests,0.3,0,0.6,,,0.35
+PressVest_ColorBase,Clothing,DZ_Characters_Vests,0.5,0,0.75,,,
+PoliceVest,Clothing,DZ_Characters_Vests,0.5,0,0.75,,,
