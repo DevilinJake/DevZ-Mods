@@ -153,7 +153,7 @@ A `Costs` row's `Part` is a class name such as `BaseBuilding_WoodWall`, or `Tier
 | Setting | Default | What it does |
 |---|---|---|
 | `C4Damage`, `ImprovisedDamage` | 1275, 750 | Health taken off each part the blast hits |
-| `C4FuseSeconds`, `ImprovisedFuseSeconds` | 58, 58 | |
+| `C4FuseSeconds`, `ImprovisedFuseSeconds` | 30, 30 | RA's are 58 |
 | `DestroyedMaterialsPercent` | 25 | Of a part's cost, dropped when it's destroyed by anything, including decay. 0 = nothing. -1 = RA's own, a coin flip and then a random amount |
 | `LogCharges` | 1 | Who armed and disarmed each charge, and when it went off, with time, Steam64 ID, position and territory, in `profiles\DevZ_RAAddon\ChargeLog.txt`. Admins only: never sent to players |
 | `BlastRadiusMeters` | 0.1 | How far the blast looks for parts. RA's is very short: the charge has to touch |
@@ -196,7 +196,7 @@ A raid is the same as for the teams' alarms: an enemy's melee, gunfire, grenade 
 
 **The defaults:**
 - Gunpowder: pliers in hand plus one full stack of any ammo gives 1 gunpowder, 8 s. The pliers aren't used up. It's a straight trade with the workbench, where 1 gunpowder makes 1 full stack of any ammo.
-- Improvised charge: 5 gunpowder plus 25% duct tape, 12 s. Off by default, because the workbench makes these. Set `Enabled` to 1 to use it as well.
+- Improvised charge: 5 gunpowder plus 25% duct tape, 12 s. On by default (Dev, 2026-11-13), as well as the workbench. Set `Enabled` to 0 to leave it to the workbench.
 
 Set `Enabled` to 0 to remove one. A recipe whose `Result` isn't an item on this server switches itself off and logs a warning, so a recipe for another mod's item is safe to leave in. One ingredient has to be in the player's hands, as with all vanilla crafting.
 

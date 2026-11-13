@@ -194,8 +194,8 @@ class RAPatch_RaidSettings
 	float ImprovisedDamage = 750;
 	float DestroyedMaterialsPercent = 25;	// of a part's cost, dropped when it's destroyed. 0 = nothing. -1 = RA's own: a coin flip, then a random amount
 	bool LogCharges = true;			// who arms and disarms charges, in profiles\DevZ_RAAddon\ChargeLog.txt. Never sent to players
-	float C4FuseSeconds = 58;
-	float ImprovisedFuseSeconds = 58;
+	float C4FuseSeconds = 30;		// RA's is 58 (Dev, 2026-11-13: 30, so breaking through doors is quicker)
+	float ImprovisedFuseSeconds = 30;
 	float BlastRadiusMeters = 0.1;		// how far the blast looks for parts. RA's is very short: the charge must touch the part
 	int PenetrationDepth = 0;			// how many parts the blast goes through
 	float PenetrationFalloff = 0.65;	// damage is multiplied by this per part it went through
@@ -317,7 +317,7 @@ class RAPatch_CraftSettings
 
 class RAPatch_Settings
 {
-	int Version = 17;
+	int Version = 18;
 
 	ref RAPatch_DecaySettings Decay = new RAPatch_DecaySettings;
 	ref RAPatch_DeskSettings Desk = new RAPatch_DeskSettings;
@@ -333,7 +333,7 @@ class RAPatch_Settings
 	float SelfTestZ = 7500;
 	bool SelfTestKeepDesk = false;	// true: leave the desk and its modules in place, to check they survive a restart
 
-	static const int CURRENT_VERSION = 17;
+	static const int CURRENT_VERSION = 18;
 	static const int MAX_RECIPES = 12;
 	static const int MAX_MODULES = 16;
 	static const string FOLDER = "$profile:DevZ_RAAddon";
@@ -441,6 +441,19 @@ class RAPatch_Settings
 					rows.Remove(r);
 			}
 			FillAmmoRecipes();
+		}
+		if (oldVersion < 18)
+		{
+			// Dev, 2026-11-13: 30 s fuses and the improvised charge by hand. Fuses an admin has changed are left alone.
+			if (Raiding.C4FuseSeconds == 58)
+				Raiding.C4FuseSeconds = 30;
+			if (Raiding.ImprovisedFuseSeconds == 58)
+				Raiding.ImprovisedFuseSeconds = 30;
+			foreach (RAPatch_RecipeRow recipe : Crafting.Recipes)
+			{
+				if (recipe.Result == "RA_Improvised_C4")
+					recipe.Enabled = true;
+			}
 		}
 		if (oldVersion < 4 && Respawn.BagClasses.Count() == 0)
 			Respawn.BagClasses.Insert("RAPatch_SleepingBagDeployed_Base");
@@ -628,7 +641,7 @@ class RAPatch_Settings
 		gunpowder.Ingredient2MustBeFull = true;
 		Crafting.Recipes.Insert(gunpowder);
 
-		RAPatch_RecipeRow improvised = new RAPatch_RecipeRow("Make improvised charge", false, "RA_Improvised_C4", -1, 12);
+		RAPatch_RecipeRow improvised = new RAPatch_RecipeRow("Make improvised charge", true, "RA_Improvised_C4", -1, 12);	// on by default (Dev, 2026-11-13)
 		improvised.Ingredient1.Insert("RA_Gunpowder");
 		improvised.Ingredient1Amount = 5;
 		improvised.Ingredient1Consumed = true;
